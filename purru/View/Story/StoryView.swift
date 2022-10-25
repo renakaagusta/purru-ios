@@ -40,7 +40,7 @@ struct StoryView: View {
     
     @State private var focusedObjectIndex = 0
     
-    @State private var elapsedTime: CGFloat = 0
+    @State private var elapsedTime: CGFloat = 30
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     init(data: StoryData) {
@@ -54,6 +54,8 @@ struct StoryView: View {
         guard let sceneUrl = Bundle.main.url(forResource: data.sceneName, withExtension: data.sceneExtension) else { fatalError() }
         
         self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
+        self.scene?.background.contents = UIImage(named: "skybox")
+
     }
     
     func handleTap(hitResults: [SCNHitTestResult]?) {
@@ -87,7 +89,7 @@ struct StoryView: View {
                 hintVisibility = false
                 gestureVisibility = false
                 elapsedTime = 0
-                
+
                 playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
                 
                 material.normal.contents = nil
@@ -130,6 +132,8 @@ struct StoryView: View {
                 if(data.objectList[focusedObjectIndex].type == ObjectType.Opening && elapsedTime > narationTime) {
                     focusedObjectIndex = focusedObjectIndex + 1
                     hintVisibility = false
+                    
+//                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
                 } else {
                     state = StoryState.Task
                     hintVisibility = true
@@ -143,6 +147,8 @@ struct StoryView: View {
                 state = StoryState.Naration
                 hintVisibility = false
                 gestureVisibility = false
+                
+//                playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
                 
                 if(focusedObjectIndex < data.objectList.count) {
                     playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
@@ -252,15 +258,22 @@ struct StoryView: View {
     
     func playNaration(soundName: String, soundExtention: String) {
         
+        if(narationPlayer != nil) {
+            narationPlayer.stop()
+        }
+        
         let url = Bundle.main.url(forResource: soundName, withExtension: soundExtention)
         
         guard url != nil else {
+            narationPlayer?.stop()
             return
         }
         
         do {
-            narationPlayer = try AVAudioPlayer(contentsOf: url!)
-            narationPlayer?.play()
+            if(soundName.count != 0) {
+                narationPlayer = try AVAudioPlayer(contentsOf: url!)
+                narationPlayer?.play()
+            }
         } catch {
             print("error")
         }
@@ -510,17 +523,5 @@ struct StoryView_Previews: PreviewProvider {
                 )
             ]
         ))
-    }
-}
-
-//coba
-func printFonts() {
-    let fontFamilyName = UIFont.familyNames
-    
-    for familyName in fontFamilyName {
-        print("-----")
-        print("family name = [\(familyName)]")
-        let names = UIFont.fontNames(forFamilyName: familyName)
-        print("font names = [\(names)]")
     }
 }
