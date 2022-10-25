@@ -73,7 +73,6 @@
 		2FA53FCE2907C31F00BFB3E5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F912907C31F00BFB3E5 /* URL.swift */; };
 		2FA53FCF2907C31F00BFB3E5 /* ObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F922907C31F00BFB3E5 /* ObjectType.swift */; };
 		2FA53FD22907C3AF00BFB3E5 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA53FD12907C3AF00BFB3E5 /* FLAnimatedImage */; };
-		2FA53FD42907C5BE00BFB3E5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FA53FD32907C5BE00BFB3E5 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -597,7 +596,6 @@
 				2FA53E812907C2DC00BFB3E5 /* Assets.xcassets in Resources */,
 				2FA53F9E2907C31F00BFB3E5 /* 3DAssetS1.scn in Resources */,
 				2FA53F9C2907C31F00BFB3E5 /* simple-trees-collection.usdc in Resources */,
-				2FA53FD42907C5BE00BFB3E5 /* Info.plist in Resources */,
 				2FA53F9F2907C31F00BFB3E5 /* Rock Texture.jpeg in Resources */,
 				2FA53FA02907C31F00BFB3E5 /* hand.tap.gif in Resources */,
 				2FA53F9A2907C31F00BFB3E5 /* hand.zoom.gif in Resources */,
