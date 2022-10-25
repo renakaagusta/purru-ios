@@ -17,7 +17,7 @@ struct StoryListView: View {
                thumbnail: "",
                sceneName: "3DAssetS1",
                sceneExtension: "scn",
-               backsound: "sadGusde",
+               backsound: "backsound-story1",
                backsoundExtention: "mp3",
                objectList: [
                    ObjectScene(
@@ -29,15 +29,14 @@ struct StoryListView: View {
                        narationDuration: 30,
                        taskDuration: 0,
                        tutorialDuration: 0,
-                       narationSound: "narasi01",
+                       narationSound: "narasi0",
                        narationSoundExtention: "mp3",
                        instructionList: [
-                            Instruction(id: "1", text: "", startedAt: 0),
-                            Instruction(id: "2", text: "Halo selamat malam", startedAt: 5),
-                            Instruction(id: "3",text: "Malam ini saya akan membawa anda ke taman terindah di [nama app]", startedAt: 10),
-                            Instruction(id: "4",text: "Tarik Nafas", startedAt: 15),
-                            Instruction(id: "5",text: "Hembuskan", startedAt: 20),
-                            Instruction(id: "6",text: "Apakah kamu sudah rileks? Kita akan berkeliling taman ini dengan santai", startedAt: 25)
+                            Instruction(id: "1", text: "Hallo selamat", startedAt: 0),
+                            Instruction(id: "2", text: "Malam ini saya akan membawa anda ke taman terindah di Purru", startedAt: 2),
+                            Instruction(id: "3",text: "Tarik Nafas", startedAt: 9),
+                            Instruction(id: "4",text: "Hembuskan", startedAt: 12),
+                            Instruction(id: "5",text: "Apakah kamu sudah rileks? Kita akan berkeliling taman ini dengan santai", startedAt: 15)
                        ]
                    ),
                    ObjectScene(
@@ -49,7 +48,7 @@ struct StoryListView: View {
                        narationDuration: 30,
                        taskDuration: 30,
                        tutorialDuration: 20,
-                       narationSound: "narasi01",
+                       narationSound: "",
                        narationSoundExtention: "mp3",
                        instructionList: [
                            Instruction(id: "1", text: "Taman ini adalah tempat dimana saya sering bermain di masa kecil", startedAt: 0),
@@ -71,7 +70,7 @@ struct StoryListView: View {
                        narationDuration: 30,
                        taskDuration: 30,
                        tutorialDuration: 20,
-                       narationSound: "narasi01",
+                       narationSound: "",
                        narationSoundExtention: "mp3",
                        instructionList: [
                            Instruction(id: "1", text: "Benar sekali.. Itu pohon yang saya maksud. Sangat besar dan rindang bukan?", startedAt: 0),
@@ -94,7 +93,7 @@ struct StoryListView: View {
                        narationDuration: 40,
                        taskDuration: 30,
                        tutorialDuration: 20,
-                       narationSound: "narasi01",
+                       narationSound: "",
                        narationSoundExtention: "mp3",
                        instructionList: [
                            Instruction(id: "1", text: "Wah jadi nostalgia. Biasanya saya berbagi buah yang sangat nikmat  ini dengan hewan peliharaan saya", startedAt: 0),
@@ -116,7 +115,7 @@ struct StoryListView: View {
                        narationDuration: 30,
                        taskDuration: 30,
                        tutorialDuration: 20,
-                       narationSound: "narasi01",
+                       narationSound: "",
                        narationSoundExtention: "mp3",
                        instructionList: [
                            Instruction(id: "1", text: "Itu dia Kiki! Ini memang pohon kesukaanya", startedAt: 0),
@@ -138,7 +137,7 @@ struct StoryListView: View {
                        narationDuration: 40,
                        taskDuration: 30,
                        tutorialDuration: 20,
-                       narationSound: "narasi01",
+                       narationSound: "",
                        narationSoundExtention: "mp3",
                        instructionList: [
                            Instruction(id: "1", text: "Wah kamu menemukannya!", startedAt: 0),
@@ -160,7 +159,7 @@ struct StoryListView: View {
                thumbnail: "",
                sceneName: "3DAssetS1",
                sceneExtension: "scn",
-               backsound: "sadGusde",
+               backsound: "backsound-story1",
                backsoundExtention: "mp3",
                objectList: [
                    ObjectScene(
@@ -172,7 +171,7 @@ struct StoryListView: View {
                        narationDuration: 15,
                        taskDuration: 30,
                        tutorialDuration: 20,
-                       narationSound: "narasi01",
+                       narationSound: "",
                        narationSoundExtention: "mp3",
                        instructionList: [
                            Instruction(id: "1", text: "Narasi 1",  startedAt: 0),
