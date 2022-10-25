@@ -45,6 +45,7 @@ struct StoryView: View {
     
     init(data: StoryData) {
         self.gameView = GameView()
+        printFonts()
         
         self.data = data
         
@@ -260,7 +261,6 @@ struct StoryView: View {
         do {
             narationPlayer = try AVAudioPlayer(contentsOf: url!)
             narationPlayer?.play()
-            narationPlayer.numberOfLoops = 5
         } catch {
             print("error")
         }
@@ -510,5 +510,17 @@ struct StoryView_Previews: PreviewProvider {
                 )
             ]
         ))
+    }
+}
+
+//coba
+func printFonts() {
+    let fontFamilyName = UIFont.familyNames
+    
+    for familyName in fontFamilyName {
+        print("-----")
+        print("family name = [\(familyName)]")
+        let names = UIFont.fontNames(forFamilyName: familyName)
+        print("font names = [\(names)]")
     }
 }

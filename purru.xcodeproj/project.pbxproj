@@ -59,8 +59,6 @@
 		2FA53FC02907C31F00BFB3E5 /* JosefineSans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F752907C31F00BFB3E5 /* JosefineSans.swift */; };
 		2FA53FC12907C31F00BFB3E5 /* Rubik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F762907C31F00BFB3E5 /* Rubik.swift */; };
 		2FA53FC22907C31F00BFB3E5 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F782907C31F00BFB3E5 /* ProgressBar.swift */; };
-		2FA53FC32907C31F00BFB3E5 /* narasi01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FA53F7C2907C31F00BFB3E5 /* narasi01.mp3 */; };
-		2FA53FC42907C31F00BFB3E5 /* sadGusde.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FA53F7E2907C31F00BFB3E5 /* sadGusde.mp3 */; };
 		2FA53FC52907C31F00BFB3E5 /* StorySummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F812907C31F00BFB3E5 /* StorySummaryView.swift */; };
 		2FA53FC62907C31F00BFB3E5 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F832907C31F00BFB3E5 /* TutorialView.swift */; };
 		2FA53FC72907C31F00BFB3E5 /* StoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F852907C31F00BFB3E5 /* StoryListView.swift */; };
@@ -73,6 +71,10 @@
 		2FA53FCE2907C31F00BFB3E5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F912907C31F00BFB3E5 /* URL.swift */; };
 		2FA53FCF2907C31F00BFB3E5 /* ObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F922907C31F00BFB3E5 /* ObjectType.swift */; };
 		2FA53FD22907C3AF00BFB3E5 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA53FD12907C3AF00BFB3E5 /* FLAnimatedImage */; };
+		B8BBC2E52907CDA9007EE031 /* narasi0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8BBC2E42907CDA9007EE031 /* narasi0.mp3 */; };
+		B8D38CBB2907C8A500DB150C /* backsound-story1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8D38CBA2907C8A500DB150C /* backsound-story1.mp3 */; };
+		B8D38CC32907CC0C00DB150C /* JosefinSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8D38CBF2907CA2500DB150C /* JosefinSans.ttf */; };
+		B8D38CC42907CC0C00DB150C /* Rubik.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8D38CC02907CA2500DB150C /* Rubik.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,8 +131,6 @@
 		2FA53F752907C31F00BFB3E5 /* JosefineSans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JosefineSans.swift; sourceTree = "<group>"; };
 		2FA53F762907C31F00BFB3E5 /* Rubik.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rubik.swift; sourceTree = "<group>"; };
 		2FA53F782907C31F00BFB3E5 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		2FA53F7C2907C31F00BFB3E5 /* narasi01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi01.mp3; sourceTree = "<group>"; };
-		2FA53F7E2907C31F00BFB3E5 /* sadGusde.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sadGusde.mp3; sourceTree = "<group>"; };
 		2FA53F812907C31F00BFB3E5 /* StorySummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorySummaryView.swift; sourceTree = "<group>"; };
 		2FA53F832907C31F00BFB3E5 /* TutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		2FA53F852907C31F00BFB3E5 /* StoryListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryListView.swift; sourceTree = "<group>"; };
@@ -143,6 +143,10 @@
 		2FA53F912907C31F00BFB3E5 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		2FA53F922907C31F00BFB3E5 /* ObjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectType.swift; sourceTree = "<group>"; };
 		2FA53FD32907C5BE00BFB3E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8BBC2E42907CDA9007EE031 /* narasi0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi0.mp3; sourceTree = "<group>"; };
+		B8D38CBA2907C8A500DB150C /* backsound-story1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "backsound-story1.mp3"; sourceTree = "<group>"; };
+		B8D38CBF2907CA2500DB150C /* JosefinSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JosefinSans.ttf; sourceTree = "<group>"; };
+		B8D38CC02907CA2500DB150C /* Rubik.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rubik.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,7 @@
 		2FA53E7B2907C2DB00BFB3E5 /* purru */ = {
 			isa = PBXGroup;
 			children = (
+				B8D38CBD2907CA2500DB150C /* Typography */,
 				2FA53F3D2907C31F00BFB3E5 /* 1. Sprint 1 */,
 				2FA53F522907C31F00BFB3E5 /* Component */,
 				2FA53F8E2907C31F00BFB3E5 /* Enum */,
@@ -432,7 +437,7 @@
 		2FA53F7B2907C31F00BFB3E5 /* Naration */ = {
 			isa = PBXGroup;
 			children = (
-				2FA53F7C2907C31F00BFB3E5 /* narasi01.mp3 */,
+				B8BBC2E42907CDA9007EE031 /* narasi0.mp3 */,
 			);
 			path = Naration;
 			sourceTree = "<group>";
@@ -440,7 +445,7 @@
 		2FA53F7D2907C31F00BFB3E5 /* Backsound */ = {
 			isa = PBXGroup;
 			children = (
-				2FA53F7E2907C31F00BFB3E5 /* sadGusde.mp3 */,
+				B8D38CBA2907C8A500DB150C /* backsound-story1.mp3 */,
 			);
 			path = Backsound;
 			sourceTree = "<group>";
@@ -526,6 +531,23 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		B8D38CBD2907CA2500DB150C /* Typography */ = {
+			isa = PBXGroup;
+			children = (
+				B8D38CBE2907CA2500DB150C /* Font */,
+			);
+			path = Typography;
+			sourceTree = "<group>";
+		};
+		B8D38CBE2907CA2500DB150C /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				B8D38CBF2907CA2500DB150C /* JosefinSans.ttf */,
+				B8D38CC02907CA2500DB150C /* Rubik.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -590,19 +612,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8D38CC32907CC0C00DB150C /* JosefinSans.ttf in Resources */,
+				B8D38CC42907CC0C00DB150C /* Rubik.ttf in Resources */,
+				B8D38CBB2907C8A500DB150C /* backsound-story1.mp3 in Resources */,
 				2FA53F9D2907C31F00BFB3E5 /* hand.swipe.up.down.gif in Resources */,
 				2FA53E842907C2DC00BFB3E5 /* Preview Assets.xcassets in Resources */,
 				2FA53FA22907C31F00BFB3E5 /* hand.swipe.left.right.gif in Resources */,
 				2FA53E812907C2DC00BFB3E5 /* Assets.xcassets in Resources */,
 				2FA53F9E2907C31F00BFB3E5 /* 3DAssetS1.scn in Resources */,
 				2FA53F9C2907C31F00BFB3E5 /* simple-trees-collection.usdc in Resources */,
+				B8BBC2E52907CDA9007EE031 /* narasi0.mp3 in Resources */,
 				2FA53F9F2907C31F00BFB3E5 /* Rock Texture.jpeg in Resources */,
 				2FA53FA02907C31F00BFB3E5 /* hand.tap.gif in Resources */,
 				2FA53F9A2907C31F00BFB3E5 /* hand.zoom.gif in Resources */,
-				2FA53FC32907C31F00BFB3E5 /* narasi01.mp3 in Resources */,
 				2FA53F9B2907C31F00BFB3E5 /* smallTree.usdz in Resources */,
 				2FA53FA12907C31F00BFB3E5 /* stars.jpg in Resources */,
-				2FA53FC42907C31F00BFB3E5 /* sadGusde.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,6 +820,7 @@
 				DEVELOPMENT_TEAM = KZ9PN4535G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = purru/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -825,6 +850,7 @@
 				DEVELOPMENT_TEAM = KZ9PN4535G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = purru/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
