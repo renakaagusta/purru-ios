@@ -97,7 +97,7 @@ struct StoryListView: View {
                        instructionList: [
                            Instruction(id: "1", text: "Wah jadi nostalgia. Biasanya saya berbagi buah yang sangat nikmat  ini dengan hewan peliharaan saya", startedAt: 0),
                            Instruction(id: "2",text: "Saya sangat menyukai hewan", startedAt: 10),
-                           Instruction(id: "3",text: "Dulu saya memlihara burung kakak tua bernama Kiki di taman ini", startedAt: 14),
+                           Instruction(id: "3",text: "Dulu saya memlihara burung bernama Kiki di taman ini", startedAt: 14),
                            Instruction(id: "4",text: "Entah mengapa, setiap hari saya hanya menemukan kiki diatas pohon berwarna merah", startedAt: 21),
                            Instruction(id: "5",text: "Apakah dia masih ada disana?", startedAt: 29),
                            Instruction(id: "6",text: "Iya, kiki  memang sangat kecil", startedAt: 58),

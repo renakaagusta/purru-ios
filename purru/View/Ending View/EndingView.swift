@@ -11,19 +11,15 @@ struct EndingView: View {
     
     @State var textEnding: String = "Selamat telah menyelesaikan cerita ini"
     @State var buttonTextEnding: String = "Play Again"
-    
+    var onRestartClick: () -> () = {}
+
     var body: some View {
   
         VStack(alignment: .center) {
             
-            //text ending
             AppJosefineSans(text: textEnding, josepSize: fontType.largeTitle, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: .center)
                 .padding()
-            
-            //Button
-            Button(action: {
-                //action
-            }, label: {
+            Button(action: onRestartClick, label: {
                 AppRubik(text: buttonTextEnding, rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
                     .padding()
                     .frame(width: .infinity, height: .infinity)

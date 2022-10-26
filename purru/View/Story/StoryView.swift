@@ -38,7 +38,7 @@ struct StoryView: View {
     @State private var dialogVisibility = false
     @State private var dialogView: AnyView = AnyView(VStack{})
     
-    @State private var focusedObjectIndex = 0
+    @State private var focusedObjectIndex = 1
     
     @State private var elapsedTime: CGFloat = 0
     
@@ -67,6 +67,61 @@ struct StoryView: View {
         ]
     }
     
+    func showHint() {
+//        print("----SHOW HINT-----")
+//        if(data.objectList[focusedObjectIndex].type != ObjectType.Task) {
+//            return
+//        }
+//
+        let camera = view.defaultCameraController
+        
+        camera.pointOfView?.localTranslate(by: SCNVector3(-0.5, 0, 0))
+        
+//        let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
+        
+//        let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM BLUE"}).first
+//
+//        print("----YELLOW----")
+//        print(view.scene?.rootNode.childNodes.filter({$0.name == "CAM YELLOW"}).first?.position)
+//        print("----BLUE----")
+//        print(view.scene?.rootNode.childNodes.filter({$0.name == "CAM BLUE"}).first?.position)
+//        print("----PUMPKIN----")
+//        print(view.scene?.rootNode.childNodes.filter({$0.name == "CAM PUMPKIN"}).first?.position)
+//        print("----BIRD----")
+//        print(view.scene?.rootNode.childNodes.filter({$0.name == "CAM BIRD"}).first?.position)
+//
+//
+//        camera.pointOfView?.position = cameraDestination!.position
+//        camera.pointOfView?.eulerAngles = cameraDestination!.eulerAngles
+//
+//        print("-----FROM----")
+//        print(camera.pointOfView?.position)
+//        print("-----DESTINATION----")
+//        print(cameraDestination!.position)
+//
+//        for camera in  view.scene!.rootNode.childNodes {
+//            print(camera.name)
+//            print(camera.position)
+//        }
+                
+        hintVisibility = true
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//
+//            camera.pointOfView = view.scene?.rootNode.childNodes.filter({$0.name == "CAM BLUE"}).first
+//
+//            hintVisibility = false
+//        }
+        
+        var detinationCamera = view.scene?.rootNode.childNodes.filter({$0.name == "CAM BLUE"}).first
+        
+        let camera2 = SCNNode()
+
+        camera2.position = SCNVector3(x: 0, y: -70, z: 50)
+
+        self.view.defaultCameraController.pointOfView!.convertPosition(camera.pointOfView!.position, to: camera2)
+    }
+    
     func handleTap(hitResults: [SCNHitTestResult]?) {
         if(hitResults == nil || state == StoryState.Naration) {
             return
@@ -93,19 +148,12 @@ struct StoryView: View {
             SCNTransaction.commit()
             
             if(result.node.name == data.objectList[focusedObjectIndex].tag) {
-                print("---FOCUSED OBJECT INDEX----")
-                print(focusedObjectIndex)
                 focusedObjectIndex = focusedObjectIndex + 1
                 state = StoryState.Naration
                 hintVisibility = false
                 gestureVisibility = false
                 elapsedTime = 0
-                
-                print("----PLAY NARATION----")
-                print(focusedObjectIndex)
-                print(data.objectList[focusedObjectIndex])
-                print(data.objectList[focusedObjectIndex].narationSound)
-
+    
                 playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
                 
                 material.normal.contents = nil
@@ -130,6 +178,25 @@ struct StoryView: View {
         }
     }
     
+    func restartGame() {
+        print("---RESTART---")
+        
+        elapsedTime = 0
+        focusedObjectIndex = 0
+        state = StoryState.Naration
+        
+        
+        let camera = view.defaultCameraController
+        camera.pointOfView?.position = SCNVector3(x: -189, y: 150, z: -269)
+//        camera.pointOfView?.eulerAngles = SCNVector3(x:175, y: -35, z: -180)
+        
+        endingVisibility = false
+        
+        playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
+        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
+    }
+    
+    
     func hideDialog() {
         self.dialogVisibility = false
     }
@@ -144,15 +211,12 @@ struct StoryView: View {
                     elapsedTime = 0
                     state = StoryState.Naration
                     focusedObjectIndex = focusedObjectIndex + 1
-                    hintVisibility = false
                     
                     playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
                 } else if(data.objectList[focusedObjectIndex].type == ObjectType.Ending && elapsedTime >= narationTime) {
-                   hintVisibility = false
                     endingVisibility = true
                 } else {
                     state = StoryState.Task
-                    hintVisibility = true
                     hideDialog()
                 }
             } else if(state == StoryState.Task && elapsedTime > taskTime) {
@@ -166,8 +230,7 @@ struct StoryView: View {
     func configCamera() {
         let camera = view.defaultCameraController
         
-//        camera.maximumVerticalAngle = 30
-        camera.pointOfView
+        camera.maximumVerticalAngle = 30
     }
     
     func updateTime() {
@@ -219,12 +282,6 @@ struct StoryView: View {
                 showDialog(position: DialogPosition.Top, child: AnyView(AppRubik(text: showedInstruction!, rubikSize: fontType.body, fontWeight: .bold , fontColor: Color.text.primary)))
             }
             
-            print("--------NARATION PROGRES------")
-            print("focusedObjectIndex = \(focusedObjectIndex)")
-            print("focusedObjectIndex2 =\(focusedObjectIndex != 0 ? focusedObjectIndex - 1 : 0)")
-            print("objectListCount = \(data.objectList.count - 2)")
-            print("calculate = \(CGFloat(focusedObjectIndex != 0 ? focusedObjectIndex - 2 : 1 ) / CGFloat(data.objectList.count - 2))")
-            
             narationsProgress = CGFloat(focusedObjectIndex != 0 ? focusedObjectIndex - 1 : 0 ) / CGFloat(data.objectList.count - 2)
 
         } else {
@@ -257,7 +314,7 @@ struct StoryView: View {
         
         do {
             backsoundPlayer = try AVAudioPlayer(contentsOf: url!)
-            backsoundPlayer?.setVolume(0.3, fadeDuration: 0.1)
+            backsoundPlayer?.setVolume(0.25, fadeDuration: 0.1)
             backsoundPlayer.numberOfLoops = -1
             try AVAudioSession.sharedInstance().setCategory(.playback)
             backsoundPlayer?.play()
@@ -267,30 +324,22 @@ struct StoryView: View {
     }
     
     func playNaration(soundName: String, soundExtention: String) {
-        print(0)
-        print(soundName)
-        print(soundExtention)
         if(narationPlayer != nil) {
             narationPlayer.stop()
         }
         
-            print(1)
         let url = Bundle.main.url(forResource: soundName, withExtension: soundExtention)
         
-        print(2)
-        print(url)
         guard url != nil else {
             narationPlayer?.stop()
             return
         }
         
-        print(3)
         do {
-            print(soundName)
             if(soundName.count != 0) {
                 print(4)
                 narationPlayer = try AVAudioPlayer(contentsOf: url!)
-                narationPlayer?.setVolume(0.7, fadeDuration: 0.1)
+                narationPlayer?.setVolume(0.8, fadeDuration: 0.1)
                 try AVAudioSession.sharedInstance().setCategory(.playback)
                 narationPlayer?.play()
                 print(5)
@@ -306,7 +355,7 @@ struct StoryView: View {
             ZStack {
                 gameView
                 if(endingVisibility) {
-                    EndingView(textEnding: "Selamat telah menyelesaikan cerita ini", buttonTextEnding: "Main lagi")
+                    EndingView(textEnding: "Selamat telah menyelesaikan cerita ini", buttonTextEnding: "Play Again", onRestartClick: restartGame)
                 }
                 if(gestureVisibility) {
                     GIFView(type: .name(gesture))
@@ -345,8 +394,8 @@ struct StoryView: View {
                                 icon: Image(systemName: "lightbulb.fill"),
                                 color: Color.bg.primary,
                                 backgroundColor: Color.foot.primary,
-                                source: AppCircleButtonContentSource.Icon
-                                //onClick:
+                                source: AppCircleButtonContentSource.Icon,
+                                onClick: showHint
                             )
                             .padding()
                         }
@@ -357,8 +406,8 @@ struct StoryView: View {
                                 icon: Image(systemName: "lightbulb.fill"),
                                 color: Color.bg.primary,
                                 backgroundColor: Color.spot.primary,
-                                source: AppCircleButtonContentSource.Icon
-                                //onClick:
+                                source: AppCircleButtonContentSource.Icon,
+                                onClick: showHint
                             )
                             .padding()
                             .shadow(color: Color.spot.primary, radius: 15, x: 0, y: 0)
