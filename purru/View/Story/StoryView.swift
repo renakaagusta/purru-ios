@@ -54,16 +54,16 @@ struct StoryView: View {
         guard let sceneUrl = Bundle.main.url(forResource: data.sceneName, withExtension: data.sceneExtension) else { fatalError() }
         
         self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
-        //self.scene?.background.contents = UIImage(named: "stars")
         
-        
+        //scene.background.contents = @[@"Right.png", @"Left.png", @"Top.png", @"Bottom.png", @"Back.png", @"Front.png"];
+
         self.scene?.background.contents = [
-            UIImage(named: "pz"),
-            UIImage(named: "nz"),
-            UIImage(named: "py"),
-            UIImage(named: "ny"),
+            UIImage(named: "px"),
             UIImage(named: "nx"),
-            UIImage(named: "px")
+            UIImage(named: "py"),
+            UIImage(named: "nz"),
+            UIImage(named: "ny"),
+            UIImage(named: "pz")
         ]
     }
     
