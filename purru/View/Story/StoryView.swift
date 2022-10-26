@@ -40,12 +40,11 @@ struct StoryView: View {
     
     @State private var focusedObjectIndex = 0
     
-    @State private var elapsedTime: CGFloat = 30
+    @State private var elapsedTime: CGFloat = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     init(data: StoryData) {
         self.gameView = GameView()
-        printFonts()
         
         self.data = data
         
@@ -54,8 +53,17 @@ struct StoryView: View {
         guard let sceneUrl = Bundle.main.url(forResource: data.sceneName, withExtension: data.sceneExtension) else { fatalError() }
         
         self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
-        self.scene?.background.contents = UIImage(named: "skybox")
-
+//        self.scene?.background.contents = UIImage(named: "stars")
+        
+        
+        self.scene?.background.contents = [
+            UIImage(named: "pz"),
+            UIImage(named: "nz"),
+            UIImage(named: "ny"),
+            UIImage(named: "py"),
+            UIImage(named: "nx"),
+            UIImage(named: "px")
+        ]
     }
     
     func handleTap(hitResults: [SCNHitTestResult]?) {
