@@ -49,14 +49,6 @@ class GameViewController: UIViewController {
                 }
             }
         
-        if let recognizers = scnView.gestureRecognizers {
-                for gestureRecognizer in recognizers {
-                    if let gesture = gestureRecognizer as? UISwipeActionsConfiguration {
-                        gestureRecognizer.isEnabled = true
-                    }
-                }
-            }
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
         
