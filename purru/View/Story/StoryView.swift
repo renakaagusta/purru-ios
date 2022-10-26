@@ -355,6 +355,21 @@ struct StoryView: View {
         }
     }
     
+    func showHint() {
+        let camera = view.defaultCameraController
+            
+        let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM BLUE"}).first
+            
+        camera.pointOfView?.position = SCNVector3(x: 0, y: 0, z: 0)
+            camera.pointOfView?.eulerAngles = SCNVector3(x: 0, y: 0, z: 0)
+            
+            hintVisibility = true
+            
+//            try await Task.sleep(nanoseconds: UInt64(seconds * Double(NSEC_PER_SEC)))
+            
+            hintVisibility = true
+        }
+    
     
     var body: some View {
         NavigationView {
