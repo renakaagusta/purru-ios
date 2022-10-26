@@ -41,6 +41,7 @@ struct StoryView: View {
     @State private var focusedObjectIndex = 0
     
     @State private var elapsedTime: CGFloat = 0
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     init(data: StoryData) {
@@ -53,14 +54,14 @@ struct StoryView: View {
         guard let sceneUrl = Bundle.main.url(forResource: data.sceneName, withExtension: data.sceneExtension) else { fatalError() }
         
         self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
-//        self.scene?.background.contents = UIImage(named: "stars")
+        //self.scene?.background.contents = UIImage(named: "stars")
         
         
         self.scene?.background.contents = [
             UIImage(named: "pz"),
             UIImage(named: "nz"),
-            UIImage(named: "ny"),
             UIImage(named: "py"),
+            UIImage(named: "ny"),
             UIImage(named: "nx"),
             UIImage(named: "px")
         ]
@@ -110,11 +111,6 @@ struct StoryView: View {
                 material.normal.contents = nil
                 material.diffuse.contents = nil
                 result.node.removeFromParentNode()
-                
-                if(focusedObjectIndex == data.objectList.count - 1) {
-                    endingVisibility = true
-                    updateState()
-                }
             }
         }
     }
@@ -144,20 +140,16 @@ struct StoryView: View {
             let taskTime = narationTime + data.objectList[focusedObjectIndex].taskDuration
             let tutorialTime = taskTime + data.objectList[focusedObjectIndex].tutorialDuration
             if(state == StoryState.Naration && elapsedTime > narationTime) {
-                print("----TYPE----")
-                print(focusedObjectIndex)
-                print(data.objectList[focusedObjectIndex].type)
-                print(elapsedTime)
-                print(narationTime)
-                print("-----------")
                 if(data.objectList[focusedObjectIndex].type == ObjectType.Opening && elapsedTime >= narationTime) {
                     elapsedTime = 0
                     state = StoryState.Naration
-                    print("----------focusedObjectIndex + 1 11---------")
                     focusedObjectIndex = focusedObjectIndex + 1
                     hintVisibility = false
                     
                     playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
+                } else if(data.objectList[focusedObjectIndex].type == ObjectType.Ending && elapsedTime >= narationTime) {
+                   hintVisibility = false
+                    endingVisibility = true
                 } else {
                     state = StoryState.Task
                     hintVisibility = true
@@ -166,23 +158,6 @@ struct StoryView: View {
             } else if(state == StoryState.Task && elapsedTime > taskTime) {
                 state = StoryState.Tutorial
             }
-//            else if(state == StoryState.Tutorial && elapsedTime > tutorialTime) {
-//                elapsedTime = 0
-//
-//                print("----------focusedObjectIndex + 1 22---------")
-//                focusedObjectIndex = focusedObjectIndex + 1
-//                state = StoryState.Naration
-//                hintVisibility = false
-//                gestureVisibility = false
-//
-//                playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
-//
-//                if(focusedObjectIndex < data.objectList.count) {
-//                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
-//                } else {
-//                    endingVisibility = true
-//                }
-//            }
         } else {
             endingVisibility = true
         }
@@ -191,7 +166,8 @@ struct StoryView: View {
     func configCamera() {
         let camera = view.defaultCameraController
         
-        camera.maximumVerticalAngle = 30
+//        camera.maximumVerticalAngle = 30
+        camera.pointOfView
     }
     
     func updateTime() {
@@ -243,7 +219,13 @@ struct StoryView: View {
                 showDialog(position: DialogPosition.Top, child: AnyView(AppRubik(text: showedInstruction!, rubikSize: fontType.body, fontWeight: .bold , fontColor: Color.text.primary)))
             }
             
-            narationsProgress = CGFloat(focusedObjectIndex != 0 ? focusedObjectIndex - 1 : 1 / (data.objectList.count - 2))
+            print("--------NARATION PROGRES------")
+            print("focusedObjectIndex = \(focusedObjectIndex)")
+            print("focusedObjectIndex2 =\(focusedObjectIndex != 0 ? focusedObjectIndex - 1 : 0)")
+            print("objectListCount = \(data.objectList.count - 2)")
+            print("calculate = \(CGFloat(focusedObjectIndex != 0 ? focusedObjectIndex - 2 : 1 ) / CGFloat(data.objectList.count - 2))")
+            
+            narationsProgress = CGFloat(focusedObjectIndex != 0 ? focusedObjectIndex - 1 : 0 ) / CGFloat(data.objectList.count - 2)
 
         } else {
             endingVisibility = true
@@ -277,6 +259,7 @@ struct StoryView: View {
             backsoundPlayer = try AVAudioPlayer(contentsOf: url!)
             backsoundPlayer?.setVolume(0.3, fadeDuration: 0.1)
             backsoundPlayer.numberOfLoops = -1
+            try AVAudioSession.sharedInstance().setCategory(.playback)
             backsoundPlayer?.play()
         } catch {
             print("error")
@@ -307,6 +290,8 @@ struct StoryView: View {
             if(soundName.count != 0) {
                 print(4)
                 narationPlayer = try AVAudioPlayer(contentsOf: url!)
+                narationPlayer?.setVolume(0.7, fadeDuration: 0.1)
+                try AVAudioSession.sharedInstance().setCategory(.playback)
                 narationPlayer?.play()
                 print(5)
             }
