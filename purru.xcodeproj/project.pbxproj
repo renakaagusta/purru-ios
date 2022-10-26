@@ -78,9 +78,14 @@
 		2FE8594E2907F39C0054A2E2 /* ny.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE859482907F39C0054A2E2 /* ny.png */; };
 		2FE8594F2907F39C0054A2E2 /* px.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE859492907F39C0054A2E2 /* px.png */; };
 		2FE859502907F39C0054A2E2 /* pz.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE8594A2907F39C0054A2E2 /* pz.png */; };
+		B8692BE7290903840029667A /* narasi4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE1290903840029667A /* narasi4.mp3 */; };
+		B8692BE8290903840029667A /* narasi1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE2290903840029667A /* narasi1.mp3 */; };
+		B8692BE9290903840029667A /* narasi3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE3290903840029667A /* narasi3.mp3 */; };
+		B8692BEA290903840029667A /* narasi5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE4290903840029667A /* narasi5.mp3 */; };
+		B8692BEB290903840029667A /* narasi2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE5290903840029667A /* narasi2.mp3 */; };
+		B8692BEC290903840029667A /* narasi0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE6290903840029667A /* narasi0.mp3 */; };
 		B8A100092907E73C0082C66E /* Layer0.exr in Resources */ = {isa = PBXBuildFile; fileRef = B8BBC2E82907E3FF007EE031 /* Layer0.exr */; };
 		B8A1000B2907E76D0082C66E /* skybox.png in Resources */ = {isa = PBXBuildFile; fileRef = B8A1000A2907E76D0082C66E /* skybox.png */; };
-		B8BBC2E52907CDA9007EE031 /* narasi0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8BBC2E42907CDA9007EE031 /* narasi0.mp3 */; };
 		B8BBC2E72907E39B007EE031 /* 3DAssetS1.scn in Resources */ = {isa = PBXBuildFile; fileRef = B8BBC2E62907E39B007EE031 /* 3DAssetS1.scn */; };
 		B8D38CBB2907C8A500DB150C /* backsound-story1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8D38CBA2907C8A500DB150C /* backsound-story1.mp3 */; };
 		B8D38CC32907CC0C00DB150C /* JosefinSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8D38CBF2907CA2500DB150C /* JosefinSans.ttf */; };
@@ -161,8 +166,13 @@
 		2FE859482907F39C0054A2E2 /* ny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ny.png; sourceTree = "<group>"; };
 		2FE859492907F39C0054A2E2 /* px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = px.png; sourceTree = "<group>"; };
 		2FE8594A2907F39C0054A2E2 /* pz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pz.png; sourceTree = "<group>"; };
+		B8692BE1290903840029667A /* narasi4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi4.mp3; sourceTree = "<group>"; };
+		B8692BE2290903840029667A /* narasi1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi1.mp3; sourceTree = "<group>"; };
+		B8692BE3290903840029667A /* narasi3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi3.mp3; sourceTree = "<group>"; };
+		B8692BE4290903840029667A /* narasi5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi5.mp3; sourceTree = "<group>"; };
+		B8692BE5290903840029667A /* narasi2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi2.mp3; sourceTree = "<group>"; };
+		B8692BE6290903840029667A /* narasi0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi0.mp3; sourceTree = "<group>"; };
 		B8A1000A2907E76D0082C66E /* skybox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skybox.png; sourceTree = "<group>"; };
-		B8BBC2E42907CDA9007EE031 /* narasi0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi0.mp3; sourceTree = "<group>"; };
 		B8BBC2E62907E39B007EE031 /* 3DAssetS1.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = 3DAssetS1.scn; sourceTree = "<group>"; };
 		B8BBC2E82907E3FF007EE031 /* Layer0.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = Layer0.exr; sourceTree = "<group>"; };
 		B8D38CBA2907C8A500DB150C /* backsound-story1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "backsound-story1.mp3"; sourceTree = "<group>"; };
@@ -469,7 +479,12 @@
 		2FA53F7B2907C31F00BFB3E5 /* Naration */ = {
 			isa = PBXGroup;
 			children = (
-				B8BBC2E42907CDA9007EE031 /* narasi0.mp3 */,
+				B8692BE6290903840029667A /* narasi0.mp3 */,
+				B8692BE2290903840029667A /* narasi1.mp3 */,
+				B8692BE5290903840029667A /* narasi2.mp3 */,
+				B8692BE3290903840029667A /* narasi3.mp3 */,
+				B8692BE1290903840029667A /* narasi4.mp3 */,
+				B8692BE4290903840029667A /* narasi5.mp3 */,
 			);
 			path = Naration;
 			sourceTree = "<group>";
@@ -644,21 +659,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8692BE7290903840029667A /* narasi4.mp3 in Resources */,
 				2FE859502907F39C0054A2E2 /* pz.png in Resources */,
 				B8A100092907E73C0082C66E /* Layer0.exr in Resources */,
 				B8D38CC32907CC0C00DB150C /* JosefinSans.ttf in Resources */,
 				B8D38CC42907CC0C00DB150C /* Rubik.ttf in Resources */,
 				2FE859442907F2700054A2E2 /* asset.png in Resources */,
+				B8692BE9290903840029667A /* narasi3.mp3 in Resources */,
 				B8BBC2E72907E39B007EE031 /* 3DAssetS1.scn in Resources */,
+				B8692BEA290903840029667A /* narasi5.mp3 in Resources */,
+				B8692BEC290903840029667A /* narasi0.mp3 in Resources */,
 				B8D38CBB2907C8A500DB150C /* backsound-story1.mp3 in Resources */,
 				2FA53F9D2907C31F00BFB3E5 /* hand.swipe.up.down.gif in Resources */,
 				2FA53E842907C2DC00BFB3E5 /* Preview Assets.xcassets in Resources */,
+				B8692BEB290903840029667A /* narasi2.mp3 in Resources */,
+				B8692BE8290903840029667A /* narasi1.mp3 in Resources */,
 				2FA53FA22907C31F00BFB3E5 /* hand.swipe.left.right.gif in Resources */,
 				2FA53E812907C2DC00BFB3E5 /* Assets.xcassets in Resources */,
 				2FA53F9C2907C31F00BFB3E5 /* simple-trees-collection.usdc in Resources */,
 				2FE8594E2907F39C0054A2E2 /* ny.png in Resources */,
 				2FE859412907F0FD0054A2E2 /* purple.hdr in Resources */,
-				B8BBC2E52907CDA9007EE031 /* narasi0.mp3 in Resources */,
 				2FA53F9F2907C31F00BFB3E5 /* Rock Texture.jpeg in Resources */,
 				2FA53FA02907C31F00BFB3E5 /* hand.tap.gif in Resources */,
 				2FE8594B2907F39C0054A2E2 /* nx.png in Resources */,

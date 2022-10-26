@@ -92,11 +92,18 @@ struct StoryView: View {
             SCNTransaction.commit()
             
             if(result.node.name == data.objectList[focusedObjectIndex].tag) {
+                print("---FOCUSED OBJECT INDEX----")
+                print(focusedObjectIndex)
                 focusedObjectIndex = focusedObjectIndex + 1
                 state = StoryState.Naration
                 hintVisibility = false
                 gestureVisibility = false
                 elapsedTime = 0
+                
+                print("----PLAY NARATION----")
+                print(focusedObjectIndex)
+                print(data.objectList[focusedObjectIndex])
+                print(data.objectList[focusedObjectIndex].narationSound)
 
                 playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
                 
@@ -137,11 +144,20 @@ struct StoryView: View {
             let taskTime = narationTime + data.objectList[focusedObjectIndex].taskDuration
             let tutorialTime = taskTime + data.objectList[focusedObjectIndex].tutorialDuration
             if(state == StoryState.Naration && elapsedTime > narationTime) {
-                if(data.objectList[focusedObjectIndex].type == ObjectType.Opening && elapsedTime > narationTime) {
+                print("----TYPE----")
+                print(focusedObjectIndex)
+                print(data.objectList[focusedObjectIndex].type)
+                print(elapsedTime)
+                print(narationTime)
+                print("-----------")
+                if(data.objectList[focusedObjectIndex].type == ObjectType.Opening && elapsedTime >= narationTime) {
+                    elapsedTime = 0
+                    state = StoryState.Naration
+                    print("----------focusedObjectIndex + 1 11---------")
                     focusedObjectIndex = focusedObjectIndex + 1
                     hintVisibility = false
                     
-//                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
+                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
                 } else {
                     state = StoryState.Task
                     hintVisibility = true
@@ -149,21 +165,24 @@ struct StoryView: View {
                 }
             } else if(state == StoryState.Task && elapsedTime > taskTime) {
                 state = StoryState.Tutorial
-            } else if(state == StoryState.Tutorial && elapsedTime > tutorialTime) {
-                elapsedTime = 0
-                focusedObjectIndex = focusedObjectIndex + 1
-                state = StoryState.Naration
-                hintVisibility = false
-                gestureVisibility = false
-                
-//                playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
-                
-                if(focusedObjectIndex < data.objectList.count) {
-                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
-                } else {
-                    endingVisibility = true
-                }
             }
+//            else if(state == StoryState.Tutorial && elapsedTime > tutorialTime) {
+//                elapsedTime = 0
+//
+//                print("----------focusedObjectIndex + 1 22---------")
+//                focusedObjectIndex = focusedObjectIndex + 1
+//                state = StoryState.Naration
+//                hintVisibility = false
+//                gestureVisibility = false
+//
+//                playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
+//
+//                if(focusedObjectIndex < data.objectList.count) {
+//                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
+//                } else {
+//                    endingVisibility = true
+//                }
+//            }
         } else {
             endingVisibility = true
         }
@@ -182,16 +201,16 @@ struct StoryView: View {
         
         updateState()
         
-        print("STATE")
-        print(state)
-        print("TIME")
-        print(elapsedTime)
-        print("OBJECT INDEX")
-        print(focusedObjectIndex)
-        print("OBJECT COUNT")
-        print(data.objectList.count)
-        print("---------")
-        
+//        print("STATE")
+//        print(state)
+//        print("TIME")
+//        print(elapsedTime)
+//        print("OBJECT INDEX")
+//        print(focusedObjectIndex)
+//        print("OBJECT COUNT")
+//        print(data.objectList.count)
+//        print("---------")
+//
         if(focusedObjectIndex <= data.objectList.count - 1) {
             var showedInstruction: String?
             for (index, instruction) in data.objectList[focusedObjectIndex].instructionList!.enumerated() {
@@ -224,7 +243,7 @@ struct StoryView: View {
                 showDialog(position: DialogPosition.Top, child: AnyView(AppRubik(text: showedInstruction!, rubikSize: fontType.body, fontWeight: .bold , fontColor: Color.text.primary)))
             }
             
-            narationsProgress = elapsedTime / data.objectList[focusedObjectIndex].narationDuration
+            narationsProgress = CGFloat(focusedObjectIndex != 0 ? focusedObjectIndex - 1 : 1 / (data.objectList.count - 2))
 
         } else {
             endingVisibility = true
@@ -265,22 +284,31 @@ struct StoryView: View {
     }
     
     func playNaration(soundName: String, soundExtention: String) {
-        
+        print(0)
+        print(soundName)
+        print(soundExtention)
         if(narationPlayer != nil) {
             narationPlayer.stop()
         }
         
+            print(1)
         let url = Bundle.main.url(forResource: soundName, withExtension: soundExtention)
         
+        print(2)
+        print(url)
         guard url != nil else {
             narationPlayer?.stop()
             return
         }
         
+        print(3)
         do {
+            print(soundName)
             if(soundName.count != 0) {
+                print(4)
                 narationPlayer = try AVAudioPlayer(contentsOf: url!)
                 narationPlayer?.play()
+                print(5)
             }
         } catch {
             print("error")

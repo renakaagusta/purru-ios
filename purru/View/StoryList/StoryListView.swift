@@ -20,10 +20,10 @@ struct StoryListView: View {
                backsound: "backsound-story1",
                backsoundExtention: "mp3",
                objectList: [
-                   ObjectScene(
+                ObjectScene(
                        title: "Object 1",
                        description: "Description 1",
-                       hint: "Hint 1",
+                       hint: "",
                        tag: "Cube_001",
                        type: ObjectType.Opening,
                        narationDuration: 30,
@@ -32,11 +32,12 @@ struct StoryListView: View {
                        narationSound: "narasi0",
                        narationSoundExtention: "mp3",
                        instructionList: [
-                            Instruction(id: "1", text: "Hallo selamat", startedAt: 0),
-                            Instruction(id: "2", text: "Malam ini saya akan membawa anda ke taman terindah di Purru", startedAt: 2),
-                            Instruction(id: "3",text: "Tarik Nafas", startedAt: 9),
-                            Instruction(id: "4",text: "Hembuskan", startedAt: 12),
-                            Instruction(id: "5",text: "Apakah kamu sudah rileks? Kita akan berkeliling taman ini dengan santai", startedAt: 15)
+                            Instruction(id: "1", text: "", startedAt: 0),
+                            Instruction(id: "2", text: "Hallo selamat malam", startedAt: 3),
+                            Instruction(id: "3", text: "Malam ini saya akan membawa anda ke taman terindah di Purru", startedAt: 8),
+                            Instruction(id: "4",text: "Tarik Nafas", startedAt: 17),
+                            Instruction(id: "5",text: "Hembuskan", startedAt: 23),
+                            Instruction(id: "6",text: "Apakah kamu sudah rileks? Kita akan berkeliling taman ini dengan santai", startedAt: 27)
                        ]
                    ),
                    ObjectScene(
@@ -48,17 +49,16 @@ struct StoryListView: View {
                        narationDuration: 30,
                        taskDuration: 30,
                        tutorialDuration: 20,
-                       narationSound: "",
+                       narationSound: "narasi1",
                        narationSoundExtention: "mp3",
                        instructionList: [
-                           Instruction(id: "1", text: "Taman ini adalah tempat dimana saya sering bermain di masa kecil", startedAt: 0),
-                           Instruction(id: "2",text: "Saya suka bermain di taman ini karena udaranya yang sangat menyejukan", startedAt: 5),
-                           Instruction(id: "3",text: "Saat duduk bersandar di bawah pohon sembari membaca buku", startedAt: 10),
-                           Instruction(id: "4",text: "Hembuskan", startedAt: 15),
-                           Instruction(id: "5",text: "Pohon tersebut berwarna biru dan memiliki banyak dahan", startedAt: 20),
-                           Instruction(id: "6",text: "Bisakah kamu menemukan pohon tersebut?", startedAt: 25),
-                           Instruction(id: "7",text: "Iya pohon biru itu yang ku maksud", startedAt: 60, gestureType: GestureType.Tap),
-                           Instruction(id: "8",text: "Coba tekan pohon itu", startedAt: 65, gestureType: GestureType.Tap),
+                           Instruction(id: "1", text: "Taman ini adalah tempat dimana saya sering bermain di masa kecil", startedAt: 1),
+                           Instruction(id: "2",text: "Saya suka bermain di taman ini karena udaranya yang sangat menyejukan", startedAt: 7),
+                           Instruction(id: "3",text: "Saat duduk bersandar di bawah pohon sembari membaca buku", startedAt: 13.5),
+                           Instruction(id: "4",text: "Pohon tersebut berwarna biru dan memiliki banyak dahan", startedAt: 20),
+                           Instruction(id: "5",text: "Bisakah kamu menemukan pohon tersebut?", startedAt: 28),
+                           Instruction(id: "6",text: "Iya pohon biru itu yang ku maksud", startedAt: 57, gestureType: GestureType.Tap),
+                           Instruction(id: "7",text: "Coba tekan pohon itu", startedAt: 61, gestureType: GestureType.Tap),
                        ]
                    ),
                    ObjectScene(
@@ -70,7 +70,7 @@ struct StoryListView: View {
                        narationDuration: 30,
                        taskDuration: 30,
                        tutorialDuration: 20,
-                       narationSound: "",
+                       narationSound: "narasi2",
                        narationSoundExtention: "mp3",
                        instructionList: [
                            Instruction(id: "1", text: "Benar sekali.. Itu pohon yang saya maksud. Sangat besar dan rindang bukan?", startedAt: 0),
@@ -93,7 +93,7 @@ struct StoryListView: View {
                        narationDuration: 40,
                        taskDuration: 30,
                        tutorialDuration: 20,
-                       narationSound: "",
+                       narationSound: "narasi3",
                        narationSoundExtention: "mp3",
                        instructionList: [
                            Instruction(id: "1", text: "Wah jadi nostalgia. Biasanya saya berbagi buah yang sangat nikmat  ini dengan hewan peliharaan saya", startedAt: 0),
@@ -115,7 +115,7 @@ struct StoryListView: View {
                        narationDuration: 30,
                        taskDuration: 30,
                        tutorialDuration: 20,
-                       narationSound: "",
+                       narationSound: "narasi4",
                        narationSoundExtention: "mp3",
                        instructionList: [
                            Instruction(id: "1", text: "Itu dia Kiki! Ini memang pohon kesukaanya", startedAt: 0),
@@ -137,7 +137,7 @@ struct StoryListView: View {
                        narationDuration: 40,
                        taskDuration: 30,
                        tutorialDuration: 20,
-                       narationSound: "",
+                       narationSound: "narasi5",
                        narationSoundExtention: "mp3",
                        instructionList: [
                            Instruction(id: "1", text: "Wah kamu menemukannya!", startedAt: 0),
