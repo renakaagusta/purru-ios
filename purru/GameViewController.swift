@@ -30,6 +30,32 @@ class GameViewController: UIViewController {
         scnView.scene = scene
         scnView.allowsCameraControl = true
         scnView.autoenablesDefaultLighting = true
+        scnView.cameraControlConfiguration.autoSwitchToFreeCamera = false
+                
+        if let recognizers = scnView.gestureRecognizers {
+                for gestureRecognizer in recognizers {
+                    if let gesture = gestureRecognizer as? UIPanGestureRecognizer {
+                        gesture.maximumNumberOfTouches = 1
+//                        gestureRecognizer.isEnabled = false
+                    }
+                }
+            }
+        
+        if let recognizers = scnView.gestureRecognizers {
+                for gestureRecognizer in recognizers {
+                    if let gesture = gestureRecognizer as? UIRotationGestureRecognizer {
+                        gestureRecognizer.isEnabled = false
+                    }
+                }
+            }
+        
+        if let recognizers = scnView.gestureRecognizers {
+                for gestureRecognizer in recognizers {
+                    if let gesture = gestureRecognizer as? UISwipeActionsConfiguration {
+                        gestureRecognizer.isEnabled = true
+                    }
+                }
+            }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
