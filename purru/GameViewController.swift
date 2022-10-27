@@ -36,6 +36,7 @@ class GameViewController: UIViewController {
                 for gestureRecognizer in recognizers {
                     if let gesture = gestureRecognizer as? UIPanGestureRecognizer {
                         gesture.maximumNumberOfTouches = 1
+                        //gesture.
 //                        gestureRecognizer.isEnabled = false
                     }
                 }
