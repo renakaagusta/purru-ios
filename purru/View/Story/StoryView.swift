@@ -61,8 +61,8 @@ struct StoryView: View {
             UIImage(named: "px"),
             UIImage(named: "nx"),
             UIImage(named: "py"),
-            UIImage(named: "nz"),
             UIImage(named: "ny"),
+            UIImage(named: "nz"),
             UIImage(named: "pz")
         ]
     }
@@ -229,8 +229,14 @@ struct StoryView: View {
     
     func configCamera() {
         let camera = view.defaultCameraController
+        let cameraConfig = view.cameraControlConfiguration
         
         camera.maximumVerticalAngle = 30
+        camera.minimumVerticalAngle = 20
+        
+        cameraConfig.rotationSensitivity = 1
+        cameraConfig.panSensitivity = 1
+            
     }
     
     func updateTime() {
