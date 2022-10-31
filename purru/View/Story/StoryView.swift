@@ -78,9 +78,9 @@ struct StoryView: View {
         
         let camera = self.view.defaultCameraController
         
-        let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
+//        let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
         
-//        let cameraDestination = data.objectList[focusedObjectIndex].camera
+        let cameraDestination = data.objectList[focusedObjectIndex].camera
 
         // ANIMATION
 //        let translateAction = SCNAction.move(to: SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0), duration: 2)
@@ -253,6 +253,8 @@ struct StoryView: View {
         if((camera.pointOfView?.camera!.fieldOfView)! < minFov) {
             camera.pointOfView?.camera?.fieldOfView = CGFloat(minFov)
         }
+        
+        camera.interactionMode = .orbitTurntable
         
 //        print(camera.pointOfView?.camera?.fieldOfView)
         

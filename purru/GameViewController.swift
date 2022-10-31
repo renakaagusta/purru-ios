@@ -36,6 +36,7 @@ class GameViewController: UIViewController {
                 for gestureRecognizer in recognizers {
                     if let gesture = gestureRecognizer as? UIPanGestureRecognizer {
                         gesture.maximumNumberOfTouches = 1
+                        
                     }
                 }
             }
@@ -51,7 +52,7 @@ class GameViewController: UIViewController {
         if let recognizers = scnView.gestureRecognizers {
                 for gestureRecognizer in recognizers {
                     if let gesture = gestureRecognizer as? UITapGestureRecognizer {
-                        gesture.numberOfTapsRequired = 1
+                        gesture.numberOfTapsRequired = 0
                     }
                 }
             }
