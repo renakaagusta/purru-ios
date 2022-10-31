@@ -38,11 +38,17 @@ struct StoryView: View {
     @State private var dialogVisibility = false
     @State private var dialogView: AnyView = AnyView(VStack{})
     
-    @State private var focusedObjectIndex = 1
+    @State private var focusedObjectIndex = 3
     
     @State private var elapsedTime: CGFloat = 0
     
+    @State private var minFov: CGFloat = 20
+    @State private var maxFov: CGFloat = 110
+    
+    @State private var objectHistoryList: [SCNNode] = []
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
     
     init(data: StoryData) {
         self.gameView = GameView()
@@ -54,9 +60,7 @@ struct StoryView: View {
         guard let sceneUrl = Bundle.main.url(forResource: data.sceneName, withExtension: data.sceneExtension) else { fatalError() }
         
         self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
-        
-        //scene.background.contents = @[@"Right.png", @"Left.png", @"Top.png", @"Bottom.png", @"Back.png", @"Front.png"];
-
+    
         self.scene?.background.contents = [
             UIImage(named: "px"),
             UIImage(named: "nx"),
@@ -68,58 +72,53 @@ struct StoryView: View {
     }
     
     func showHint() {
-//        print("----SHOW HINT-----")
-//        if(data.objectList[focusedObjectIndex].type != ObjectType.Task) {
-//            return
-//        }
-//
-        let camera = view.defaultCameraController
+        if(data.objectList[focusedObjectIndex].type != ObjectType.Task) {
+            return
+        }
         
-        camera.pointOfView?.localTranslate(by: SCNVector3(-0.5, 0, 0))
+        let camera = self.view.defaultCameraController
         
-//        let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
+        let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
         
-//        let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM BLUE"}).first
+
+        // ANIMATION
+//        let translateAction = SCNAction.move(to: SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0), duration: 2)
+//        let rotateAction = SCNAction.rotateTo(x: CGFloat(cameraDestination?.worldOrientation.x ?? 0), y: CGFloat(cameraDestination?.worldOrientation.y ?? 0), z: CGFloat(cameraDestination?.worldOrientation.z ?? 0), duration: 2)
+
+//        let sequence = SCNAction.group([rotateAction, translateAction])
+//        self.view.defaultCameraController.pointOfView?.runAction(sequence)
+        
+//        self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
 //
-//        print("----YELLOW----")
-//        print(view.scene?.rootNode.childNodes.filter({$0.name == "CAM YELLOW"}).first?.position)
-//        print("----BLUE----")
-//        print(view.scene?.rootNode.childNodes.filter({$0.name == "CAM BLUE"}).first?.position)
-//        print("----PUMPKIN----")
-//        print(view.scene?.rootNode.childNodes.filter({$0.name == "CAM PUMPKIN"}).first?.position)
-//        print("----BIRD----")
-//        print(view.scene?.rootNode.childNodes.filter({$0.name == "CAM BIRD"}).first?.position)
-//
-//
-//        camera.pointOfView?.position = cameraDestination!.position
-//        camera.pointOfView?.eulerAngles = cameraDestination!.eulerAngles
-//
-//        print("-----FROM----")
-//        print(camera.pointOfView?.position)
-//        print("-----DESTINATION----")
-//        print(cameraDestination!.position)
-//
-//        for camera in  view.scene!.rootNode.childNodes {
-//            print(camera.name)
-//            print(camera.position)
-//        }
+//        self.view.defaultCameraController.pointOfView?.worldOrientation =  SCNQuaternion(x: cameraDestination?.worldOrientation.x ?? 0, y: cameraDestination?.worldOrientation.y ?? 0, z: cameraDestination?.worldOrientation.z ?? 0, w: cameraDestination?.worldOrientation.w ?? 0)
                 
+        let objectTarget = view.scene!.rootNode.childNodes.filter({$0.name == data.objectList[focusedObjectIndex].tag}).first
+        print(cameraDestination?.worldPosition)
+        print(cameraDestination?.worldOrientation)
+        
+        let material = objectTarget!.geometry!.firstMaterial!
+        
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 0.5
+        
+        SCNTransaction.completionBlock = {
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = 0.5
+            
+            material.emission.contents = UIColor.black
+            
+            SCNTransaction.commit()
+        }
+        
+        material.emission.contents = UIColor.yellow
+        
+        SCNTransaction.commit()
+
         hintVisibility = true
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//
-//            camera.pointOfView = view.scene?.rootNode.childNodes.filter({$0.name == "CAM BLUE"}).first
-//
-//            hintVisibility = false
-//        }
         
-        var detinationCamera = view.scene?.rootNode.childNodes.filter({$0.name == "CAM BLUE"}).first
-        
-        let camera2 = SCNNode()
-
-        camera2.position = SCNVector3(x: 0, y: -70, z: 50)
-
-        self.view.defaultCameraController.pointOfView!.convertPosition(camera.pointOfView!.position, to: camera2)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            hintVisibility = false
+        }
     }
     
     func handleTap(hitResults: [SCNHitTestResult]?) {
@@ -158,6 +157,7 @@ struct StoryView: View {
                 
                 material.normal.contents = nil
                 material.diffuse.contents = nil
+                objectHistoryList.append(result.node)
                 result.node.removeFromParentNode()
             }
         }
@@ -179,16 +179,22 @@ struct StoryView: View {
     }
     
     func restartGame() {
-        print("---RESTART---")
-        
         elapsedTime = 0
         focusedObjectIndex = 0
         state = StoryState.Naration
         
+        let camera = self.view.defaultCameraController
         
-        let camera = view.defaultCameraController
-        camera.pointOfView?.position = SCNVector3(x: -189, y: 150, z: -269)
-//        camera.pointOfView?.eulerAngles = SCNVector3(x:175, y: -35, z: -180)
+        let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM DEFAULT"}).first
+        
+        for node in objectHistoryList {
+            self.view.scene?.rootNode.addChildNode(node)
+        }
+        
+        self.objectHistoryList = []
+        
+        self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
+        self.view.defaultCameraController.pointOfView?.worldOrientation =  SCNQuaternion(x: cameraDestination?.worldOrientation.x ?? 0, y: cameraDestination?.worldOrientation.y ?? 0, z: cameraDestination?.worldOrientation.z ?? 0, w: cameraDestination?.worldOrientation.w ?? 0)
         
         endingVisibility = false
         
@@ -231,12 +237,24 @@ struct StoryView: View {
         let camera = view.defaultCameraController
         let cameraConfig = view.cameraControlConfiguration
         
-        camera.maximumVerticalAngle = 30
-        camera.minimumVerticalAngle = 20
+        camera.maximumVerticalAngle = 50
+        camera.minimumVerticalAngle = 0
+        
+        if((camera.pointOfView?.camera!.fieldOfView)! > maxFov) {
+            camera.pointOfView?.camera?.fieldOfView = CGFloat(maxFov)
+        }
+        
+        if((camera.pointOfView?.camera!.fieldOfView)! < minFov) {
+            camera.pointOfView?.camera?.fieldOfView = CGFloat(minFov)
+        }
+        
+//        print(camera.pointOfView?.camera?.fieldOfView)
         
         cameraConfig.rotationSensitivity = 1
         cameraConfig.panSensitivity = 1
-            
+//
+//        print("----pivot----")
+//        print(camera.pointOfView?.pivot)
     }
     
     func updateTime() {
@@ -311,7 +329,6 @@ struct StoryView: View {
     }
     
     func playBacksound(soundName: String, soundExtention: String) {
-        
         let url = Bundle.main.url(forResource: soundName, withExtension: soundExtention)
         
         guard url != nil else {
@@ -355,7 +372,6 @@ struct StoryView: View {
         }
     }
     
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -365,18 +381,17 @@ struct StoryView: View {
                 }
                 if(gestureVisibility) {
                     GIFView(type: .name(gesture))
-                        .frame(maxHeight: 100)
+                        .frame(width: 200, height: 200)
                         .padding()
                 }
-                if(hintVisibility) {
+                if(state != StoryState.Naration) {
                     VStack {
                         Spacer().frame(height: UIScreen.height - 200)
                         AppRubik(text: data.objectList[focusedObjectIndex].hint, rubikSize: fontType.body, fontWeight: .bold , fontColor: Color.text.primary)
-                            
                     }
                     .frame(width:  UIScreen.width, height: UIScreen.height)
                 }
-                if(endingVisibility == false ) {
+                if(!endingVisibility) {
                     VStack {
                         AppProgressBar(width:300, height: 7, progress:Binding(get:{narationsProgress}, set: {_ in true}))
                             .padding(.top, 60)
@@ -391,10 +406,10 @@ struct StoryView: View {
                 }
                 
                 VStack(alignment: .trailing) {
-                    Spacer().frame(height: UIScreen.height - 150)
+                    Spacer().frame(height: UIScreen.height -  150)
                     HStack {
                         Spacer().frame(width: UIScreen.width - 100)
-                        if(hintVisibility == false) {
+                        if(state != StoryState.Naration && state != StoryState.Tutorial) {
                             AppCircleButton(
                                 size: 20,
                                 icon: Image(systemName: "lightbulb.fill"),
@@ -406,7 +421,7 @@ struct StoryView: View {
                             .padding()
                         }
                         
-                        if(hintVisibility ==  true) {
+                        if(state != StoryState.Naration && state == StoryState.Tutorial) {
                             AppCircleButton(
                                 size: 20,
                                 icon: Image(systemName: "lightbulb.fill"),
@@ -435,6 +450,8 @@ struct StoryView: View {
                 }, view: self.view)
             }.onReceive(timer) { _ in
                 updateTime()
+            }.onReceive(cameraTimer) { _ in
+                configCamera()
             }
         }
     }
