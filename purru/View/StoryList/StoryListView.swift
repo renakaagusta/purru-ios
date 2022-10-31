@@ -1,3 +1,10 @@
+//
+//  StoryListView.swift
+//  Chapper
+//
+//  Created by renaka agusta on 19/10/22.
+//
+
 import SwiftUI
 import SceneKit
 
@@ -15,24 +22,23 @@ struct StoryListView: View {
                backsoundExtention: "mp3",
                objectList: [
                 ObjectScene(
-                       title: "perkenalan taman",
-                       description: "naration 1",
+                       title: "Object 1",
+                       description: "Description 1",
                        hint: "",
                        tag: "Cube_001",
                        type: ObjectType.Opening,
-                       narationDuration: 37,
+                       narationDuration: 30,
                        taskDuration: 0,
                        tutorialDuration: 0,
                        narationSound: "narasi0",
                        narationSoundExtention: "mp3",
                        instructionList: [
                             Instruction(id: "1", text: "", startedAt: 0),
-                            Instruction(id: "2", text: "Halo selamat malam", startedAt: 4),
-                            Instruction(id: "3", text: "Malam ini saya akan membawa anda berkeliling ke taman terindah di Purru", startedAt: 8),
+                            Instruction(id: "2", text: "Hallo selamat malam", startedAt: 3),
+                            Instruction(id: "3", text: "Malam ini saya akan membawa anda ke taman terindah di Purru", startedAt: 8),
                             Instruction(id: "4",text: "Tarik Nafas", startedAt: 17),
                             Instruction(id: "5",text: "Hembuskan", startedAt: 23),
-                            Instruction(id: "6",text: "Apakah kamu sudah rileks? Kita akan berkeliling taman ini dengan santai", startedAt: 27),
-
+                            Instruction(id: "6",text: "Apakah kamu sudah rileks? Kita akan berkeliling taman ini dengan santai", startedAt: 27)
                        ]
                    ),
                    ObjectScene(
@@ -41,13 +47,17 @@ struct StoryListView: View {
                        hint: "Cari pohon biru",
                        tag: "BLUE",
                        type: ObjectType.Task,
+                       camera: Camera(
+                        worldPosition: SCNVector3(x: -20, y: 161.625, z: 300),
+                        worldOrientation: SCNQuaternion(x: -0.15020624, y: -0.052591953, z: -0.008001905, w: 0.98722243)
+                       ),
                        narationDuration: 32,
                        taskDuration: 24,
                        tutorialDuration: 15,
                        narationSound: "narasi1",
                        narationSoundExtention: "mp3",
                        instructionList: [
-                           Instruction(id: "1", text: "Taman ini adalah tempat dimana saya sering bermain di masa kecil", startedAt: 0),
+                           Instruction(id: "1", text: "Taman ini adalah tempat dimana saya sering bermain di masa kecil", startedAt: 1),
                            Instruction(id: "2",text: "Saya suka bermain di taman ini karena udaranya yang sangat menyejukan", startedAt: 7),
                            Instruction(id: "3",text: "Saat duduk bersandar di bawah pohon sembari membaca buku", startedAt: 13.5),
                            Instruction(id: "4",text: "Pohon tersebut berwarna biru dan memiliki banyak dahan", startedAt: 20),
@@ -62,20 +72,24 @@ struct StoryListView: View {
                        hint: "Cari pohon kuning",
                        tag: "YELLOW",
                        type: ObjectType.Task,
+                       camera: Camera(
+                        worldPosition: SCNVector3(x: 313.56372, y: 159.99977, z: 102.63094),
+                        worldOrientation: SCNQuaternion(x: -0.035320174, y: 0.58635354, z: 0.025595589, w:  0.80888)
+                       ),
                        narationDuration: 40,
                        taskDuration: 29,
                        tutorialDuration: 15,
                        narationSound: "narasi2",
                        narationSoundExtention: "mp3",
                        instructionList: [
-                           Instruction(id: "1", text: "Wah benar sekali.. Itu pohon yang saya maksud. Sangat besar dan rindang bukan?", startedAt: 0),
+                           Instruction(id: "1", text: "Benar sekali.. Itu pohon yang saya maksud. Sangat besar dan rindang bukan?", startedAt: 0),
                            Instruction(id: "2",text: "Salah satu pohon di taman ini menghasilkan buah yang sangat enak", startedAt: 11),
                            Instruction(id: "3",text: "Buahnya sangat manis dan berair. Di musim panas terasa sangat segar dan nikmat.", startedAt: 18),
-                           Instruction(id: "4",text: "Sepanjang ingatan saya, pohon tersebut berwarna kuning.", startedAt: 27),
-                           Instruction(id: "5",text: "Tapi, apakah pohon tersebut masih ada di taman ini?", startedAt: 34),
+                           Instruction(id: "4",text: "Sepanjang ingatan saya pohon tersebut berwarna kuning.", startedAt: 27),
+                           Instruction(id: "5",text: "Tapi mari kita lihat apakah pohon tersebut masih ada di taman ini?", startedAt: 34),
                            Instruction(id: "6",text: "Kamu bisa putar taman ini, untuk menemukan pohon kuning", startedAt: 69, gestureType: GestureType.SwipeHorizontal),
-                           Instruction(id: "7",text: "", startedAt: 75, gestureType: GestureType.SwipeHorizontal),
-
+                           Instruction(id: "7",text: "", startedAt: 60, gestureType: GestureType.SwipeHorizontal),
+                           Instruction(id: "8",text: "", startedAt: 70, gestureType: GestureType.SwipeHorizontal),
                        ]
                    ),
                    ObjectScene(
@@ -84,20 +98,25 @@ struct StoryListView: View {
                        hint: "Cari kiki si burung",
                        tag: "BIRD",
                        type: ObjectType.Task,
+                       camera: Camera(
+                        worldPosition: SCNVector3(x:-122.73445, y: 119.99984, z:-131.6167),
+                        worldOrientation: SCNQuaternion(x: 0.015983317, y: 0.92953205, z: 0.040585518, w: -0.36615202)
+                       ),
                        narationDuration: 32,
                        taskDuration: 25,
                        tutorialDuration: 15,
                        narationSound: "narasi3",
                        narationSoundExtention: "mp3",
                        instructionList: [
-                           Instruction(id: "1", text: "Wah jadi nostalgia. Biasanya saya berbagi buah yang sangat nikmat ini kepada hewan peliharaan saya", startedAt: 0),
+                           Instruction(id: "1", text: "Wah jadi nostalgia. Biasanya saya berbagi buah yang sangat nikmat  ini dengan hewan peliharaan saya", startedAt: 0),
                            Instruction(id: "2",text: "Saya sangat menyukai hewan", startedAt: 10),
-                           Instruction(id: "3",text: "Dulu saya memelihara burung kaka tua bernama Kiki di taman ini", startedAt: 14),
+                           Instruction(id: "3",text: "Dulu saya memlihara burung bernama Kiki di taman ini", startedAt: 14),
                            Instruction(id: "4",text: "Entah mengapa, setiap hari saya hanya menemukan kiki diatas pohon berwarna merah", startedAt: 21),
                            Instruction(id: "5",text: "Apakah dia masih ada disana?", startedAt: 29),
                            Instruction(id: "6",text: "Iya, kiki  memang sangat kecil", startedAt: 58),
                            Instruction(id: "7",text: "Coba perbesar gambar untuk melihat Kiki", startedAt: 62, gestureType: GestureType.Zoom),
                            Instruction(id: "8",text: "", startedAt: 70, gestureType: GestureType.Zoom),
+                           Instruction(id: "9",text: "", startedAt: 80, gestureType: GestureType.Zoom),
                        ]
                    ),
                    ObjectScene(
@@ -106,6 +125,10 @@ struct StoryListView: View {
                        hint: "Cari labu putih",
                        tag: "PUMPKIN",
                        type: ObjectType.Task,
+                       camera: Camera(
+                        worldPosition: SCNVector3(x:7.269193, y: 49.99996, z: 149.79382),
+                        worldOrientation: SCNQuaternion(x: -0.04360657, y: 0.024219517, z: 0.00105724, w: 0.9987546)
+                       ),
                        narationDuration: 34,
                        taskDuration: 24,
                        tutorialDuration: 15,
@@ -115,11 +138,11 @@ struct StoryListView: View {
                            Instruction(id: "1", text: "Itu dia Kiki! Ini memang pohon kesukaanya", startedAt: 0),
                            Instruction(id: "2",text: "Pohon ini tidak terlalu tinggi tapi cukup untuk saya bisa bermain dengan Kiki", startedAt: 6),
                            Instruction(id: "3",text: "Kami sering menghabiskan waktu bersama di taman ini", startedAt: 15),
-                           Instruction(id: "4",text: "Saya dan Kiki meletakkan hiasan labu berwarna putih di taman ini, sebagai tanda persahabatan kami", startedAt: 19),
+                           Instruction(id: "4",text: "Saya dan Kiki meletakkan hiasan labu berwarna putih di taman ini sebagai tanda persahabatan kami", startedAt: 19),
                            Instruction(id: "5",text: "Coba temukan labu putih itu", startedAt: 30),
                            Instruction(id: "6", text: "Waktu itu aku memang masih pendek, sehingga labu itu hanya. bisa ku taruh di tanah", startedAt: 59, gestureType: GestureType.SwipeHorizontal),
                            Instruction(id: "7",text: "Coba geser taman ini, semoga labu itu masih ada disana", startedAt: 67, gestureType: GestureType.SwipeHorizontal),
-                           Instruction(id: "8",text: "", startedAt: 75, gestureType: GestureType.SwipeHorizontal),
+                           Instruction(id: "8",text: "", startedAt: 80, gestureType: GestureType.SwipeHorizontal),
                        ]
                    ),
                    ObjectScene(
@@ -128,6 +151,10 @@ struct StoryListView: View {
                        hint: "",
                        tag: "",
                        type: ObjectType.Ending,
+                       camera: Camera(
+                        worldPosition: SCNVector3(x:-122.73445, y: 119.99984, z:-131.6167),
+                        worldOrientation: SCNQuaternion(x: 0.015983317, y: 0.92953205, z: 0.040585518, w: -0.36615202)
+                       ),
                        narationDuration: 40,
                        taskDuration: 0,
                        tutorialDuration: 0,
@@ -136,10 +163,10 @@ struct StoryListView: View {
                        instructionList: [
                            Instruction(id: "1", text: "Wah kamu menemukannya!", startedAt: 0),
                            Instruction(id: "2",text: "Karena kamu telah menemukannya, kamu juga menjadi sahabat kami", startedAt: 5),
-                           Instruction(id: "3",text: "Kamu dapat berkunjung kembali di taman ini kapan saja dan bermain bersama kami", startedAt: 12),
+                           Instruction(id: "3",text: "Kamu dapat berkunjung kembali ke taman ini kapan saja dan bermain bersama kami", startedAt: 12),
                            Instruction(id: "4",text: "Itu saja yang dapat kuceritkan tentang taman ini", startedAt: 19),
                            Instruction(id: "5",text: "Selamat tidur! Semoga malam ini kamu bisa bermimimpi indah", startedAt: 23),
-                           Instruction(id: "6",text: "Mungkin saja, saya dan Kiki akan menghampiri mimpumu", startedAt: 31),
+                           Instruction(id: "6",text: "Mungkin saya dan Kiki akan mampi di mimpumu", startedAt: 31),
                            Instruction(id: "7",text: "Sampai jumpa", startedAt: 37),
                        ]
                    )
