@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SceneKit
 
 struct ObjectScene {
     var title: String
@@ -13,10 +14,16 @@ struct ObjectScene {
     var hint: String
     var tag: String
     var type: ObjectType
+    var camera: Camera?
     var narationDuration: CGFloat
     var taskDuration: CGFloat
     var tutorialDuration: CGFloat
     var narationSound : String
     var narationSoundExtention: String
     var instructionList: [Instruction]?
+}
+
+struct Camera {
+    var position: SCNVector3
+    var eulerAngle: SCNQuaternion
 }
