@@ -24,6 +24,6 @@ struct ObjectScene {
 }
 
 struct Camera {
-    var position: SCNVector3
-    var eulerAngle: SCNQuaternion
+    var worldPosition: SCNVector3
+    var worldOrientation: SCNQuaternion
 }
