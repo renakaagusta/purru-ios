@@ -61,14 +61,26 @@ struct StoryView: View {
         
         self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
     
+        //kanan, kiri, atas, bawah, belakang, depan
+        
         self.scene?.background.contents = [
-            UIImage(named: "px"),
-            UIImage(named: "nx"),
-            UIImage(named: "py"),
-            UIImage(named: "ny"),
-            UIImage(named: "nz"),
-            UIImage(named: "pz")
+            UIImage(named: "px"), //kanan
+            UIImage(named: "nx"), //kiri
+            UIImage(named: "py"), //atas
+            UIImage(named: "ny"), //bawah
+            UIImage(named: "pz"), //belakang
+            UIImage(named: "nz") //depan
         ]
+        
+        //debugin bg
+//        self.scene?.background.contents = [
+//            UIImage(named: "kanan"),
+//            UIImage(named: "kiri"),
+//            UIImage(named: "atas"),
+//            UIImage(named: "bawah"),
+//            UIImage(named: "belakang"),
+//            UIImage(named: "depan")
+//        ]
     }
     
     func showHint() {

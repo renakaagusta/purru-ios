@@ -73,12 +73,6 @@
 		41147799290FC95700FD5B56 /* hand.swipe.up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147795290FC95700FD5B56 /* hand.swipe.up.gif */; };
 		4114779A290FC95700FD5B56 /* hand.swipe.left.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147796290FC95700FD5B56 /* hand.swipe.left.gif */; };
 		4114779B290FC95700FD5B56 /* hand.zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147797290FC95700FD5B56 /* hand.zoom.gif */; };
-		B838819F290FCF2100DA214E /* bawah.png in Resources */ = {isa = PBXBuildFile; fileRef = B8388199290FCF2000DA214E /* bawah.png */; };
-		B83881A0290FCF2100DA214E /* depan.png in Resources */ = {isa = PBXBuildFile; fileRef = B838819A290FCF2100DA214E /* depan.png */; };
-		B83881A1290FCF2100DA214E /* atas.png in Resources */ = {isa = PBXBuildFile; fileRef = B838819B290FCF2100DA214E /* atas.png */; };
-		B83881A2290FCF2100DA214E /* kanan.png in Resources */ = {isa = PBXBuildFile; fileRef = B838819C290FCF2100DA214E /* kanan.png */; };
-		B83881A3290FCF2100DA214E /* kiri.png in Resources */ = {isa = PBXBuildFile; fileRef = B838819D290FCF2100DA214E /* kiri.png */; };
-		B83881A4290FCF2100DA214E /* belakang.png in Resources */ = {isa = PBXBuildFile; fileRef = B838819E290FCF2100DA214E /* belakang.png */; };
 		B8692BE7290903840029667A /* narasi4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE1290903840029667A /* narasi4.mp3 */; };
 		B8692BE8290903840029667A /* narasi1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE2290903840029667A /* narasi1.mp3 */; };
 		B8692BE9290903840029667A /* narasi3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE3290903840029667A /* narasi3.mp3 */; };
@@ -87,6 +81,12 @@
 		B8692BEC290903840029667A /* narasi0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE6290903840029667A /* narasi0.mp3 */; };
 		B8A100092907E73C0082C66E /* Layer0.exr in Resources */ = {isa = PBXBuildFile; fileRef = B8BBC2E82907E3FF007EE031 /* Layer0.exr */; };
 		B8A1000B2907E76D0082C66E /* skybox.png in Resources */ = {isa = PBXBuildFile; fileRef = B8A1000A2907E76D0082C66E /* skybox.png */; };
+		B8B5FEA729102F5300687987 /* bawah.png in Resources */ = {isa = PBXBuildFile; fileRef = B8B5FEA129102F5300687987 /* bawah.png */; };
+		B8B5FEA829102F5300687987 /* kiri.png in Resources */ = {isa = PBXBuildFile; fileRef = B8B5FEA229102F5300687987 /* kiri.png */; };
+		B8B5FEA929102F5300687987 /* belakang.png in Resources */ = {isa = PBXBuildFile; fileRef = B8B5FEA329102F5300687987 /* belakang.png */; };
+		B8B5FEAA29102F5300687987 /* atas.png in Resources */ = {isa = PBXBuildFile; fileRef = B8B5FEA429102F5300687987 /* atas.png */; };
+		B8B5FEAB29102F5300687987 /* kanan.png in Resources */ = {isa = PBXBuildFile; fileRef = B8B5FEA529102F5300687987 /* kanan.png */; };
+		B8B5FEAC29102F5300687987 /* depan.png in Resources */ = {isa = PBXBuildFile; fileRef = B8B5FEA629102F5300687987 /* depan.png */; };
 		B8D38CBB2907C8A500DB150C /* backsound-story1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8D38CBA2907C8A500DB150C /* backsound-story1.mp3 */; };
 		B8D38CC32907CC0C00DB150C /* JosefinSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8D38CBF2907CA2500DB150C /* JosefinSans.ttf */; };
 		B8D38CC42907CC0C00DB150C /* Rubik.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8D38CC02907CA2500DB150C /* Rubik.ttf */; };
@@ -167,12 +167,6 @@
 		41147795290FC95700FD5B56 /* hand.swipe.up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.swipe.up.gif; sourceTree = "<group>"; };
 		41147796290FC95700FD5B56 /* hand.swipe.left.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.swipe.left.gif; sourceTree = "<group>"; };
 		41147797290FC95700FD5B56 /* hand.zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.zoom.gif; sourceTree = "<group>"; };
-		B8388199290FCF2000DA214E /* bawah.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bawah.png; sourceTree = "<group>"; };
-		B838819A290FCF2100DA214E /* depan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = depan.png; sourceTree = "<group>"; };
-		B838819B290FCF2100DA214E /* atas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = atas.png; sourceTree = "<group>"; };
-		B838819C290FCF2100DA214E /* kanan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kanan.png; sourceTree = "<group>"; };
-		B838819D290FCF2100DA214E /* kiri.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kiri.png; sourceTree = "<group>"; };
-		B838819E290FCF2100DA214E /* belakang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = belakang.png; sourceTree = "<group>"; };
 		B8692BE1290903840029667A /* narasi4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi4.mp3; sourceTree = "<group>"; };
 		B8692BE2290903840029667A /* narasi1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi1.mp3; sourceTree = "<group>"; };
 		B8692BE3290903840029667A /* narasi3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi3.mp3; sourceTree = "<group>"; };
@@ -180,6 +174,12 @@
 		B8692BE5290903840029667A /* narasi2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi2.mp3; sourceTree = "<group>"; };
 		B8692BE6290903840029667A /* narasi0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi0.mp3; sourceTree = "<group>"; };
 		B8A1000A2907E76D0082C66E /* skybox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skybox.png; sourceTree = "<group>"; };
+		B8B5FEA129102F5300687987 /* bawah.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bawah.png; sourceTree = "<group>"; };
+		B8B5FEA229102F5300687987 /* kiri.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kiri.png; sourceTree = "<group>"; };
+		B8B5FEA329102F5300687987 /* belakang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = belakang.png; sourceTree = "<group>"; };
+		B8B5FEA429102F5300687987 /* atas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = atas.png; sourceTree = "<group>"; };
+		B8B5FEA529102F5300687987 /* kanan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kanan.png; sourceTree = "<group>"; };
+		B8B5FEA629102F5300687987 /* depan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = depan.png; sourceTree = "<group>"; };
 		B8BBC2E82907E3FF007EE031 /* Layer0.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = Layer0.exr; sourceTree = "<group>"; };
 		B8D38CBA2907C8A500DB150C /* backsound-story1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "backsound-story1.mp3"; sourceTree = "<group>"; };
 		B8D38CBF2907CA2500DB150C /* JosefinSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JosefinSans.ttf; sourceTree = "<group>"; };
@@ -282,12 +282,12 @@
 		2FA53F3D2907C31F00BFB3E5 /* Story 1 */ = {
 			isa = PBXGroup;
 			children = (
-				B838819B290FCF2100DA214E /* atas.png */,
-				B8388199290FCF2000DA214E /* bawah.png */,
-				B838819E290FCF2100DA214E /* belakang.png */,
-				B838819A290FCF2100DA214E /* depan.png */,
-				B838819C290FCF2100DA214E /* kanan.png */,
-				B838819D290FCF2100DA214E /* kiri.png */,
+				B8B5FEA429102F5300687987 /* atas.png */,
+				B8B5FEA129102F5300687987 /* bawah.png */,
+				B8B5FEA329102F5300687987 /* belakang.png */,
+				B8B5FEA629102F5300687987 /* depan.png */,
+				B8B5FEA529102F5300687987 /* kanan.png */,
+				B8B5FEA229102F5300687987 /* kiri.png */,
 				B8DE813429092F65006B2BE3 /* nx.png */,
 				B8DE813229092F65006B2BE3 /* ny.png */,
 				B8DE813129092F65006B2BE3 /* nz.png */,
@@ -689,35 +689,35 @@
 				41147799290FC95700FD5B56 /* hand.swipe.up.gif in Resources */,
 				B8A100092907E73C0082C66E /* Layer0.exr in Resources */,
 				B8D38CC32907CC0C00DB150C /* JosefinSans.ttf in Resources */,
-				B83881A0290FCF2100DA214E /* depan.png in Resources */,
 				B8DE813929092F65006B2BE3 /* pz.png in Resources */,
 				B8D38CC42907CC0C00DB150C /* Rubik.ttf in Resources */,
 				B8DE813A29092F65006B2BE3 /* nx.png in Resources */,
 				2FE859442907F2700054A2E2 /* asset.png in Resources */,
 				B8692BE9290903840029667A /* narasi3.mp3 in Resources */,
 				B8692BEA290903840029667A /* narasi5.mp3 in Resources */,
+				B8B5FEAB29102F5300687987 /* kanan.png in Resources */,
+				B8B5FEA829102F5300687987 /* kiri.png in Resources */,
 				4114779A290FC95700FD5B56 /* hand.swipe.left.gif in Resources */,
 				B8DE813B29092F65006B2BE3 /* py.png in Resources */,
 				B8692BEC290903840029667A /* narasi0.mp3 in Resources */,
 				B8D38CBB2907C8A500DB150C /* backsound-story1.mp3 in Resources */,
+				B8B5FEAC29102F5300687987 /* depan.png in Resources */,
 				2FA53E842907C2DC00BFB3E5 /* Preview Assets.xcassets in Resources */,
 				B8692BEB290903840029667A /* narasi2.mp3 in Resources */,
 				B8DE813729092F65006B2BE3 /* nz.png in Resources */,
-				B838819F290FCF2100DA214E /* bawah.png in Resources */,
+				B8B5FEA729102F5300687987 /* bawah.png in Resources */,
 				B8692BE8290903840029667A /* narasi1.mp3 in Resources */,
-				B83881A4290FCF2100DA214E /* belakang.png in Resources */,
+				B8B5FEAA29102F5300687987 /* atas.png in Resources */,
 				2FA53E812907C2DC00BFB3E5 /* Assets.xcassets in Resources */,
 				2FA53F9C2907C31F00BFB3E5 /* simple-trees-collection.usdc in Resources */,
 				2FE859412907F0FD0054A2E2 /* purple.hdr in Resources */,
 				2FA53F9F2907C31F00BFB3E5 /* Rock Texture.jpeg in Resources */,
 				B8DE813629092F65006B2BE3 /* px.png in Resources */,
-				B83881A2290FCF2100DA214E /* kanan.png in Resources */,
 				B8A1000B2907E76D0082C66E /* skybox.png in Resources */,
-				B83881A1290FCF2100DA214E /* atas.png in Resources */,
 				B8DE813829092F65006B2BE3 /* ny.png in Resources */,
 				2FA53F9B2907C31F00BFB3E5 /* smallTree.usdz in Resources */,
 				41147798290FC95700FD5B56 /* hand.tap.gif in Resources */,
-				B83881A3290FCF2100DA214E /* kiri.png in Resources */,
+				B8B5FEA929102F5300687987 /* belakang.png in Resources */,
 				2FA53FA12907C31F00BFB3E5 /* stars.jpg in Resources */,
 				2F451097290A69BF00D9E85F /* 3DAssetS1.scn in Resources */,
 				4114779B290FC95700FD5B56 /* hand.zoom.gif in Resources */,
