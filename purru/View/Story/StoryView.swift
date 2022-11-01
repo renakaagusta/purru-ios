@@ -38,9 +38,9 @@ struct StoryView: View {
     @State private var dialogVisibility = false
     @State private var dialogView: AnyView = AnyView(VStack{})
     
-    @State private var focusedObjectIndex = 0
+    @State private var focusedObjectIndex = 4
     
-    @State private var elapsedTime: CGFloat = 0
+    @State private var elapsedTime: CGFloat = 40
     
     @State private var minFov: CGFloat = 20
     @State private var maxFov: CGFloat = 110
@@ -90,7 +90,8 @@ struct StoryView: View {
         
         let camera = self.view.defaultCameraController
         
-        let cameraDestination = data.objectList[focusedObjectIndex].camera
+//        let cameraDestination = data.objectList[focusedObjectIndex].camera
+        let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
 
         // ANIMATION
 //        let translateAction = SCNAction.move(to: SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0), duration: 2)
@@ -258,7 +259,7 @@ struct StoryView: View {
         let cameraConfig = view.cameraControlConfiguration
         
         camera.maximumVerticalAngle = 50
-        camera.minimumVerticalAngle = 0
+        camera.minimumVerticalAngle = 20
         
         if((camera.pointOfView?.camera!.fieldOfView)! > maxFov) {
             camera.pointOfView?.camera?.fieldOfView = CGFloat(maxFov)
