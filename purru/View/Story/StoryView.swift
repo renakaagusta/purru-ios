@@ -272,8 +272,8 @@ struct StoryView: View {
         
 //        print(camera.pointOfView?.camera?.fieldOfView)
         
-        cameraConfig.rotationSensitivity = 1
-        cameraConfig.panSensitivity = 1
+        cameraConfig.rotationSensitivity = 0.3
+        cameraConfig.panSensitivity = 0.3
 //
 //        print("----pivot----")
 //        print(camera.pointOfView?.pivot)
