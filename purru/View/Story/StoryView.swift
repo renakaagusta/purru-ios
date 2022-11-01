@@ -38,9 +38,9 @@ struct StoryView: View {
     @State private var dialogVisibility = false
     @State private var dialogView: AnyView = AnyView(VStack{})
     
-    @State private var focusedObjectIndex = 0
+    @State private var focusedObjectIndex = 1
     
-    @State private var elapsedTime: CGFloat = 0
+    @State private var elapsedTime: CGFloat = 55
     
     @State private var minFov: CGFloat = 20
     @State private var maxFov: CGFloat = 110
@@ -90,8 +90,6 @@ struct StoryView: View {
         
         let camera = self.view.defaultCameraController
         
-//        let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
-        
         let cameraDestination = data.objectList[focusedObjectIndex].camera
 
         // ANIMATION
@@ -105,6 +103,8 @@ struct StoryView: View {
 //
 //        self.view.defaultCameraController.pointOfView?.worldOrientation =  SCNQuaternion(x: cameraDestination?.worldOrientation.x ?? 0, y: cameraDestination?.worldOrientation.y ?? 0, z: cameraDestination?.worldOrientation.z ?? 0, w: cameraDestination?.worldOrientation.w ?? 0)
         
+        print(cameraDestination?.worldPosition)
+        print(cameraDestination?.worldOrientation)
         self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
 
         self.view.defaultCameraController.pointOfView?.worldOrientation =  SCNQuaternion(x: cameraDestination?.worldOrientation.x ?? 0, y: cameraDestination?.worldOrientation.y ?? 0, z: cameraDestination?.worldOrientation.z ?? 0, w: cameraDestination?.worldOrientation.w ?? 0)
@@ -245,6 +245,8 @@ struct StoryView: View {
                 }
             } else if(state == StoryState.Task && elapsedTime > taskTime) {
                 state = StoryState.Tutorial
+            } else if(state == StoryState.Tutorial && elapsedTime > tutorialTime) {
+                elapsedTime = taskTime
             }
         } else {
             endingVisibility = true
