@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F451097290A69BF00D9E85F /* 3DAssetS1.scn in Resources */ = {isa = PBXBuildFile; fileRef = 2F451096290A69BF00D9E85F /* 3DAssetS1.scn */; };
 		2FA53E7D2907C2DB00BFB3E5 /* purruApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53E7C2907C2DB00BFB3E5 /* purruApp.swift */; };
 		2FA53E7F2907C2DB00BFB3E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53E7E2907C2DB00BFB3E5 /* ContentView.swift */; };
 		2FA53E812907C2DC00BFB3E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA53E802907C2DC00BFB3E5 /* Assets.xcassets */; };
@@ -73,6 +72,7 @@
 		41147799290FC95700FD5B56 /* hand.swipe.up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147795290FC95700FD5B56 /* hand.swipe.up.gif */; };
 		4114779A290FC95700FD5B56 /* hand.swipe.left.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147796290FC95700FD5B56 /* hand.swipe.left.gif */; };
 		4114779B290FC95700FD5B56 /* hand.zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147797290FC95700FD5B56 /* hand.zoom.gif */; };
+		B8624DB6291120D400586833 /* 3DAssetS1.scn in Resources */ = {isa = PBXBuildFile; fileRef = B8624DB5291120D400586833 /* 3DAssetS1.scn */; };
 		B8692BE7290903840029667A /* narasi4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE1290903840029667A /* narasi4.mp3 */; };
 		B8692BE8290903840029667A /* narasi1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE2290903840029667A /* narasi1.mp3 */; };
 		B8692BE9290903840029667A /* narasi3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE3290903840029667A /* narasi3.mp3 */; };
@@ -99,7 +99,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2F451096290A69BF00D9E85F /* 3DAssetS1.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = 3DAssetS1.scn; sourceTree = "<group>"; };
 		2FA53E792907C2DB00BFB3E5 /* purru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = purru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA53E7C2907C2DB00BFB3E5 /* purruApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = purruApp.swift; sourceTree = "<group>"; };
 		2FA53E7E2907C2DB00BFB3E5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -167,6 +166,7 @@
 		41147795290FC95700FD5B56 /* hand.swipe.up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.swipe.up.gif; sourceTree = "<group>"; };
 		41147796290FC95700FD5B56 /* hand.swipe.left.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.swipe.left.gif; sourceTree = "<group>"; };
 		41147797290FC95700FD5B56 /* hand.zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.zoom.gif; sourceTree = "<group>"; };
+		B8624DB5291120D400586833 /* 3DAssetS1.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = 3DAssetS1.scn; sourceTree = "<group>"; };
 		B8692BE1290903840029667A /* narasi4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi4.mp3; sourceTree = "<group>"; };
 		B8692BE2290903840029667A /* narasi1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi1.mp3; sourceTree = "<group>"; };
 		B8692BE3290903840029667A /* narasi3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi3.mp3; sourceTree = "<group>"; };
@@ -292,6 +292,7 @@
 				B8DE813229092F65006B2BE3 /* ny.png */,
 				B8DE813129092F65006B2BE3 /* nz.png */,
 				B8DE813029092F65006B2BE3 /* px.png */,
+				B8624DB5291120D400586833 /* 3DAssetS1.scn */,
 				B8DE813529092F65006B2BE3 /* py.png */,
 				B8DE813329092F65006B2BE3 /* pz.png */,
 				41147796290FC95700FD5B56 /* hand.swipe.left.gif */,
@@ -299,7 +300,6 @@
 				41147794290FC95700FD5B56 /* hand.tap.gif */,
 				41147797290FC95700FD5B56 /* hand.zoom.gif */,
 				2FA53F3F2907C31F00BFB3E5 /* smallTree.usdz */,
-				2F451096290A69BF00D9E85F /* 3DAssetS1.scn */,
 				2FE859422907F1AF0054A2E2 /* dancing_hall_1k.exr */,
 				2FA53F402907C31F00BFB3E5 /* simple-trees-collection.usdc */,
 				2FE859432907F2700054A2E2 /* asset.png */,
@@ -686,6 +686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8692BE7290903840029667A /* narasi4.mp3 in Resources */,
+				B8624DB6291120D400586833 /* 3DAssetS1.scn in Resources */,
 				41147799290FC95700FD5B56 /* hand.swipe.up.gif in Resources */,
 				B8A100092907E73C0082C66E /* Layer0.exr in Resources */,
 				B8D38CC32907CC0C00DB150C /* JosefinSans.ttf in Resources */,
@@ -719,7 +720,6 @@
 				41147798290FC95700FD5B56 /* hand.tap.gif in Resources */,
 				B8B5FEA929102F5300687987 /* belakang.png in Resources */,
 				2FA53FA12907C31F00BFB3E5 /* stars.jpg in Resources */,
-				2F451097290A69BF00D9E85F /* 3DAssetS1.scn in Resources */,
 				4114779B290FC95700FD5B56 /* hand.zoom.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
