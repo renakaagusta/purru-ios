@@ -38,9 +38,9 @@ struct StoryView: View {
     @State private var dialogVisibility = false
     @State private var dialogView: AnyView = AnyView(VStack{})
     
-    @State private var focusedObjectIndex = 0
+    @State private var focusedObjectIndex = 1
     
-    @State private var elapsedTime: CGFloat = 0
+    @State private var elapsedTime: CGFloat = 55
     
     @State private var minFov: CGFloat = 20
     @State private var maxFov: CGFloat = 110
@@ -77,8 +77,6 @@ struct StoryView: View {
         }
         
         let camera = self.view.defaultCameraController
-//
-//        let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
         
         let cameraDestination = data.objectList[focusedObjectIndex].camera
 
@@ -235,6 +233,8 @@ struct StoryView: View {
                 }
             } else if(state == StoryState.Task && elapsedTime > taskTime) {
                 state = StoryState.Tutorial
+            } else if(state == StoryState.Tutorial && elapsedTime > tutorialTime) {
+                elapsedTime = taskTime
             }
         } else {
             endingVisibility = true
