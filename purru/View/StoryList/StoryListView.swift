@@ -38,7 +38,7 @@ struct StoryListView: View {
                             Instruction(id: "3", text: "Malam ini saya akan membawa anda ke taman terindah di Purru", startedAt: 8),
                             Instruction(id: "4",text: "Tarik Nafas", startedAt: 17),
                             Instruction(id: "5",text: "Hembuskan", startedAt: 23),
-                            Instruction(id: "6",text: "Apakah kamu sudah rileks? Kita akan berkeliling taman ini dengan santai", startedAt: 27)
+                            Instruction(id: "6",text: "Apakah kamu sudah rileks? Kita akan berkeliling di taman ini dengan santai", startedAt: 27)
                        ]
                    ),
                    ObjectScene(
@@ -59,7 +59,7 @@ struct StoryListView: View {
                        instructionList: [
                            Instruction(id: "1", text: "Taman ini adalah tempat dimana saya sering bermain di masa kecil", startedAt: 0),
                            Instruction(id: "2",text: "Saya suka bermain di taman ini karena udaranya yang sangat menyejukan", startedAt: 7),
-                           Instruction(id: "3",text: "Saat duduk bersandar di bawah pohon, sembari membaca buku", startedAt: 13.5),
+                           Instruction(id: "3",text: "Saat duduk bersandar di bawah pohon sembari membaca buku", startedAt: 13.5),
                            Instruction(id: "4",text: "Pohon tersebut berwarna biru dan memiliki banyak dahan", startedAt: 20),
                            Instruction(id: "5",text: "Bisakah kamu menemukan pohon tersebut?", startedAt: 28),
                            Instruction(id: "6",text: "Iya pohon biru itu yang ku maksud", startedAt: 57, gestureType: GestureType.Tap),
@@ -87,8 +87,7 @@ struct StoryListView: View {
                            Instruction(id: "3",text: "Buahnya sangat manis dan berair. Di musim panas terasa sangat segar dan nikmat.", startedAt: 18),
                            Instruction(id: "4",text: "Sepanjang ingatan saya, pohon tersebut berwarna kuning.", startedAt: 27),
                            Instruction(id: "5",text: "Tapi, apakah pohon tersebut masih ada di taman ini?", startedAt: 34),
-                           Instruction(id: "6",text: "Kamu bisa putar taman ini, untuk menemukan pohon kuning", startedAt: 54, gestureType: GestureType.SwipeHorizontal),
-                           Instruction(id: "7",text: "", startedAt: 70, gestureType: GestureType.SwipeHorizontal),
+                           Instruction(id: "6",text: "Kamu bisa putar taman ini, untuk menemukan pohon kuning", startedAt: 44, gestureType: GestureType.SwipeHorizontal)
                        ]
                    ),
                    ObjectScene(
@@ -114,8 +113,6 @@ struct StoryListView: View {
                            Instruction(id: "5",text: "Apakah dia masih ada disana?", startedAt: 29),
                            Instruction(id: "6",text: "Iya, kiki  memang sangat kecil", startedAt: 58),
                            Instruction(id: "7",text: "Coba perbesar gambar untuk melihat Kiki", startedAt: 62, gestureType: GestureType.Zoom),
-                           Instruction(id: "8",text: "", startedAt: 70, gestureType: GestureType.Zoom),
-                           Instruction(id: "9",text: "", startedAt: 80, gestureType: GestureType.Zoom),
                        ]
                    ),
                    ObjectScene(
@@ -140,8 +137,7 @@ struct StoryListView: View {
                            Instruction(id: "4",text: "Saya dan Kiki, meletakkan hiasan labu berwarna putih di taman ini sebagai tanda persahabatan kami", startedAt: 19),
                            Instruction(id: "5",text: "Coba temukan labu putih itu", startedAt: 30),
                            Instruction(id: "6", text: "Waktu itu memang saya masih pendek, sehingga labu itu hanya. bisa ku taruh di tanah", startedAt: 59, gestureType: GestureType.SwipeHorizontal),
-                           Instruction(id: "7",text: "Coba geser taman ini, semoga labu itu masih ada disana", startedAt: 67, gestureType: GestureType.SwipeHorizontal),
-                           Instruction(id: "8",text: "", startedAt: 80, gestureType: GestureType.SwipeHorizontal),
+                           Instruction(id: "7",text: "Coba geser taman ini, semoga labu itu masih ada disana", startedAt: 67, gestureType: GestureType.SwipeHorizontal)
                        ]
                    ),
                    ObjectScene(
