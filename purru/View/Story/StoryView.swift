@@ -340,13 +340,13 @@ struct StoryView: View {
         case .Zoom:
             return "hand.zoom"
         case .SwipeHorizontal:
-            return "hand.swipe.left.right"
+            return "hand.swipe.left"
         case .Tap:
             return "hand.tap"
         case .None:
             return "hand.zoom"
         case .SwipeVertical:
-            return "hand.swip.up.down"
+            return "hand.swip.up"
         }
     }
     
