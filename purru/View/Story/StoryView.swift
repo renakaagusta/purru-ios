@@ -38,9 +38,9 @@ struct StoryView: View {
     @State private var dialogVisibility = false
     @State private var dialogView: AnyView = AnyView(VStack{})
     
-    @State private var focusedObjectIndex = 1
+    @State private var focusedObjectIndex = 0
     
-    @State private var elapsedTime: CGFloat = 55
+    @State private var elapsedTime: CGFloat = 0
     
     @State private var minFov: CGFloat = 20
     @State private var maxFov: CGFloat = 110
