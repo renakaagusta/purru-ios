@@ -18,9 +18,9 @@ final class GlobalVariables: ObservableObject{
     @Published var tutorialFinished = false
     
     // STORY
-    @Published var showSubtitle = false
-    @Published var narationVolume: CGFloat = 100
-    @Published var backsoundVolume: CGFloat = 100
+    @Published var showSubtitle = true
+    @Published var narationVolume: CGFloat = 80
+    @Published var backsoundVolume: CGFloat = 25
 }
 
 struct ContentView: View {
@@ -41,7 +41,7 @@ struct ContentView: View {
                     }
                 }
             }.onAppear{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     withAnimation {
                         self.moveToMainMenu = true
                     }

@@ -333,7 +333,7 @@ struct StoryView: View {
         
         do {
             backsoundPlayer = try AVAudioPlayer(contentsOf: url!)
-            backsoundPlayer?.setVolume(Float(global.backsoundVolume), fadeDuration: 0.1)
+            backsoundPlayer?.setVolume(Float(global.backsoundVolume / 100), fadeDuration: 0.1)
             backsoundPlayer.numberOfLoops = -1
             try AVAudioSession.sharedInstance().setCategory(.playback)
             backsoundPlayer?.play()
@@ -358,13 +358,27 @@ struct StoryView: View {
             if(soundName.count != 0) {
                 narationPlayer = try AVAudioPlayer(contentsOf: url!)
                 narationPlayer.currentTime = currentTime ?? 0
-                narationPlayer?.setVolume(Float(global.narationVolume), fadeDuration: 0.1)
+                narationPlayer?.setVolume(Float(global.narationVolume / 100), fadeDuration: 0.1)
                 try AVAudioSession.sharedInstance().setCategory(.playback)
                 narationPlayer?.play()
             }
         } catch {
             print("error")
         }
+    }
+    
+    func skipObject() {
+        focusedObjectIndex = focusedObjectIndex + 1
+        state = StoryState.Naration
+        hintVisibility = false
+        gestureVisibility = false
+        elapsedTime = 0
+
+        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
+    }
+    
+    func skipTutorial() {
+        global.tutorialFinished = true
     }
     
     var body: some View {
@@ -403,7 +417,31 @@ struct StoryView: View {
                 VStack(alignment: .trailing) {
                     Spacer().frame(height: UIScreen.height -  150)
                     HStack {
+                        
+                        if(global.environemnt == AppEnvironment.Development) {
+                            VStack {
+                                AppCircleButton(
+                                    size: 20,
+                                    icon: Image(systemName: "arrow.right"),
+                                    color: Color.white,
+                                    backgroundColor: Color.foot.primary,
+                                    source: AppCircleButtonContentSource.Icon,
+                                    onClick: skipObject
+                                )
+                                
+                                AppCircleButton(
+                                    size: 20,
+                                    icon: Image(systemName: "arrow.right.circle"),
+                                    color: Color.white,
+                                    backgroundColor: Color.foot.primary,
+                                    source: AppCircleButtonContentSource.Icon,
+                                    onClick: skipTutorial
+                                )
+                            }
+                        }
+                        
                         Spacer().frame(width: UIScreen.width - 100)
+                        
                         if(state != StoryState.Naration && state != StoryState.Tutorial) {
                             AppCircleButton(
                                 size: 20,
@@ -417,6 +455,7 @@ struct StoryView: View {
                         }
                         
                         if(state != StoryState.Naration && state == StoryState.Tutorial) {
+                            
                             AppCircleButton(
                                 size: 20,
                                 icon: Image(systemName: "lightbulb.fill"),

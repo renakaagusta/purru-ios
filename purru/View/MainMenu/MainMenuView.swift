@@ -21,10 +21,9 @@ struct MainMenuView: View {
                 NavigationLink(destination: HelpView(), label: {
                     Text("Help")
                 })
-                NavigationLink(destination: HelpView(), label: {
-                    Text("Exit")
+                NavigationLink(destination: AboutView(), label: {
+                    Text("About")
                 })
-
             }
         }
     }

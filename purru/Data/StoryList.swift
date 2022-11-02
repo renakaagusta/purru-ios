@@ -76,7 +76,7 @@ var storyList = [
                     worldOrientation: SCNQuaternion(x: -0.035320174, y: 0.58635354, z: 0.025595589, w:  0.80888)
                    ),
                    narationDuration: 40,
-                   taskDuration: 29,
+                   taskDuration: 30,
                    tutorialDuration: 15,
                    narationSound: "narasi2",
                    narationSoundExtention: "mp3",
@@ -101,7 +101,7 @@ var storyList = [
                     worldOrientation: SCNQuaternion(x: 0.015983317, y: 0.92953205, z: 0.040585518, w: -0.36615202)
                    ),
                    narationDuration: 32,
-                   taskDuration: 25,
+                   taskDuration: 25.5,
                    tutorialDuration: 15,
                    narationSound: "narasi3",
                    narationSoundExtention: "mp3",
