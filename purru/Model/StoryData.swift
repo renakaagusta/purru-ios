@@ -17,4 +17,5 @@ struct StoryData: Identifiable {
     var backsound: String
     var backsoundExtention: String
     var objectList: [ObjectScene]
+    var isTutorial: Bool = false
 }

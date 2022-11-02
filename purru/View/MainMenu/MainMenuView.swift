@@ -10,12 +10,22 @@ import SwiftUI
 struct MainMenuView: View {
     var body: some View {
         VStack{
-            NavigationLink(destination: StoryListView(), label: {
-                Text("Story List")
-            })
-            NavigationLink(destination: HelpView(), label: {
-                Text("Help")
-            })
+            Text("Main Menu")
+            List {
+                NavigationLink(destination: StoryListView(), label: {
+                    Text("Story List")
+                })
+                NavigationLink(destination: SettingView(), label: {
+                    Text("Setting")
+                })
+                NavigationLink(destination: HelpView(), label: {
+                    Text("Help")
+                })
+                NavigationLink(destination: HelpView(), label: {
+                    Text("Exit")
+                })
+
+            }
         }
     }
 }
