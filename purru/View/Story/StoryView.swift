@@ -172,7 +172,7 @@ struct StoryView: View {
                 gestureVisibility = false
                 elapsedTime = 0
     
-                playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
+                playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                 
                 material.normal.contents = nil
                 material.diffuse.contents = nil
@@ -218,7 +218,7 @@ struct StoryView: View {
         endingVisibility = false
         
         playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
-        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
+        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
     }
     
     
@@ -237,7 +237,7 @@ struct StoryView: View {
                     state = StoryState.Naration
                     focusedObjectIndex = focusedObjectIndex + 1
                     
-                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
+                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                 } else if(data.objectList[focusedObjectIndex].type == ObjectType.Ending && elapsedTime >= narationTime) {
                     endingVisibility = true
                 } else {
@@ -247,7 +247,8 @@ struct StoryView: View {
             } else if(state == StoryState.Task && elapsedTime > taskTime) {
                 state = StoryState.Tutorial
             } else if(state == StoryState.Tutorial && elapsedTime > tutorialTime) {
-                elapsedTime = taskTime
+                elapsedTime = taskTime + 1
+                playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: taskTime + 1)
             }
         } else {
             endingVisibility = true
@@ -369,7 +370,7 @@ struct StoryView: View {
         }
     }
     
-    func playNaration(soundName: String, soundExtention: String) {
+    func playNaration(soundName: String, soundExtention: String, currentTime: CGFloat?) {
         if(narationPlayer != nil) {
             narationPlayer.stop()
         }
@@ -383,12 +384,11 @@ struct StoryView: View {
         
         do {
             if(soundName.count != 0) {
-                print(4)
                 narationPlayer = try AVAudioPlayer(contentsOf: url!)
+                narationPlayer.currentTime = currentTime ?? 0
                 narationPlayer?.setVolume(0.8, fadeDuration: 0.1)
                 try AVAudioSession.sharedInstance().setCategory(.playback)
                 narationPlayer?.play()
-                print(5)
             }
         } catch {
             print("error")
@@ -465,7 +465,7 @@ struct StoryView: View {
             .frame(width: UIScreen.width, height: UIScreen.height + 100)
             .onAppear(){
                 playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
-                playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention)
+                playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                 
                 gameView.loadData(scene: self.scene!, onTap: {
                         hitResults in
