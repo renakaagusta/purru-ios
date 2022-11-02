@@ -66,6 +66,10 @@
 		2FA53FCE2907C31F00BFB3E5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F912907C31F00BFB3E5 /* URL.swift */; };
 		2FA53FCF2907C31F00BFB3E5 /* ObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F922907C31F00BFB3E5 /* ObjectType.swift */; };
 		2FA53FD22907C3AF00BFB3E5 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA53FD12907C3AF00BFB3E5 /* FLAnimatedImage */; };
+		2FD9232B2912523800CF5162 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9232A2912523800CF5162 /* SettingView.swift */; };
+		2FD9232E2912560400CF5162 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9232D2912560400CF5162 /* SplashScreenView.swift */; };
+		2FD9233129125B1D00CF5162 /* StoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9233029125B1D00CF5162 /* StoryList.swift */; };
+		2FD9233329125CD300CF5162 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD9233229125CD300CF5162 /* Environment.swift */; };
 		2FE859412907F0FD0054A2E2 /* purple.hdr in Resources */ = {isa = PBXBuildFile; fileRef = 2FE859402907F0FD0054A2E2 /* purple.hdr */; };
 		2FE859442907F2700054A2E2 /* asset.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE859432907F2700054A2E2 /* asset.png */; };
 		41147798290FC95700FD5B56 /* hand.tap.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147794290FC95700FD5B56 /* hand.tap.gif */; };
@@ -159,6 +163,10 @@
 		2FA53F912907C31F00BFB3E5 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		2FA53F922907C31F00BFB3E5 /* ObjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectType.swift; sourceTree = "<group>"; };
 		2FA53FD32907C5BE00BFB3E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FD9232A2912523800CF5162 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		2FD9232D2912560400CF5162 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		2FD9233029125B1D00CF5162 /* StoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryList.swift; sourceTree = "<group>"; };
+		2FD9233229125CD300CF5162 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		2FE859402907F0FD0054A2E2 /* purple.hdr */ = {isa = PBXFileReference; lastKnownFileType = file; path = purple.hdr; sourceTree = "<group>"; };
 		2FE859422907F1AF0054A2E2 /* dancing_hall_1k.exr */ = {isa = PBXFileReference; lastKnownFileType = file; path = dancing_hall_1k.exr; sourceTree = "<group>"; };
 		2FE859432907F2700054A2E2 /* asset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asset.png; sourceTree = "<group>"; };
@@ -232,6 +240,7 @@
 		2FA53E7B2907C2DB00BFB3E5 /* purru */ = {
 			isa = PBXGroup;
 			children = (
+				2FD9232F29125B0C00CF5162 /* Data */,
 				2F451095290A38FB00D9E85F /* Assets */,
 				2FA53F522907C31F00BFB3E5 /* Component */,
 				2FA53F8E2907C31F00BFB3E5 /* Enum */,
@@ -331,6 +340,7 @@
 				2FA53F4F2907C31F00BFB3E5 /* Screen.swift */,
 				2FA53F502907C31F00BFB3E5 /* String.swift */,
 				2FA53F512907C31F00BFB3E5 /* Colors.swift */,
+				2FD9233229125CD300CF5162 /* Environment.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -526,6 +536,8 @@
 		2FA53F7F2907C31F00BFB3E5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2FD9232C291255F600CF5162 /* SplashScreen */,
+				2FD923292912522400CF5162 /* Setting */,
 				2FA53F802907C31F00BFB3E5 /* StorySummary */,
 				2FA53F822907C31F00BFB3E5 /* Tutorial */,
 				2FA53F842907C31F00BFB3E5 /* StoryList */,
@@ -602,6 +614,30 @@
 				2FA53F922907C31F00BFB3E5 /* ObjectType.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		2FD923292912522400CF5162 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				2FD9232A2912523800CF5162 /* SettingView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		2FD9232C291255F600CF5162 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2FD9232D2912560400CF5162 /* SplashScreenView.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		2FD9232F29125B0C00CF5162 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2FD9233029125B1D00CF5162 /* StoryList.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		B8D38CBD2907CA2500DB150C /* Typography */ = {
@@ -732,6 +768,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA53F942907C31F00BFB3E5 /* Font.swift in Sources */,
+				2FD9232B2912523800CF5162 /* SettingView.swift in Sources */,
 				2FA53FC52907C31F00BFB3E5 /* StorySummaryView.swift in Sources */,
 				2FA53FBE2907C31F00BFB3E5 /* Divider.swift in Sources */,
 				2FA53FCD2907C31F00BFB3E5 /* GestureType.swift in Sources */,
@@ -747,6 +784,7 @@
 				2FA53FBA2907C31F00BFB3E5 /* CircleButton.swift in Sources */,
 				2FA53FCB2907C31F00BFB3E5 /* HelpView.swift in Sources */,
 				2FA53FB02907C31F00BFB3E5 /* NumberField.swift in Sources */,
+				2FD9233329125CD300CF5162 /* Environment.swift in Sources */,
 				2FA53FBD2907C31F00BFB3E5 /* ElevatedLink.swift in Sources */,
 				2FA53FB22907C31F00BFB3E5 /* AsyncImage.swift in Sources */,
 				2FA53E7F2907C2DB00BFB3E5 /* ContentView.swift in Sources */,
@@ -756,6 +794,7 @@
 				2FA53FA42907C31F00BFB3E5 /* ObjectScene.swift in Sources */,
 				2FA53FCA2907C31F00BFB3E5 /* StoryView.swift in Sources */,
 				2FA53FB52907C31F00BFB3E5 /* ElevatedButton.swift in Sources */,
+				2FD9233129125B1D00CF5162 /* StoryList.swift in Sources */,
 				2FA53F962907C31F00BFB3E5 /* Random.swift in Sources */,
 				2FA53FC72907C31F00BFB3E5 /* StoryListView.swift in Sources */,
 				2FA53FC92907C31F00BFB3E5 /* MainMenuView.swift in Sources */,
@@ -777,6 +816,7 @@
 				2FA53FA62907C31F00BFB3E5 /* Constant.swift in Sources */,
 				2FA53FBC2907C31F00BFB3E5 /* Link.swift in Sources */,
 				2FA53E7D2907C2DB00BFB3E5 /* purruApp.swift in Sources */,
+				2FD9232E2912560400CF5162 /* SplashScreenView.swift in Sources */,
 				2FA53FBF2907C31F00BFB3E5 /* Headline1.swift in Sources */,
 				2FA53FAA2907C31F00BFB3E5 /* String.swift in Sources */,
 				2FA53FA32907C31F00BFB3E5 /* Instruction.swift in Sources */,
