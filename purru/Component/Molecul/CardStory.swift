@@ -60,11 +60,14 @@ struct AppCardStory: View {
             }).offset(x: 95,y:60)
                             
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            LinearGradient(colors: [Color.bg.primary, Color.bg.secondary], startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
-        )
+        .background(Color.gray.opacity(0)) //Here is where we use the opacity
+//        .frame(maxWidth: .infinity, maxHeight: .infinity)
+//        .background(.transparent)
+
+//        .background(
+//            LinearGradient(colors: [Color.bg.primary, Color.bg.secondary], startPoint: .top, endPoint: .bottom)
+//                .ignoresSafeArea()
+//        )
 
         
     }

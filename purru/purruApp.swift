@@ -11,7 +11,7 @@ import SwiftUI
 struct purruApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainMenuView()
         }
     }
 }

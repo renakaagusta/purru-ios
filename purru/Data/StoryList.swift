@@ -45,10 +45,7 @@ var storyList = [
                    hint: "Cari pohon biru",
                    tag: "BLUE",
                    type: ObjectType.Task,
-                   camera: Camera(
-                    worldPosition: SCNVector3(x: -20, y: 161.625, z: 300),
-                    worldOrientation: SCNQuaternion(x: -0.15020624, y: -0.052591953, z: -0.008001905, w: 0.98722243)
-                   ),
+                  
                    narationDuration: 32,
                    taskDuration: 24,
                    tutorialDuration: 15,
@@ -71,10 +68,7 @@ var storyList = [
                    hint: "Cari pohon kuning",
                    tag: "YELLOW",
                    type: ObjectType.Task,
-                   camera: Camera(
-                    worldPosition: SCNVector3(x: 313.56372, y: 159.99977, z: 102.63094),
-                    worldOrientation: SCNQuaternion(x: -0.035320174, y: 0.58635354, z: 0.025595589, w:  0.80888)
-                   ),
+                 
                    narationDuration: 40,
                    taskDuration: 30,
                    tutorialDuration: 15,
@@ -96,10 +90,7 @@ var storyList = [
                    hint: "Cari kiki si burung",
                    tag: "BIRD",
                    type: ObjectType.Task,
-                   camera: Camera(
-                    worldPosition: SCNVector3(x:-122.73445, y: 119.99984, z:-131.6167),
-                    worldOrientation: SCNQuaternion(x: 0.015983317, y: 0.92953205, z: 0.040585518, w: -0.36615202)
-                   ),
+                   
                    narationDuration: 32,
                    taskDuration: 25.5,
                    tutorialDuration: 15,
@@ -122,10 +113,7 @@ var storyList = [
                    hint: "Cari labu putih",
                    tag: "PUMPKIN",
                    type: ObjectType.Task,
-                   camera: Camera(
-                    worldPosition: SCNVector3(x:7.269193, y: 49.99996, z: 149.79382),
-                    worldOrientation: SCNQuaternion(x: -0.04360657, y: 0.024219517, z: 0.00105724, w: 0.9987546)
-                   ),
+                
                    narationDuration: 34,
                    taskDuration: 24,
                    tutorialDuration: 15,
@@ -147,10 +135,7 @@ var storyList = [
                    hint: "",
                    tag: "",
                    type: ObjectType.Ending,
-                   camera: Camera(
-                    worldPosition: SCNVector3(x:-122.73445, y: 119.99984, z:-131.6167),
-                    worldOrientation: SCNQuaternion(x: 0.015983317, y: 0.92953205, z: 0.040585518, w: -0.36615202)
-                   ),
+                  
                    narationDuration: 40,
                    taskDuration: 0,
                    tutorialDuration: 0,
@@ -197,5 +182,39 @@ var storyList = [
                    ]
                )
            ]
+       )
+   ]
+
+//
+//  Data.swift
+//  purru
+//
+//  Created by renaka agusta on 02/11/22.
+//
+
+import Foundation
+import SceneKit
+
+var storyListTab = [
+       StoryTab(
+           id: "1",
+           title: "Story 1",
+           description: "Description 1",
+           thumbnail: "",
+           sceneName: "3DAssetS1",
+           sceneExtension: "scn",
+           backsound: "backsound-story1",
+           backsoundExtention: "mp3",
+           isTutorial: true
+       ),
+       StoryTab(
+           id: "2",
+           title: "Ruang Ajaib",
+           description: "Aku adalah anak gembala, selalu riang serta gembira. Karena aku rajin menabung dan tidak sombong",
+           thumbnail: "story2_thumnail",
+           sceneName: "3DAssetS1",
+           sceneExtension: "scn",
+           backsound: "backsound-story1",
+           backsoundExtention: "mp3"
        )
    ]
