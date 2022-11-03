@@ -15,22 +15,21 @@ struct MainMenuView: View {
     
     var body: some View {
         VStack{
-            StoryListView(tabs: $tabs, currentIndex: $currentIndex)
-            //Text("Main Menu")
-//            List {
-//                NavigationLink(destination: StoryListView(tabs: $tabs, currentIndex: $currentIndex), label: {
-//                    Text("Story List")
-//                })
-//                NavigationLink(destination: SettingView(), label: {
-//                    Text("Setting")
-//                })
-//                NavigationLink(destination: HelpView(), label: {
-//                    Text("Help")
-//                })
-//                NavigationLink(destination: AboutView(), label: {
-//                    Text("About")
-//                })
-//            }
+            Text("Main Menu")
+            List {
+                NavigationLink(destination: StoryListView(tabs: $tabs, currentIndex: $currentIndex), label: {
+                    Text("Story List")
+                })
+                NavigationLink(destination: SettingView(), label: {
+                    Text("Setting")
+                })
+                NavigationLink(destination: HelpView(), label: {
+                    Text("Help")
+                })
+                NavigationLink(destination: AboutView(), label: {
+                    Text("About")
+                })
+            }
         }
     }
 }

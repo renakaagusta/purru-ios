@@ -21,19 +21,28 @@ struct InfiniteCarouselView: View{
     var body: some View{
         
         TabView(selection: $fakeIndex){
-            
-            ForEach(genericTabs){tab in
-                
-                // Card View...
-                
-                    
-                AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3)
-                                        
+            ForEach(Array(storyListTab.enumerated()),  id: \.offset) { index, tab in
+                NavigationLink(destination: StoryView(data: storyList[index]), label: {
+                    AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3)
+                })
                 .onPreferenceChange(OffsetKey.self, perform: { offset in
                     self.offset = offset
                 })
                 .tag(getIndex(tab: tab))
             }
+            
+//            ForEach(genericTabs){tab in
+//
+//                // Card View...
+//
+//
+//                AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3)
+//
+//                .onPreferenceChange(OffsetKey.self, perform: { offset in
+//                    self.offset = offset
+//                })
+//                .tag(getIndex(tab: tab))
+//            }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
         // max size...
