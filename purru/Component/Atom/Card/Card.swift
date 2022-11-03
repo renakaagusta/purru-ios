@@ -11,16 +11,18 @@ struct AppCard<Content: View>: View {
     @State var width: CGFloat = 300
     @State var height: CGFloat = 300
     @State var cornerRadius: CGFloat = 20
-    @State var backgroundColor: Color = Color.clear
+    @State var backgroundColorTop: Color = Color.clear
+    @State var backgroundColorBottom: Color = Color.clear
     @State var borderColor: Color = Color.gray
     @State var background: Image?
     var content: () -> Content?
     
-    init(width: CGFloat = 300, height: CGFloat = 300, cornerRadius: CGFloat = 20, backgroundColor: Color = Color.clear, borderColor: Color = Color.white, @ViewBuilder component: @escaping () -> Content?) {
+    init(width: CGFloat = 300, height: CGFloat = 300, cornerRadius: CGFloat = 20, backgroundColorTop: Color = Color.clear, backgroundColorBottom: Color = Color.clear, borderColor: Color = Color.white, @ViewBuilder component: @escaping () -> Content?) {
         self.width = width
         self.height = height
         self.cornerRadius = cornerRadius
-        self.backgroundColor = backgroundColor
+        self.backgroundColorTop = backgroundColorTop
+        self.backgroundColorBottom = backgroundColorBottom
         self.borderColor = borderColor
         self.content = component
     }
@@ -30,10 +32,16 @@ struct AppCard<Content: View>: View {
             if (content != nil) {
                 content()
             }
-        }.frame(width: width, height: height).overlay(
+        }
+        .frame(width: width, height: height).overlay(
             RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(lineWidth: 1).foregroundColor(borderColor)
-        ).background(RoundedRectangle(cornerRadius: cornerRadius).fill(backgroundColor))
+                .stroke(lineWidth: 2)
+                .foregroundColor(borderColor)
+        )
+        .background(LinearGradient(colors: [backgroundColorTop, backgroundColorBottom],
+                                    startPoint: .top,
+                                    endPoint: .bottom))
+        .cornerRadius(cornerRadius)
     }
 }
 

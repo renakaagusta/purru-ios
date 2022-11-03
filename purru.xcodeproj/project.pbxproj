@@ -95,6 +95,7 @@
 		B8D38CC32907CC0C00DB150C /* JosefinSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8D38CBF2907CA2500DB150C /* JosefinSans.ttf */; };
 		B8D38CC42907CC0C00DB150C /* Rubik.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8D38CC02907CA2500DB150C /* Rubik.ttf */; };
 		B8DACF5D29126971002EA3BA /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DACF5C29126971002EA3BA /* AboutView.swift */; };
+		B8DACF6029132049002EA3BA /* CardStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DACF5F29132049002EA3BA /* CardStory.swift */; };
 		B8DE813629092F65006B2BE3 /* px.png in Resources */ = {isa = PBXBuildFile; fileRef = B8DE813029092F65006B2BE3 /* px.png */; };
 		B8DE813729092F65006B2BE3 /* nz.png in Resources */ = {isa = PBXBuildFile; fileRef = B8DE813129092F65006B2BE3 /* nz.png */; };
 		B8DE813829092F65006B2BE3 /* ny.png in Resources */ = {isa = PBXBuildFile; fileRef = B8DE813229092F65006B2BE3 /* ny.png */; };
@@ -194,6 +195,7 @@
 		B8D38CBF2907CA2500DB150C /* JosefinSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JosefinSans.ttf; sourceTree = "<group>"; };
 		B8D38CC02907CA2500DB150C /* Rubik.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rubik.ttf; sourceTree = "<group>"; };
 		B8DACF5C29126971002EA3BA /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		B8DACF5F29132049002EA3BA /* CardStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStory.swift; sourceTree = "<group>"; };
 		B8DE813029092F65006B2BE3 /* px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = px.png; sourceTree = "<group>"; };
 		B8DE813129092F65006B2BE3 /* nz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nz.png; sourceTree = "<group>"; };
 		B8DE813229092F65006B2BE3 /* ny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ny.png; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 		2F451095290A38FB00D9E85F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				B8DACF61291323B9002EA3BA /* Story 2 */,
 				2FA53F3D2907C31F00BFB3E5 /* Story 1 */,
 				B8D38CBD2907CA2500DB150C /* Typography */,
 			);
@@ -350,6 +353,7 @@
 		2FA53F522907C31F00BFB3E5 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				B8DACF5E291274C5002EA3BA /* Molecul */,
 				2FA53F532907C31F00BFB3E5 /* Atom */,
 				2FA53F792907C31F00BFB3E5 /* Organigram */,
 			);
@@ -668,6 +672,21 @@
 			path = About;
 			sourceTree = "<group>";
 		};
+		B8DACF5E291274C5002EA3BA /* Molecul */ = {
+			isa = PBXGroup;
+			children = (
+				B8DACF5F29132049002EA3BA /* CardStory.swift */,
+			);
+			path = Molecul;
+			sourceTree = "<group>";
+		};
+		B8DACF61291323B9002EA3BA /* Story 2 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Story 2";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -812,6 +831,7 @@
 				2FA53FC92907C31F00BFB3E5 /* MainMenuView.swift in Sources */,
 				2FA53FCF2907C31F00BFB3E5 /* ObjectType.swift in Sources */,
 				2FA53FA72907C31F00BFB3E5 /* State.swift in Sources */,
+				B8DACF6029132049002EA3BA /* CardStory.swift in Sources */,
 				2FA53FAD2907C31F00BFB3E5 /* Card.swift in Sources */,
 				2FA53FA52907C31F00BFB3E5 /* StoryData.swift in Sources */,
 				2FA53FA92907C31F00BFB3E5 /* Screen.swift in Sources */,
