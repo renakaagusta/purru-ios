@@ -31,7 +31,7 @@ struct InfiniteCarouselView: View{
 //                }, label: {
                     //NavigationLink(destination: StoryView(data: storyList[index]), isActive: , label: {
 
-                    AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3, index: index , onClick: {
+                AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3, index: index , onClick: {
                             isPresentDescriptionModal.toggle()
                         print("kaka bat")
                         })
@@ -65,8 +65,7 @@ struct InfiniteCarouselView: View{
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
         // max size...
-        .frame(height: .infinity)
-        .padding(.top,20)
+        .frame(width: .infinity, height: 600)
         .onChange(of: offset) { newValue in
             
             // Logic...

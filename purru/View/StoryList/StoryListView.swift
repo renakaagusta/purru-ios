@@ -22,7 +22,14 @@ struct StoryListView: View {
     var body: some View {
         
         VStack {
+            
+            AppJosefineSans(text: "Pilih cerita malam ini...", josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
+                //.frame(width: 300)
+            
+            
             InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
+            
+
 
 //            List {
 //                ForEach(storyList) { story in
@@ -33,8 +40,8 @@ struct StoryListView: View {
 //            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            LinearGradient(colors: [Color.bg.primary, Color.bg.secondary], startPoint: .top, endPoint: .center)
+        .background(Color.bg.primary
+//            LinearGradient(colors: [Color.bg.primary, Color.bg.secondary], startPoint: .top, endPoint: .center)
                 .ignoresSafeArea()
         )
         
