@@ -264,6 +264,7 @@ struct StoryView: View {
     }
     
     func updateTime() {
+        
         elapsedTime = elapsedTime + 1
         
         configCamera()
@@ -475,6 +476,8 @@ struct StoryView: View {
             }
             .frame(width: UIScreen.width, height: UIScreen.height + 100)
             .onAppear(){
+                global.tutorialFinished = true
+
                 playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
                 playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                 
