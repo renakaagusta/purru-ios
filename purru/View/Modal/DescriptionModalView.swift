@@ -55,6 +55,15 @@ struct DescriptionModalView: View {
         guard let sceneUrl = Bundle.main.url(forResource: data.sceneName, withExtension: data.sceneExtension) else { fatalError() }
         
         self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
+        
+        self.scene?.background.contents = [
+            UIImage(named: "px"), //kanan
+            UIImage(named: "nx"), //kiri
+            UIImage(named: "py"), //atas
+            UIImage(named: "ny"), //bawah
+            UIImage(named: "pz"), //belakang
+            UIImage(named: "nz") //depan
+        ]
     }
     
     func showHint() {
@@ -169,8 +178,9 @@ struct DescriptionModalView: View {
     var body: some View {
         VStack{
             ZStack {
+                Color.bg.primary.ignoresSafeArea()
                     gameView
-                        .offset(y:-280)
+                        .offset(y:-100)
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2 - 50)
                         .onAppear(){
                             gameView.loadData(scene: self.scene!, onTap: {
@@ -182,36 +192,38 @@ struct DescriptionModalView: View {
                         }.onReceive(cameraTimer) { _ in
                             configCamera()
                         }
-                    
+
                     VStack(alignment: .leading) {
-                        HStack {
-                            Spacer()
-                            Button(action: {
-                                
-                            }, label: {
-                                Image(systemName: "play.fill").resizable().frame(width:20, height: 20   )
-                                    .padding(30)
-                                    .foregroundColor(Color.text.primary)
-                                    .background(Color.sign.primary)
-                                    .cornerRadius(100)
-                            })
-                            .padding()
-                        .shadow(color: Color.spot.primary, radius: 6, x: 0, y: 0)
-                        }
                         
                         AppJosefineSans(text: "Rumah Ajaib", josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
-                            .padding()
-                        AppRubik(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem.", rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
-                            .padding(.horizontal)
-                        Spacer().frame(height:150)
+                            .padding(.horizontal, 40)
+                        Spacer().frame(height:10)
+                        AppRubik(text: "Seorang pengelana yang menemukan sebuah ruangang kuno ajaib di sebuah kota kecil yang ia kunjungi. Siapa pemilik ruangan ini? Mengapa banyak barang-barang supranatural didalamnya?", rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
+                            .padding(.horizontal, 40)
+                        Spacer().frame(height: 220)
                         
-                    }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 300)
+                    }
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
+                    .background( LinearGradient(colors: [Color.clear, Color.bg.secondary], startPoint: .top, endPoint: .center)
+                        .ignoresSafeArea())
+                    .offset(y:200)
+                
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            
+                        }, label: {
+                            Image(systemName: "play.fill").resizable().frame(width:35, height: 35)
+                                .padding(30)
+                                .foregroundColor(Color.text.primary)
+                                .background(Color.sign.primary)
+                                .cornerRadius(100)
+                        })
                         .padding()
-                        .background(
-                            LinearGradient(colors: [Color.black, Color.bg.secondary], startPoint: .top, endPoint: .center)
-                                       .ignoresSafeArea()
-                               )
-                    .offset(y:150)
+                    }
+                    Spacer().frame(height: 50)
+                }
             }
         }
     }
