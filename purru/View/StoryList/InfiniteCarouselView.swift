@@ -45,7 +45,7 @@ struct InfiniteCarouselView: View{
 //                })
                 .sheet(isPresented: $isPresentDescriptionModal) {
                     DescriptionModalView(data: storyList[index])
-                        .presentationDetents([.large])
+                        .presentationDetents([.medium])
                 }
                 
             }
