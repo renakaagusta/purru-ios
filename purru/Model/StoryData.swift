@@ -19,3 +19,16 @@ struct StoryData: Identifiable {
     var objectList: [ObjectScene]
     var isTutorial: Bool = false
 }
+
+struct StoryTab: Identifiable, Hashable {
+    var id: String
+    var title: String
+    var description: String
+    var thumbnail: String
+    var sceneName: String
+    var sceneExtension: String
+    var backsound: String
+    var backsoundExtention: String
+    var isTutorial: Bool = false
+}
+ 

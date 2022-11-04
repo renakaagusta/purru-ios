@@ -14,7 +14,6 @@ struct ObjectScene {
     var hint: String
     var tag: String
     var type: ObjectType
-    var camera: Camera?
     var narationDuration: CGFloat
     var taskDuration: CGFloat
     var tutorialDuration: CGFloat

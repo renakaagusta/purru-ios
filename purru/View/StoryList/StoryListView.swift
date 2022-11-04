@@ -10,21 +10,40 @@ import SceneKit
 
 struct StoryListView: View {
     
+    @Binding var tabs: [StoryTab]
+    @Binding var currentIndex: Int
+    
+    @State var fakeIndex: Int = 0
+    
+    @State var offset: CGFloat = 0
+    
+    @State var genericTabs: [StoryTab] = []
+    
     var body: some View {
+        
         VStack {
-            List {
-                ForEach(storyList) { story in
-                    NavigationLink(destination: StoryView(data: story).navigationBarBackButtonHidden(true), label: {
-                        Text(story.title)
-                    })
-                }
-            }
+            InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
+
+//            List {
+//                ForEach(storyList) { story in
+//                    NavigationLink(destination: StoryView(data: story).navigationBarBackButtonHidden(true), label: {
+//                        Text(story.title)
+//                    })
+//                }
+//            }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            LinearGradient(colors: [Color.bg.primary, Color.bg.secondary], startPoint: .top, endPoint: .center)
+                .ignoresSafeArea()
+        )
+        
     }
 }
 
 struct StoryListView_Previews: PreviewProvider {
     static var previews: some View {
-        StoryListView()
+        return VStack{}
+        //StoryListView(tabs: <#Binding<[Tab]>#>, currentIndex: <#Binding<Int>#>)
     }
 }

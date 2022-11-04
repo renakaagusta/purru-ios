@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct MainMenuView: View {
+    
+    @State var tabs: [StoryTab] = storyListTab
+    
+    @State var currentIndex: Int = 0
+    
     var body: some View {
         VStack{
             Text("Main Menu")
             List {
-                NavigationLink(destination: StoryListView(), label: {
+                NavigationLink(destination: StoryListView(tabs: $tabs, currentIndex: $currentIndex), label: {
                     Text("Story List")
                 })
                 NavigationLink(destination: SettingView(), label: {
