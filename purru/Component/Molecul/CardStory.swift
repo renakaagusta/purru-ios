@@ -26,6 +26,7 @@ struct AppCardStory: View {
                     VStack(alignment: .leading) {
                         AppJosefineSans(text: title, josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
                             //.frame(width: 150)
+                        AppRubik(text: description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
                     }
                     .padding(25)
 
