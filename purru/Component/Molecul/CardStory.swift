@@ -14,6 +14,7 @@ struct AppCardStory: View {
     @State var thumbnail: String = ""
     @State var DescriptionLineLimit: Int = 3
 //    @State var title: String = ""
+    var onClick: () -> Void = {}
     
     var body: some View {
         
@@ -25,15 +26,6 @@ struct AppCardStory: View {
                     VStack(alignment: .leading) {
                         AppJosefineSans(text: title, josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
                             //.frame(width: 150)
-                        
-                        //sinopsis button
-                        Button(action: {
-                            
-                        }, label: {
-                            AppRubik(text: description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
-                                .lineLimit(DescriptionLineLimit)
-                        })
-                        
                     }
                     .padding(25)
 
@@ -49,7 +41,7 @@ struct AppCardStory: View {
             
             //play button
             Button(action: {
-                
+                self.onClick()
             }, label: {
                 Image(systemName: "play.fill")
                     .padding(12.5)

@@ -18,17 +18,36 @@ struct InfiniteCarouselView: View{
     
     @State var genericTabs: [StoryTab] = []
     
+    //Modal Sheet to description
+    @State private var isPresentDescriptionModal = false
+
+    
     var body: some View{
         
         TabView(selection: $fakeIndex){
             ForEach(Array(storyListTab.enumerated()),  id: \.offset) { index, tab in
-                NavigationLink(destination: StoryView(data: storyList[index]), label: {
-                    AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3)
+                
+                Button(action: {
+                    isPresentDescriptionModal.toggle()
+                }, label: {
+                    
+                    AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3, onClick: {
+    //                    NavigationLink(destination: StoryView(data: storyList[index]), label: {
+    //                        //
+    //                    })
+                        //StoryView(data: storyList[index])
+                    })
+                    .onPreferenceChange(OffsetKey.self, perform: { offset in
+                        self.offset = offset
+                    })
+                    .tag(getIndex(tab: tab))
+                    
                 })
-                .onPreferenceChange(OffsetKey.self, perform: { offset in
-                    self.offset = offset
-                })
-                .tag(getIndex(tab: tab))
+                .sheet(isPresented: $isPresentDescriptionModal) {
+                    DescriptionModalView(data: storyList[index])
+                        .presentationDetents([.large, .medium])
+                }
+                
             }
             
 //            ForEach(genericTabs){tab in
