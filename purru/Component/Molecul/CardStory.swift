@@ -24,18 +24,24 @@ struct AppCardStory: View {
         NavigationLink(destination: StoryView(data: storyList[index]), isActive: $isActive, label: {
             ZStack {
                 
-                AppCard(width: 275, height: 400, cornerRadius: 25, backgroundColorTop: Color.black, backgroundColorBottom: Color.bg.secondary, borderColor: Color.spot.primary) {
+                AppCard(width: 280, height: 479, cornerRadius: 31, backgroundColorTop: Color.clear, backgroundColorBottom: Color.bg.secondary, borderColor: Color.spot.primary) {
                         
                         Spacer(minLength: -100)
                         VStack(alignment: .leading) {
-                            AppJosefineSans(text: title, josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
+                            AppJosefineSans(text: title, josepSize: fontType.title2, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
+                                .padding(.bottom,5)
                                 //.frame(width: 150)
                             AppRubik(text: description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
+                                .lineLimit(DescriptionLineLimit)
+                                .lineSpacing(2)
+
+                            
+                            
                         }
-                        .padding(25)
+                        .padding()
 
                     }
-                    .shadow(color: Color.spot.primary, radius: 3, x: 0, y: -2)
+                    .shadow(color: Color.spot.primary, radius: 5, x: 0, y: 0)
                     .padding(5)
                 
                 Button(action: {
@@ -44,7 +50,7 @@ struct AppCardStory: View {
                     Image(thumbnail)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 400.0, height: 400.0)
+                        .frame(width: 371.0, height: 371.0)
                         .offset(y:-60)
                 })
                 
@@ -66,9 +72,15 @@ struct AppCardStory: View {
                     .offset(x: 95,y:60)
                     
                 //})
+                
+                Ellipse()
+                    .fill(.black.opacity(0.1))
+                    .frame(width: 200, height: 20)
+                    .shadow(radius: 5)
+                    .offset(y:235)
                                 
             }
-            .background(Color.gray.opacity(0))
+            //.background(Color.gray.opacity(0))
         })
         
         
