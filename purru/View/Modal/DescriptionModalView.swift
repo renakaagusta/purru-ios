@@ -179,20 +179,23 @@ struct DescriptionModalView: View {
         VStack{
             ZStack {
                 Color.bg.primary.ignoresSafeArea()
-                    gameView
-                        .offset(y:-100)
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2 - 50)
-                        .onAppear(){
-                            gameView.loadData(scene: self.scene!, onTap: {
-                                hitResults in
-                                handleTap(hitResults: hitResults)
-                            }, view: self.view)
-                        }.onReceive(timer) { _ in
-                            updateTime()
-                        }.onReceive(cameraTimer) { _ in
-                            configCamera()
-                        }
-
+//                    gameView
+//                        .offset(y:-100)
+//                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2 - 50)
+//                        .onAppear(){
+//                            gameView.loadData(scene: self.scene!, onTap: {
+//                                hitResults in
+//                                handleTap(hitResults: hitResults)
+//                            }, view: self.view)
+//                        }.onReceive(timer) { _ in
+//                            updateTime()
+//                        }.onReceive(cameraTimer) { _ in
+//                            configCamera()
+//                        }
+                VStack {
+                    Image("alcheworld").resizable()
+                    Spacer()
+                }
                     VStack(alignment: .leading) {
                         
                         AppJosefineSans(text: "Rumah Ajaib", josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
@@ -204,8 +207,7 @@ struct DescriptionModalView: View {
                         
                     }
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
-                    .background( LinearGradient(colors: [Color.clear, Color.bg.secondary], startPoint: .top, endPoint: .center)
-                        .ignoresSafeArea())
+                    .background(Color.bg.primary)
                     .offset(y:200)
                 
                 VStack {
@@ -214,14 +216,17 @@ struct DescriptionModalView: View {
                         Button(action: {
                             
                         }, label: {
-                            Image(systemName: "play.fill").resizable().frame(width:35, height: 35)
-                                .padding(30)
+                            Image(systemName: "play.fill").resizable().frame(width:20, height: 20)
+                                .padding(20)
                                 .foregroundColor(Color.text.primary)
                                 .background(Color.sign.primary)
                                 .cornerRadius(100)
                         })
                         .padding()
                     }
+                    .frame(height:40)
+                    .background(LinearGradient(colors: [Color.clear, Color.bg.primary], startPoint: .top, endPoint: .center)
+                        .ignoresSafeArea())
                     Spacer().frame(height: 50)
                 }
             }
