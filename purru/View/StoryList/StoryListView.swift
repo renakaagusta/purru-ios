@@ -44,6 +44,6 @@ struct StoryListView: View {
 struct StoryListView_Previews: PreviewProvider {
     static var previews: some View {
         return VStack{}
-        //StoryListView(tabs: <#Binding<[Tab]>#>, currentIndex: <#Binding<Int>#>)
+        //StoryListView(tabs: Binding<[Tab]>, currentIndex: Binding<Int>)
     }
 }
