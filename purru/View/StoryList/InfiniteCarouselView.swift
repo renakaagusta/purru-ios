@@ -49,10 +49,24 @@ struct InfiniteCarouselView: View{
                 }
                 }
             }
+                        
+//            ForEach(genericTabs){tab in
+//
+//                // Card View...
+//
+//
+//                AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3)
+//
+//                .onPreferenceChange(OffsetKey.self, perform: { offset in
+//                    self.offset = offset
+//                })
+//                .tag(getIndex(tab: tab))
+//            }
         }
-        .tabViewStyle(.page(indexDisplayMode: .never))
+        .tabViewStyle(.page(indexDisplayMode: .always))
+        //.background(Color.white)
+        // max size...
         .frame(height: .infinity)
-        .padding(.top,20)
         .onChange(of: offset) { newValue in
             if fakeIndex == 0 && offset == 0{
                 fakeIndex = genericTabs.count - 2
