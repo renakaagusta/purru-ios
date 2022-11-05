@@ -23,22 +23,16 @@ struct StoryListView: View {
         
         VStack {
             InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
-
-//            List {
-//                ForEach(storyList) { story in
-//                    NavigationLink(destination: StoryView(data: story).navigationBarBackButtonHidden(true), label: {
-//                        Text(story.title)
-//                    })
-//                }
-//            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             LinearGradient(colors: [Color.bg.primary, Color.bg.secondary], startPoint: .top, endPoint: .center)
                 .ignoresSafeArea()
-        )
-        
-        
+        ).onAppear{
+            print("===STORY LIST VIEW APPEAR====")
+            narationPlayer?.stop()
+            backsoundPlayer?.stop()
+        }
     }
 }
 

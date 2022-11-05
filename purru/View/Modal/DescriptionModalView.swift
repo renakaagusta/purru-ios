@@ -42,10 +42,12 @@ struct DescriptionModalView: View {
     
     @State private var objectHistoryList: [SCNNode] = []
     
+    @State private var onPlay: () -> Void
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
     
-    init(data: StoryData) {
+    init(data: StoryData, onPlay: @escaping () -> Void) {
         self.gameView = GameView()
         
         self.data = data
@@ -55,6 +57,8 @@ struct DescriptionModalView: View {
         guard let sceneUrl = Bundle.main.url(forResource: data.sceneName, withExtension: data.sceneExtension) else { fatalError() }
         
         self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
+        
+        self.onPlay = onPlay
     }
     
     func showHint() {
@@ -64,7 +68,6 @@ struct DescriptionModalView: View {
         
         let camera = self.view.defaultCameraController
         
-//        let cameraDestination = data.objectList[focusedObjectIndex].camera
         let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
         
         self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
@@ -145,6 +148,10 @@ struct DescriptionModalView: View {
         camera.maximumVerticalAngle = 50
         camera.minimumVerticalAngle = 20
         
+        if(camera.pointOfView == nil) {
+            return
+        }
+        
         if((camera.pointOfView?.camera!.fieldOfView)! > maxFov) {
             camera.pointOfView?.camera?.fieldOfView = CGFloat(maxFov)
         }
@@ -187,7 +194,7 @@ struct DescriptionModalView: View {
                         HStack {
                             Spacer()
                             Button(action: {
-                                
+                                self.onPlay()
                             }, label: {
                                 Image(systemName: "play.fill").resizable().frame(width:20, height: 20   )
                                     .padding(30)
@@ -199,9 +206,9 @@ struct DescriptionModalView: View {
                         .shadow(color: Color.spot.primary, radius: 6, x: 0, y: 0)
                         }
                         
-                        AppJosefineSans(text: "Rumah Ajaib", josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
+                        AppJosefineSans(text: data.title, josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
                             .padding()
-                        AppRubik(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem.", rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
+                        AppRubik(text: data.description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
                             .padding(.horizontal)
                         Spacer().frame(height:150)
                         
@@ -219,6 +226,6 @@ struct DescriptionModalView: View {
 
 struct DescriptionModalView_Previews: PreviewProvider {
     static var previews: some View {
-        DescriptionModalView(data: storyList.first!)
+        DescriptionModalView(data: storyList.first!, onPlay: {})
     }
 }

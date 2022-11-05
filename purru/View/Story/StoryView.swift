@@ -8,9 +8,6 @@ import SwiftUI
 import SceneKit
 import AVFoundation
 
-var backsoundPlayer: AVAudioPlayer!
-var narationPlayer: AVAudioPlayer!
-
 enum DialogPosition {
     case Top, Bottom
 }
@@ -18,6 +15,8 @@ enum DialogPosition {
 struct StoryView: View {
     
     @ObservedObject var global = GlobalVariables.global
+    
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     private var gameView: GameView
     private var scene: SCNScene?
@@ -40,9 +39,10 @@ struct StoryView: View {
     @State private var dialogVisibility = false
     @State private var dialogView: AnyView = AnyView(VStack{})
     
-    @State private var focusedObjectIndex = 0
+    @State private var focusedObjectIndex = 1
+    @State private var foundObject = 0
     
-    @State private var elapsedTime: CGFloat = 0
+    @State private var elapsedTime: CGFloat = 35
     
     @State private var minFov: CGFloat = 20
     @State private var maxFov: CGFloat = 110
@@ -66,23 +66,14 @@ struct StoryView: View {
         //kanan, kiri, atas, bawah, belakang, depan
         
         self.scene?.background.contents = [
-            UIImage(named: "px"), //kanan
-            UIImage(named: "nx"), //kiri
-            UIImage(named: "py"), //atas
-            UIImage(named: "ny"), //bawah
-            UIImage(named: "pz"), //belakang
-            UIImage(named: "nz") //depan
+            UIImage(named: "px"),
+            UIImage(named: "nx"),
+            UIImage(named: "py"),
+            UIImage(named: "ny"),
+            UIImage(named: "pz"),
+            UIImage(named: "nz")
         ]
         
-        //debugin bg
-//        self.scene?.background.contents = [
-//            UIImage(named: "kanan"),
-//            UIImage(named: "kiri"),
-//            UIImage(named: "atas"),
-//            UIImage(named: "bawah"),
-//            UIImage(named: "belakang"),
-//            UIImage(named: "depan")
-//        ]
     }
     
     func showHint() {
@@ -92,7 +83,6 @@ struct StoryView: View {
         
         let camera = self.view.defaultCameraController
         
-//        let cameraDestination = data.objectList[focusedObjectIndex].camera
         let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
         
         self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
@@ -153,6 +143,7 @@ struct StoryView: View {
             
             if(result.node.name == data.objectList[focusedObjectIndex].tag) {
                 focusedObjectIndex = focusedObjectIndex + 1
+                foundObject = foundObject + 1
                 state = StoryState.Naration
                 hintVisibility = false
                 gestureVisibility = false
@@ -246,10 +237,14 @@ struct StoryView: View {
         let camera = view.defaultCameraController
         let cameraConfig = view.cameraControlConfiguration
         
+        if(camera.pointOfView?.camera == nil) {
+            return
+        }
+        
         camera.maximumVerticalAngle = 50
         camera.minimumVerticalAngle = 20
         
-        if((camera.pointOfView?.camera!.fieldOfView)! > maxFov) {
+        if(camera.pointOfView!.camera!.fieldOfView > maxFov) {
             camera.pointOfView?.camera?.fieldOfView = CGFloat(maxFov)
         }
         
@@ -335,8 +330,9 @@ struct StoryView: View {
         do {
             backsoundPlayer = try AVAudioPlayer(contentsOf: url!)
             backsoundPlayer?.setVolume(Float(global.backsoundVolume / 100), fadeDuration: 0.1)
-            backsoundPlayer.numberOfLoops = -1
-            try AVAudioSession.sharedInstance().setCategory(.playback)
+            backsoundPlayer?.numberOfLoops = -1
+            
+        try AVAudioSession.sharedInstance().setCategory(.playback)
             backsoundPlayer?.play()
         } catch {
             print("error")
@@ -345,7 +341,7 @@ struct StoryView: View {
     
     func playNaration(soundName: String, soundExtention: String, currentTime: CGFloat?) {
         if(narationPlayer != nil) {
-            narationPlayer.stop()
+            narationPlayer?.stop()
         }
         
         let url = Bundle.main.url(forResource: soundName, withExtension: soundExtention)
@@ -358,7 +354,7 @@ struct StoryView: View {
         do {
             if(soundName.count != 0) {
                 narationPlayer = try AVAudioPlayer(contentsOf: url!)
-                narationPlayer.currentTime = currentTime ?? 0
+                narationPlayer?.currentTime = currentTime ?? 0
                 narationPlayer?.setVolume(Float(global.narationVolume / 100), fadeDuration: 0.1)
                 try AVAudioSession.sharedInstance().setCategory(.playback)
                 narationPlayer?.play()
@@ -396,10 +392,34 @@ struct StoryView: View {
                 }
                 if(state != StoryState.Naration) {
                     VStack {
-                        Spacer().frame(height: UIScreen.height - 200)
-                        AppRubik(text: data.objectList[focusedObjectIndex].hint, rubikSize: fontType.body, fontWeight: .bold , fontColor: Color.text.primary)
+                        Spacer().frame(height: UIScreen.height - 240)
+                        HStack{
+                            Spacer()
+                            AppRubik(text: data.objectList[focusedObjectIndex].hint, rubikSize: fontType.body, fontWeight: .bold , fontColor: Color.text.primary)
+                            Spacer()
+                        }.frame(width: UIScreen.width)
                     }
                     .frame(width:  UIScreen.width, height: UIScreen.height)
+                }
+                if(true) {
+                    VStack {
+                        Spacer().frame(height: UIScreen.height - 180)
+                        ScrollView (.horizontal, showsIndicators: false) {
+                            HStack {
+                                Spacer()
+                                HStack {
+                                    ForEach(0...data.objectList.count - 2, id: \.self) { index in
+                                        if(foundObject > index) {
+                                            Image("TaskStatusFinished").resizable().frame(width: 20, height: 20)
+                                        } else {
+                                            Image("TaskStatusUnfinished").resizable().frame(width: 20, height: 20)
+                                        }
+                                    }
+                                }
+                                Spacer()
+                            }.frame(width: UIScreen.width)
+                        }.frame(height: 100)
+                    }
                 }
                 if(!endingVisibility) {
                     VStack {
@@ -416,7 +436,7 @@ struct StoryView: View {
                 }
                 
                 VStack(alignment: .trailing) {
-                    Spacer().frame(height: UIScreen.height -  150)
+                    Spacer().frame(height: UIScreen.height -  220)
                     HStack {
                         
                         if(global.environemnt == AppEnvironment.Development) {
@@ -441,7 +461,7 @@ struct StoryView: View {
                             }
                         }
                         
-                        Spacer().frame(width: UIScreen.width - 100)
+                        Spacer().frame(width: UIScreen.width - 150)
                         
                         if(state != StoryState.Naration && state != StoryState.Tutorial) {
                             AppCircleButton(
@@ -475,9 +495,15 @@ struct StoryView: View {
                 
             }
             .frame(width: UIScreen.width, height: UIScreen.height + 100)
+            .onDisappear{
+                global.isPlaying = false
+                global.storyIndex = -1
+                backsoundPlayer?.stop()
+                narationPlayer?.stop()
+            }
             .onAppear(){
-                global.tutorialFinished = true
-
+                GlobalStorage.isTurorialFinished = true
+                                
                 playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
                 playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                 
