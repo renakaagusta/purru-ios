@@ -42,10 +42,12 @@ struct DescriptionModalView: View {
     
     @State private var objectHistoryList: [SCNNode] = []
     
+    @State private var onPlay: () -> Void
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
     
-    init(data: StoryData) {
+    init(data: StoryData, onPlay: @escaping () -> Void) {
         self.gameView = GameView()
         
         self.data = data
@@ -56,14 +58,7 @@ struct DescriptionModalView: View {
         
         self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
         
-        self.scene?.background.contents = [
-            UIImage(named: "px"), //kanan
-            UIImage(named: "nx"), //kiri
-            UIImage(named: "py"), //atas
-            UIImage(named: "ny"), //bawah
-            UIImage(named: "pz"), //belakang
-            UIImage(named: "nz") //depan
-        ]
+        self.onPlay = onPlay
     }
     
     func showHint() {
@@ -73,7 +68,6 @@ struct DescriptionModalView: View {
         
         let camera = self.view.defaultCameraController
         
-//        let cameraDestination = data.objectList[focusedObjectIndex].camera
         let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
         
         self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
@@ -154,6 +148,10 @@ struct DescriptionModalView: View {
         camera.maximumVerticalAngle = 50
         camera.minimumVerticalAngle = 20
         
+        if(camera.pointOfView == nil) {
+            return
+        }
+        
         if((camera.pointOfView?.camera!.fieldOfView)! > maxFov) {
             camera.pointOfView?.camera?.fieldOfView = CGFloat(maxFov)
         }
@@ -178,57 +176,49 @@ struct DescriptionModalView: View {
     var body: some View {
         VStack{
             ZStack {
-                Color.bg.primary.ignoresSafeArea()
-//                    gameView
-//                        .offset(y:-100)
-//                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2 - 50)
-//                        .onAppear(){
-//                            gameView.loadData(scene: self.scene!, onTap: {
-//                                hitResults in
-//                                handleTap(hitResults: hitResults)
-//                            }, view: self.view)
-//                        }.onReceive(timer) { _ in
-//                            updateTime()
-//                        }.onReceive(cameraTimer) { _ in
-//                            configCamera()
-//                        }
-                VStack {
-                    Image("alcheworld").resizable()
-                    Spacer()
-                }
+                    gameView
+                        .offset(y:-280)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2 - 50)
+                        .onAppear(){
+                            gameView.loadData(scene: self.scene!, onTap: {
+                                hitResults in
+                                handleTap(hitResults: hitResults)
+                            }, view: self.view)
+                        }.onReceive(timer) { _ in
+                            updateTime()
+                        }.onReceive(cameraTimer) { _ in
+                            configCamera()
+                        }
+                    
                     VStack(alignment: .leading) {
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                self.onPlay()
+                            }, label: {
+                                Image(systemName: "play.fill").resizable().frame(width:20, height: 20   )
+                                    .padding(30)
+                                    .foregroundColor(Color.text.primary)
+                                    .background(Color.sign.primary)
+                                    .cornerRadius(100)
+                            })
+                            .padding()
+                        .shadow(color: Color.spot.primary, radius: 6, x: 0, y: 0)
+                        }
                         
-                        AppJosefineSans(text: "Rumah Ajaib", josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
-                            .padding(.horizontal, 40)
-                        Spacer().frame(height:10)
-                        AppRubik(text: "Seorang pengelana yang menemukan sebuah ruangang kuno ajaib di sebuah kota kecil yang ia kunjungi. Siapa pemilik ruangan ini? Mengapa banyak barang-barang supranatural didalamnya?", rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
-                            .padding(.horizontal, 40)
-                        Spacer().frame(height: 220)
+                        AppJosefineSans(text: data.title, josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
+                            .padding()
+                        AppRubik(text: data.description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
+                            .padding(.horizontal)
+                        Spacer().frame(height:150)
                         
-                    }
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
-                    .background(Color.bg.primary)
-                    .offset(y:200)
-                
-                VStack {
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            
-                        }, label: {
-                            Image(systemName: "play.fill").resizable().frame(width:20, height: 20)
-                                .padding(20)
-                                .foregroundColor(Color.text.primary)
-                                .background(Color.sign.primary)
-                                .cornerRadius(100)
-                        })
+                    }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 300)
                         .padding()
-                    }
-                    .frame(height:40)
-                    .background(LinearGradient(colors: [Color.clear, Color.bg.primary], startPoint: .top, endPoint: .center)
-                        .ignoresSafeArea())
-                    Spacer().frame(height: 50)
-                }
+                        .background(
+                            LinearGradient(colors: [Color.black, Color.bg.secondary], startPoint: .top, endPoint: .center)
+                                       .ignoresSafeArea()
+                               )
+                    .offset(y:150)
             }
         }
     }
@@ -236,6 +226,6 @@ struct DescriptionModalView: View {
 
 struct DescriptionModalView_Previews: PreviewProvider {
     static var previews: some View {
-        DescriptionModalView(data: storyList.first!)
+        DescriptionModalView(data: storyList.first!, onPlay: {})
     }
 }

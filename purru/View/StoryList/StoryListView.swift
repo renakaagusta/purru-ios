@@ -22,30 +22,17 @@ struct StoryListView: View {
     var body: some View {
         
         VStack {
-            
-            AppJosefineSans(text: "Pilih cerita malam ini...", josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
-                //.frame(width: 300)
-            
-            
             InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
-            
-
-
-//            List {
-//                ForEach(storyList) { story in
-//                    NavigationLink(destination: StoryView(data: story).navigationBarBackButtonHidden(true), label: {
-//                        Text(story.title)
-//                    })
-//                }
-//            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.bg.primary
-//            LinearGradient(colors: [Color.bg.primary, Color.bg.secondary], startPoint: .top, endPoint: .center)
+        .background(
+            LinearGradient(colors: [Color.bg.primary, Color.bg.secondary], startPoint: .top, endPoint: .center)
                 .ignoresSafeArea()
-        )
-        
-        
+        ).onAppear{
+            print("===STORY LIST VIEW APPEAR====")
+            narationPlayer?.stop()
+            backsoundPlayer?.stop()
+        }
     }
 }
 

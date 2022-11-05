@@ -6,8 +6,18 @@
 //
 
 import SwiftUI
+import AVFoundation
 
-final class GlobalVariables: ObservableObject{
+var backsoundPlayer: AVAudioPlayer? = nil
+var narationPlayer: AVAudioPlayer? = nil
+
+class GlobalStorage {
+    
+   @AppStorage("IS_TUTORIAL_FINISHED") static var isTurorialFinished: Bool = false
+
+}
+
+class GlobalVariables: ObservableObject{
     
     static let global = GlobalVariables()
     
@@ -17,7 +27,13 @@ final class GlobalVariables: ObservableObject{
     // USER
     @Published var tutorialFinished = false
     
+    // STATE
+    @Published var isPlaying = false
+    
     // STORY
+    @Published var storyIndex = -1
+    
+    // SETTING
     @Published var showSubtitle = true
     @Published var narationVolume: CGFloat = 80
     @Published var backsoundVolume: CGFloat = 25
@@ -27,6 +43,7 @@ struct ContentView: View {
     
     @ObservedObject var global = GlobalVariables.global
     @State var moveToMainMenu = false
+    @State var moveToTutorial = false
 
     var body: some View {
         NavigationView {
@@ -34,8 +51,11 @@ struct ContentView: View {
                 if(!moveToMainMenu) {
                     SplashScreenView()
                 } else {
-                    if(global.tutorialFinished) {
-                        MainMenuView()
+                    if(moveToTutorial) {
+                        MainMenuView().onAppear{
+                            narationPlayer?.stop()
+                            backsoundPlayer?.stop()
+                        }
                     } else {
                         StoryView(data: storyList.first!)
                     }
@@ -45,6 +65,10 @@ struct ContentView: View {
                     withAnimation {
                         self.moveToMainMenu = true
                     }
+                }
+                
+                if(GlobalStorage.isTurorialFinished == true) {
+                    moveToTutorial = true
                 }
             }
         }
