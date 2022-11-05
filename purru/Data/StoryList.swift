@@ -198,8 +198,8 @@ import SceneKit
 var storyListTab = [
        StoryTab(
            id: "1",
-           title: "Story 1",
-           description: "Description 1",
+           title: "Pohon jancuk",
+           description: "RuanganAjaib",
            thumbnail: "",
            sceneName: "3DAssetS1",
            sceneExtension: "scn",
@@ -209,9 +209,9 @@ var storyListTab = [
        ),
        StoryTab(
            id: "2",
-           title: "Ruang Ajaib",
-           description: "Aku adalah anak gembala, selalu riang serta gembira. Karena aku rajin menabung dan tidak sombong",
-           thumbnail: "story2_thumnail",
+           title: "Ruangan Ajaib",
+           description: "Seorang pengelana yang menemukan sebuah ruangang kuno ajaib di sebuah kota kecil yang ia kunjungi. Siapa pemilik ruangan ini? Mengapa banyak barang-barang supranatural didalamnya?",
+           thumbnail: "RuanganAjaib",
            sceneName: "3DAssetS1",
            sceneExtension: "scn",
            backsound: "backsound-story1",
