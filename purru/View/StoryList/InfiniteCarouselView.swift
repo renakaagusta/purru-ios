@@ -42,7 +42,8 @@ struct InfiniteCarouselView: View{
                             global.storyIndex = index - 1
                             global.isPlaying = true
                         })
-                        .presentationDetents([.large]).onAppear{
+                        .presentationDetents([.height(550)])
+                        .onAppear{
                             print("====INDEX====")
                             print(index)
                         }

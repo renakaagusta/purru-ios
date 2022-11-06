@@ -175,53 +175,66 @@ struct DescriptionModalView: View {
     
     var body: some View {
         VStack{
-            ZStack {
-                    gameView
-                        .offset(y:-280)
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2 - 50)
-                        .onAppear(){
-                            gameView.loadData(scene: self.scene!, onTap: {
-                                hitResults in
-                                handleTap(hitResults: hitResults)
-                            }, view: self.view)
-                        }.onReceive(timer) { _ in
-                            updateTime()
-                        }.onReceive(cameraTimer) { _ in
-                            configCamera()
-                        }
-                    
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Spacer()
-                            Button(action: {
-                                self.onPlay()
-                            }, label: {
-                                Image(systemName: "play.fill").resizable().frame(width:20, height: 20   )
-                                    .padding(30)
-                                    .foregroundColor(Color.text.primary)
-                                    .background(Color.sign.primary)
-                                    .cornerRadius(100)
-                            })
-                            .padding()
-                        .shadow(color: Color.spot.primary, radius: 6, x: 0, y: 0)
+                    ZStack {
+                        Color.bg.primary.ignoresSafeArea()
+        //                    gameView
+        //                        .offset(y:-100)
+        //                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2 - 50)
+        //                        .onAppear(){
+        //                            gameView.loadData(scene: self.scene!, onTap: {
+        //                                hitResults in
+        //                                handleTap(hitResults: hitResults)
+        //                            }, view: self.view)
+        //                        }.onReceive(timer) { _ in
+        //                            updateTime()
+        //                        }.onReceive(cameraTimer) { _ in
+        //                            configCamera()
+        //                        }
+                        ForEach(storyListTab) { story in
+                            
+                            VStack {
+                                Image(story.modalCover).resizable()
+                                Spacer()
+                            }
+                            VStack(alignment: .leading) {
+                                
+                                AppJosefineSans(text: story.title, josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
+                                    .padding(.horizontal, 40)
+                                Spacer().frame(height:10)
+                                AppRubik(text: story.description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
+                                    .padding(.horizontal, 40)
+                                Spacer().frame(height: 220)
+                                
+                            }
+                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
+                            .background(Color.bg.primary)
+                            .offset(y:200)
                         }
                         
-                        AppJosefineSans(text: data.title, josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
-                            .padding()
-                        AppRubik(text: data.description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
-                            .padding(.horizontal)
-                        Spacer().frame(height:150)
-                        
-                    }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 300)
-                        .padding()
-                        .background(
-                            LinearGradient(colors: [Color.black, Color.bg.secondary], startPoint: .top, endPoint: .center)
-                                       .ignoresSafeArea()
-                               )
-                    .offset(y:150)
-            }
-        }
+                        VStack {
+                            HStack {
+                                Spacer()
+                                Button(action: {
+                                    self.onPlay()
+                                }, label: {
+                                    Image(systemName: "play.fill").resizable().frame(width:20, height: 20)
+                                        .padding(20)
+                                        .foregroundColor(Color.text.primary)
+                                        .background(Color.sign.primary)
+                                        .cornerRadius(100)
+                                })
+                                .padding()
+                            }
+                            .frame(height:40)
+                            .background(LinearGradient(colors: [Color.clear, Color.bg.primary], startPoint: .top, endPoint: .center)
+                                .ignoresSafeArea())
+                            Spacer().frame(height: 50)
+                        }
+                            
+                    }
+                }
     }
+    
 }
 
 struct DescriptionModalView_Previews: PreviewProvider {
