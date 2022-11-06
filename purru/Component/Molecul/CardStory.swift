@@ -35,9 +35,19 @@ struct AppCardStory: View {
                                 AppRubik(text: description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
                                     .lineLimit(DescriptionLineLimit)
                                     .lineSpacing(2)
+                                
+                                HStack{
+                                    AppRubik(text: "Selengkapnya", rubikSize: fontType.caption1, fontWeight: Font.Weight.regular, fontColor: Color.foot.primary, textAligment: TextAlignment.center)
+                                    Image(systemName: "chevron.forward")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 10, height: 10, alignment: .center)
+                                        .foregroundColor(Color.foot.primary)
+                                }
+                                .padding(.bottom)
+                                .frame(maxWidth: .infinity, alignment: .center)
 
-                                
-                                
+                            
                             }
                             .padding()
 
@@ -58,19 +68,19 @@ struct AppCardStory: View {
                     //play button
                     //NavigationLink(destination: StoryView(data: storyList[index]), label: {
 
-                        Button(action: {
-                            //self.onClick()
-                            isActive = true
-                            print("kaka dua")
-                        }, label: {
-                            Image(systemName: "play.fill")
-                                .padding(12.5)
-                                .frame(width: .infinity, height: .infinity)
-                                .background(Color.sign.primary)
-                                .foregroundColor(Color.text.primary)
-                                .cornerRadius(100)
-                        })
-                        .offset(x: 95,y:60)
+//                        Button(action: {
+//                            //self.onClick()
+//                            isActive = true
+//                            print("kaka dua")
+//                        }, label: {
+//                            Image(systemName: "play.fill")
+//                                .padding(12.5)
+//                                .frame(width: .infinity, height: .infinity)
+//                                .background(Color.sign.primary)
+//                                .foregroundColor(Color.text.primary)
+//                                .cornerRadius(100)
+//                        })
+//                        .offset(x: 95,y:60)
                         
                     //})
                     

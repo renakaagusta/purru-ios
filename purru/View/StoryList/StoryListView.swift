@@ -13,11 +13,24 @@ struct StoryListView: View {
     @Binding var tabs: [StoryTab]
     @Binding var currentIndex: Int
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @State var fakeIndex: Int = 0
     
     @State var offset: CGFloat = 0
     
     @State var genericTabs: [StoryTab] = []
+    
+    //custom back button
+    var btnBack : some View { Button(action: {
+        self.presentationMode.wrappedValue.dismiss()
+        }) {
+            Image(systemName: "chevron.backward") // set image here
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(Color.text.primary)
+                .bold()
+        }
+    }
     
     var body: some View {
         
@@ -39,6 +52,8 @@ struct StoryListView: View {
 //                }
 //            }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: btnBack)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             LinearGradient(colors: [Color.bg.primary, Color.bg.secondary], startPoint: .top, endPoint: .center)

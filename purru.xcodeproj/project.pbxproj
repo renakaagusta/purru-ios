@@ -75,6 +75,7 @@
 		41147799290FC95700FD5B56 /* hand.swipe.up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147795290FC95700FD5B56 /* hand.swipe.up.gif */; };
 		4114779A290FC95700FD5B56 /* hand.swipe.left.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147796290FC95700FD5B56 /* hand.swipe.left.gif */; };
 		4114779B290FC95700FD5B56 /* hand.zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147797290FC95700FD5B56 /* hand.zoom.gif */; };
+		B8469D452917F7BB00249606 /* PauseStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8469D442917F7BB00249606 /* PauseStoryView.swift */; };
 		B8624DB6291120D400586833 /* 3DAssetS1.scn in Resources */ = {isa = PBXBuildFile; fileRef = B8624DB5291120D400586833 /* 3DAssetS1.scn */; };
 		B8692BE7290903840029667A /* narasi4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE1290903840029667A /* narasi4.mp3 */; };
 		B8692BE8290903840029667A /* narasi1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE2290903840029667A /* narasi1.mp3 */; };
@@ -179,6 +180,7 @@
 		41147795290FC95700FD5B56 /* hand.swipe.up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.swipe.up.gif; sourceTree = "<group>"; };
 		41147796290FC95700FD5B56 /* hand.swipe.left.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.swipe.left.gif; sourceTree = "<group>"; };
 		41147797290FC95700FD5B56 /* hand.zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.zoom.gif; sourceTree = "<group>"; };
+		B8469D442917F7BB00249606 /* PauseStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseStoryView.swift; sourceTree = "<group>"; };
 		B8624DB5291120D400586833 /* 3DAssetS1.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = 3DAssetS1.scn; sourceTree = "<group>"; };
 		B8692BE1290903840029667A /* narasi4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi4.mp3; sourceTree = "<group>"; };
 		B8692BE2290903840029667A /* narasi1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi1.mp3; sourceTree = "<group>"; };
@@ -612,6 +614,7 @@
 			isa = PBXGroup;
 			children = (
 				2FA53F8B2907C31F00BFB3E5 /* StoryView.swift */,
+				B8469D442917F7BB00249606 /* PauseStoryView.swift */,
 			);
 			path = Story;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 				2FD9232E2912560400CF5162 /* SplashScreenView.swift in Sources */,
 				2FA53FBF2907C31F00BFB3E5 /* Headline1.swift in Sources */,
 				2FA53FAA2907C31F00BFB3E5 /* String.swift in Sources */,
+				B8469D452917F7BB00249606 /* PauseStoryView.swift in Sources */,
 				2FA53FA32907C31F00BFB3E5 /* Instruction.swift in Sources */,
 				2FA53FB12907C31F00BFB3E5 /* AvatarImage.swift in Sources */,
 				2FA53FCC2907C31F00BFB3E5 /* StoryState.swift in Sources */,

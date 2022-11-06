@@ -201,8 +201,8 @@ var storyListTab = [
        StoryTab(
            id: "1",
            title: "Pohon jancuk",
-           description: "RuanganAjaib",
-           thumbnail: "",
+           description: "Menemukan burung yang berukuran sangat kecil seperti burung miliknya Dips",
+           thumbnail: "RuanganAjaib",
            modalCover: "alcheworld",
            sceneName: "3DAssetS1",
            sceneExtension: "scn",

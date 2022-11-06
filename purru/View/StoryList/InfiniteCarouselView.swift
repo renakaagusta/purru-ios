@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InfiniteCarouselView: View{
     @ObservedObject var global = GlobalVariables.global
-    
+        
     @Binding var tabs: [StoryTab]
     @Binding var currentIndex: Int
     
@@ -115,6 +115,7 @@ struct InfiniteCarouselView: View{
         .onChange(of: fakeIndex) { newValue in
             currentIndex = fakeIndex - 1
         }
+        
     }
     
     func getIndex(tab: StoryTab)->Int{

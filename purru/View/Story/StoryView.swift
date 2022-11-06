@@ -15,9 +15,7 @@ enum DialogPosition {
 struct StoryView: View {
     
     @ObservedObject var global = GlobalVariables.global
-    
-    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
+        
     private var gameView: GameView
     private var scene: SCNScene?
     private var view: SCNView
@@ -51,6 +49,25 @@ struct StoryView: View {
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var isPresentPause: Bool = false
+
+    //custom back button
+    var btnPause : some View { Button(action: {
+//        self.presentationMode.wrappedValue.dismiss()
+            isPresentPause = true
+        }) {
+            if !isPresentPause {
+                Image(systemName: "gearshape.fill") // set image here
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(Color.text.primary)
+                    .bold()
+            } else {
+                PauseStoryView(buttonTextEnding: "Keluar", onRestartClick: {})
+            }
+        }
+    }
     
     init(data: StoryData) {
         self.gameView = GameView()
@@ -424,7 +441,7 @@ struct StoryView: View {
                 if(!endingVisibility) {
                     VStack {
                         AppProgressBar(width:300, height: 7, progress:Binding(get:{narationsProgress}, set: {_ in true}))
-                            .padding(.top, 60)
+                            .padding(.top, 75)
                         if(dialogVisibility && !endingVisibility && global.showSubtitle) {
                                     dialogView
                                         .padding(.horizontal, 50)
@@ -516,7 +533,10 @@ struct StoryView: View {
             }.onReceive(cameraTimer) { _ in
                 configCamera()
             }
+            
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(trailing: btnPause)
     }
 }
 
