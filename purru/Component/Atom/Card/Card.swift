@@ -40,7 +40,7 @@ struct AppCard<Content: View>: View {
         )
         .background(LinearGradient(colors: [backgroundColorTop, backgroundColorBottom],
                                     startPoint: .top,
-                                    endPoint: .bottom))
+                                    endPoint: .center))
         .cornerRadius(cornerRadius)
     }
 }
