@@ -7,37 +7,30 @@
 
 import SwiftUI
 
-// To for Accepting List....
 struct SnapCarousel<Content: View,T: Identifiable>: View {
     var content: (T) -> Content
     var list: [T]
     
-    // Properties...
-    var spacing: CGFloat
-    var trailingSpace: CGFloat
+    var spacing: CGFloat = 15
+    var trailingSpace: CGFloat = 100
     @Binding var index: Int
     
-    init(spacing: CGFloat = 15,trailingSpace: CGFloat = 100,index: Binding<Int>,items: [T],@ViewBuilder content: @escaping (T)->Content){
+    init(index: Binding<Int>,items: [T],onChangeIndex: @escaping () -> Void, @ViewBuilder content: @escaping (T)->Content){
         
         self.list = items
-        self.spacing = spacing
-        self.trailingSpace = trailingSpace
         self._index = index
         self.content = content
+        self.onChangeIndex = onChangeIndex
     }
     
-    // Offset...
     @GestureState var offset: CGFloat = 0
     @State var currentIndex: Int = 0
     
+    var onChangeIndex: () -> Void
+
     var body: some View{
         
         GeometryReader{proxy in
-            
-            // Setting correct Width for snap Carousel....
-            
-            // One Sided Snap Caorusel...
-            
             let width = proxy.size.width - (trailingSpace - spacing)
             let adjustMentWidth = (trailingSpace / 2) - spacing
             
@@ -49,9 +42,7 @@ struct SnapCarousel<Content: View,T: Identifiable>: View {
                         .frame(width: proxy.size.width - trailingSpace)
                 }
             }
-            // Spacing will be horizontal padding...
             .padding(.horizontal,spacing)
-            // setting only after 0th index..
             .offset(x: (CGFloat(currentIndex) * -width) + (currentIndex != 0 ? adjustMentWidth : 0) + offset)
             .gesture(
             
@@ -78,6 +69,8 @@ struct SnapCarousel<Content: View,T: Identifiable>: View {
                         
                         // updating index....
                         currentIndex = index
+                        
+                        self.onChangeIndex()
                     })
                     .onChanged({ value in
                         // updating only index....

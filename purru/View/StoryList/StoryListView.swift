@@ -10,29 +10,22 @@ import SceneKit
 
 struct StoryListView: View {
     
+    @ObservedObject var global = GlobalVariables.global
+    
     @Binding var tabs: [StoryTab]
     @Binding var currentIndex: Int
     
-   // @State var currentIndex: Int = 0
-    
-    @State var posts: [Post] = []
-    
-    //@State var currentIndex: Int = 0
-
+    @State var carouselItemList: [StoryTab] = storyListTab
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    @State var fakeIndex: Int = 0
-    
+        
     @State var offset: CGFloat = 0
     
     @State var genericTabs: [StoryTab] = []
-    
-    //custom back button
-    var btnBack : some View { Button(action: {
+        var btnBack : some View { Button(action: {
         self.presentationMode.wrappedValue.dismiss()
         }) {
-            Image(systemName: "chevron.backward") // set image here
+            Image(systemName: "chevron.backward")
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(Color.text.primary)
                 .bold()
@@ -40,63 +33,27 @@ struct StoryListView: View {
     }
     
     var body: some View {
-        
         VStack {
-            
             AppJosefineSans(text: "Pilih cerita malam ini...", josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
                 .frame(width: 300)
-            
-            
-            // Snap Carousel....
-            SnapCarousel(index: $currentIndex, items: posts) {post in
-                
+            SnapCarousel(index: $currentIndex, items: carouselItemList, onChangeIndex:  {
+                if(currentIndex == carouselItemList.count - 1) {
+                    carouselItemList.append(storyListTab[carouselItemList.count % storyListTab.count])
+                }
+            }) {story in
                 GeometryReader{proxy in
                     
                     let size = proxy.size
                     
-                    let tab = storyListTab[0]
+                    let tab = carouselItemList[currentIndex]
                     
                     AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3, index: 0, onClick: {
-                        
-//                        global.storyIndex = index
-//                        print("====STORY INDEX===")
-//                        print(index)
-//                        print(global.storyIndex)
-//                        print(storyList.count)
-//                        print(storyList[global.storyIndex].title)
+                        global.storyIndex = currentIndex
                     })
-//                    Image(post.postImage)
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fill)
-//                        .frame(width: size.width)
-//                        .cornerRadius(12)
                 }
             }
             .padding(.vertical,40)
-            
-            // Indicator...
-            HStack(spacing: 10){
-                
-                ForEach(posts.indices,id: \.self){index in
-                    
-                    Circle()
-                        .fill(Color.black.opacity(currentIndex == index ? 1 : 0.1))
-                        .frame(width: 10, height: 10)
-                        .scaleEffect(currentIndex == index ? 1.4 : 1)
-                        .animation(.spring(), value: currentIndex == index)
-                }
-            }
-            .padding(.bottom,40)
-            
-            Spacer() 
-
-//            List {
-//                ForEach(storyList) { story in
-//                    NavigationLink(destination: StoryView(data: story).navigationBarBackButtonHidden(true), label: {
-//                        Text(story.title)
-//                    })
-//                }
-//            }
+            Spacer()
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: btnBack)
@@ -109,9 +66,8 @@ struct StoryListView: View {
             narationPlayer?.stop()
             backsoundPlayer?.stop()
             
-            for index in 1...5{
-                posts.append(Post(postImage: "post\(index)"))
-            }
+            carouselItemList = storyListTab
+            carouselItemList.insert(storyListTab.last!, at: 0)
         }
       
     }
