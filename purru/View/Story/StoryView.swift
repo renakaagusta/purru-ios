@@ -15,7 +15,7 @@ enum DialogPosition {
 struct StoryView: View {
     
     @ObservedObject var global = GlobalVariables.global
-        
+    
     private var gameView: GameView
     private var scene: SCNScene?
     private var view: SCNView
@@ -53,7 +53,7 @@ struct StoryView: View {
     let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
+    
     init(data: StoryData) {
         self.gameView = GameView()
         
@@ -68,7 +68,7 @@ struct StoryView: View {
         guard let sceneUrl = Bundle.main.url(forResource: data.sceneName, withExtension: data.sceneExtension) else { fatalError() }
         
         self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
-    
+        
         //kanan, kiri, atas, bawah, belakang, depan
         
         self.scene?.background.contents = [
@@ -92,9 +92,9 @@ struct StoryView: View {
         let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
         
         self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
-
+        
         self.view.defaultCameraController.pointOfView?.worldOrientation =  SCNQuaternion(x: cameraDestination?.worldOrientation.x ?? 0, y: cameraDestination?.worldOrientation.y ?? 0, z: cameraDestination?.worldOrientation.z ?? 0, w: cameraDestination?.worldOrientation.w ?? 0)
-                
+        
         let objectTarget = view.scene!.rootNode.childNodes.filter({$0.name == data.objectList[focusedObjectIndex].tag}).first
         
         let material = objectTarget!.geometry!.firstMaterial!
@@ -114,7 +114,7 @@ struct StoryView: View {
         material.emission.contents = UIColor.yellow
         
         SCNTransaction.commit()
-
+        
         hintVisibility = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -154,7 +154,7 @@ struct StoryView: View {
                 hintVisibility = false
                 gestureVisibility = false
                 elapsedTime = 0
-    
+                
                 playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                 
                 material.normal.contents = nil
@@ -274,7 +274,7 @@ struct StoryView: View {
         configCamera()
         
         updateState()
-
+        
         if(focusedObjectIndex <= data.objectList.count - 1) {
             var showedInstruction: String?
             for (index, instruction) in data.objectList[focusedObjectIndex].instructionList!.enumerated() {
@@ -308,7 +308,7 @@ struct StoryView: View {
             }
             
             narationsProgress = CGFloat(focusedObjectIndex != 0 ? focusedObjectIndex - 1 : 0 ) / CGFloat(data.objectList.count - 2)
-
+            
         } else {
             endingVisibility = true
         }
@@ -341,7 +341,7 @@ struct StoryView: View {
             backsoundPlayer?.setVolume(Float(global.backsoundVolume / 100), fadeDuration: 0.1)
             backsoundPlayer?.numberOfLoops = -1
             
-        try AVAudioSession.sharedInstance().setCategory(.playback)
+            try AVAudioSession.sharedInstance().setCategory(.playback)
             backsoundPlayer?.play()
         } catch {
             print("error")
@@ -379,7 +379,7 @@ struct StoryView: View {
         hintVisibility = false
         gestureVisibility = false
         elapsedTime = 0
-
+        
         playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
     }
     
@@ -392,7 +392,9 @@ struct StoryView: View {
             ZStack {
                 gameView
                 if(endingVisibility) {
-                    EndingView(textEnding: "Sekian untuk malam ini", buttonTextEnding: "Kembali ke Menu", onRestartClick: restartGame)
+                    EndingView(titleEnding: "Sekian untuk malam ini", textEnding: "Selamat beristirahat!", buttonTextEnding: "Kembali ke Menu", onRestartClick: {
+                        presentationMode.wrappedValue.dismiss()
+                    })
                 }
                 if(gestureVisibility) {
                     GIFView(type: .name(gesture))
@@ -440,13 +442,13 @@ struct StoryView: View {
                         AppProgressBar(width:300, height: 7, progress:Binding(get:{narationsProgress}, set: {_ in true}))
                             .padding(.top, 75)
                         if(dialogVisibility && !endingVisibility && global.showSubtitle) {
-                                    dialogView
-                                        .padding(.horizontal, 50)
-                                        .padding(.top)
-                                }
-                            Spacer()
+                            dialogView
+                                .padding(.horizontal, 50)
+                                .padding(.top)
                         }
-                        .frame(width: UIScreen.width, height: UIScreen.height)
+                        Spacer()
+                    }
+                    .frame(width: UIScreen.width, height: UIScreen.height)
                 }
                 VStack(alignment: .trailing) {
                     Spacer().frame(height: UIScreen.height -  220)
@@ -501,9 +503,9 @@ struct StoryView: View {
                             .padding()
                             .shadow(color: Color.spot.primary, radius: 15, x: 0, y: 0)
                         }
-
+                        
                     }
-
+                    
                 }
                 
             }
@@ -516,12 +518,12 @@ struct StoryView: View {
             }
             .onAppear(){
                 GlobalStorage.isTurorialFinished = true
-
+                
                 playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
                 playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                 
                 gameView.loadData(scene: self.scene!, onTap: {
-                        hitResults in
+                    hitResults in
                     handleTap(hitResults: hitResults)
                 }, view: self.view)
             }.onReceive(timer) { _ in
@@ -536,14 +538,16 @@ struct StoryView: View {
             action: {
                 pauseVisibility.toggle()
             }, label: {
-                Image(systemName: pauseVisibility ? "xmark" : "gearshape.fill")
+                if(!endingVisibility){
+                    Image(systemName: pauseVisibility ? "xmark" : "gearshape.fill")
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Color.text.primary)
                         .bold()
+                }
             }
         )
         )
-
+        
     }
 }
 

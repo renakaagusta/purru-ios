@@ -9,43 +9,41 @@ import SwiftUI
 
 struct EndingView: View {
     
-    @State var imageEnding: String = "RuanganAjaib"
-    @State var textEnding: String = "Sekian untuk malam ini"
+    @State var titleEnding: String = "Sekian untuk malam ini"
+    @State var textEnding: String = "Selamat beristirahat!"
     @State var buttonTextEnding: String = "Kembali ke Menu"
+    
     var onRestartClick: () -> () = {}
-
+    
     var body: some View {
-  
-        VStack(alignment: .center) {
-            
-            Image(imageEnding)
-                .resizable()
-                .frame(width: 479, height: 327)
-                .padding()
-            
-            AppJosefineSans(text: textEnding, josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.spot.primary, textAligment: .center)
-                .lineSpacing(10)
-                .padding()
-            
-            AppJosefineSans(text: textEnding, josepSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: .center)
-                .padding(.bottom)
-            
-            Button(action: onRestartClick, label: {
-                AppRubik(text: buttonTextEnding, rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
+        
+        ZStack {
+            VStack(alignment: .center) {
+                
+                AppJosefineSans(text: titleEnding, josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.spot.primary, textAligment: .center)
+                    .lineSpacing(10)
                     .padding()
-                    .frame(width: .infinity, height: .infinity)
-                    .background(Color.sign.primary)
-                    .cornerRadius(500)
-            })
-            
+                
+                AppJosefineSans(text: textEnding, josepSize: fontType.title3, fontWeight: Font.Weight.medium, fontColor: Color.text.primary, textAligment: .center)
+                    .padding(.bottom)
+                
+                Button(action: onRestartClick, label: {
+                    AppRubik(text: buttonTextEnding, rubikSize: fontType.body, fontWeight: Font.Weight.medium, fontColor: Color.text.primary)
+                        .padding()
+                        .frame(width: .infinity, height: .infinity)
+                        .background(Color.sign.primary)
+                        .cornerRadius(100)
+                })
+                
+            }
+            .padding()
+            .frame(width: UIScreen.width, height: UIScreen.height/2 - 80)
+            .background(
+                LinearGradient(colors: [Color.clear, Color.bg.primary], startPoint: .top, endPoint: .center)
+                    .ignoresSafeArea()
+            )
+            .offset(y:220)
         }
-        .padding()
-        .frame(width: UIScreen.width, height: UIScreen.height)
-        //.background(Color.bg.primary.opacity(0.8))
-        .background(
-            LinearGradient(colors: [Color.black, Color.bg.primary], startPoint: .top, endPoint: .center)
-                .ignoresSafeArea()
-        )
         
     }
 }

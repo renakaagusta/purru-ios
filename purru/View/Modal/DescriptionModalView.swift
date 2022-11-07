@@ -71,9 +71,9 @@ struct DescriptionModalView: View {
         let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
         
         self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
-
+        
         self.view.defaultCameraController.pointOfView?.worldOrientation =  SCNQuaternion(x: cameraDestination?.worldOrientation.x ?? 0, y: cameraDestination?.worldOrientation.y ?? 0, z: cameraDestination?.worldOrientation.z ?? 0, w: cameraDestination?.worldOrientation.w ?? 0)
-                
+        
         let objectTarget = view.scene!.rootNode.childNodes.filter({$0.name == data.objectList[focusedObjectIndex].tag}).first
         
         let material = objectTarget!.geometry!.firstMaterial!
@@ -93,7 +93,7 @@ struct DescriptionModalView: View {
         material.emission.contents = UIColor.yellow
         
         SCNTransaction.commit()
-
+        
         hintVisibility = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -173,46 +173,46 @@ struct DescriptionModalView: View {
     
     var body: some View {
         VStack{
-                    ZStack {
-                        Color.bg.primary.ignoresSafeArea()
-                        VStack {
-                            Image(data.modalCover).resizable()
-                            Spacer()
-                        }
-                        VStack(alignment: .leading) {
-                            AppJosefineSans(text: data.title, josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
-                                    .padding(.horizontal, 40)
-                            Spacer().frame(height:10)
-                            AppRubik(text: data.description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
-                                    .padding(.horizontal, 40)
-                            Spacer().frame(height: 220)
-                        }
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
-                        .background(Color.bg.primary)
-                        .offset(y:200)
-                        
-                        VStack {
-                            HStack {
-                                Spacer()
-                                Button(action: {
-                                    self.onPlay()
-                                }, label: {
-                                    Image(systemName: "play.fill").resizable().frame(width:20, height: 20)
-                                        .padding(20)
-                                        .foregroundColor(Color.text.primary)
-                                        .background(Color.sign.primary)
-                                        .cornerRadius(100)
-                                })
-                                .padding()
-                            }
-                            .frame(height:40)
-                            .background(LinearGradient(colors: [Color.clear, Color.bg.primary], startPoint: .top, endPoint: .center)
-                                .ignoresSafeArea())
-                            Spacer().frame(height: 50)
-                        }
-                            
-                    }
+            ZStack {
+                Color.bg.primary.ignoresSafeArea()
+                VStack {
+                    Image(data.modalCover).resizable()
+                    Spacer()
                 }
+                VStack(alignment: .leading) {
+                    AppJosefineSans(text: data.title, josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
+                        .padding(.horizontal, 40)
+                    Spacer().frame(height:10)
+                    AppRubik(text: data.description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
+                        .padding(.horizontal, 40)
+                    Spacer().frame(height: 220)
+                }
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
+                .background(Color.bg.primary)
+                .offset(y:200)
+                
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            self.onPlay()
+                        }, label: {
+                            Image(systemName: "play.fill").resizable().frame(width:20, height: 20)
+                                .padding(20)
+                                .foregroundColor(Color.text.primary)
+                                .background(Color.sign.primary)
+                                .cornerRadius(100)
+                        })
+                        .padding()
+                    }
+                    .frame(height:40)
+                    .background(LinearGradient(colors: [Color.clear, Color.bg.primary], startPoint: .top, endPoint: .center)
+                        .ignoresSafeArea())
+                    Spacer().frame(height: 50)
+                }
+                
+            }
+        }
     }
     
 }
