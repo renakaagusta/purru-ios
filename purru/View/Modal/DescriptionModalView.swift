@@ -168,48 +168,28 @@ struct DescriptionModalView: View {
     
     func updateTime() {
         elapsedTime = elapsedTime + 1
-        
         configCamera()
-        
     }
     
     var body: some View {
         VStack{
                     ZStack {
                         Color.bg.primary.ignoresSafeArea()
-        //                    gameView
-        //                        .offset(y:-100)
-        //                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2 - 50)
-        //                        .onAppear(){
-        //                            gameView.loadData(scene: self.scene!, onTap: {
-        //                                hitResults in
-        //                                handleTap(hitResults: hitResults)
-        //                            }, view: self.view)
-        //                        }.onReceive(timer) { _ in
-        //                            updateTime()
-        //                        }.onReceive(cameraTimer) { _ in
-        //                            configCamera()
-        //                        }
-                        ForEach(storyListTab) { story in
-                            
-                            VStack {
-                                Image(story.modalCover).resizable()
-                                Spacer()
-                            }
-                            VStack(alignment: .leading) {
-                                
-                                AppJosefineSans(text: story.title, josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
-                                    .padding(.horizontal, 40)
-                                Spacer().frame(height:10)
-                                AppRubik(text: story.description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
-                                    .padding(.horizontal, 40)
-                                Spacer().frame(height: 220)
-                                
-                            }
-                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
-                            .background(Color.bg.primary)
-                            .offset(y:200)
+                        VStack {
+                            Image(data.modalCover).resizable()
+                            Spacer()
                         }
+                        VStack(alignment: .leading) {
+                            AppJosefineSans(text: data.title, josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
+                                    .padding(.horizontal, 40)
+                            Spacer().frame(height:10)
+                            AppRubik(text: data.description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
+                                    .padding(.horizontal, 40)
+                            Spacer().frame(height: 220)
+                        }
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
+                        .background(Color.bg.primary)
+                        .offset(y:200)
                         
                         VStack {
                             HStack {

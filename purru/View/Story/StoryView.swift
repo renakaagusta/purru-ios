@@ -37,10 +37,12 @@ struct StoryView: View {
     @State private var dialogVisibility = false
     @State private var dialogView: AnyView = AnyView(VStack{})
     
-    @State private var focusedObjectIndex = 1
+    @State var pauseVisibility: Bool = false
+    
+    @State private var focusedObjectIndex = 0
     @State private var foundObject = 0
     
-    @State private var elapsedTime: CGFloat = 35
+    @State private var elapsedTime: CGFloat = 0
     
     @State private var minFov: CGFloat = 20
     @State private var maxFov: CGFloat = 110
@@ -51,28 +53,15 @@ struct StoryView: View {
     let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var isPresentPause: Bool = false
 
-    //custom back button
-    var btnPause : some View { Button(action: {
-//        self.presentationMode.wrappedValue.dismiss()
-            isPresentPause = true
-        }) {
-            if !isPresentPause {
-                Image(systemName: "gearshape.fill") // set image here
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(Color.text.primary)
-                    .bold()
-            } else {
-                PauseStoryView(buttonTextEnding: "Keluar", onRestartClick: {})
-            }
-        }
-    }
-    
     init(data: StoryData) {
         self.gameView = GameView()
         
         self.data = data
+        
+        print("===STORY DATA===")
+        print(data.title)
+        print(data.objectList.count)
         
         self.view = SCNView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         
@@ -276,6 +265,9 @@ struct StoryView: View {
     }
     
     func updateTime() {
+        if(pauseVisibility) {
+            return
+        }
         
         elapsedTime = elapsedTime + 1
         
@@ -418,7 +410,7 @@ struct StoryView: View {
                     }
                     .frame(width:  UIScreen.width, height: UIScreen.height)
                 }
-                if(true) {
+                if(!pauseVisibility && !endingVisibility && data.objectList.count > 2) {
                     VStack {
                         Spacer().frame(height: UIScreen.height - 180)
                         ScrollView (.horizontal, showsIndicators: false) {
@@ -438,6 +430,11 @@ struct StoryView: View {
                         }.frame(height: 100)
                     }
                 }
+                if(pauseVisibility) {
+                    PauseStoryView(buttonTextEnding: "Keluar", onRestartClick: {
+                        presentationMode.wrappedValue.dismiss()
+                    })
+                }
                 if(!endingVisibility) {
                     VStack {
                         AppProgressBar(width:300, height: 7, progress:Binding(get:{narationsProgress}, set: {_ in true}))
@@ -451,7 +448,6 @@ struct StoryView: View {
                         }
                         .frame(width: UIScreen.width, height: UIScreen.height)
                 }
-                
                 VStack(alignment: .trailing) {
                     Spacer().frame(height: UIScreen.height -  220)
                     HStack {
@@ -520,7 +516,7 @@ struct StoryView: View {
             }
             .onAppear(){
                 GlobalStorage.isTurorialFinished = true
-                                
+
                 playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
                 playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                 
@@ -536,7 +532,18 @@ struct StoryView: View {
             
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(trailing: btnPause)
+        .navigationBarItems(trailing: Button(
+            action: {
+                pauseVisibility.toggle()
+            }, label: {
+                Image(systemName: pauseVisibility ? "xmark" : "gearshape.fill")
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(Color.text.primary)
+                        .bold()
+            }
+        )
+        )
+
     }
 }
 
