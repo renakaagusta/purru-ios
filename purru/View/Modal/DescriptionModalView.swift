@@ -10,6 +10,7 @@ import SceneKit
 
 struct DescriptionModalView: View {
     
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var global = GlobalVariables.global
     
     private var gameView: GameView
@@ -42,7 +43,8 @@ struct DescriptionModalView: View {
     
     @State private var objectHistoryList: [SCNNode] = []
     
-    @State private var onPlay: () -> Void
+    @State private var onPlay: () -> Void = {}
+    
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
@@ -179,6 +181,15 @@ struct DescriptionModalView: View {
                     Image(data.modalCover).resizable()
                     Spacer()
                 }
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "chevron.compact.down")
+                        .foregroundColor(Color.text.primary)
+                }
+                .offset(y:-260)
+                
+
                 VStack(alignment: .leading) {
                     AppJosefineSans(text: data.title, josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
                         .padding(.horizontal, 40)
@@ -190,7 +201,7 @@ struct DescriptionModalView: View {
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
                 .background(Color.bg.primary)
                 .offset(y:200)
-                
+
                 VStack {
                     HStack {
                         Spacer()
