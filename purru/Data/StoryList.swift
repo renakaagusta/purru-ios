@@ -11,8 +11,8 @@ import SceneKit
 var storyList = [
        StoryData(
            id: "1",
-           title: "Story 1",
-           description: "Description 1",
+           title: "Pohon jancuk",
+           description: "Menemukan burung yang berukuran sangat kecil seperti burung miliknya Dips",
            thumbnail: "",
            modalCover:"alcheworld",
            sceneName: "3DAssetS1",
@@ -157,8 +157,8 @@ var storyList = [
        ),
        StoryData(
            id: "2",
-           title: "Story 2",
-           description: "Description 1",
+           title: "Ruangan Ajaib",
+           description: "Seorang pengelana yang menemukan sebuah ruangang kuno ajaib di sebuah kota kecil yang ia kunjungi. Siapa pemilik ruangan ini? Mengapa banyak barang-barang supranatural didalamnya?",
            thumbnail: "",
            modalCover:"alcheworld",
            sceneName: "3DAssetS1",

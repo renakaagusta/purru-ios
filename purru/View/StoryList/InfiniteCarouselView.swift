@@ -28,7 +28,13 @@ struct InfiniteCarouselView: View{
                 NavigationLink(destination: StoryView(data: storyList[index]), isActive: Binding(get: {global.storyIndex == index && global.isPlaying == true}, set: { _ in true})) {
                     VStack {
                         AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3, index: index , onClick: {
+                            
                             global.storyIndex = index
+                            print("====STORY INDEX===")
+                            print(index)
+                            print(global.storyIndex)
+                            print(storyList.count)
+                            print(storyList[global.storyIndex].title)
                             isPresentDescriptionModal.toggle()
                         })
                     }
@@ -44,8 +50,9 @@ struct InfiniteCarouselView: View{
                         })
                         .presentationDetents([.height(550)])
                         .onAppear{
-                            print("====INDEX====")
-                            print(index)
+                            print("====STORY INDEX INDEX====")
+                            print(global.storyIndex)
+                            print(storyList[global.storyIndex].title)
                         }
                 }
                 }

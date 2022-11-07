@@ -16,7 +16,6 @@ struct AppCardStory: View {
     @State var index: Int = 0
     @State var isActive: Bool = false
 
-//    @State var title: String = ""
     var onClick: () -> Void = {}
     
     var body: some View {
@@ -24,30 +23,30 @@ struct AppCardStory: View {
         VStack {
             NavigationLink(destination: StoryView(data: storyList[index]), isActive: $isActive, label: {
                 ZStack {
-                    
                     AppCard(width: 280, height: 479, cornerRadius: 31, backgroundColorTop: Color.clear, backgroundColorBottom: Color.bg.secondary, borderColor: Color.spot.primary) {
-                            
                             Spacer(minLength: -100)
                             VStack(alignment: .leading) {
                                 AppJosefineSans(text: title, josepSize: fontType.title2, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
                                     .padding(.bottom,5)
-                                    //.frame(width: 150)
-                                AppRubik(text: description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
-                                    .lineLimit(DescriptionLineLimit)
-                                    .lineSpacing(2)
-                                
-                                HStack{
-                                    AppRubik(text: "Selengkapnya", rubikSize: fontType.caption1, fontWeight: Font.Weight.regular, fontColor: Color.foot.primary, textAligment: TextAlignment.center)
-                                    Image(systemName: "chevron.forward")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 10, height: 10, alignment: .center)
-                                        .foregroundColor(Color.foot.primary)
-                                }
-                                .padding(.bottom)
-                                .frame(maxWidth: .infinity, alignment: .center)
-
-                            
+                                Button(action: {
+                                    self.onClick()
+                                }, label: {
+                                    VStack {
+                                        AppRubik(text: description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
+                                            .lineLimit(DescriptionLineLimit)
+                                            .lineSpacing(2)
+                                        HStack{
+                                            AppRubik(text: "Selengkapnya", rubikSize: fontType.caption1, fontWeight: Font.Weight.regular, fontColor: Color.foot.primary, textAligment: TextAlignment.center)
+                                            Image(systemName: "chevron.forward")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 10, height: 10, alignment: .center)
+                                                .foregroundColor(Color.foot.primary)
+                                        }
+                                        .padding(.bottom)
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                    }
+                                })
                             }
                             .padding()
 
@@ -56,7 +55,7 @@ struct AppCardStory: View {
                         .padding(5)
                     
                     Button(action: {
-                        self.onClick()
+                        isActive = true
                     }, label: {
                         Image(thumbnail)
                             .resizable()
@@ -64,26 +63,6 @@ struct AppCardStory: View {
                             .frame(width: 371.0, height: 371.0)
                             .offset(y:-60)
                     })
-                    
-                    //play button
-                    //NavigationLink(destination: StoryView(data: storyList[index]), label: {
-
-//                        Button(action: {
-//                            //self.onClick()
-//                            isActive = true
-//                            print("kaka dua")
-//                        }, label: {
-//                            Image(systemName: "play.fill")
-//                                .padding(12.5)
-//                                .frame(width: .infinity, height: .infinity)
-//                                .background(Color.sign.primary)
-//                                .foregroundColor(Color.text.primary)
-//                                .cornerRadius(100)
-//                        })
-//                        .offset(x: 95,y:60)
-                        
-                    //})
-                    
                     Ellipse()
                         .fill(.black.opacity(0.1))
                         .frame(width: 200, height: 20)
@@ -91,22 +70,10 @@ struct AppCardStory: View {
                         .offset(y:270)
                                     
                 }
-                //.background(Color.gray.opacity(0))
             })
             .padding()
             Spacer()
         }
-        
-         //Here is where we use the opacity
-//        .frame(maxWidth: .infinity, maxHeight: .infinity)
-//        .background(.transparent)
-
-//        .background(
-//            LinearGradient(colors: [Color.bg.primary, Color.bg.secondary], startPoint: .top, endPoint: .bottom)
-//                .ignoresSafeArea()
-//        )
-
-        
     }
 }
 
