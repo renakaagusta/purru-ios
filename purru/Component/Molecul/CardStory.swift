@@ -21,39 +21,40 @@ struct AppCardStory: View {
     var body: some View {
         
         VStack {
-            NavigationLink(destination: StoryView(data: storyList[index]), isActive: $isActive, label: {
+            //Text("sdaa")
+            //NavigationLink(destination: StoryView(data: storyList[index]), isActive: $isActive, label: {
                 ZStack {
-                    AppCard(width: 280, height: 479, cornerRadius: 31, backgroundColorTop: Color.clear, backgroundColorBottom: Color.bg.secondary, borderColor: Color.spot.primary) {
-                            Spacer(minLength: -100)
-                            VStack(alignment: .leading) {
-                                AppJosefineSans(text: title, josepSize: fontType.title2, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
-                                    .padding(.bottom,5)
-                                Button(action: {
-                                    self.onClick()
-                                }, label: {
-                                    VStack {
-                                        AppRubik(text: description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
-                                            .lineLimit(DescriptionLineLimit)
-                                            .lineSpacing(2)
-                                        HStack{
-                                            AppRubik(text: "Selengkapnya", rubikSize: fontType.caption1, fontWeight: Font.Weight.regular, fontColor: Color.foot.primary, textAligment: TextAlignment.center)
-                                            Image(systemName: "chevron.forward")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 10, height: 10, alignment: .center)
-                                                .foregroundColor(Color.foot.primary)
-                                        }
-                                        .padding(.bottom)
-                                        .frame(maxWidth: .infinity, alignment: .center)
-                                    }
-                                })
-                            }
-                            .padding()
+                    AppCard(width: 280, height: 479, cornerRadius: 31, backgroundColorTop: Color.black, backgroundColorBottom: Color.bg.secondary, borderColor: Color.spot.primary) {
+//                            Spacer(minLength: -100)
+//                            VStack(alignment: .leading) {
+//                                AppJosefineSans(text: title, josepSize: fontType.title2, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
+//                                    .padding(.bottom,5)
+//                                Button(action: {
+//                                    self.onClick()
+//                                }, label: {
+//                                    VStack {
+//                                        AppRubik(text: description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
+//                                            .lineLimit(DescriptionLineLimit)
+//                                            .lineSpacing(2)
+//                                        HStack{
+//                                            AppRubik(text: "Selengkapnya", rubikSize: fontType.caption1, fontWeight: Font.Weight.regular, fontColor: Color.foot.primary, textAligment: TextAlignment.center)
+//                                            Image(systemName: "chevron.forward")
+//                                                .resizable()
+//                                                .scaledToFit()
+//                                                .frame(width: 10, height: 10, alignment: .center)
+//                                                .foregroundColor(Color.foot.primary)
+//                                        }
+//                                        .padding(.bottom)
+//                                        .frame(maxWidth: .infinity, alignment: .center)
+//                                    }
+//                                })
+//                            }
+//                            .padding()
 
                         }
                         .shadow(color: Color.spot.primary, radius: 5, x: 0, y: 0)
                         .padding(5)
-                    
+
                     Button(action: {
                         isActive = true
                     }, label: {
@@ -68,12 +69,14 @@ struct AppCardStory: View {
                         .frame(width: 200, height: 20)
                         .shadow(radius: 5)
                         .offset(y:270)
-                                    
+
                 }
-            })
-            .padding()
-            Spacer()
+            //})
+//            .padding()
+//            Spacer()
         }
+        .frame(width: 300, height: 450)
+        .background(Color.black)
     }
 }
 

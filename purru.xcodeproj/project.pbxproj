@@ -76,6 +76,8 @@
 		4114779A290FC95700FD5B56 /* hand.swipe.left.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147796290FC95700FD5B56 /* hand.swipe.left.gif */; };
 		4114779B290FC95700FD5B56 /* hand.zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147797290FC95700FD5B56 /* hand.zoom.gif */; };
 		B8469D452917F7BB00249606 /* PauseStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8469D442917F7BB00249606 /* PauseStoryView.swift */; };
+		B8469D472918E87B00249606 /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8469D462918E87B00249606 /* SnapCarousel.swift */; };
+		B8469D492918EE8C00249606 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8469D482918EE8C00249606 /* Post.swift */; };
 		B8624DB6291120D400586833 /* 3DAssetS1.scn in Resources */ = {isa = PBXBuildFile; fileRef = B8624DB5291120D400586833 /* 3DAssetS1.scn */; };
 		B8692BE7290903840029667A /* narasi4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE1290903840029667A /* narasi4.mp3 */; };
 		B8692BE8290903840029667A /* narasi1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8692BE2290903840029667A /* narasi1.mp3 */; };
@@ -99,7 +101,6 @@
 		B8DACF6029132049002EA3BA /* CardStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DACF5F29132049002EA3BA /* CardStory.swift */; };
 		B8DACF652913A175002EA3BA /* InfiniteCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DACF642913A175002EA3BA /* InfiniteCarouselView.swift */; };
 		B8DACF672913A1B0002EA3BA /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DACF662913A1B0002EA3BA /* Tab.swift */; };
-		B8DACF692913A1F5002EA3BA /* CustomCardShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DACF682913A1F5002EA3BA /* CustomCardShape.swift */; };
 		B8DACF6B2913A75C002EA3BA /* StoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DACF6A2913A75C002EA3BA /* StoryList.swift */; };
 		B8DE813629092F65006B2BE3 /* px.png in Resources */ = {isa = PBXBuildFile; fileRef = B8DE813029092F65006B2BE3 /* px.png */; };
 		B8DE813729092F65006B2BE3 /* nz.png in Resources */ = {isa = PBXBuildFile; fileRef = B8DE813129092F65006B2BE3 /* nz.png */; };
@@ -181,6 +182,8 @@
 		41147796290FC95700FD5B56 /* hand.swipe.left.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.swipe.left.gif; sourceTree = "<group>"; };
 		41147797290FC95700FD5B56 /* hand.zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.zoom.gif; sourceTree = "<group>"; };
 		B8469D442917F7BB00249606 /* PauseStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseStoryView.swift; sourceTree = "<group>"; };
+		B8469D462918E87B00249606 /* SnapCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
+		B8469D482918EE8C00249606 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		B8624DB5291120D400586833 /* 3DAssetS1.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = 3DAssetS1.scn; sourceTree = "<group>"; };
 		B8692BE1290903840029667A /* narasi4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi4.mp3; sourceTree = "<group>"; };
 		B8692BE2290903840029667A /* narasi1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = narasi1.mp3; sourceTree = "<group>"; };
@@ -204,7 +207,6 @@
 		B8DACF5F29132049002EA3BA /* CardStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStory.swift; sourceTree = "<group>"; };
 		B8DACF642913A175002EA3BA /* InfiniteCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteCarouselView.swift; sourceTree = "<group>"; };
 		B8DACF662913A1B0002EA3BA /* Tab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
-		B8DACF682913A1F5002EA3BA /* CustomCardShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCardShape.swift; sourceTree = "<group>"; };
 		B8DACF6A2913A75C002EA3BA /* StoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryList.swift; sourceTree = "<group>"; };
 		B8DE813029092F65006B2BE3 /* px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = px.png; sourceTree = "<group>"; };
 		B8DE813129092F65006B2BE3 /* nz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nz.png; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 		2FA53F472907C31F00BFB3E5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B8469D482918EE8C00249606 /* Post.swift */,
 				B8DACF662913A1B0002EA3BA /* Tab.swift */,
 				2FA53F482907C31F00BFB3E5 /* Instruction.swift */,
 				2FA53F492907C31F00BFB3E5 /* ObjectScene.swift */,
@@ -589,7 +592,7 @@
 			children = (
 				2FA53F852907C31F00BFB3E5 /* StoryListView.swift */,
 				B8DACF642913A175002EA3BA /* InfiniteCarouselView.swift */,
-				B8DACF682913A1F5002EA3BA /* CustomCardShape.swift */,
+				B8469D462918E87B00249606 /* SnapCarousel.swift */,
 			);
 			path = StoryList;
 			sourceTree = "<group>";
@@ -831,6 +834,7 @@
 				2FA53FBB2907C31F00BFB3E5 /* TextButton.swift in Sources */,
 				2FA53FB62907C31F00BFB3E5 /* OutlinedCircleButton.swift in Sources */,
 				2FA53FAB2907C31F00BFB3E5 /* Colors.swift in Sources */,
+				B8469D492918EE8C00249606 /* Post.swift in Sources */,
 				2FA53F982907C31F00BFB3E5 /* GifView.swift in Sources */,
 				2FA53FB72907C31F00BFB3E5 /* OutlinedButton.swift in Sources */,
 				2FA53FC62907C31F00BFB3E5 /* TutorialView.swift in Sources */,
@@ -843,7 +847,6 @@
 				2FA53FBD2907C31F00BFB3E5 /* ElevatedLink.swift in Sources */,
 				2FA53FB22907C31F00BFB3E5 /* AsyncImage.swift in Sources */,
 				2FA53E7F2907C2DB00BFB3E5 /* ContentView.swift in Sources */,
-				B8DACF692913A1F5002EA3BA /* CustomCardShape.swift in Sources */,
 				2FA53FAE2907C31F00BFB3E5 /* Loading.swift in Sources */,
 				2FA53FB82907C31F00BFB3E5 /* LinkButton.swift in Sources */,
 				B8DACF652913A175002EA3BA /* InfiniteCarouselView.swift in Sources */,
@@ -881,6 +884,7 @@
 				B8469D452917F7BB00249606 /* PauseStoryView.swift in Sources */,
 				2FA53FA32907C31F00BFB3E5 /* Instruction.swift in Sources */,
 				2FA53FB12907C31F00BFB3E5 /* AvatarImage.swift in Sources */,
+				B8469D472918E87B00249606 /* SnapCarousel.swift in Sources */,
 				2FA53FCC2907C31F00BFB3E5 /* StoryState.swift in Sources */,
 				2FA53F992907C31F00BFB3E5 /* LiveData.swift in Sources */,
 			);

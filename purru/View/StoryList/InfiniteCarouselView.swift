@@ -22,8 +22,9 @@ struct InfiniteCarouselView: View{
     @State private var isPresentDescriptionModal = false
     
     var body: some View{
-        TabView(selection: $fakeIndex){
-            ForEach(Array(storyListTab.enumerated()),  id: \.offset) { index, tab in
+        
+        TabView(selection: $fakeIndex) {
+            ForEach(Array(storyListTab.enumerated()), id: \.offset) { index, tab in
                 
                 NavigationLink(destination: StoryView(data: storyList[index]), isActive: Binding(get: {global.storyIndex == index && global.isPlaying == true}, set: { _ in true})) {
                     VStack {
@@ -49,10 +50,10 @@ struct InfiniteCarouselView: View{
                             global.isPlaying = true
                         })
                         .presentationDetents([.height(550)])
-                        .onAppear{
+                        .onAppear {
                             print("====STORY INDEX INDEX====")
                             print(global.storyIndex)
-                            print(storyList[global.storyIndex].title)
+                            //print(storyList[global.storyIndex].title)
                         }
                 }
                 }

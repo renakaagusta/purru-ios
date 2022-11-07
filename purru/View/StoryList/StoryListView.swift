@@ -13,6 +13,13 @@ struct StoryListView: View {
     @Binding var tabs: [StoryTab]
     @Binding var currentIndex: Int
     
+   // @State var currentIndex: Int = 0
+    
+    @State var posts: [Post] = []
+    
+    //@State var currentIndex: Int = 0
+
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State var fakeIndex: Int = 0
@@ -40,7 +47,46 @@ struct StoryListView: View {
                 .frame(width: 300)
             
             
-            InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
+            // Snap Carousel....
+            SnapCarousel(index: $currentIndex, items: posts) {post in
+                
+                GeometryReader{proxy in
+                    
+                    let size = proxy.size
+                    
+                    let tab = storyListTab[0]
+                    
+                    AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3, index: 0, onClick: {
+                        
+//                        global.storyIndex = index
+//                        print("====STORY INDEX===")
+//                        print(index)
+//                        print(global.storyIndex)
+//                        print(storyList.count)
+//                        print(storyList[global.storyIndex].title)
+                    })
+//                    Image(post.postImage)
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fill)
+//                        .frame(width: size.width)
+//                        .cornerRadius(12)
+                }
+            }
+            .padding(.vertical,40)
+            
+            // Indicator...
+            HStack(spacing: 10){
+                
+                ForEach(posts.indices,id: \.self){index in
+                    
+                    Circle()
+                        .fill(Color.black.opacity(currentIndex == index ? 1 : 0.1))
+                        .frame(width: 10, height: 10)
+                        .scaleEffect(currentIndex == index ? 1.4 : 1)
+                        .animation(.spring(), value: currentIndex == index)
+                }
+            }
+            .padding(.bottom,40)
             
             Spacer() 
 
@@ -62,7 +108,12 @@ struct StoryListView: View {
             print("===STORY LIST VIEW APPEAR====")
             narationPlayer?.stop()
             backsoundPlayer?.stop()
+            
+            for index in 1...5{
+                posts.append(Post(postImage: "post\(index)"))
+            }
         }
+      
     }
 }
 
