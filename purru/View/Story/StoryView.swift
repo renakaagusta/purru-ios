@@ -15,10 +15,11 @@ enum DialogPosition {
 struct StoryView: View {
     
     @ObservedObject var global = GlobalVariables.global
-    
+        
     private var gameView: GameView
     private var scene: SCNScene?
     private var view: SCNView
+    private var sceneParticle: SCNParticleSystem
     private var cameraNode: SCNNode?
     private var cameraController: SCNCameraController?
     private var objectListNode: Array<SCNNode>?
@@ -53,7 +54,7 @@ struct StoryView: View {
     let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+
     init(data: StoryData) {
         self.gameView = GameView()
         
@@ -67,8 +68,10 @@ struct StoryView: View {
         
         guard let sceneUrl = Bundle.main.url(forResource: data.sceneName, withExtension: data.sceneExtension) else { fatalError() }
         
-        self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
         
+        
+        self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
+    
         //kanan, kiri, atas, bawah, belakang, depan
         
         self.scene?.background.contents = [
@@ -236,6 +239,7 @@ struct StoryView: View {
             }
         } else {
             endingVisibility = true
+            sceneParticle = SCNParticleSystem(named: "ParticleEndingView", inDirectory: nil)!
         }
     }
     
