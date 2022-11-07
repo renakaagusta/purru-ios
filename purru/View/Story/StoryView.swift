@@ -400,7 +400,7 @@ struct StoryView: View {
             ZStack {
                 gameView
                 if(endingVisibility) {
-                    EndingView(textEnding: "Selamat telah menyelesaikan cerita ini", buttonTextEnding: "Play Again", onRestartClick: restartGame)
+                    EndingView(textEnding: "Sekian untuk malam ini", buttonTextEnding: "Kembali ke Menu", onRestartClick: restartGame)
                 }
                 if(gestureVisibility) {
                     GIFView(type: .name(gesture))
