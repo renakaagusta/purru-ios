@@ -217,7 +217,7 @@ struct DescriptionModalView: View {
                         .padding()
                     }
                     .frame(height:40)
-                    .background(LinearGradient(colors: [Color.clear, Color.bg.primary], startPoint: .top, endPoint: .center)
+                    .background(LinearGradient(colors: [Color.clear, Color.bg.primary], startPoint: .top, endPoint: .bottom)
                         .ignoresSafeArea())
                     Spacer().frame(height: 50)
                 }
