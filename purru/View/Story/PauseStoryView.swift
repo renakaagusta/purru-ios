@@ -24,7 +24,6 @@ struct PauseStoryView: View {
             })
             
         }
-        .navigationBarItems(trailing: Image(systemName: "xmark"))
         .padding()
         .frame(width: UIScreen.width, height: UIScreen.height)
         .background(Color.bg.primary.opacity(0.8))
