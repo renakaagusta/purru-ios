@@ -178,7 +178,9 @@ struct DescriptionModalView: View {
             ZStack {
                 Color.bg.primary.ignoresSafeArea()
                 VStack {
-                    Image(data.modalCover).resizable()
+                    Image(data.modalCover)
+                        .resizable()
+                        .frame(height: 325)
                     Spacer()
                 }
                 Button {

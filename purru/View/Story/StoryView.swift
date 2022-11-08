@@ -72,12 +72,12 @@ struct StoryView: View {
         //kanan, kiri, atas, bawah, belakang, depan
         
         self.scene?.background.contents = [
-            UIImage(named: "px"),
-            UIImage(named: "nx"),
-            UIImage(named: "py"),
-            UIImage(named: "ny"),
-            UIImage(named: "pz"),
-            UIImage(named: "nz")
+            UIImage(named: "px"),  //kanan
+            UIImage(named: "nx"),  //kiri
+            UIImage(named: "py"),  //atas
+            UIImage(named: "ny"),  //bawah
+            UIImage(named: "pz"),  //belakang
+            UIImage(named: "nz")   //depan
         ]
         
     }

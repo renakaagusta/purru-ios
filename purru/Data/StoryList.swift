@@ -161,9 +161,9 @@ var storyList = [
            description: "Seorang pengelana yang menemukan sebuah ruangang kuno ajaib di sebuah kota kecil yang ia kunjungi. Siapa pemilik ruangan ini? Mengapa banyak barang-barang supranatural didalamnya?",
            thumbnail: "RuanganAjaib",
            modalCover:"alcheworld",
-           sceneName: "3DAssetS1",
+           sceneName: "RuanganAjaib",
            sceneExtension: "scn",
-           backsound: "backsound-story1",
+           backsound: "backsound-story2",
            backsoundExtention: "mp3",
            objectList: [
                ObjectScene(
@@ -231,8 +231,8 @@ var storyList = [
                    narationSound: "",
                    narationSoundExtention: "mp3",
                    instructionList: [
-                       Instruction(id: "1", text: "Kamu juga pasti akan bisa membuat ramuan obat jika membaca buku resep milik nenek ini",  startedAt: 0),
-                       Instruction(id: "1",text: "Dulu nenekku menggunakan papan besar untuk menempelkan catatan eksperimen untuk resep obat pribadinya", startedAt: 5),
+                       Instruction(id: "1", text: "Kamu juga pasti bisa membuat ramuan obat jika membaca buku resep milik nenek ini",  startedAt: 0),
+                       Instruction(id: "1",text: "Dulu nenekku juga menggunakan papan besar untuk menempelkan catatan eksperimen untuk resep obat pribadinya", startedAt: 5),
                        Instruction(id: "1",text: "Bisakah kamu temukan papan itu?", startedAt: 10)
                    ]
                ),
@@ -268,11 +268,11 @@ var storyList = [
                    narationSound: "",
                    narationSoundExtention: "mp3",
                    instructionList: [
-                       Instruction(id: "1", text: "Banyak bulu burung hantu yang berceceran di mana-mana,",  startedAt: 0),
+                       Instruction(id: "1", text: "Di perpustakaan ini, banyak bulu burung hantu yang berceceran di mana-mana,",  startedAt: 0),
                        Instruction(id: "1",text: "aku belum sempat membersihkannya.", startedAt: 5),
                        Instruction(id: "1",text: "Nenek memelihara seekor burung hantu,", startedAt: 10),
                        Instruction(id: "1",text: "namanya Hugo.", startedAt: 10),
-                       Instruction(id: "1",text: "Bulunya putih bersih dan sangat halus", startedAt: 10)
+                       Instruction(id: "1",text: "Bulunya putih bersih dan sangat-sangat halus", startedAt: 10)
                    ]
                ),
                ObjectScene(
@@ -287,7 +287,7 @@ var storyList = [
                    narationSound: "",
                    narationSoundExtention: "mp3",
                    instructionList: [
-                       Instruction(id: "1", text: "Hugo ini sangat setia, dia Sudah seperti penjaga/pelindung perpustakaan ini",  startedAt: 0),
+                       Instruction(id: "1", text: "Hugo sangat setia, dia sudah seperti penjaga/pelindung perpustakaan ini",  startedAt: 0),
                        Instruction(id: "1",text: "Saat Hugo masih kecil, nenek menyelamatkannya dari pemburu", startedAt: 5),
                        Instruction(id: "1",text: "Hugo juga sangat aktif dan pintar,", startedAt: 10),
                        Instruction(id: "1",text: "saat nenek bekerja, Hugo selalu ditempatkannya di tiang burung,", startedAt: 10),
@@ -309,13 +309,13 @@ var storyList = [
                    instructionList: [
                        Instruction(id: "1", text: "Nenek membuat sendiri tiang burung ini",  startedAt: 0),
                        Instruction(id: "1",text: "Sangat detail dan kokoh", startedAt: 5),
-                       Instruction(id: "1",text: "Sudah hampir 10 tahun sejak nenek meninggal", startedAt: 10),
-                       Instruction(id: "1",text: "namun barang-barang disini masih terasa seperti 10 tahun lalu", startedAt: 10),
+                       Instruction(id: "1",text: "Sudah hampir 10 tahun sejak nenek berhenti bekerja", startedAt: 10),
+                       Instruction(id: "1",text: "namun barang-barang disini masih sama seperti 10 tahun lalu", startedAt: 10),
                        Instruction(id: "1",text: "tidak ada yang berubah", startedAt: 10),
-                       Instruction(id: "1",text: "Kamu boleh menghabiskan sedikit lebih banyak waktu di sini melihat-lihat,", startedAt: 10),
+                       Instruction(id: "1",text: "Kamu boleh menghabiskan lebih banyak waktu di sini melihat-lihat,", startedAt: 10),
                        Instruction(id: "1",text: "semoga kamu menikmati kunjunganmu ke perpustakaan ini", startedAt: 10),
                        Instruction(id: "1",text: "hingga saatnya kamu tidur,", startedAt: 10),
-                       Instruction(id: "1",text: "cobalah untuk mengenang momen-momen bersama orang yang kamu sayang", startedAt: 10),
+                       Instruction(id: "1",text: "cobalah untuk mengenang momen-momen bersama orang yang kamu cintai", startedAt: 10),
                        Instruction(id: "1",text: "Aku dengar, itu dapat membantu untuk bisa lebih rileks", startedAt: 10),
                        Instruction(id: "1",text: "Semoga malammu tenang", startedAt: 10)
                    ]
