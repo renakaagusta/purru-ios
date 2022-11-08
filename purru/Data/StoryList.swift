@@ -11,10 +11,10 @@ import SceneKit
 var storyList = [
        StoryData(
            id: "1",
-           title: "Pohon Kiki",
+           title: "Taman Purru",
            description: "Menemukan burung yang berukuran sangat kecil seperti burung miliknya Dips",
            thumbnail: "PohonKiki",
-           modalCover:"alcheworld",
+           modalCover:"tamanpurru",
            sceneName: "3DAssetS1",
            sceneExtension: "scn",
            backsound: "backsound-story1",
@@ -157,7 +157,7 @@ var storyList = [
        ),
        StoryData(
            id: "2",
-           title: "The witch’s library",
+           title: "Perpustakaan Penyihir",
            description: "Seorang pengelana yang menemukan sebuah ruangang kuno ajaib di sebuah kota kecil yang ia kunjungi. Siapa pemilik ruangan ini? Mengapa banyak barang-barang supranatural didalamnya?",
            thumbnail: "RuanganAjaib",
            modalCover:"alcheworld",
@@ -337,10 +337,10 @@ import SceneKit
 var storyListTab = [
        StoryTab(
            id: "1",
-           title: "Pohon Kiki",
+           title: "Taman Purru",
            description: "Menemukan burung yang berukuran sangat kecil seperti burung miliknya Dips",
            thumbnail: "PohonKiki",
-           modalCover: "alcheworld",
+           modalCover: "tamanpurru",
            sceneName: "3DAssetS1",
            sceneExtension: "scn",
            backsound: "backsound-story1",
@@ -349,7 +349,7 @@ var storyListTab = [
        ),
        StoryTab(
            id: "2",
-           title: "Perpustakaan milik Penyihir",
+           title: "Perpustakaan Penyihir",
            description: "Seorang pengelana yang menemukan sebuah ruangang kuno ajaib di sebuah kota kecil yang ia kunjungi. Siapa pemilik ruangan ini? Mengapa banyak barang-barang supranatural didalamnya?",
            thumbnail: "RuanganAjaib",
            modalCover:"alcheworld",
