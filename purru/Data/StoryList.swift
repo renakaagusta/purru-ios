@@ -11,9 +11,9 @@ import SceneKit
 var storyList = [
        StoryData(
            id: "1",
-           title: "Pohon jancuk",
+           title: "Pohon Kiki",
            description: "Menemukan burung yang berukuran sangat kecil seperti burung miliknya Dips",
-           thumbnail: "",
+           thumbnail: "PohonKiki",
            modalCover:"alcheworld",
            sceneName: "3DAssetS1",
            sceneExtension: "scn",
@@ -339,7 +339,7 @@ var storyListTab = [
            id: "1",
            title: "Pohon Kiki",
            description: "Menemukan burung yang berukuran sangat kecil seperti burung miliknya Dips",
-           thumbnail: "",
+           thumbnail: "PohonKiki",
            modalCover: "alcheworld",
            sceneName: "3DAssetS1",
            sceneExtension: "scn",
