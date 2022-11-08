@@ -19,7 +19,7 @@ struct StoryView: View {
     private var gameView: GameView
     private var scene: SCNScene?
     private var view: SCNView
-    private var sceneParticle: SCNParticleSystem
+    private var sceneParticle: SCNScene?
     private var cameraNode: SCNNode?
     private var cameraController: SCNCameraController?
     private var objectListNode: Array<SCNNode>?
@@ -68,9 +68,20 @@ struct StoryView: View {
         
         guard let sceneUrl = Bundle.main.url(forResource: data.sceneName, withExtension: data.sceneExtension) else { fatalError() }
         
-        
-        
+//        let emitter = SCNParticleSystem(named: "ParticleEndingView.scnp", inDirectory: nil)
+//
+//        let rotationMatrix =
+//            SCNMatrix4MakeRotation(0, 0,
+//              0, 0)
+//          let translationMatrix =
+//            SCNMatrix4MakeTranslation(0, 0, 0)
+//          let transformMatrix =
+//            SCNMatrix4Mult(rotationMatrix, translationMatrix)
+//          // 4
+                
         self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
+        
+        self.view.scene?.addParticleSystem(emitter!, transform: transformMatrix)
     
         //kanan, kiri, atas, bawah, belakang, depan
         
@@ -239,7 +250,6 @@ struct StoryView: View {
             }
         } else {
             endingVisibility = true
-            sceneParticle = SCNParticleSystem(named: "ParticleEndingView", inDirectory: nil)!
         }
     }
     
