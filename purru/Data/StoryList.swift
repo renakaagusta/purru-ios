@@ -175,7 +175,7 @@ var storyList = [
                ObjectScene(
                    title: "Temukan tanaman herbal",
                    description: "Narasi 1",
-                   hint: "Hint 1",
+                   hint: "Temukan tanaman herbal",
                    tag: "1TANAMAN",
                    type: ObjectType.Task,
                    narationDuration: 124,
@@ -206,7 +206,7 @@ var storyList = [
                ObjectScene(
                    title: "Temukan buku resep nenek",
                    description: "Narasi 2",
-                   hint: "Hint 1",
+                   hint:  "Temukan buku resep nenek",
                    tag: "2BUKU",
                    type: ObjectType.Task,
                    narationDuration: 73,
@@ -230,7 +230,7 @@ var storyList = [
                ObjectScene(
                    title: "Temukan Papan",
                    description: "Narasi 3",
-                   hint: "Hint 1",
+                   hint:"Temukan Papan",
                    tag: "3PAPAN",
                    type: ObjectType.Task,
                    narationDuration: 23,
@@ -248,7 +248,7 @@ var storyList = [
                ObjectScene(
                    title: "Temukan Kursi",
                    description: "Narasi 4",
-                   hint: "Hint 1",
+                   hint: "Temukan Kursi",
                    tag: "4KURSI",
                    type: ObjectType.Task,
                    narationDuration: 38,
@@ -269,7 +269,7 @@ var storyList = [
                ObjectScene(
                    title: "Temukan Hugo",
                    description: "Narasi 5",
-                   hint: "Hint 1",
+                   hint: "Temukan Hugo",
                    tag: "5HUGO",
                    type: ObjectType.Task,
                    narationDuration: 26,
@@ -289,7 +289,7 @@ var storyList = [
                ObjectScene(
                    title: "Temukan tiang burung",
                    description: "Narasi 6",
-                   hint: "Hint 1",
+                   hint: "Temukan tiang burung",
                    tag: "6TIANG",
                    type: ObjectType.Task,
                    narationDuration: 38,
