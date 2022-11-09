@@ -55,7 +55,7 @@ struct ContentView: View {
                 if(!moveToMainMenu) {
                     SplashScreenView()
                 } else {
-                    if(moveToTutorial) {
+                    if(global.tutorialFinished) {
                         StoryListView(tabs: $tabs, currentIndex: $currentIndex).onAppear{
                             narationPlayer?.stop()
                             backsoundPlayer?.stop()

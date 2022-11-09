@@ -49,6 +49,8 @@ struct StoryView: View {
     
     @State private var objectHistoryList: [SCNNode] = []
     
+    @State private var isTutorial: Bool = false
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
     
@@ -63,15 +65,10 @@ struct StoryView: View {
         guard let sceneUrl = Bundle.main.url(forResource: data.sceneName, withExtension: data.sceneExtension) else { fatalError() }
         
         self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
+        
         //kanan, kiri, atas, bawah, belakang, depan
         
         self.scene?.background.contents = [
-//            UIImage(named: "px"),
-//            UIImage(named: "nx"),
-//            UIImage(named: "py"),
-//            UIImage(named: "ny"),
-//            UIImage(named: "pz"),
-//            UIImage(named: "nz")
             UIImage(named: data.skyBox.px),
             UIImage(named: data.skyBox.nx),
             UIImage(named: data.skyBox.py),
@@ -79,7 +76,6 @@ struct StoryView: View {
             UIImage(named: data.skyBox.pz),
             UIImage(named: data.skyBox.nz)
         ]
-        
     }
     
     func showHint() {
@@ -189,16 +185,18 @@ struct StoryView: View {
     }
     
     func showEnding() {
-        
-        endingVisibility = true
-        
-        let node  = self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)
-        
-        
-        let emitter = SCNParticleSystem(named: "\(data.particleEnding).scnp", inDirectory: nil)!
-        
-        self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)!.addParticleSystem(emitter)
-        
+        if(!isTutorial) {
+            endingVisibility = true
+            
+            let node  = self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)
+            
+            let emitter = SCNParticleSystem(named: "\(data.particleEnding).scnp", inDirectory: nil)!
+            
+            self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)!.addParticleSystem(emitter)
+        } else {
+            GlobalStorage.isTurorialFinished = true
+            global.tutorialFinished = true
+        }
     }
     
     func restartGame() {
@@ -424,10 +422,10 @@ struct StoryView: View {
                 }
                 if(state != StoryState.Naration) {
                     VStack {
-                        Spacer().frame(height: UIScreen.height - 240)
+                        Spacer().frame(height: UIScreen.height - 360)
                         HStack{
                             Spacer()
-                            AppRubik(text: data.objectList[focusedObjectIndex].hint, rubikSize: fontType.body, fontWeight: .bold , fontColor: Color.text.primary)
+                            AppJosefineSans(text: data.objectList[focusedObjectIndex].hint, josepSize: fontType.title3, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: .center)
                             Spacer()
                         }.frame(width: UIScreen.width)
                     }
@@ -435,22 +433,22 @@ struct StoryView: View {
                 }
                 if(!pauseVisibility && !endingVisibility && data.objectList.count > 2) {
                     VStack {
-                        Spacer().frame(height: UIScreen.height - 180)
-                        ScrollView (.horizontal, showsIndicators: false) {
-                            HStack {
-                                Spacer()
-                                HStack {
-                                    ForEach(0...data.objectList.count - 2, id: \.self) { index in
-                                        if(foundObject > index) {
-                                            Image("TaskStatusFinished").resizable().frame(width: 20, height: 20)
-                                        } else {
-                                            Image("TaskStatusUnfinished").resizable().frame(width: 20, height: 20)
-                                        }
-                                    }
-                                }
-                                Spacer()
-                            }.frame(width: UIScreen.width)
-                        }.frame(height: 100)
+//                        Spacer().frame(height: UIScreen.height - 180)
+//                        ScrollView (.horizontal, showsIndicators: false) {
+//                            HStack {
+//                                Spacer()
+//                                HStack {
+//                                    ForEach(0...data.objectList.count - 2, id: \.self) { index in
+//                                        if(foundObject > index) {
+//                                            Image("TaskStatusFinished").resizable().frame(width: 20, height: 20)
+//                                        } else {
+//                                            Image("TaskStatusUnfinished").resizable().frame(width: 20, height: 20)
+//                                        }
+//                                    }
+//                                }
+//                                Spacer()
+//                            }.frame(width: UIScreen.width)
+//                        }.frame(height: 100)
                     }
                 }
                 if(pauseVisibility) {
@@ -535,10 +533,14 @@ struct StoryView: View {
             .onDisappear{
                 global.isPlaying = false
                 global.storyIndex = -1
+                global.tutorialFinished = true
+                GlobalStorage.isTurorialFinished = true
                 backsoundPlayer?.stop()
                 narationPlayer?.stop()
             }
             .onAppear(){
+                isTutorial = !global.tutorialFinished
+                
                 GlobalStorage.isTurorialFinished = true
                 
                 playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
@@ -579,7 +581,7 @@ struct StoryView: View {
             action: {
                 pauseVisibility.toggle()
             }, label: {
-                if(!endingVisibility){
+                if(!endingVisibility && !isTutorial){
                     Image(systemName: pauseVisibility ? "xmark" : "gearshape.fill")
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Color.text.primary)
