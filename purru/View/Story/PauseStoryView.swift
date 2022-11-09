@@ -9,19 +9,39 @@ import SwiftUI
 
 struct PauseStoryView: View {
     @State var buttonTextEnding: String = "Keluar"
-    var onRestartClick: () -> () = {}
+    var onExitOptionClick: () -> () = {}
+    
+    @State var alertExitVisibility : Bool = false
+    
+    func onCancelClick(){
+        alertExitVisibility = false
+    }
+    
+    //onRestartClick
 
     var body: some View {
   
         VStack(alignment: .center) {
-            Button(action: onRestartClick, label: {
-                AppRubik(text: buttonTextEnding, rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.foot.primary, lineWidth: 2)
+            
+            ZStack {
+                Button(action: {
+                    //onExitOptionClick()
+                    alertExitVisibility.toggle()
+                }, label: {
+                    AppRubik(text: buttonTextEnding, rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.foot.primary, lineWidth: 2)
+                        )
+                })
+                
+                if alertExitVisibility {
+                    AppExitStoryAlert(onCancelClick: onCancelClick, onExitClick: onExitOptionClick
                     )
-            })
+                }
+            }
+            
             
         }
         .padding()

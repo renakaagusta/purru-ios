@@ -93,6 +93,7 @@
 		B80A8FEF291B6546008F4D3A /* Narasi-Story1-3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FE0291B6546008F4D3A /* Narasi-Story1-3.mp3 */; };
 		B80A8FF0291B6546008F4D3A /* Narasi-Story1-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FE1291B6546008F4D3A /* Narasi-Story1-2.mp3 */; };
 		B80A8FF1291B6546008F4D3A /* Narasi-Story1-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FE2291B6546008F4D3A /* Narasi-Story1-1.mp3 */; };
+		B80A9006291BB077008F4D3A /* ExitStoryAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80A9005291BB077008F4D3A /* ExitStoryAlert.swift */; };
 		B8469D452917F7BB00249606 /* PauseStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8469D442917F7BB00249606 /* PauseStoryView.swift */; };
 		B8469D87291A5C2E00249606 /* wardrobe_BC.png in Resources */ = {isa = PBXBuildFile; fileRef = B8469D73291A5C2C00249606 /* wardrobe_BC.png */; };
 		B8469D88291A5C2E00249606 /* carpet-bc.png in Resources */ = {isa = PBXBuildFile; fileRef = B8469D74291A5C2C00249606 /* carpet-bc.png */; };
@@ -231,6 +232,7 @@
 		B80A8FE0291B6546008F4D3A /* Narasi-Story1-3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story1-3.mp3"; sourceTree = "<group>"; };
 		B80A8FE1291B6546008F4D3A /* Narasi-Story1-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story1-2.mp3"; sourceTree = "<group>"; };
 		B80A8FE2291B6546008F4D3A /* Narasi-Story1-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story1-1.mp3"; sourceTree = "<group>"; };
+		B80A9005291BB077008F4D3A /* ExitStoryAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitStoryAlert.swift; sourceTree = "<group>"; };
 		B8469D442917F7BB00249606 /* PauseStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseStoryView.swift; sourceTree = "<group>"; };
 		B8469D73291A5C2C00249606 /* wardrobe_BC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wardrobe_BC.png; sourceTree = "<group>"; };
 		B8469D74291A5C2C00249606 /* carpet-bc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carpet-bc.png"; sourceTree = "<group>"; };
@@ -805,6 +807,7 @@
 			isa = PBXGroup;
 			children = (
 				B8DACF5F29132049002EA3BA /* CardStory.swift */,
+				B80A9005291BB077008F4D3A /* ExitStoryAlert.swift */,
 			);
 			path = Molecul;
 			sourceTree = "<group>";
@@ -1010,6 +1013,7 @@
 				2FA53FB52907C31F00BFB3E5 /* ElevatedButton.swift in Sources */,
 				2FA53F962907C31F00BFB3E5 /* Random.swift in Sources */,
 				2FA53FC72907C31F00BFB3E5 /* StoryListView.swift in Sources */,
+				B80A9006291BB077008F4D3A /* ExitStoryAlert.swift in Sources */,
 				2FA53FC92907C31F00BFB3E5 /* MainMenuView.swift in Sources */,
 				2FA53FCF2907C31F00BFB3E5 /* ObjectType.swift in Sources */,
 				2FA53FA72907C31F00BFB3E5 /* State.swift in Sources */,
