@@ -58,22 +58,20 @@ struct StoryView: View {
         self.gameView = GameView()
         
         self.data = data
-        
         self.view = SCNView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         
         guard let sceneUrl = Bundle.main.url(forResource: data.sceneName, withExtension: data.sceneExtension) else { fatalError() }
         
         self.scene = try! SCNScene(url: sceneUrl, options: [.checkConsistency: true])
-        
         //kanan, kiri, atas, bawah, belakang, depan
         
         self.scene?.background.contents = [
-            UIImage(named: data.skyBox.px),  //kanan
-            UIImage(named: data.skyBox.nx),  //kiri
-            UIImage(named: data.skyBox.py),  //atas
-            UIImage(named: data.skyBox.ny),  //bawah
-            UIImage(named: data.skyBox.pz),  //belakang
-            UIImage(named: data.skyBox.nz)   //depan
+            UIImage(named: "px"),
+            UIImage(named: "nx"),
+            UIImage(named: "py"),
+            UIImage(named: "ny"),
+            UIImage(named: "pz"),
+            UIImage(named: "nz")
         ]
         
     }
@@ -156,6 +154,14 @@ struct StoryView: View {
                 material.normal.contents = nil
                 material.diffuse.contents = nil
                 objectHistoryList.append(result.node)
+                
+                let emitter = SCNParticleSystem(named: "ParticleTouch.scnp", inDirectory: nil)!
+                let particleNode = SCNNode()
+                particleNode.worldPosition = result.node.worldPosition
+                particleNode.worldOrientation = result.node.worldOrientation
+                self.view.scene?.rootNode.addChildNode(particleNode)
+                particleNode.addParticleSystem(emitter)
+                
                 result.node.removeFromParentNode()
             }
         }
@@ -174,6 +180,19 @@ struct StoryView: View {
                 child
             })
         }
+    }
+    
+    func showEnding() {
+        
+        endingVisibility = true
+        
+        let node  = self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)
+        
+        
+        let emitter = SCNParticleSystem(named: "ParticleEndingView.scnp", inDirectory: nil)!
+        
+        self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)!.addParticleSystem(emitter)
+        
     }
     
     func restartGame() {
@@ -218,7 +237,7 @@ struct StoryView: View {
                     
                     playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                 } else if(data.objectList[focusedObjectIndex].type == ObjectType.Ending && elapsedTime >= narationTime) {
-                    endingVisibility = true
+                    showEnding()
                     global.tutorialFinished = true
                 } else {
                     state = StoryState.Task
@@ -231,7 +250,7 @@ struct StoryView: View {
                 playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: taskTime + 1)
             }
         } else {
-            endingVisibility = true
+            showEnding()
         }
     }
     
@@ -306,7 +325,7 @@ struct StoryView: View {
             narationsProgress = CGFloat(focusedObjectIndex != 0 ? focusedObjectIndex - 1 : 0 ) / CGFloat(data.objectList.count - 2)
             
         } else {
-            endingVisibility = true
+            showEnding()
         }
     }
     
@@ -522,6 +541,25 @@ struct StoryView: View {
                     hitResults in
                     handleTap(hitResults: hitResults)
                 }, view: self.view)
+                
+                if(self.view.scene != nil) {
+                    
+                    print("===BLUE NODE===")
+                    print( self.view.scene?.rootNode.childNode(withName: "BLUE", recursively: true)?.name)
+                    
+                    let emitter = SCNParticleSystem(named: "ParticleEndingView.scnp", inDirectory: nil)
+                    
+                    for node in self.view.scene!.rootNode.childNodes {
+                        print("===NODE===")
+                        print(node.name)
+                        
+                        if(node.name == "Ground") {}
+                    }
+                    
+                    
+                    //                    self.view.scene?.rootNode.childNode(withName: "BLUE", recursively: true)!.addParticleSystem(emitter!)
+                    
+                }
             }.onReceive(timer) { _ in
                 updateTime()
             }.onReceive(cameraTimer) { _ in
