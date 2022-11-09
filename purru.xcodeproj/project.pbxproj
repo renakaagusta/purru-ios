@@ -86,9 +86,6 @@
 		B8469D8E291A5C2E00249606 /* foliage_tents_BC.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B8469D7A291A5C2D00249606 /* foliage_tents_BC.jpg */; };
 		B8469D8F291A5C2E00249606 /* easel-color.png in Resources */ = {isa = PBXBuildFile; fileRef = B8469D7B291A5C2D00249606 /* easel-color.png */; };
 		B8469D90291A5C2E00249606 /* glass_bc.png in Resources */ = {isa = PBXBuildFile; fileRef = B8469D7C291A5C2E00249606 /* glass_bc.png */; };
-		B8469D91291A5C2E00249606 /* ParticleTouch.scnp in Resources */ = {isa = PBXBuildFile; fileRef = B8469D7E291A5C2E00249606 /* ParticleTouch.scnp */; };
-		B8469D92291A5C2E00249606 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = B8469D7F291A5C2E00249606 /* spark.png */; };
-		B8469D93291A5C2E00249606 /* ParticleEndingView.scnp in Resources */ = {isa = PBXBuildFile; fileRef = B8469D80291A5C2E00249606 /* ParticleEndingView.scnp */; };
 		B8469D94291A5C2E00249606 /* props_BC.png in Resources */ = {isa = PBXBuildFile; fileRef = B8469D81291A5C2E00249606 /* props_BC.png */; };
 		B8469D95291A5C2E00249606 /* tree_BC.png in Resources */ = {isa = PBXBuildFile; fileRef = B8469D82291A5C2E00249606 /* tree_BC.png */; };
 		B8469D96291A5C2E00249606 /* window-bc.png in Resources */ = {isa = PBXBuildFile; fileRef = B8469D83291A5C2E00249606 /* window-bc.png */; };
@@ -226,9 +223,6 @@
 		B8469D84291A5C2E00249606 /* herbs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = herbs.png; sourceTree = "<group>"; };
 		B8469D85291A5C2E00249606 /* grass_foliage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_foliage.png; sourceTree = "<group>"; };
 		B8469D86291A5C2E00249606 /* desk_BC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desk_BC.png; sourceTree = "<group>"; };
-		B8469D9B291A5C5600249606 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
-		B8469D9C291A5C5600249606 /* ParticleEndingView.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ParticleEndingView.scnp; sourceTree = "<group>"; };
-		B8469D9D291A5C5600249606 /* ParticleTouch.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ParticleTouch.scnp; sourceTree = "<group>"; };
 		B8469D9E291A5C9300249606 /* backsound-story2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "backsound-story2.mp3"; sourceTree = "<group>"; };
 		B8469DA1291A5E0F00249606 /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
 		B8469DA2291A5E0F00249606 /* Bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bottom.png; sourceTree = "<group>"; };
@@ -733,9 +727,6 @@
 		B8469D9A291A5C5600249606 /* Particle */ = {
 			isa = PBXGroup;
 			children = (
-				B8469D9D291A5C5600249606 /* ParticleTouch.scnp */,
-				B8469D9B291A5C5600249606 /* spark.png */,
-				B8469D9C291A5C5600249606 /* ParticleEndingView.scnp */,
 			);
 			path = Particle;
 			sourceTree = "<group>";
@@ -886,7 +877,6 @@
 				B8692BE7290903840029667A /* narasi4.mp3 in Resources */,
 				B8624DB6291120D400586833 /* 3DAssetS1.scn in Resources */,
 				41147799290FC95700FD5B56 /* hand.swipe.up.gif in Resources */,
-				B8469D93291A5C2E00249606 /* ParticleEndingView.scnp in Resources */,
 				B8A100092907E73C0082C66E /* Layer0.exr in Resources */,
 				B8D38CC32907CC0C00DB150C /* JosefinSans.ttf in Resources */,
 				B8DE813929092F65006B2BE3 /* pz.png in Resources */,
@@ -900,7 +890,6 @@
 				B8692BE9290903840029667A /* narasi3.mp3 in Resources */,
 				B8692BEA290903840029667A /* narasi5.mp3 in Resources */,
 				B8B5FEAB29102F5300687987 /* kanan.png in Resources */,
-				B8469D92291A5C2E00249606 /* spark.png in Resources */,
 				B8469D94291A5C2E00249606 /* props_BC.png in Resources */,
 				B8B5FEA829102F5300687987 /* kiri.png in Resources */,
 				B8469D8F291A5C2E00249606 /* easel-color.png in Resources */,
@@ -924,7 +913,6 @@
 				B8469DAB291A5E1000249606 /* Front.png in Resources */,
 				B8469DAA291A5E1000249606 /* Right.png in Resources */,
 				2FE859412907F0FD0054A2E2 /* purple.hdr in Resources */,
-				B8469D91291A5C2E00249606 /* ParticleTouch.scnp in Resources */,
 				2FA53F9F2907C31F00BFB3E5 /* Rock Texture.jpeg in Resources */,
 				B8469D87291A5C2E00249606 /* wardrobe_BC.png in Resources */,
 				B8DE813629092F65006B2BE3 /* px.png in Resources */,

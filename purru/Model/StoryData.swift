@@ -17,6 +17,7 @@ struct StoryData: Identifiable {
     var sceneExtension: String
     var backsound: String
     var backsoundExtention: String
+    var skyBox: SkyBox
     var objectList: [ObjectScene]
     var isTutorial: Bool = false
 }
@@ -32,5 +33,14 @@ struct StoryTab: Identifiable, Hashable {
     var backsound: String
     var backsoundExtention: String
     var isTutorial: Bool = false
+}
+ 
+struct SkyBox {
+    var px: String
+    var py: String
+    var pz: String
+    var nx: String
+    var ny: String
+    var nz: String
 }
  
