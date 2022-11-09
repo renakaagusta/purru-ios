@@ -59,10 +59,6 @@ struct StoryView: View {
         
         self.data = data
         
-        print("===STORY DATA===")
-        print(data.title)
-        print(data.objectList.count)
-        
         self.view = SCNView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         
         guard let sceneUrl = Bundle.main.url(forResource: data.sceneName, withExtension: data.sceneExtension) else { fatalError() }
