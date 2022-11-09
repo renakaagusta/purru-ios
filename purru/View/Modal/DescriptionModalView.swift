@@ -43,7 +43,7 @@ struct DescriptionModalView: View {
     
     @State private var objectHistoryList: [SCNNode] = []
     
-    @State private var onPlay: () -> Void = {}
+    private var onPlay: () -> Void = {}
     
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
