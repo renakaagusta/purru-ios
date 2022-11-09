@@ -19,7 +19,7 @@ struct AppExitStoryAlert: View {
             VStack(alignment: .center){
                 AppJosefineSans(text: "Yakin ingin keluar?", josepSize: fontType.title2, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
                 
-                AppRubik(text: "Kamu akan kehilangan semua progres", rubikSize: .caption1, fontWeight: Font.Weight.bold, fontColor: Color.foot.primary, textAligment: TextAlignment.center)
+                AppRubik(text: "Kamu akan kehilangan semua progres", rubikSize: .caption1, fontWeight: Font.Weight.regular, fontColor: Color.foot.primary, textAligment: TextAlignment.center)
                     .padding(2)
                 
                 HStack{
