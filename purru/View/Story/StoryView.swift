@@ -72,14 +72,34 @@ struct StoryView: View {
         //kanan, kiri, atas, bawah, belakang, depan
         
         self.scene?.background.contents = [
-            UIImage(named: "px"),
-            UIImage(named: "nx"),
-            UIImage(named: "py"),
-            UIImage(named: "ny"),
-            UIImage(named: "pz"),
-            UIImage(named: "nz")
+            UIImage(named: data.skyBox.px),
+            UIImage(named: data.skyBox.nx),
+            UIImage(named: data.skyBox.py),
+            UIImage(named: data.skyBox.ny),
+            UIImage(named: data.skyBox.pz),
+            UIImage(named: data.skyBox.nz)
         ]
         
+        print("===LOAD PARTICLE===")
+        if let emitter = SCNParticleSystem(named: "ParticleTouch.scnp", inDirectory: nil) {
+            print(emitter)
+            self.view.scene?.rootNode.childNode(withName: "BLUE", recursively: true)!.addParticleSystem(emitter)
+        }
+        
+        if(self.view.scene != nil) {
+            let particleSystem = SCNParticleSystem()
+                
+            particleSystem.birthRate = 1000
+            particleSystem.particleSize = 1.45
+            particleSystem.particleLifeSpan = 2
+            particleSystem.particleColor = .yellow
+
+            let particlesNode = SCNNode()
+            particlesNode.addParticleSystem(particleSystem)
+
+//            self.view.scene!.rootNode.addChildNode(particlesNode)
+            self.view.scene?.rootNode.childNode(withName: "BLUE", recursively: true)?.addParticleSystem(particleSystem)
+        }
     }
     
     func showHint() {
@@ -519,8 +539,8 @@ struct StoryView: View {
             .onAppear(){
                 GlobalStorage.isTurorialFinished = true
                 
-                playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
-                playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
+//                playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
+//                playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                 
                 gameView.loadData(scene: self.scene!, onTap: {
                     hitResults in

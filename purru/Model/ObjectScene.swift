@@ -21,8 +21,3 @@ struct ObjectScene {
     var narationSoundExtention: String
     var instructionList: [Instruction]?
 }
-
-struct Camera {
-    var worldPosition: SCNVector3
-    var worldOrientation: SCNQuaternion
-}

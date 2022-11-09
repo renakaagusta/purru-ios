@@ -19,6 +19,7 @@ var storyList = [
            sceneExtension: "scn",
            backsound: "backsound-story1",
            backsoundExtention: "mp3",
+           skyBox: SkyBox(px: "px", py: "py", pz: "pz", nx: "nx", ny: "ny", nz: "nz"),
            objectList: [
             ObjectScene(
                    title: "Object 1",
@@ -165,6 +166,7 @@ var storyList = [
            sceneExtension: "scn",
            backsound: "backsound-story1",
            backsoundExtention: "mp3",
+           skyBox: SkyBox(px: "px", py: "py", pz: "pz", nx: "nx", ny: "ny", nz: "nz"),
            objectList: [
                ObjectScene(
                    title: "Object 1",
