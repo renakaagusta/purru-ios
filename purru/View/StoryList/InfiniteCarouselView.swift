@@ -30,7 +30,6 @@ struct InfiniteCarouselView: View{
                             global.storyIndex = index
                             isPresentDescriptionModal.toggle()
                         })
-                        Text(String(index)).foregroundColor(.white)
                     }
                     .onPreferenceChange(OffsetKey.self, perform: { offset in
                         self.offset = offset

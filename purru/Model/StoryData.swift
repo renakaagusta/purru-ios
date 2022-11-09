@@ -15,6 +15,8 @@ struct StoryData: Identifiable {
     var modalCover: String
     var sceneName: String
     var sceneExtension: String
+    var particleTouch: String
+    var particleEnding: String
     var backsound: String
     var backsoundExtention: String
     var skyBox: SkyBox

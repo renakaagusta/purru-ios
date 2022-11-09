@@ -75,7 +75,9 @@
 		41147799290FC95700FD5B56 /* hand.swipe.up.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147795290FC95700FD5B56 /* hand.swipe.up.gif */; };
 		4114779A290FC95700FD5B56 /* hand.swipe.left.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147796290FC95700FD5B56 /* hand.swipe.left.gif */; };
 		4114779B290FC95700FD5B56 /* hand.zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 41147797290FC95700FD5B56 /* hand.zoom.gif */; };
-		415E869F291B98D700ED9B5B /* Particle in Resources */ = {isa = PBXBuildFile; fileRef = 415E869E291B98D700ED9B5B /* Particle */; };
+		41E36BDE291BA01600B8B369 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 41E36BDB291BA01600B8B369 /* spark.png */; };
+		41E36BDF291BA01600B8B369 /* ParticleTouch.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 41E36BDC291BA01600B8B369 /* ParticleTouch.scnp */; };
+		41E36BE0291BA01600B8B369 /* ParticleEndingView.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 41E36BDD291BA01600B8B369 /* ParticleEndingView.scnp */; };
 		B80A8FE3291B6546008F4D3A /* backsound-story2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FD1291B6545008F4D3A /* backsound-story2.mp3 */; };
 		B80A8FE4291B6546008F4D3A /* backsound-story1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FD2291B6545008F4D3A /* backsound-story1.mp3 */; };
 		B80A8FE5291B6546008F4D3A /* Narasi-Story2-4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FD5291B6546008F4D3A /* Narasi-Story2-4.mp3 */; };
@@ -91,9 +93,6 @@
 		B80A8FEF291B6546008F4D3A /* Narasi-Story1-3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FE0291B6546008F4D3A /* Narasi-Story1-3.mp3 */; };
 		B80A8FF0291B6546008F4D3A /* Narasi-Story1-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FE1291B6546008F4D3A /* Narasi-Story1-2.mp3 */; };
 		B80A8FF1291B6546008F4D3A /* Narasi-Story1-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FE2291B6546008F4D3A /* Narasi-Story1-1.mp3 */; };
-		B80A8FFD291B848D008F4D3A /* ParticleTouch.scnp in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FFA291B848D008F4D3A /* ParticleTouch.scnp */; };
-		B80A8FFE291B848D008F4D3A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FFB291B848D008F4D3A /* spark.png */; };
-		B80A8FFF291B848D008F4D3A /* ParticleEndingView.scnp in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FFC291B848D008F4D3A /* ParticleEndingView.scnp */; };
 		B8469D452917F7BB00249606 /* PauseStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8469D442917F7BB00249606 /* PauseStoryView.swift */; };
 		B8469D87291A5C2E00249606 /* wardrobe_BC.png in Resources */ = {isa = PBXBuildFile; fileRef = B8469D73291A5C2C00249606 /* wardrobe_BC.png */; };
 		B8469D88291A5C2E00249606 /* carpet-bc.png in Resources */ = {isa = PBXBuildFile; fileRef = B8469D74291A5C2C00249606 /* carpet-bc.png */; };
@@ -214,7 +213,9 @@
 		41147795290FC95700FD5B56 /* hand.swipe.up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.swipe.up.gif; sourceTree = "<group>"; };
 		41147796290FC95700FD5B56 /* hand.swipe.left.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.swipe.left.gif; sourceTree = "<group>"; };
 		41147797290FC95700FD5B56 /* hand.zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.zoom.gif; sourceTree = "<group>"; };
-		415E869E291B98D700ED9B5B /* Particle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Particle; sourceTree = "<group>"; };
+		41E36BDB291BA01600B8B369 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		41E36BDC291BA01600B8B369 /* ParticleTouch.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ParticleTouch.scnp; sourceTree = "<group>"; };
+		41E36BDD291BA01600B8B369 /* ParticleEndingView.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ParticleEndingView.scnp; sourceTree = "<group>"; };
 		B80A8FD1291B6545008F4D3A /* backsound-story2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "backsound-story2.mp3"; sourceTree = "<group>"; };
 		B80A8FD2291B6545008F4D3A /* backsound-story1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "backsound-story1.mp3"; sourceTree = "<group>"; };
 		B80A8FD5291B6546008F4D3A /* Narasi-Story2-4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-4.mp3"; sourceTree = "<group>"; };
@@ -230,9 +231,6 @@
 		B80A8FE0291B6546008F4D3A /* Narasi-Story1-3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story1-3.mp3"; sourceTree = "<group>"; };
 		B80A8FE1291B6546008F4D3A /* Narasi-Story1-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story1-2.mp3"; sourceTree = "<group>"; };
 		B80A8FE2291B6546008F4D3A /* Narasi-Story1-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story1-1.mp3"; sourceTree = "<group>"; };
-		B80A8FFA291B848D008F4D3A /* ParticleTouch.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ParticleTouch.scnp; sourceTree = "<group>"; };
-		B80A8FFB291B848D008F4D3A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
-		B80A8FFC291B848D008F4D3A /* ParticleEndingView.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ParticleEndingView.scnp; sourceTree = "<group>"; };
 		B8469D442917F7BB00249606 /* PauseStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseStoryView.swift; sourceTree = "<group>"; };
 		B8469D73291A5C2C00249606 /* wardrobe_BC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wardrobe_BC.png; sourceTree = "<group>"; };
 		B8469D74291A5C2C00249606 /* carpet-bc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carpet-bc.png"; sourceTree = "<group>"; };
@@ -374,7 +372,9 @@
 		2FA53F3D2907C31F00BFB3E5 /* Story 1 */ = {
 			isa = PBXGroup;
 			children = (
-				415E869E291B98D700ED9B5B /* Particle */,
+				41E36BDD291BA01600B8B369 /* ParticleEndingView.scnp */,
+				41E36BDC291BA01600B8B369 /* ParticleTouch.scnp */,
+				41E36BDB291BA01600B8B369 /* spark.png */,
 				B8B5FEA429102F5300687987 /* atas.png */,
 				B8B5FEA129102F5300687987 /* bawah.png */,
 				B8B5FEA329102F5300687987 /* belakang.png */,
@@ -755,17 +755,6 @@
 			path = "Story 1";
 			sourceTree = "<group>";
 		};
-		B80A8FF9291B848D008F4D3A /* Particle */ = {
-			isa = PBXGroup;
-			children = (
-				B80A8FFA291B848D008F4D3A /* ParticleTouch.scnp */,
-				B80A8FFB291B848D008F4D3A /* spark.png */,
-				B80A8FFC291B848D008F4D3A /* ParticleEndingView.scnp */,
-			);
-			name = Particle;
-			path = "../../../../../../../../../../Dropbox (Developer Academy)/Purru/Ruangan Ajaib SCN Pack/Particle";
-			sourceTree = "<group>";
-		};
 		B8469DA0291A5DCB00249606 /* background */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,7 +812,6 @@
 		B8DACF61291323B9002EA3BA /* Story 2 */ = {
 			isa = PBXGroup;
 			children = (
-				B80A8FF9291B848D008F4D3A /* Particle */,
 				B8469DA0291A5DCB00249606 /* background */,
 				B8469D75291A5C2C00249606 /* candles_bc.png */,
 				B8469D74291A5C2C00249606 /* carpet-bc.png */,
@@ -911,7 +899,7 @@
 			files = (
 				B80A8FF1291B6546008F4D3A /* Narasi-Story1-1.mp3 in Resources */,
 				B8624DB6291120D400586833 /* 3DAssetS1.scn in Resources */,
-				B80A8FFF291B848D008F4D3A /* ParticleEndingView.scnp in Resources */,
+				41E36BE0291BA01600B8B369 /* ParticleEndingView.scnp in Resources */,
 				B80A8FEB291B6546008F4D3A /* Narasi-Story2-1.mp3 in Resources */,
 				41147799290FC95700FD5B56 /* hand.swipe.up.gif in Resources */,
 				B8A100092907E73C0082C66E /* Layer0.exr in Resources */,
@@ -921,6 +909,7 @@
 				B8D38CC42907CC0C00DB150C /* Rubik.ttf in Resources */,
 				B8469DA9291A5E1000249606 /* nx.2.png in Resources */,
 				B8469D90291A5C2E00249606 /* glass_bc.png in Resources */,
+				41E36BDE291BA01600B8B369 /* spark.png in Resources */,
 				B8469D97291A5C2E00249606 /* herbs.png in Resources */,
 				B8DE813A29092F65006B2BE3 /* nx.png in Resources */,
 				B8469D95291A5C2E00249606 /* tree_BC.png in Resources */,
@@ -936,15 +925,12 @@
 				B80A8FE6291B6546008F4D3A /* Narasi-Story2-5.mp3 in Resources */,
 				B8DE813B29092F65006B2BE3 /* py.png in Resources */,
 				B8469D8E291A5C2E00249606 /* foliage_tents_BC.jpg in Resources */,
-				B80A8FFD291B848D008F4D3A /* ParticleTouch.scnp in Resources */,
 				B8469D98291A5C2E00249606 /* grass_foliage.png in Resources */,
 				B80A8FEA291B6546008F4D3A /* Narasi-Story2-3.mp3 in Resources */,
-				415E869F291B98D700ED9B5B /* Particle in Resources */,
 				B8B5FEAC29102F5300687987 /* depan.png in Resources */,
 				2FA53E842907C2DC00BFB3E5 /* Preview Assets.xcassets in Resources */,
 				B8469D89291A5C2E00249606 /* candles_bc.png in Resources */,
 				B8469D8C291A5C2E00249606 /* RuanganAjaib.scn in Resources */,
-				B80A8FFE291B848D008F4D3A /* spark.png in Resources */,
 				B8DE813729092F65006B2BE3 /* nz.png in Resources */,
 				B8B5FEA729102F5300687987 /* bawah.png in Resources */,
 				B8B5FEAA29102F5300687987 /* atas.png in Resources */,
@@ -979,6 +965,7 @@
 				B8469DA8291A5E1000249606 /* ny.2.png in Resources */,
 				B8469D96291A5C2E00249606 /* window-bc.png in Resources */,
 				B8469D88291A5C2E00249606 /* carpet-bc.png in Resources */,
+				41E36BDF291BA01600B8B369 /* ParticleTouch.scnp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

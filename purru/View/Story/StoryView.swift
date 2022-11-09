@@ -42,7 +42,7 @@ struct StoryView: View {
     @State private var focusedObjectIndex = 0
     @State private var foundObject = 0
     
-    @State private var elapsedTime: CGFloat = 0
+    @State private var elapsedTime: CGFloat = 118
     
     @State private var minFov: CGFloat = 20
     @State private var maxFov: CGFloat = 110
@@ -66,12 +66,18 @@ struct StoryView: View {
         //kanan, kiri, atas, bawah, belakang, depan
         
         self.scene?.background.contents = [
-            UIImage(named: "px"),
-            UIImage(named: "nx"),
-            UIImage(named: "py"),
-            UIImage(named: "ny"),
-            UIImage(named: "pz"),
-            UIImage(named: "nz")
+//            UIImage(named: "px"),
+//            UIImage(named: "nx"),
+//            UIImage(named: "py"),
+//            UIImage(named: "ny"),
+//            UIImage(named: "pz"),
+//            UIImage(named: "nz")
+            UIImage(named: data.skyBox.px),
+            UIImage(named: data.skyBox.nx),
+            UIImage(named: data.skyBox.py),
+            UIImage(named: data.skyBox.ny),
+            UIImage(named: data.skyBox.pz),
+            UIImage(named: data.skyBox.nz)
         ]
         
     }
@@ -155,7 +161,7 @@ struct StoryView: View {
                 material.diffuse.contents = nil
                 objectHistoryList.append(result.node)
                 
-                let emitter = SCNParticleSystem(named: "ParticleTouch.scnp", inDirectory: nil)!
+                let emitter = SCNParticleSystem(named: "\(data.particleTouch).scnp", inDirectory: nil)!
                 let particleNode = SCNNode()
                 particleNode.worldPosition = result.node.worldPosition
                 particleNode.worldOrientation = result.node.worldOrientation
@@ -189,7 +195,7 @@ struct StoryView: View {
         let node  = self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)
         
         
-        let emitter = SCNParticleSystem(named: "ParticleEndingView.scnp", inDirectory: nil)!
+        let emitter = SCNParticleSystem(named: "\(data.particleEnding).scnp", inDirectory: nil)!
         
         self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)!.addParticleSystem(emitter)
         

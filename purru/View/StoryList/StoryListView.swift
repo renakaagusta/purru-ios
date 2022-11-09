@@ -35,7 +35,7 @@ struct StoryListView: View {
     var body: some View {
         
         VStack {
-            
+            Spacer().frame(height: 40)
             AppJosefineSans(text: "Pilih cerita malam ini...", josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
                 .frame(width: 300)
             
@@ -53,7 +53,7 @@ struct StoryListView: View {
 //            }
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: btnBack)
+//        .navigationBarItems(leading: btnBack)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             LinearGradient(colors: [Color.bg.primary, Color.bg.secondary], startPoint: .top, endPoint: .center)

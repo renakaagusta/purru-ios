@@ -44,6 +44,10 @@ struct ContentView: View {
     @ObservedObject var global = GlobalVariables.global
     @State var moveToMainMenu = false
     @State var moveToTutorial = false
+    
+    @State var tabs: [StoryTab] = storyListTab
+    @State var currentIndex: Int = 0
+    
 
     var body: some View {
         NavigationView {
@@ -52,7 +56,7 @@ struct ContentView: View {
                     SplashScreenView()
                 } else {
                     if(moveToTutorial) {
-                        MainMenuView().onAppear{
+                        StoryListView(tabs: $tabs, currentIndex: $currentIndex).onAppear{
                             narationPlayer?.stop()
                             backsoundPlayer?.stop()
                         }
