@@ -429,8 +429,9 @@ struct StoryView: View {
                     }
                 }
                 if(pauseVisibility) {
-                    PauseStoryView(buttonTextEnding: "Keluar", onRestartClick: {
+                    PauseStoryView(buttonTextEnding: "Keluar", onExitOptionClick: {
                         presentationMode.wrappedValue.dismiss()
+                        pauseVisibility = false
                     })
                 }
                 if(!endingVisibility) {
