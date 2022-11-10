@@ -21,6 +21,8 @@ var storyList = [
            particleEnding: "ParticleEndingView",
            backsound: "backsound-story1",
            backsoundExtention: "mp3",
+           backsoundVolumeFactor: 1,
+           narationVolumeFactor: 1,
            skyBox: SkyBox(px: "px", py: "py", pz: "pz", nx: "nx", ny: "ny", nz: "nz"),
            objectList: [
             ObjectScene(
@@ -170,6 +172,8 @@ var storyList = [
            particleEnding: "ParticleEndingView",
            backsound: "backsound-story2",
            backsoundExtention: "mp3",
+           backsoundVolumeFactor: 1,
+           narationVolumeFactor: 0.5,
            skyBox: SkyBox(px: "px.2", py: "py.2", pz: "pz.2", nx: "nx.2", ny: "ny.2", nz: "nz.2"),
            objectList: [
                ObjectScene(
