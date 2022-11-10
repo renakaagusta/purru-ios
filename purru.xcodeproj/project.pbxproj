@@ -92,7 +92,6 @@
 		41ABFEB9291D0D2D00E7295D /* 6TIANG.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ABFEA0291D0D2C00E7295D /* 6TIANG.png */; };
 		41ABFEBA291D0D2D00E7295D /* herbs.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ABFEA1291D0D2C00E7295D /* herbs.png */; };
 		41ABFEBB291D0D2D00E7295D /* RuanganAjaib.scn in Resources */ = {isa = PBXBuildFile; fileRef = 41ABFEA2291D0D2C00E7295D /* RuanganAjaib.scn */; };
-		41ABFEBC291D0D2D00E7295D /* grass_foliage.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ABFEA3291D0D2D00E7295D /* grass_foliage.png */; };
 		41ABFEBD291D0D2D00E7295D /* 1TANAMAN2.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ABFEA4291D0D2D00E7295D /* 1TANAMAN2.png */; };
 		41ABFEBE291D0D2D00E7295D /* wall_bc.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ABFEA5291D0D2D00E7295D /* wall_bc.png */; };
 		41ABFEBF291D0D2D00E7295D /* wardrobe_BC.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ABFEA6291D0D2D00E7295D /* wardrobe_BC.png */; };
@@ -127,6 +126,7 @@
 		B80A9010291CDC7E008F4D3A /* pz.2.png in Resources */ = {isa = PBXBuildFile; fileRef = B80A900A291CDC7D008F4D3A /* pz.2.png */; };
 		B80A9011291CDC7E008F4D3A /* nx.2.png in Resources */ = {isa = PBXBuildFile; fileRef = B80A900B291CDC7D008F4D3A /* nx.2.png */; };
 		B80A9012291CDC7E008F4D3A /* nz.2.png in Resources */ = {isa = PBXBuildFile; fileRef = B80A900C291CDC7E008F4D3A /* nz.2.png */; };
+		B80A9014291D102D008F4D3A /* grass_foliage.png in Resources */ = {isa = PBXBuildFile; fileRef = B80A9013291D102D008F4D3A /* grass_foliage.png */; };
 		B8469D452917F7BB00249606 /* PauseStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8469D442917F7BB00249606 /* PauseStoryView.swift */; };
 		B8624DB6291120D400586833 /* 3DAssetS1.scn in Resources */ = {isa = PBXBuildFile; fileRef = B8624DB5291120D400586833 /* 3DAssetS1.scn */; };
 		B89A00612914D34B00D620A4 /* DescriptionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89A00602914D34B00D620A4 /* DescriptionModalView.swift */; };
@@ -242,7 +242,6 @@
 		41ABFEA0291D0D2C00E7295D /* 6TIANG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6TIANG.png; sourceTree = "<group>"; };
 		41ABFEA1291D0D2C00E7295D /* herbs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = herbs.png; sourceTree = "<group>"; };
 		41ABFEA2291D0D2C00E7295D /* RuanganAjaib.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = RuanganAjaib.scn; sourceTree = "<group>"; };
-		41ABFEA3291D0D2D00E7295D /* grass_foliage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass_foliage.png; path = "../../../../../../../../Downloads/Ruangan Ajaib SCN Pack Com/grass_foliage.png"; sourceTree = "<group>"; };
 		41ABFEA4291D0D2D00E7295D /* 1TANAMAN2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1TANAMAN2.png; sourceTree = "<group>"; };
 		41ABFEA5291D0D2D00E7295D /* wall_bc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wall_bc.png; sourceTree = "<group>"; };
 		41ABFEA6291D0D2D00E7295D /* wardrobe_BC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wardrobe_BC.png; sourceTree = "<group>"; };
@@ -277,6 +276,7 @@
 		B80A900A291CDC7D008F4D3A /* pz.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pz.2.png; sourceTree = "<group>"; };
 		B80A900B291CDC7D008F4D3A /* nx.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nx.2.png; sourceTree = "<group>"; };
 		B80A900C291CDC7E008F4D3A /* nz.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nz.2.png; sourceTree = "<group>"; };
+		B80A9013291D102D008F4D3A /* grass_foliage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass_foliage.png; path = ../../../../../../../../../../../Downloads/grass_foliage.png; sourceTree = "<group>"; };
 		B8469D442917F7BB00249606 /* PauseStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseStoryView.swift; sourceTree = "<group>"; };
 		B8624DB5291120D400586833 /* 3DAssetS1.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = 3DAssetS1.scn; sourceTree = "<group>"; };
 		B89A00602914D34B00D620A4 /* DescriptionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionModalView.swift; sourceTree = "<group>"; };
@@ -806,7 +806,7 @@
 				41ABFEAC291D0D2D00E7295D /* floor_bc.png */,
 				41ABFE95291D0D2B00E7295D /* foliage_tents_BC.jpg */,
 				41ABFE9C291D0D2B00E7295D /* glass_bc.png */,
-				41ABFEA3291D0D2D00E7295D /* grass_foliage.png */,
+				B80A9013291D102D008F4D3A /* grass_foliage.png */,
 				41ABFEA1291D0D2C00E7295D /* herbs.png */,
 				41ABFE9E291D0D2C00E7295D /* ivy_custrom.png */,
 				41ABFEAA291D0D2D00E7295D /* props_BC.png */,
@@ -975,7 +975,6 @@
 				41ABFEAD291D0D2D00E7295D /* 1TANAMAN3.png in Resources */,
 				B8DE813729092F65006B2BE3 /* nz.png in Resources */,
 				41ABFEBB291D0D2D00E7295D /* RuanganAjaib.scn in Resources */,
-				41ABFEBC291D0D2D00E7295D /* grass_foliage.png in Resources */,
 				41ABFEB2291D0D2D00E7295D /* 5HUGO2.png in Resources */,
 				41ABFEB4291D0D2D00E7295D /* window-bc.png in Resources */,
 				B8B5FEA729102F5300687987 /* bawah.png in Resources */,
@@ -992,6 +991,7 @@
 				2FA53F9B2907C31F00BFB3E5 /* smallTree.usdz in Resources */,
 				B80A8FEE291B6546008F4D3A /* Narasi-Story1-6.mp3 in Resources */,
 				41ABFEBE291D0D2D00E7295D /* wall_bc.png in Resources */,
+				B80A9014291D102D008F4D3A /* grass_foliage.png in Resources */,
 				B80A8FE5291B6546008F4D3A /* Narasi-Story2-4.mp3 in Resources */,
 				41147798290FC95700FD5B56 /* hand.tap.gif in Resources */,
 				B8B5FEA929102F5300687987 /* belakang.png in Resources */,
@@ -1215,7 +1215,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"purru/Preview Content\"";
-				DEVELOPMENT_TEAM = KZ9PN4535G;
+				DEVELOPMENT_TEAM = GHNZ6R7D9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = purru/Info.plist;
@@ -1245,7 +1245,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"purru/Preview Content\"";
-				DEVELOPMENT_TEAM = KZ9PN4535G;
+				DEVELOPMENT_TEAM = GHNZ6R7D9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = purru/Info.plist;
