@@ -192,7 +192,7 @@ var storyList = [
                        Instruction(id: "2", text: "Oh halo!",  startedAt: 1.3),
                        Instruction(id: "3",text: "Beruntung sekali kamu dapat menemukan perpustakaan yang spesial ini", startedAt: 4),
                        Instruction(id: "4",text: "Masuklah! Pasti kamu lelah Setelah beraktivitas seharian", startedAt: 12.4),
-                       Instruction(id: "5",text: "Saya akan bercerita tentang perpustakaan tua ini", startedAt: 21.5),
+                       Instruction(id: "5",text: "Saya akan bercerita tentang perpustakaan tua ini", startedAt: 21.2),
                        Instruction(id: "6",text: "Perpustakaan ini adalah peninggalan nenek saya", startedAt: 29),
                        Instruction(id: "7",text: "dulunya, nenek saya adalah seorang penyihir", startedAt: 36),
                        Instruction(id: "8",text: "Sebagian besar waktunya dihabiskan di perpustakaan ini", startedAt: 42.6),
