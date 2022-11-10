@@ -357,7 +357,7 @@ struct StoryView: View {
         
         do {
             backsoundPlayer = try AVAudioPlayer(contentsOf: url!)
-            backsoundPlayer?.setVolume(Float(global.backsoundVolume / 100), fadeDuration: 0.1)
+            backsoundPlayer?.setVolume(Float(global.backsoundVolume / 100 * data.backsoundVolumeFactor), fadeDuration: 0.1)
             backsoundPlayer?.numberOfLoops = -1
             
             try AVAudioSession.sharedInstance().setCategory(.playback)
@@ -383,7 +383,7 @@ struct StoryView: View {
             if(soundName.count != 0) {
                 narationPlayer = try AVAudioPlayer(contentsOf: url!)
                 narationPlayer?.currentTime = currentTime ?? 0
-                narationPlayer?.setVolume(Float(global.narationVolume / 100), fadeDuration: 0.1)
+                narationPlayer?.setVolume(Float(global.narationVolume / 100 * data.narationVolumeFactor), fadeDuration: 0.1)
                 try AVAudioSession.sharedInstance().setCategory(.playback)
                 narationPlayer?.play()
             }

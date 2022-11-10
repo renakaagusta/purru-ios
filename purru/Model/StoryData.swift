@@ -19,6 +19,8 @@ struct StoryData: Identifiable {
     var particleEnding: String
     var backsound: String
     var backsoundExtention: String
+    var backsoundVolumeFactor: CGFloat
+    var narationVolumeFactor: CGFloat
     var skyBox: SkyBox
     var objectList: [ObjectScene]
     var isTutorial: Bool = false
