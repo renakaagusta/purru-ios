@@ -471,7 +471,7 @@ struct StoryView: View {
                     .frame(width: UIScreen.width, height: UIScreen.height)
                 }
                 VStack(alignment: .trailing) {
-                    Spacer().frame(height: UIScreen.height -  220)
+                    Spacer().frame(height: UIScreen.height - 160)
                     HStack {
                         
                         if(global.environemnt == AppEnvironment.Development) {
@@ -496,7 +496,7 @@ struct StoryView: View {
                             }
                         }
                         
-                        Spacer().frame(width: UIScreen.width - 150)
+                        Spacer().frame(width: UIScreen.width - 100)
                         
                         if(state != StoryState.Naration && state != StoryState.Tutorial) {
                             AppCircleButton(

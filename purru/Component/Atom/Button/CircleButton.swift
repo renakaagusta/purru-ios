@@ -28,10 +28,10 @@ struct AppCircleButton: View {
         Button(action: {
             self.onClick()
         }, label: {
-            if(source == AppCircleButtonContentSource.Icon) { icon.foregroundColor(color) }
-            if(source == AppCircleButtonContentSource.Image) { image }
-            if(source == AppCircleButtonContentSource.Text) { Text(text!).foregroundColor(color) }
-        }).frame(width: size, height: size).padding().background(backgroundColor).cornerRadius(40)
+            if(source == AppCircleButtonContentSource.Icon) { icon.foregroundColor(color).frame(width: size, height: size).padding().background(backgroundColor).cornerRadius(40) }
+            if(source == AppCircleButtonContentSource.Image) { image.frame(width: size, height: size).padding().background(backgroundColor).cornerRadius(40) }
+            if(source == AppCircleButtonContentSource.Text) { Text(text!).foregroundColor(color).frame(width: size, height: size).padding().background(backgroundColor).cornerRadius(40) }
+        })
 //            .shadow(color: .gray, radius: 2, x: 0, y: 2)
     }
 }
