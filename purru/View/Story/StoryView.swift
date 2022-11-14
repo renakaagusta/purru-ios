@@ -42,7 +42,7 @@ struct StoryView: View {
     @State private var focusedObjectIndex = 0
     @State private var foundObject = 0
     
-    @State private var elapsedTime: CGFloat = 120
+    @State private var elapsedTime: CGFloat = 0
     
     @State private var minFov: CGFloat = 20
     @State private var maxFov: CGFloat = 110
@@ -69,12 +69,12 @@ struct StoryView: View {
         //kanan, kiri, atas, bawah, belakang, depan
         
         self.scene?.background.contents = [
-            UIImage(named: data.skyBox.px),
-            UIImage(named: data.skyBox.nx),
-            UIImage(named: data.skyBox.py),
-            UIImage(named: data.skyBox.ny),
-            UIImage(named: data.skyBox.pz),
-            UIImage(named: data.skyBox.nz)
+            UIImage(named: data.skyBox.px), //kanan
+            UIImage(named: data.skyBox.nx), //kiri
+            UIImage(named: data.skyBox.py), //atas
+            UIImage(named: data.skyBox.ny), //bawah
+            UIImage(named: data.skyBox.pz), //belakang
+            UIImage(named: data.skyBox.nz) //depan
         ]
     }
     
@@ -585,6 +585,11 @@ struct StoryView: View {
         .navigationBarItems(trailing: Button(
             action: {
                 pauseVisibility.toggle()
+                if pauseVisibility {
+                    narationPlayer?.pause()
+                } else {
+                    narationPlayer?.play()
+                }
             }, label: {
                 if(!endingVisibility && !isTutorial){
                     Image(systemName: pauseVisibility ? "xmark" : "gearshape.fill")
