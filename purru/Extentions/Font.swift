@@ -49,10 +49,11 @@ enum rubikFont: String {
     case regular = "RubikRoman-Regular"
     case light = "Rubik-Light"
     case medium = "RubikRoman-Medium"
-    case semoBold = "RubikRoman-SemiBold"
+    case semiBold = "RubikRoman-SemiBold"
     case bold = "RubikRoman-Bold"
     case extraBold = "RubikRoman-ExtraBold"
     case black = "RubikRoman-Black"
+    case italic = "RubikItalic-Regular"
 }
 
 
@@ -65,6 +66,7 @@ extension Font {
     static func rubik(_ font: rubikFont, size: fontType) -> SwiftUI.Font {
         SwiftUI.Font.custom(font.rawValue, size: size.rawValue)
     }
+    
     
 }
 

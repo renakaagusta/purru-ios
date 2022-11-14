@@ -14,14 +14,12 @@ struct AppCardStory: View {
     @State var thumbnail: String = ""
     @State var DescriptionLineLimit: Int = 3
     @State var index: Int = 0
-    @State var isActive: Bool = false
 
     var onClick: () -> Void = {}
+    var onPlay: () -> Void = {}
     
     var body: some View {
-        
         VStack {
-            NavigationLink(destination: StoryView(data: storyList[index]), isActive: $isActive, label: {
                 ZStack {
                     AppCard(width: 280, height: 479, cornerRadius: 31, backgroundColorTop: Color.black, backgroundColorBottom: Color.bg.secondary, borderColor: Color.spot.primary) {
                             
@@ -30,7 +28,7 @@ struct AppCardStory: View {
                         .padding(5)
                     
                     Button(action: {
-                        isActive = true
+                        self.onPlay()
                     }, label: {
                         Image(thumbnail)
                             .resizable()
@@ -38,7 +36,6 @@ struct AppCardStory: View {
                             .frame(width: 371.0, height: 371.0)
                             .offset(y:-60)
                     })
-                    
                     
                     VStack(alignment: .leading) {
                         AppJosefineSans(text: title, josepSize: fontType.title2, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
@@ -75,7 +72,6 @@ struct AppCardStory: View {
                         .offset(y:270)
                                     
                 }
-            })
             .padding()
             Spacer()
         }

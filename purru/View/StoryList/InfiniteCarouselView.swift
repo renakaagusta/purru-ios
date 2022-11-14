@@ -18,49 +18,26 @@ struct InfiniteCarouselView: View{
     @State var offset: CGFloat = 0
     
     @State var genericTabs: [StoryTab] = []
-    
-    @State private var isPresentDescriptionModal = false
-    
+        
     var body: some View{
         TabView(selection: $fakeIndex){
-            ForEach(Array(storyListTab.enumerated()),  id: \.offset) { index, tab in
-                NavigationLink(destination: StoryView(data: storyList[index]), isActive: Binding(get: {global.storyIndex == index && global.isPlaying == true}, set: { _ in true})) {
+            ForEach(Array(storyListTab.enumerated()), id: \.offset) { index, tab in
                     VStack {
                         AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3, index: index , onClick: {
                             global.storyIndex = index
-                            isPresentDescriptionModal.toggle()
+                            global.isReadSinopsis.toggle()
+                        }, onPlay: {
+                            global.storyIndex = index
+                            global.isPlaying.toggle()
                         })
                     }
                     .onPreferenceChange(OffsetKey.self, perform: { offset in
                         self.offset = offset
                     })
                     .tag(getIndex(tab: tab))
-                    .sheet(isPresented: $isPresentDescriptionModal) {
-                        DescriptionModalView(data: storyList[global.storyIndex], onPlay: {
-                            isPresentDescriptionModal = false
-                            global.isPlaying = true
-                        })
-                        .presentationDetents([.height(550)])
-                    }
                 }
-            }
-                        
-//            ForEach(genericTabs){tab in
-//
-//                // Card View...
-//
-//
-//                AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3)
-//
-//                .onPreferenceChange(OffsetKey.self, perform: { offset in
-//                    self.offset = offset
-//                })
-//                .tag(getIndex(tab: tab))
-//            }
         }
         .tabViewStyle(.page(indexDisplayMode: .always))
-        //.background(Color.white)
-        // max size...
         .frame(height: .infinity)
         .onChange(of: offset) { newValue in
             if fakeIndex == 0 && offset == 0{

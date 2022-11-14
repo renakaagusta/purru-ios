@@ -163,7 +163,7 @@ var storyList = [
        StoryData(
            id: "2",
            title: "Perpustakaan Penyihir",
-           description: "Seorang pengelana yang menemukan sebuah ruangang kuno ajaib di sebuah kota kecil yang ia kunjungi. Siapa pemilik ruangan ini? Mengapa banyak barang-barang supranatural didalamnya?",
+           description: "Seorang pengelana yang menemukan sebuah ruangan kuno ajaib di sebuah kota kecil yang ia kunjungi. Siapa pemilik ruangan ini? Mengapa banyak barang-barang supranatural didalamnya?",
            thumbnail: "RuanganAjaib",
            modalCover:"alcheworld",
            sceneName: "RuanganAjaib",
@@ -172,7 +172,7 @@ var storyList = [
            particleEnding: "2ParticleEndingView",
            backsound: "backsound-story2",
            backsoundExtention: "mp3",
-           backsoundVolumeFactor: 0.4,
+           backsoundVolumeFactor: 0.3,
            narationVolumeFactor: 1,
            skyBox: SkyBox(px: "px.2", py: "py.2", pz: "pz.2", nx: "nx.2", ny: "ny.2", nz: "nz.2"),
            objectList: [
