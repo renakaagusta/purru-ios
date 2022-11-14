@@ -455,12 +455,6 @@ struct StoryView: View {
 //                        }.frame(height: 100)
                     }
                 }
-                if(pauseVisibility) {
-                    PauseStoryView(buttonTextEnding: "Keluar", onExitOptionClick: {
-                        presentationMode.wrappedValue.dismiss()
-                        pauseVisibility = false
-                    })
-                }
                 if(!endingVisibility) {
                     VStack {
                         AppProgressBar(width:300, height: 7, progress:Binding(get:{narationsProgress}, set: {_ in true}))
@@ -530,6 +524,13 @@ struct StoryView: View {
                         
                     }
                     
+                }
+                
+                if(pauseVisibility) {
+                    PauseStoryView(buttonTextEnding: "Keluar", onExitOptionClick: {
+                        presentationMode.wrappedValue.dismiss()
+                        pauseVisibility = false
+                    })
                 }
                 
             }
