@@ -327,7 +327,7 @@ struct StoryView: View {
             }
             
             if(state != StoryState.Task && showedInstruction != nil) {
-                showDialog(position: DialogPosition.Top, child: AnyView(AppRubik(text: showedInstruction!, rubikSize: fontType.body, fontWeight: .bold , fontColor: Color.text.primary)))
+                showDialog(position: DialogPosition.Top, child: AnyView(AppRubik(text: showedInstruction!, rubikSize: fontType.body, fontWeight: .regular, fontColor: Color.text.primary, fontStyle: .italic)))
             }
             
             narationsProgress = CGFloat(focusedObjectIndex != 0 ? focusedObjectIndex - 1 : 0 ) / CGFloat(data.objectList.count - 2)
@@ -537,7 +537,7 @@ struct StoryView: View {
             .frame(width: UIScreen.width, height: UIScreen.height + 100)
             .onDisappear{
                 global.isPlaying = false
-                global.storyIndex = -1
+                global.storyIndex = 0
                 global.tutorialFinished = true
                 GlobalStorage.isTurorialFinished = true
                 backsoundPlayer?.stop()

@@ -31,7 +31,7 @@ class GlobalVariables: ObservableObject{
     @Published var isPlaying = false
     
     // STORY
-    @Published var storyIndex = -1
+    @Published var storyIndex = 0
     
     // SETTING
     @Published var showSubtitle = true
