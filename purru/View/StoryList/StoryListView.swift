@@ -41,8 +41,7 @@ struct StoryListView: View {
             Spacer().frame(height: 40)
             AppJosefineSans(text: "Pilih cerita malam ini...", josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
                 .frame(width: 300)
-            Text(String(global.storyIndex))
-            Text(String(global.isPlaying))
+           
                 InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
             NavigationLink(destination:  global.isPlaying ? AnyView(StoryView(data: storyList[global.storyIndex])) : AnyView(EmptyView()), tag: 1, selection: Binding(get: { global.isPlaying ? 1 : 0}, set: {_ in true})) {
                 EmptyView()

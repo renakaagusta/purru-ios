@@ -101,7 +101,6 @@
 		41ABFEC3291D0D2D00E7295D /* props_BC.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ABFEAA291D0D2D00E7295D /* props_BC.png */; };
 		41ABFEC4291D0D2D00E7295D /* 4KURSI.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ABFEAB291D0D2D00E7295D /* 4KURSI.png */; };
 		41ABFEC5291D0D2D00E7295D /* floor_bc.png in Resources */ = {isa = PBXBuildFile; fileRef = 41ABFEAC291D0D2D00E7295D /* floor_bc.png */; };
-		41B4226A29222E16003B04E4 /* grass_foliage.png in Resources */ = {isa = PBXBuildFile; fileRef = 41B4226929222E16003B04E4 /* grass_foliage.png */; };
 		41E36BDE291BA01600B8B369 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 41E36BDB291BA01600B8B369 /* spark.png */; };
 		41E36BDF291BA01600B8B369 /* ParticleTouch.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 41E36BDC291BA01600B8B369 /* ParticleTouch.scnp */; };
 		41E36BE0291BA01600B8B369 /* ParticleEndingView.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 41E36BDD291BA01600B8B369 /* ParticleEndingView.scnp */; };
@@ -128,6 +127,8 @@
 		B80A9011291CDC7E008F4D3A /* nx.2.png in Resources */ = {isa = PBXBuildFile; fileRef = B80A900B291CDC7D008F4D3A /* nx.2.png */; };
 		B80A9012291CDC7E008F4D3A /* nz.2.png in Resources */ = {isa = PBXBuildFile; fileRef = B80A900C291CDC7E008F4D3A /* nz.2.png */; };
 		B8469D452917F7BB00249606 /* PauseStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8469D442917F7BB00249606 /* PauseStoryView.swift */; };
+		B85BA9FA29224F5A0034D067 /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B85BA9F929224F5A0034D067 /* Rubik-Italic.ttf */; };
+		B85BA9FC2922505F0034D067 /* grass_foliage.png in Resources */ = {isa = PBXBuildFile; fileRef = B85BA9FB2922505F0034D067 /* grass_foliage.png */; };
 		B8624DB6291120D400586833 /* 3DAssetS1.scn in Resources */ = {isa = PBXBuildFile; fileRef = B8624DB5291120D400586833 /* 3DAssetS1.scn */; };
 		B89A00612914D34B00D620A4 /* DescriptionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89A00602914D34B00D620A4 /* DescriptionModalView.swift */; };
 		B8A100092907E73C0082C66E /* Layer0.exr in Resources */ = {isa = PBXBuildFile; fileRef = B8BBC2E82907E3FF007EE031 /* Layer0.exr */; };
@@ -251,7 +252,6 @@
 		41ABFEAA291D0D2D00E7295D /* props_BC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = props_BC.png; sourceTree = "<group>"; };
 		41ABFEAB291D0D2D00E7295D /* 4KURSI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4KURSI.png; sourceTree = "<group>"; };
 		41ABFEAC291D0D2D00E7295D /* floor_bc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = floor_bc.png; sourceTree = "<group>"; };
-		41B4226929222E16003B04E4 /* grass_foliage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass_foliage.png; path = "../../../../../../../../Downloads/Ruangan Ajaib SCN Pack Com/grass_foliage.png"; sourceTree = "<group>"; };
 		41E36BDB291BA01600B8B369 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		41E36BDC291BA01600B8B369 /* ParticleTouch.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ParticleTouch.scnp; sourceTree = "<group>"; };
 		41E36BDD291BA01600B8B369 /* ParticleEndingView.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ParticleEndingView.scnp; sourceTree = "<group>"; };
@@ -278,6 +278,8 @@
 		B80A900B291CDC7D008F4D3A /* nx.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nx.2.png; sourceTree = "<group>"; };
 		B80A900C291CDC7E008F4D3A /* nz.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nz.2.png; sourceTree = "<group>"; };
 		B8469D442917F7BB00249606 /* PauseStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseStoryView.swift; sourceTree = "<group>"; };
+		B85BA9F929224F5A0034D067 /* Rubik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Italic.ttf"; sourceTree = "<group>"; };
+		B85BA9FB2922505F0034D067 /* grass_foliage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass_foliage.png; path = ../../../../../../../../../../../Downloads/grass_foliage.png; sourceTree = "<group>"; };
 		B8624DB5291120D400586833 /* 3DAssetS1.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = 3DAssetS1.scn; sourceTree = "<group>"; };
 		B89A00602914D34B00D620A4 /* DescriptionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionModalView.swift; sourceTree = "<group>"; };
 		B8A1000A2907E76D0082C66E /* skybox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skybox.png; sourceTree = "<group>"; };
@@ -804,9 +806,9 @@
 				41ABFE9F291D0D2C00E7295D /* desk_BC.png */,
 				41ABFEA8291D0D2D00E7295D /* easel-color.png */,
 				41ABFEAC291D0D2D00E7295D /* floor_bc.png */,
-				41B4226929222E16003B04E4 /* grass_foliage.png */,
 				41ABFE95291D0D2B00E7295D /* foliage_tents_BC.jpg */,
 				41ABFE9C291D0D2B00E7295D /* glass_bc.png */,
+				B85BA9FB2922505F0034D067 /* grass_foliage.png */,
 				41ABFEA1291D0D2C00E7295D /* herbs.png */,
 				41ABFE9E291D0D2C00E7295D /* ivy_custrom.png */,
 				41ABFEAA291D0D2D00E7295D /* props_BC.png */,
@@ -840,6 +842,7 @@
 			children = (
 				B8D38CBF2907CA2500DB150C /* JosefinSans.ttf */,
 				B8D38CC02907CA2500DB150C /* Rubik.ttf */,
+				B85BA9F929224F5A0034D067 /* Rubik-Italic.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -942,6 +945,7 @@
 				B80A900D291CDC7E008F4D3A /* py.2.png in Resources */,
 				41ABFEB3291D0D2D00E7295D /* carpet-bc.png in Resources */,
 				41147799290FC95700FD5B56 /* hand.swipe.up.gif in Resources */,
+				B85BA9FA29224F5A0034D067 /* Rubik-Italic.ttf in Resources */,
 				B8A100092907E73C0082C66E /* Layer0.exr in Resources */,
 				B80A8FE7291B6546008F4D3A /* Narasi-Story2-7.mp3 in Resources */,
 				41ABFEC3291D0D2D00E7295D /* props_BC.png in Resources */,
@@ -983,6 +987,7 @@
 				2FA53F9C2907C31F00BFB3E5 /* simple-trees-collection.usdc in Resources */,
 				B80A9010291CDC7E008F4D3A /* pz.2.png in Resources */,
 				2FE859412907F0FD0054A2E2 /* purple.hdr in Resources */,
+				B85BA9FC2922505F0034D067 /* grass_foliage.png in Resources */,
 				2FA53F9F2907C31F00BFB3E5 /* Rock Texture.jpeg in Resources */,
 				B80A900E291CDC7E008F4D3A /* ny.2.png in Resources */,
 				B8DE813629092F65006B2BE3 /* px.png in Resources */,
@@ -991,7 +996,6 @@
 				2FA53F9B2907C31F00BFB3E5 /* smallTree.usdz in Resources */,
 				B80A8FEE291B6546008F4D3A /* Narasi-Story1-6.mp3 in Resources */,
 				41ABFEBE291D0D2D00E7295D /* wall_bc.png in Resources */,
-				41B4226A29222E16003B04E4 /* grass_foliage.png in Resources */,
 				B80A8FE5291B6546008F4D3A /* Narasi-Story2-4.mp3 in Resources */,
 				41147798290FC95700FD5B56 /* hand.tap.gif in Resources */,
 				B8B5FEA929102F5300687987 /* belakang.png in Resources */,
@@ -1222,6 +1226,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1251,6 +1256,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
