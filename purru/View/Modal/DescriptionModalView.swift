@@ -22,75 +22,16 @@ struct DescriptionModalView: View {
     @State private var gesture = ""
     @State private var endingVisibility: Bool = false
     
-    @State private var hintVisibility = false
-    
-    @State private var dialogVisibility = false
-    @State private var dialogView: AnyView = AnyView(VStack{})
-    
-    @State private var focusedObjectIndex = 0
-    
-    @State private var elapsedTime: CGFloat = 0
-    
-    @State private var minFov: CGFloat = 20
-    @State private var maxFov: CGFloat = 110
-    
     @State private var objectHistoryList: [SCNNode] = []
     
     private var onPlay: () -> Void = {}
-    
-    
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
     
     init(data: StoryData, onPlay: @escaping () -> Void) {
         self.data = data
         
         self.onPlay = onPlay
     }
-    
-    func handleTap(hitResults: [SCNHitTestResult]?) {
-        if(hitResults == nil || state == StoryState.Naration) {
-            return
-        }
-        
-        if hitResults!.count > 0 {
-            let result = hitResults![0]
-            let material = result.node.geometry!.firstMaterial!
-            
-            SCNTransaction.begin()
-            SCNTransaction.animationDuration = 0.5
-            
-            SCNTransaction.completionBlock = {
-                SCNTransaction.begin()
-                SCNTransaction.animationDuration = 0.5
-                
-                material.emission.contents = UIColor.black
-                
-                SCNTransaction.commit()
-            }
-            
-            material.emission.contents = UIColor.red
-            
-            SCNTransaction.commit()
-            
-            if(result.node.name == data.objectList[focusedObjectIndex].tag) {
-                focusedObjectIndex = focusedObjectIndex + 1
-                state = StoryState.Naration
-                hintVisibility = false
-                gestureVisibility = false
-                elapsedTime = 0
-                
-                material.normal.contents = nil
-                material.diffuse.contents = nil
-                objectHistoryList.append(result.node)
-                result.node.removeFromParentNode()
-            }
-        }
-    }
-    
-    func updateTime() {
-        elapsedTime = elapsedTime + 1
-    }
+
     
     var body: some View {
         VStack{

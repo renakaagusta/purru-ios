@@ -29,6 +29,7 @@ class GlobalVariables: ObservableObject{
     
     // STATE
     @Published var isPlaying = false
+    @Published var isReadSinopsis = false
     
     // STORY
     @Published var storyIndex = 0

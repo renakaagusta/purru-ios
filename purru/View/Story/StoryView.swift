@@ -557,10 +557,7 @@ struct StoryView: View {
                 }, view: self.view)
                 
                 if(self.view.scene != nil) {
-                    
-                    print("===BLUE NODE===")
-                    print( self.view.scene?.rootNode.childNode(withName: "BLUE", recursively: true)?.name)
-                    
+                
                     let emitter = SCNParticleSystem(named: "ParticleEndingView.scnp", inDirectory: nil)
                     
                     for node in self.view.scene!.rootNode.childNodes {

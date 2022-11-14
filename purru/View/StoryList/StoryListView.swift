@@ -43,10 +43,20 @@ struct StoryListView: View {
                 .frame(width: 300)
             Text(String(global.storyIndex))
             Text(String(global.isPlaying))
-            NavigationLink(destination: StoryView(data: storyList[global.storyIndex]), isActive: Binding(get: { global.isPlaying == true}, set: { _ in true})) {
                 InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
+            NavigationLink(destination:  global.isPlaying ? AnyView(StoryView(data: storyList[global.storyIndex])) : AnyView(EmptyView()), tag: 1, selection: Binding(get: { global.isPlaying ? 1 : 0}, set: {_ in true})) {
+                EmptyView()
             }
             Spacer()
+        }
+        .sheet(isPresented: $global.isReadSinopsis) {
+            DescriptionModalView(data: storyList[global.storyIndex], onPlay: {
+                global.isPlaying = true
+            })
+            .presentationDetents([.height(550)])
+            .onDisappear {
+                global.isReadSinopsis = false
+            }
         }
         .navigationBarBackButtonHidden(true)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
