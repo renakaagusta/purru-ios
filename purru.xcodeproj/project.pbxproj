@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F3CAAFA2922530500C6F63D /* grass_foliage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F3CAAF92922530500C6F63D /* grass_foliage.png */; };
 		2FA53E7D2907C2DB00BFB3E5 /* purruApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53E7C2907C2DB00BFB3E5 /* purruApp.swift */; };
 		2FA53E7F2907C2DB00BFB3E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53E7E2907C2DB00BFB3E5 /* ContentView.swift */; };
 		2FA53E812907C2DC00BFB3E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA53E802907C2DC00BFB3E5 /* Assets.xcassets */; };
@@ -335,6 +334,7 @@
 			children = (
 				2FA53E7B2907C2DB00BFB3E5 /* purru */,
 				2FA53E7A2907C2DB00BFB3E5 /* Products */,
+				B87C7A6D29237982006D352E /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -823,6 +823,14 @@
 			path = background;
 			sourceTree = "<group>";
 		};
+		B87C7A6D29237982006D352E /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				2F3CAAF92922530500C6F63D /* grass_foliage.png */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		B89A005F2914D31500D620A4 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
@@ -978,7 +986,6 @@
 				2FA53E842907C2DC00BFB3E5 /* Preview Assets.xcassets in Resources */,
 				41ABFEC5291D0D2D00E7295D /* floor_bc.png in Resources */,
 				4109CC0B291D0219005E9CC7 /* 2ParticleEndingView.scnp in Resources */,
-				2F3CAAFA2922530500C6F63D /* grass_foliage.png in Resources */,
 				41ABFEAD291D0D2D00E7295D /* 1TANAMAN3.png in Resources */,
 				B8DE813729092F65006B2BE3 /* nz.png in Resources */,
 				41ABFEBB291D0D2D00E7295D /* RuanganAjaib.scn in Resources */,
@@ -1222,7 +1229,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"purru/Preview Content\"";
-				DEVELOPMENT_TEAM = KZ9PN4535G;
+				DEVELOPMENT_TEAM = GHNZ6R7D9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = purru/Info.plist;
@@ -1252,7 +1259,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"purru/Preview Content\"";
-				DEVELOPMENT_TEAM = KZ9PN4535G;
+				DEVELOPMENT_TEAM = GHNZ6R7D9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = purru/Info.plist;
