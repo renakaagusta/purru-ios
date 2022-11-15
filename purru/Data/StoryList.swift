@@ -12,7 +12,7 @@ var storyList = [
        StoryData(
            id: "1",
            title: "Taman Purru",
-           description: "Menemukan burung yang berukuran sangat kecil seperti burung miliknya Dips",
+           description: "Bernostalgia di sebuah taman yang sangat indah dengan pohon-pohon berwarna warni yang memanjankan mata. Angin sepoi-sepoi, langit yang mendung, membuat suasana menjadi sangat nyaman.",
            thumbnail: "PohonKiki",
            modalCover:"tamanpurru",
            sceneName: "3DAssetS1",
