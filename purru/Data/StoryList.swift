@@ -36,6 +36,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story1-1",
                    narationSoundExtention: "mp3",
+                   soundEffect: "",
+                   soundEffectExtention: "",
                    instructionList: [
                         Instruction(id: "1", text: "", startedAt: 0),
                         Instruction(id: "2", text: "Halo selamat malam", startedAt: 4.6),
@@ -57,6 +59,8 @@ var storyList = [
                    tutorialDuration: 15,
                    narationSound: "Narasi-Story1-2",
                    narationSoundExtention: "mp3",
+                   soundEffect: "",
+                   soundEffectExtention: "",
                    instructionList: [
                        Instruction(id: "1", text: "", startedAt: 0),
                        Instruction(id: "2", text: "Taman ini adalah tempat dimana saya sering bermain di masa kecil", startedAt: 2),
@@ -80,6 +84,8 @@ var storyList = [
                    tutorialDuration: 15,
                    narationSound: "Narasi-Story1-3",
                    narationSoundExtention: "mp3",
+                   soundEffect: "",
+                   soundEffectExtention: "",
                    instructionList: [
                        Instruction(id: "1", text: "", startedAt: 0),
                        Instruction(id: "2", text: "Wah benar sekali.. Itu pohon yang saya maksud. Sangat besar dan rindang bukan?", startedAt: 0.9),
@@ -102,6 +108,8 @@ var storyList = [
                    tutorialDuration: 15,
                    narationSound: "Narasi-Story1-4",
                    narationSoundExtention: "mp3",
+                   soundEffect: "",
+                   soundEffectExtention: "",
                    instructionList: [
                        Instruction(id: "1", text: "", startedAt: 0),
                        Instruction(id: "2", text: "Wah jadi nostalgia. Biasanya saya berbagi buah yang sangat nikmat ini dengan hewan peliharaan saya", startedAt: 0.9),
@@ -125,6 +133,8 @@ var storyList = [
                    tutorialDuration: 15,
                    narationSound: "Narasi-Story1-5",
                    narationSoundExtention: "mp3",
+                   soundEffect: "",
+                   soundEffectExtention: "",
                    instructionList: [
                        Instruction(id: "1",text: "Itu dia Kiki! Ini memang pohon kesukaanya", startedAt: 0),
                        Instruction(id: "2",text: "Pohon ini tidak terlalu tinggi tapi cukup untuk saya bisa bermain dengan Kiki", startedAt: 6.5),
@@ -147,6 +157,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story1-6",
                    narationSoundExtention: "mp3",
+                   soundEffect: "",
+                   soundEffectExtention: "",
                    instructionList: [
                        Instruction(id: "1",text: "Wah kamu menemukannya!", startedAt: 0),
                        Instruction(id: "2",text: "Karena kamu telah menemukannya, kamu juga menjadi sahabat kami", startedAt: 5),
@@ -187,6 +199,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-1",
                    narationSoundExtention: "mp3",
+                   soundEffect: "",
+                   soundEffectExtention: "",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
                        Instruction(id: "2", text: "Oh halo!",  startedAt: 1.3),
@@ -218,6 +232,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-2",
                    narationSoundExtention: "mp3",
+                   soundEffect: "",
+                   soundEffectExtention: "",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
                        Instruction(id: "2", text: "Ah, ternyata perpaduan wangi bunga aster, lavender, dan bawang putih",  startedAt: 0.5),
@@ -242,6 +258,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-3",
                    narationSoundExtention: "mp3",
+                   soundEffect: "",
+                   soundEffectExtention: "",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
                        Instruction(id: "2", text: "Kamu juga pasti bisa membuat ramuan obat jika membaca buku resep milik nenek ini",  startedAt: 0.7),
@@ -260,6 +278,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-4",
                    narationSoundExtention: "mp3",
+                   soundEffect: "",
+                   soundEffectExtention: "",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
                        Instruction(id: "2", text: "Saat aku Kecil,",  startedAt: 0.6),
@@ -281,6 +301,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-5",
                    narationSoundExtention: "mp3",
+                   soundEffect: "",
+                   soundEffectExtention: "",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
                        Instruction(id: "2", text: "Di perpustakaan ini, banyak bulu burung hantu yang berceceran di mana-mana,",  startedAt: 0.9),
@@ -301,6 +323,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-6",
                    narationSoundExtention: "mp3",
+                   soundEffect: "",
+                   soundEffectExtention: "",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
                        Instruction(id: "2", text: "Hugo sangat setia, dia sudah seperti penjaga perpustakaan ini",  startedAt: 0.6),
@@ -322,6 +346,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-7",
                    narationSoundExtention: "mp3",
+                   soundEffect: "",
+                   soundEffectExtention: "",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
                        Instruction(id: "2", text: "Nenek membuat sendiri tiang burung ini",  startedAt: 1.1),

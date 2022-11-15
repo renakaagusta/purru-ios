@@ -19,6 +19,8 @@ struct ObjectScene {
     var tutorialDuration: CGFloat
     var narationSound : String
     var narationSoundExtention: String
+    var soundEffect: String
+    var soundEffectExtention: String
     var instructionList: [Instruction]?
 }
 

@@ -407,6 +407,31 @@ struct StoryView: View {
         }
     }
     
+    func playSoundEffect(soundName: String, soundExtention: String, currentTime: CGFloat?) {
+        if(soundEffectPlayer != nil) {
+            soundEffectPlayer?.stop()
+        }
+        
+        let url = Bundle.main.url(forResource: soundName, withExtension: soundExtention)
+        
+        guard url != nil else {
+            soundEffectPlayer?.stop()
+            return
+        }
+        
+        do {
+            if(soundName.count != 0) {
+                narationPlayer = try AVAudioPlayer(contentsOf: url!)
+                narationPlayer?.currentTime = currentTime ?? 0
+                narationPlayer?.setVolume(Float(global.narationVolume / 100 * data.narationVolumeFactor), fadeDuration: 0.1)
+                try AVAudioSession.sharedInstance().setCategory(.playback)
+                narationPlayer?.play()
+            }
+        } catch {
+            print("error")
+        }
+    }
+    
     func skipObject() {
         focusedObjectIndex = focusedObjectIndex + 1
         state = StoryState.Naration
