@@ -41,8 +41,7 @@ struct StoryListView: View {
             Spacer().frame(height: 40)
             AppJosefineSans(text: "Pilih cerita malam ini...", josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
                 .frame(width: 300)
-           
-                InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
+            InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
             NavigationLink(destination:  global.isPlaying ? AnyView(StoryView(data: storyList[global.storyIndex])) : AnyView(EmptyView()), tag: 1, selection: Binding(get: { global.isPlaying ? 1 : 0}, set: {_ in true})) {
                 EmptyView()
             }
@@ -50,6 +49,7 @@ struct StoryListView: View {
         }
         .sheet(isPresented: $global.isReadSinopsis) {
             DescriptionModalView(data: storyList[global.storyIndex], onPlay: {
+                global.isReadSinopsis = false
                 global.isPlaying = true
             })
             .presentationDetents([.height(550)])
