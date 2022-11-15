@@ -36,7 +36,7 @@ struct DescriptionModalView: View {
     var body: some View {
         VStack{
             ZStack {
-                Color.bg.primary.ignoresSafeArea()
+//                Color.bg.primary.ignoresSafeArea()
                 VStack {
                     Image(data.modalCover)
                         .resizable()
@@ -53,11 +53,18 @@ struct DescriptionModalView: View {
 
                 VStack(alignment: .leading) {
                     AppJosefineSans(text: data.title, josepSize: fontType.title1, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.trailing)
-                        .padding(.horizontal, 40)
+                        .padding(.horizontal, 30)
+                    
                     Spacer().frame(height:10)
-                    AppRubik(text: data.description, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
-                        .padding(.horizontal, 40)
-                    Spacer().frame(height: 220)
+                    
+                    AppRubik(text: "Sinopsis", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
+                        .padding(.horizontal, 30)
+                    
+                    Spacer().frame(height: 4)
+                    AppRubik(text: data.description, rubikSize: fontType.footnote, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading)
+                        .padding(.horizontal, 30)
+                    Spacer().frame(height: 260)
+                    
                 }
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2)
                 .background(Color.bg.primary)
@@ -66,22 +73,31 @@ struct DescriptionModalView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Button(action: {
-                            self.onPlay()
-                        }, label: {
-                            Image(systemName: "play.fill").resizable().frame(width:20, height: 20)
-                                .padding(20)
-                                .foregroundColor(Color.text.primary)
-                                .background(Color.sign.primary)
-                                .cornerRadius(100)
-                        })
-                        .padding()
                     }
                     .frame(height:40)
                     .background(LinearGradient(colors: [Color.clear, Color.bg.primary], startPoint: .top, endPoint: .bottom)
                         .ignoresSafeArea())
-                    Spacer().frame(height: 50)
+                    Spacer().frame(height: 60)
                 }
+                
+                HStack{
+                    Spacer()
+                    Button(action: { onPlay() }, label: {
+                        Image(systemName: "play.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(Color.text.primary)
+                        
+                        AppRubik(text: "Main", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
+                    })
+                    .padding(10)
+                    .frame(width: 100, height: 38)
+                    .background(Color.sign.primary)
+                    .cornerRadius(100)
+                    Spacer()
+                }
+                .offset(y:230)
                 
             }
         }

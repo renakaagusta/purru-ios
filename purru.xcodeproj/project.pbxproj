@@ -156,7 +156,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2F3CAAF92922530500C6F63D /* grass_foliage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass_foliage.png; path = ../../../../../../../Downloads/grass_foliage.png; sourceTree = "<group>"; };
 		2FA53E792907C2DB00BFB3E5 /* purru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = purru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA53E7C2907C2DB00BFB3E5 /* purruApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = purruApp.swift; sourceTree = "<group>"; };
 		2FA53E7E2907C2DB00BFB3E5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -229,6 +228,7 @@
 		41147795290FC95700FD5B56 /* hand.swipe.up.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.swipe.up.gif; sourceTree = "<group>"; };
 		41147796290FC95700FD5B56 /* hand.swipe.left.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.swipe.left.gif; sourceTree = "<group>"; };
 		41147797290FC95700FD5B56 /* hand.zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hand.zoom.gif; sourceTree = "<group>"; };
+		412019302923711800D92732 /* grass_foliage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass_foliage.png; path = "../../../../../../../../Downloads/Ruangan Ajaib SCN Pack Com/grass_foliage.png"; sourceTree = "<group>"; };
 		41ABFE94291D0D2B00E7295D /* 1TANAMAN3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1TANAMAN3.png; sourceTree = "<group>"; };
 		41ABFE95291D0D2B00E7295D /* foliage_tents_BC.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foliage_tents_BC.jpg; sourceTree = "<group>"; };
 		41ABFE96291D0D2B00E7295D /* tree_BC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree_BC.png; sourceTree = "<group>"; };
@@ -811,6 +811,7 @@
 				41ABFEAC291D0D2D00E7295D /* floor_bc.png */,
 				41ABFE95291D0D2B00E7295D /* foliage_tents_BC.jpg */,
 				41ABFE9C291D0D2B00E7295D /* glass_bc.png */,
+				412019302923711800D92732 /* grass_foliage.png */,
 				41ABFEA1291D0D2C00E7295D /* herbs.png */,
 				41ABFE9E291D0D2C00E7295D /* ivy_custrom.png */,
 				41ABFEAA291D0D2D00E7295D /* props_BC.png */,
@@ -986,6 +987,7 @@
 				2FA53E842907C2DC00BFB3E5 /* Preview Assets.xcassets in Resources */,
 				41ABFEC5291D0D2D00E7295D /* floor_bc.png in Resources */,
 				4109CC0B291D0219005E9CC7 /* 2ParticleEndingView.scnp in Resources */,
+				412019312923711800D92732 /* grass_foliage.png in Resources */,
 				41ABFEAD291D0D2D00E7295D /* 1TANAMAN3.png in Resources */,
 				B8DE813729092F65006B2BE3 /* nz.png in Resources */,
 				41ABFEBB291D0D2D00E7295D /* RuanganAjaib.scn in Resources */,
