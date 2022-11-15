@@ -43,6 +43,8 @@ struct StoryView: View {
     @State private var foundObject = 0
     
     @State private var elapsedTime: CGFloat = 0
+    @State private var currentNarationDuration: CGFloat = 0
+    @State private var totalNarationDuration: CGFloat = 0
     
     @State private var minFov: CGFloat = 20
     @State private var maxFov: CGFloat = 110
@@ -86,10 +88,6 @@ struct StoryView: View {
         let camera = self.view.defaultCameraController
         
         let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
-        
-        print("====CAMERA DESTINATIO===")
-        print(cameraDestination)
-        print( "CAM " + data.objectList[focusedObjectIndex].tag)
         
         self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
         
@@ -294,6 +292,10 @@ struct StoryView: View {
         
         elapsedTime = elapsedTime + 1
         
+        if(state == StoryState.Naration) {
+            currentNarationDuration = currentNarationDuration + 1
+        }
+        
         configCamera()
         
         updateState()
@@ -330,7 +332,13 @@ struct StoryView: View {
                 showDialog(position: DialogPosition.Top, child: AnyView(AppRubik(text: showedInstruction!, rubikSize: fontType.body, fontWeight: .regular, fontColor: Color.text.primary, fontStyle: .italic)))
             }
             
-            narationsProgress = CGFloat(focusedObjectIndex != 0 ? focusedObjectIndex - 1 : 0 ) / CGFloat(data.objectList.count - 2)
+            narationsProgress = currentNarationDuration / totalNarationDuration
+            
+//            print("====NARATION PROGRESS===")
+//            print(narationsProgress)
+//            print("====TOTAL NARATION DURATION===")
+//            print(totalNarationDuration)
+            
             
         } else {
             showEnding()
@@ -561,15 +569,13 @@ struct StoryView: View {
                     let emitter = SCNParticleSystem(named: "ParticleEndingView.scnp", inDirectory: nil)
                     
                     for node in self.view.scene!.rootNode.childNodes {
-                        print("===NODE===")
-                        print(node.name)
-                        
                         if(node.name == "Ground") {}
                     }
-                    
-                    
-                    //                    self.view.scene?.rootNode.childNode(withName: "BLUE", recursively: true)!.addParticleSystem(emitter!)
-                    
+                }
+
+                totalNarationDuration = 0
+                for object in data.objectList {
+                    totalNarationDuration = totalNarationDuration + object.narationDuration
                 }
             }.onReceive(timer) { _ in
                 updateTime()
