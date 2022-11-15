@@ -39,7 +39,7 @@ struct StoryView: View {
     
     @State var pauseVisibility: Bool = false
     
-    @State private var focusedObjectIndex = 0
+    @State private var focusedObjectIndex = 1
     @State private var foundObject = 0
     
     @State private var elapsedTime: CGFloat = 0
@@ -504,7 +504,7 @@ struct StoryView: View {
                         
                         Spacer().frame(width: UIScreen.width - 100)
                         
-                        if(state != StoryState.Naration && state != StoryState.Tutorial) {
+//                        if(state != StoryState.Naration && state != StoryState.Tutorial) {
                             AppCircleButton(
                                 size: 20,
                                 icon: Image(systemName: "lightbulb.fill"),
@@ -514,7 +514,7 @@ struct StoryView: View {
                                 onClick: showHint
                             )
                             .padding()
-                        }
+//                        }
                         
                         if(state != StoryState.Naration && state == StoryState.Tutorial) {
                             
