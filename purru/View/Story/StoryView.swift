@@ -95,72 +95,10 @@ struct StoryView: View {
         
         let objectTarget = view.scene!.rootNode.childNodes.filter({$0.name == data.objectList[focusedObjectIndex].tag}).first
         
-        let material = objectTarget!.geometry!.firstMaterial!
-        
-        SCNTransaction.begin()
-        SCNTransaction.animationDuration = 0.5
-        
-        SCNTransaction.completionBlock = {
-            SCNTransaction.begin()
-            SCNTransaction.animationDuration = 0.5
-            
-            material.emission.contents = UIColor.black
-            
-            SCNTransaction.commit()
-        }
-        
-        material.emission.contents = UIColor.yellow
-        
-        self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
-        
-        self.view.defaultCameraController.pointOfView?.worldOrientation =  SCNQuaternion(x: cameraDestination?.worldOrientation.x ?? 0, y: cameraDestination?.worldOrientation.y ?? 0, z: cameraDestination?.worldOrientation.z ?? 0, w: cameraDestination?.worldOrientation.w ?? 0)
-        
-        SCNTransaction.commit()
-        
-        hintVisibility = true
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            hintVisibility = false
-        }
-    }
-    
-    func handleTap(hitResults: [SCNHitTestResult]?) {
-        if(hitResults == nil || state == StoryState.Naration) {
-            return
-        }
-        
-        if hitResults!.count > 0 {
-            let result = hitResults![0]
-            let material = result.node.geometry!.firstMaterial!
-            
-            if(result.node.name == data.objectList[focusedObjectIndex].tag) {
-                playSoundEffect(soundName: data.objectList[focusedObjectIndex].soundEffect, soundExtention: data.objectList[focusedObjectIndex].soundEffectExtention, currentTime: 0)
-                print(playSoundEffect(soundName: data.objectList[focusedObjectIndex].soundEffect, soundExtention: data.objectList[focusedObjectIndex].soundEffectExtention, currentTime: 0))
-                focusedObjectIndex = focusedObjectIndex + 1
-                foundObject = foundObject + 1
-                state = StoryState.Naration
-                hintVisibility = false
-                gestureVisibility = false
-                elapsedTime = 0
+        for node in self.view.scene!.rootNode.childNodes {
+            if(node.name == objectTarget?.name) {
+                let material = node.geometry!.firstMaterial!
                 
-                playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
-                
-                SCNTransaction.begin()
-                SCNTransaction.animationDuration = 1
-                
-                result.node.opacity = 0
-                
-                SCNTransaction.commit()
-                
-                objectHistoryList.append(result.node)
-
-                let emitter = SCNParticleSystem(named: "\(data.particleTouch).scnp", inDirectory: nil)!
-                let particleNode = SCNNode()
-                particleNode.worldPosition = result.node.worldPosition
-                particleNode.worldOrientation = result.node.worldOrientation
-                self.view.scene?.rootNode.addChildNode(particleNode)
-                particleNode.addParticleSystem(emitter)
-            } else {
                 SCNTransaction.begin()
                 SCNTransaction.animationDuration = 0.5
                 
@@ -173,12 +111,84 @@ struct StoryView: View {
                     SCNTransaction.commit()
                 }
                 
-                material.emission.contents = UIColor.red
+                material.emission.contents = UIColor.yellow
+                
+                self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
+                
+                self.view.defaultCameraController.pointOfView?.worldOrientation =  SCNQuaternion(x: cameraDestination?.worldOrientation.x ?? 0, y: cameraDestination?.worldOrientation.y ?? 0, z: cameraDestination?.worldOrientation.z ?? 0, w: cameraDestination?.worldOrientation.w ?? 0)
                 
                 SCNTransaction.commit()
+                
+                hintVisibility = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    hintVisibility = false
+                }
+
             }
         }
     }
+    
+    func handleTap(hitResults: [SCNHitTestResult]?) {
+        if(hitResults == nil || state == StoryState.Naration) {
+            return
+        }
+        
+        if hitResults!.count > 0 {
+            let firstObject = hitResults![0]
+            for result in self.view.scene!.rootNode.childNodes {
+                if(result.name == firstObject.node.name) {
+                    let material = result.geometry!.firstMaterial!
+             
+                    SCNTransaction.begin()
+                    SCNTransaction.animationDuration = 0.5
+                        
+                    SCNTransaction.completionBlock = {
+                    SCNTransaction.begin()
+                    SCNTransaction.animationDuration = 0.5
+                                
+                    material.emission.contents = UIColor.black
+                                
+                    SCNTransaction.commit()
+                }
+                            
+                material.emission.contents = UIColor.red
+                            
+                SCNTransaction.commit()
+                            
+                if(result.name == data.objectList[focusedObjectIndex].tag) {
+                    focusedObjectIndex = focusedObjectIndex + 1
+                    foundObject = foundObject + 1
+                    state = StoryState.Naration
+                    hintVisibility = false
+                    gestureVisibility = false
+                    elapsedTime = 0
+
+                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
+                                
+                        
+                    SCNTransaction.begin()
+                    SCNTransaction.animationDuration = 1
+                    
+                    result.opacity = 0
+                        
+                    SCNTransaction.commit()
+                        
+                    objectHistoryList.append(result)
+                                
+                    let emitter = SCNParticleSystem(named: "\(data.particleTouch).scnp", inDirectory: nil)!
+                    let particleNode = SCNNode()
+                    particleNode.worldPosition = result.worldPosition
+                    particleNode.worldOrientation = result.worldOrientation
+                    self.view.scene?.rootNode.addChildNode(particleNode)
+                    particleNode.addParticleSystem(emitter)
+                                
+                    result.removeFromParentNode()
+                }
+            }
+        }
+    }
+}
     
     func showDialog(position: DialogPosition, child: AnyView) {
         self.dialogVisibility = true
