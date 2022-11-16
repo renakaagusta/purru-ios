@@ -10,6 +10,7 @@ import AVFoundation
 
 var backsoundPlayer: AVAudioPlayer? = nil
 var narationPlayer: AVAudioPlayer? = nil
+var soundEffectPlayer: AVAudioPlayer? = nil
 
 class GlobalStorage {
     
