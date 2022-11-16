@@ -12,6 +12,7 @@ struct EndingView: View {
     @State var titleEnding: String = "Sekian untuk malam ini"
     @State var textEnding: String = "Selamat beristirahat!"
     @State var buttonTextEnding: String = "Kembali ke Menu"
+    @State var fadeIn = false
     
     var onRestartClick: () -> () = {}
     
@@ -44,7 +45,11 @@ struct EndingView: View {
             )
             .offset(y:220)
         }
-        
+        .onAppear() {
+            withAnimation(Animation.easeIn(duration: 1.0)){
+                fadeIn.toggle()
+            }
+        }.opacity(fadeIn ? 1 : 0)
     }
 }
 
