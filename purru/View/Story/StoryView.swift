@@ -42,7 +42,7 @@ struct StoryView: View {
     @State private var focusedObjectIndex = 0
     @State private var foundObject = 0
     
-    @State private var elapsedTime: CGFloat = 120
+    @State private var elapsedTime: CGFloat = 0
     @State private var currentNarationDuration: CGFloat = 0
     @State private var totalNarationDuration: CGFloat = 0
     
@@ -55,7 +55,7 @@ struct StoryView: View {
     
     @State private var tappedXPosition: CGFloat = 0
     @State private var tappedYPosition: CGFloat = 0
-    @State private var isRippleVisible: Bool = true
+    @State private var isRippleVisible: Bool = false
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
@@ -453,8 +453,9 @@ struct StoryView: View {
             ZStack {
                 gameView.onTapGesture { location in
                     isRippleVisible = true
+                    tappedXPosition = location.x
+                    tappedYPosition = location.y
                 }
-                
                 RippleView(isVisible: $isRippleVisible, x: $tappedXPosition, y: $tappedYPosition, gesture: gesture)
                 
                 if(endingVisibility) {
@@ -657,14 +658,18 @@ struct RippleView: View {
     @State var gesture: String
 
     var body: some View {
-        GIFView(type: .name(gesture))
-            .frame(width: 200, height: 200)
-            .position(x: x, y: y)
-        .transition(.scale)
-        .onAppear(perform: {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                self.isVisible = false
-            })
-        })
+        VStack {
+            if(isVisible) {
+                GIFView(type: .name(gesture))
+                    .frame(width: 200, height: 200)
+                    .position(x: x, y: y)
+                .transition(.scale)
+                .onAppear(perform: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                        self.isVisible = false
+                    })
+                })
+            }
+        }
     }
 }
