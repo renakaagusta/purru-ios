@@ -11,19 +11,52 @@ struct PauseStoryView: View {
     @State var buttonTextEnding: String = "Keluar"
     var onExitOptionClick: () -> () = {}
     
+    @State var sliderValue : CGFloat = 0
+    @State private var showGreeting = true
+    
+    @ObservedObject var global = GlobalVariables.global
+    
     @State var alertExitVisibility : Bool = false
+    
+    var onDidChangeSound: () -> () = {}
     
     func onCancelClick(){
         alertExitVisibility = false
     }
     
+    
+    
     //onRestartClick
 
     var body: some View {
   
-        VStack(alignment: .center) {
+        ZStack(alignment: .center) {
             
-            ZStack {
+            VStack(alignment: .center) {
+                AppRubik(text: "Suara", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
+                
+                Slider(value: $global.narationVolume,
+                       in: 0...100,
+                            step: 1) { didChange in
+                        print("Did change: \(didChange)")
+                        onDidChangeSound()
+                        print($global.narationVolume)
+                    }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
+                
+                AppRubik(text: "Music", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
+                
+                Slider(value: $global.backsoundVolume,
+                       in: 0...100,
+                            step: 1) { didChange in
+                        print("Did change: \(didChange)")
+                        onDidChangeSound()
+                        print($global.backsoundVolume)
+                }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
+                
+                Toggle(isOn: $global.showSubtitle) {
+                    AppRubik(text: "Subtitle", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
+                }.tint(Color.sign.primary)
+                
                 Button(action: {
                     //onExitOptionClick()
                     alertExitVisibility.toggle()
@@ -34,12 +67,14 @@ struct PauseStoryView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(Color.foot.primary, lineWidth: 2)
                         )
-                })
-                
-                if alertExitVisibility {
-                    AppExitStoryAlert(onCancelClick: onCancelClick, onExitClick: onExitOptionClick
-                    )
-                }
+                }).padding(.top, 30)
+            }
+            .padding(.horizontal, 40)
+            
+            
+            if alertExitVisibility {
+                AppExitStoryAlert(onCancelClick: onCancelClick, onExitClick: onExitOptionClick
+                )
             }
             
             

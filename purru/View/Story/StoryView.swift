@@ -39,11 +39,11 @@ struct StoryView: View {
     
     @State var pauseVisibility: Bool = false
     
-    @State private var focusedObjectIndex = 1
+    @State private var focusedObjectIndex = 0
     @State private var foundObject = 0
     
-    @State private var elapsedTime: CGFloat = 30
-    @State private var currentNarationDuration: CGFloat = 60
+    @State private var elapsedTime: CGFloat = 120
+    @State private var currentNarationDuration: CGFloat = 0
     @State private var totalNarationDuration: CGFloat = 0
     
     @State private var minFov: CGFloat = 20
@@ -134,6 +134,8 @@ struct StoryView: View {
             let material = result.node.geometry!.firstMaterial!
             
             if(result.node.name == data.objectList[focusedObjectIndex].tag) {
+                playSoundEffect(soundName: data.objectList[focusedObjectIndex].soundEffect, soundExtention: data.objectList[focusedObjectIndex].soundEffectExtention, currentTime: 0)
+                print(playSoundEffect(soundName: data.objectList[focusedObjectIndex].soundEffect, soundExtention: data.objectList[focusedObjectIndex].soundEffectExtention, currentTime: 0))
                 focusedObjectIndex = focusedObjectIndex + 1
                 foundObject = foundObject + 1
                 state = StoryState.Naration
@@ -421,11 +423,11 @@ struct StoryView: View {
         
         do {
             if(soundName.count != 0) {
-                narationPlayer = try AVAudioPlayer(contentsOf: url!)
-                narationPlayer?.currentTime = currentTime ?? 0
-                narationPlayer?.setVolume(Float(global.narationVolume / 100 * data.narationVolumeFactor), fadeDuration: 0.1)
+                soundEffectPlayer = try AVAudioPlayer(contentsOf: url!)
+                soundEffectPlayer?.currentTime = currentTime ?? 0
+                soundEffectPlayer?.setVolume(1.0, fadeDuration: 0.1)
                 try AVAudioSession.sharedInstance().setCategory(.playback)
-                narationPlayer?.play()
+                soundEffectPlayer?.play()
             }
         } catch {
             print("error")
@@ -570,7 +572,10 @@ struct StoryView: View {
                     PauseStoryView(buttonTextEnding: "Keluar", onExitOptionClick: {
                         presentationMode.wrappedValue.dismiss()
                         pauseVisibility = false
-                    })
+                    }, onDidChangeSound: {
+                        backsoundPlayer?.setVolume(Float(global.backsoundVolume / 100 * data.backsoundVolumeFactor), fadeDuration: 0.1)
+                        narationPlayer?.setVolume(Float(global.narationVolume / 100 * data.narationVolumeFactor), fadeDuration: 0.1)
+                    } )
                 }
                 
             }
@@ -627,7 +632,7 @@ struct StoryView: View {
                 }
             }, label: {
                 if(!endingVisibility && !isTutorial){
-                    Image(systemName: pauseVisibility ? "xmark" : "gearshape.fill")
+                    Image(systemName: pauseVisibility ? "xmark" : "pause.fill")
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Color.text.primary)
                         .bold()
