@@ -42,9 +42,7 @@ struct StoryListView: View {
             AppJosefineSans(text: "Pilih cerita malam ini...", josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
                 .frame(width: 300)
             InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
-            NavigationLink(destination:  global.isPlaying ? AnyView(StoryView(data: storyList[global.storyIndex])) : AnyView(EmptyView()), tag: 1, selection: Binding(get: { global.isPlaying ? 1 : 0}, set: {_ in true})) {
-                EmptyView()
-            }
+
             Spacer()
         }
         .sheet(isPresented: $global.isReadSinopsis) {
@@ -63,7 +61,6 @@ struct StoryListView: View {
             LinearGradient(colors: [Color.bg.primary, Color.bg.secondary], startPoint: .top, endPoint: .center)
                 .ignoresSafeArea()
         ).onAppear{
-            print("===STORY LIST VIEW APPEAR====")
             narationPlayer?.stop()
             backsoundPlayer?.stop()
             printFonts()

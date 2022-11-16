@@ -42,8 +42,8 @@ struct StoryView: View {
     @State private var focusedObjectIndex = 1
     @State private var foundObject = 0
     
-    @State private var elapsedTime: CGFloat = 0
-    @State private var currentNarationDuration: CGFloat = 0
+    @State private var elapsedTime: CGFloat = 30
+    @State private var currentNarationDuration: CGFloat = 60
     @State private var totalNarationDuration: CGFloat = 0
     
     @State private var minFov: CGFloat = 20
@@ -52,6 +52,10 @@ struct StoryView: View {
     @State private var objectHistoryList: [SCNNode] = []
     
     @State private var isTutorial: Bool = false
+    
+    @State private var tappedXPosition: CGFloat = 0
+    @State private var tappedYPosition: CGFloat = 0
+    @State private var isRippleVisible: Bool = true
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
@@ -89,10 +93,6 @@ struct StoryView: View {
         
         let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
         
-        self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
-        
-        self.view.defaultCameraController.pointOfView?.worldOrientation =  SCNQuaternion(x: cameraDestination?.worldOrientation.x ?? 0, y: cameraDestination?.worldOrientation.y ?? 0, z: cameraDestination?.worldOrientation.z ?? 0, w: cameraDestination?.worldOrientation.w ?? 0)
-        
         let objectTarget = view.scene!.rootNode.childNodes.filter({$0.name == data.objectList[focusedObjectIndex].tag}).first
         
         let material = objectTarget!.geometry!.firstMaterial!
@@ -110,6 +110,10 @@ struct StoryView: View {
         }
         
         material.emission.contents = UIColor.yellow
+        
+        self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
+        
+        self.view.defaultCameraController.pointOfView?.worldOrientation =  SCNQuaternion(x: cameraDestination?.worldOrientation.x ?? 0, y: cameraDestination?.worldOrientation.y ?? 0, z: cameraDestination?.worldOrientation.z ?? 0, w: cameraDestination?.worldOrientation.w ?? 0)
         
         SCNTransaction.commit()
         
@@ -129,22 +133,6 @@ struct StoryView: View {
             let result = hitResults![0]
             let material = result.node.geometry!.firstMaterial!
             
-            SCNTransaction.begin()
-            SCNTransaction.animationDuration = 0.5
-            
-            SCNTransaction.completionBlock = {
-                SCNTransaction.begin()
-                SCNTransaction.animationDuration = 0.5
-                
-                material.emission.contents = UIColor.black
-                
-                SCNTransaction.commit()
-            }
-            
-            material.emission.contents = UIColor.red
-            
-            SCNTransaction.commit()
-            
             if(result.node.name == data.objectList[focusedObjectIndex].tag) {
                 focusedObjectIndex = focusedObjectIndex + 1
                 foundObject = foundObject + 1
@@ -155,18 +143,37 @@ struct StoryView: View {
                 
                 playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                 
-                material.normal.contents = nil
-                material.diffuse.contents = nil
-                objectHistoryList.append(result.node)
+                SCNTransaction.begin()
+                SCNTransaction.animationDuration = 1
                 
+                result.node.opacity = 0
+                
+                SCNTransaction.commit()
+                
+                objectHistoryList.append(result.node)
+
                 let emitter = SCNParticleSystem(named: "\(data.particleTouch).scnp", inDirectory: nil)!
                 let particleNode = SCNNode()
                 particleNode.worldPosition = result.node.worldPosition
                 particleNode.worldOrientation = result.node.worldOrientation
                 self.view.scene?.rootNode.addChildNode(particleNode)
                 particleNode.addParticleSystem(emitter)
+            } else {
+                SCNTransaction.begin()
+                SCNTransaction.animationDuration = 0.5
                 
-                result.node.removeFromParentNode()
+                SCNTransaction.completionBlock = {
+                    SCNTransaction.begin()
+                    SCNTransaction.animationDuration = 0.5
+                    
+                    material.emission.contents = UIColor.black
+                    
+                    SCNTransaction.commit()
+                }
+                
+                material.emission.contents = UIColor.red
+                
+                SCNTransaction.commit()
             }
         }
     }
@@ -211,7 +218,9 @@ struct StoryView: View {
         let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM DEFAULT"}).first
         
         for node in objectHistoryList {
-            self.view.scene?.rootNode.addChildNode(node)
+            if(node.name != nil) {
+                self.view.scene?.rootNode.childNode(withName: node.name!, recursively: true)?.opacity = 1
+            }
         }
         
         self.objectHistoryList = []
@@ -334,12 +343,6 @@ struct StoryView: View {
             
             narationsProgress = currentNarationDuration / totalNarationDuration
             
-//            print("====NARATION PROGRESS===")
-//            print(narationsProgress)
-//            print("====TOTAL NARATION DURATION===")
-//            print(totalNarationDuration)
-            
-            
         } else {
             showEnding()
         }
@@ -421,7 +424,12 @@ struct StoryView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                gameView
+                gameView.onTapGesture { location in
+                    isRippleVisible = true
+                }
+                
+                RippleView(isVisible: $isRippleVisible, x: $tappedXPosition, y: $tappedYPosition, gesture: gesture)
+                
                 if(endingVisibility) {
                     EndingView(titleEnding: "Sekian untuk malam ini", textEnding: "Selamat beristirahat!", buttonTextEnding: "Kembali ke Menu", onRestartClick: {
                         presentationMode.wrappedValue.dismiss()
@@ -479,7 +487,6 @@ struct StoryView: View {
                 VStack(alignment: .trailing) {
                     Spacer().frame(height: UIScreen.height - 160)
                     HStack {
-                        
                         if(global.environemnt == AppEnvironment.Development) {
                             VStack {
                                 AppCircleButton(
@@ -504,7 +511,7 @@ struct StoryView: View {
                         
                         Spacer().frame(width: UIScreen.width - 100)
                         
-//                        if(state != StoryState.Naration && state != StoryState.Tutorial) {
+                        if(state != StoryState.Naration && state != StoryState.Tutorial) {
                             AppCircleButton(
                                 size: 20,
                                 icon: Image(systemName: "lightbulb.fill"),
@@ -514,7 +521,7 @@ struct StoryView: View {
                                 onClick: showHint
                             )
                             .padding()
-//                        }
+                        }
                         
                         if(state != StoryState.Naration && state == StoryState.Tutorial) {
                             
@@ -610,5 +617,24 @@ struct StoryView: View {
 struct StoryView_Previews: PreviewProvider {
     static var previews: some View {
         StoryView(data: storyList.first!)
+    }
+}
+
+struct RippleView: View {
+    @Binding var isVisible: Bool
+    @Binding var x: CGFloat
+    @Binding var y: CGFloat
+    @State var gesture: String
+
+    var body: some View {
+        GIFView(type: .name(gesture))
+            .frame(width: 200, height: 200)
+            .position(x: x, y: y)
+        .transition(.scale)
+        .onAppear(perform: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.isVisible = false
+            })
+        })
     }
 }
