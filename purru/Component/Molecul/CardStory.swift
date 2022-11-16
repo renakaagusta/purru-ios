@@ -18,11 +18,8 @@ struct AppCardStory: View {
     var onClick: () -> Void = {}
     var onPlay: () -> Void = {}
     
-    @State var isActive: Bool = false
-
     var body: some View {
         VStack {
-            NavigationLink(destination: isActive ? AnyView(StoryView(data: storyList[index])) :  AnyView(EmptyView()), isActive: $isActive, label: {
                 ZStack {
                     AppCard(width: 280, height: 465, cornerRadius: 31, backgroundColorTop: Color.black, backgroundColorBottom: Color.bg.secondary, borderColor: Color.spot.primary) {
                         
@@ -92,7 +89,6 @@ struct AppCardStory: View {
                 }
                 .padding()
                 Spacer()
-            })
         }
     }
 }
