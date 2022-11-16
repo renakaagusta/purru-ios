@@ -56,6 +56,7 @@ struct StoryView: View {
     @State private var tappedXPosition: CGFloat = 0
     @State private var tappedYPosition: CGFloat = 0
     @State private var isRippleVisible: Bool = false
+    @State var fadeIn = false
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
@@ -150,7 +151,7 @@ struct StoryView: View {
                         hintVisibility = false
                         gestureVisibility = false
                         elapsedTime = 0
-
+                        fadeIn = true
                         playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                                     
                             
@@ -474,6 +475,11 @@ struct StoryView: View {
                             Spacer()
                         }.frame(width: UIScreen.width)
                     }
+                    .onAppear() {
+                        withAnimation(Animation.easeIn(duration: 0.6)){
+                                    fadeIn.toggle()
+                                }
+                            }.opacity(fadeIn ? 0 : 1)
                     .frame(width:  UIScreen.width, height: UIScreen.height)
                 }
                 if(!pauseVisibility && !endingVisibility && data.objectList.count > 2) {
@@ -565,6 +571,11 @@ struct StoryView: View {
                     }
                     
                 }
+                .onAppear() {
+                    withAnimation(Animation.easeIn(duration: 0.6)){
+                                fadeIn.toggle()
+                            }
+                        }.opacity(fadeIn ? 0 : 1)
                 
                 if(pauseVisibility) {
                     PauseStoryView(buttonTextEnding: "Keluar", onExitOptionClick: {
