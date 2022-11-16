@@ -199,7 +199,7 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-1",
                    narationSoundExtention: "mp3",
-                   soundEffect: "Countdown Sound",
+                   soundEffect: "SFX_1TANAMAN",
                    soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
@@ -232,7 +232,7 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-2",
                    narationSoundExtention: "mp3",
-                   soundEffect: "Countdown Sound",
+                   soundEffect: "SFX_2BUKU",
                    soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
@@ -258,7 +258,7 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-3",
                    narationSoundExtention: "mp3",
-                   soundEffect: "Countdown Sound",
+                   soundEffect: "SFX_3PAPAN",
                    soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
@@ -278,8 +278,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-4",
                    narationSoundExtention: "mp3",
-                   soundEffect: "",
-                   soundEffectExtention: "",
+                   soundEffect: "SFX_4KURSI",
+                   soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
                        Instruction(id: "2", text: "Saat aku Kecil,",  startedAt: 0.6),
@@ -301,8 +301,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-5",
                    narationSoundExtention: "mp3",
-                   soundEffect: "",
-                   soundEffectExtention: "",
+                   soundEffect: "SFX_5HUGO",
+                   soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
                        Instruction(id: "2", text: "Di perpustakaan ini, banyak bulu burung hantu yang berceceran di mana-mana,",  startedAt: 0.9),
@@ -323,8 +323,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-6",
                    narationSoundExtention: "mp3",
-                   soundEffect: "",
-                   soundEffectExtention: "",
+                   soundEffect: "SFX_6TIANG",
+                   soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
                        Instruction(id: "2", text: "Hugo sangat setia, dia sudah seperti penjaga perpustakaan ini",  startedAt: 0.6),
