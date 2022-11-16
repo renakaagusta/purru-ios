@@ -33,8 +33,6 @@ struct StoryListView: View {
         }
     }
     
-
-    
     var body: some View {
         
         VStack {
@@ -49,6 +47,7 @@ struct StoryListView: View {
             DescriptionModalView(data: storyList[global.storyIndex], onPlay: {
                 global.isReadSinopsis = false
                 global.isPlaying = true
+                
             })
             .presentationDetents([.height(550)])
             .onDisappear {

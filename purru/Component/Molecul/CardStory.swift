@@ -20,7 +20,7 @@ struct AppCardStory: View {
     
     var body: some View {
         VStack {
-                ZStack {
+            ZStack {
                     AppCard(width: 280, height: 465, cornerRadius: 31, backgroundColorTop: Color.black, backgroundColorBottom: Color.bg.secondary, borderColor: Color.spot.primary) {
                         
                     }

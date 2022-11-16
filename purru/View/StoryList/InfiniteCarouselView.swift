@@ -13,40 +13,31 @@ struct InfiniteCarouselView: View{
     @State var genericTabs: [StoryTab] = []
     
     @State private var isPresentDescriptionModal = false
-    
-    @State var isActive: Bool = false
-    
+        
     var body: some View{
-        TabView(selection: $fakeIndex){
-            ForEach(Array(storyListTab.enumerated()),  id: \.offset) { index, tab in
-                NavigationLink(destination: isActive ? AnyView(StoryView(data: storyList[index])) :  AnyView(EmptyView()), isActive: $isActive, label: {
-                    VStack {
-                        AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3, index: index , onClick: {
-                            global.storyIndex = index
-                            isPresentDescriptionModal.toggle()
-                        }, onPlay: {
-                            isPresentDescriptionModal = false
-                            global.storyIndex = index
-                            global.isPlaying.toggle()
-                            isActive = true
+        VStack{
+            NavigationLink(destination: global.isPlaying ? AnyView(StoryView(data: storyList[global.storyIndex])) :  AnyView(EmptyView()), isActive: $global.isPlaying, label: {
+            EmptyView()
+        })
+            TabView(selection: $fakeIndex){
+                ForEach(Array(storyListTab.enumerated()),  id: \.offset) { index, tab in
+                        VStack {
+                            AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3, index: index , onClick: {
+                                global.storyIndex = index
+                                global.isReadSinopsis = true
+                            }, onPlay: {
+                                isPresentDescriptionModal = false
+                                global.storyIndex = index
+                                global.isPlaying.toggle()
+                            })
+                        }
+                        .onPreferenceChange(OffsetKey.self, perform: { offset in
+                            self.offset = offset
                         })
+                        .tag(getIndex(tab: tab))
                     }
-                    .onPreferenceChange(OffsetKey.self, perform: { offset in
-                        self.offset = offset
-                    })
-                    .tag(getIndex(tab: tab))
-                    .sheet(isPresented: $isPresentDescriptionModal) {
-                        DescriptionModalView(data: storyList[global.storyIndex], onPlay: {
-                            isPresentDescriptionModal = false
-                            global.storyIndex = index
-                            global.isPlaying.toggle()
-                            isActive = true
-                        })
-                        .presentationDetents([.height(550)])
-                    }
-                })
-            }
-        }
+                }
+    }
         .tabViewStyle(.page(indexDisplayMode: .always))
         .frame(height: .infinity)
         .onChange(of: offset) { newValue in
