@@ -18,31 +18,28 @@ struct AppCardStory: View {
     var onClick: () -> Void = {}
     var onPlay: () -> Void = {}
     
+    @State var isActive: Bool = false
+
     var body: some View {
         VStack {
+            NavigationLink(destination: isActive ? AnyView(StoryView(data: storyList[index])) :  AnyView(EmptyView()), isActive: $isActive, label: {
                 ZStack {
                     AppCard(width: 280, height: 465, cornerRadius: 31, backgroundColorTop: Color.black, backgroundColorBottom: Color.bg.secondary, borderColor: Color.spot.primary) {
-                            
-                        }
-                        .shadow(color: Color.spot.primary, radius: 5, x: 0, y: 0)
-                        .padding(5)
+                        
+                    }
+                    .shadow(color: Color.spot.primary, radius: 5, x: 0, y: 0)
+                    .padding(5)
                     
                     Image(thumbnail)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 371.0, height: 371.0)
                         .offset(y:-60)
-//
-//                    Button(action: {
-//                        self.onPlay()
-//                    }, label: {
-//
-//                    })
-            
+
                     Rectangle()
                         .fill(LinearGradient(colors: [Color.clear, Color.bg.secondary],
-                                                    startPoint: .top,
-                                                    endPoint: .center))
+                                             startPoint: .top,
+                                             endPoint: .center))
                         .frame(width: 275, height: 150)
                         .offset(y:100)
                     
@@ -84,17 +81,18 @@ struct AppCardStory: View {
                     .padding()
                     .frame(width: 280, height: UIScreen.main.bounds.height/2)
                     .offset(y:125)
-
+                    
                     
                     Ellipse()
                         .fill(.black.opacity(0.1))
                         .frame(width: 200, height: 20)
                         .shadow(radius: 5)
                         .offset(y:270)
-                                    
+                    
                 }
-            .padding()
-            Spacer()
+                .padding()
+                Spacer()
+            })
         }
     }
 }
