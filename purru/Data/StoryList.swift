@@ -199,8 +199,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-1",
                    narationSoundExtention: "mp3",
-                   soundEffect: "",
-                   soundEffectExtention: "",
+                   soundEffect: "Countdown Sound",
+                   soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
                        Instruction(id: "2", text: "Oh halo!",  startedAt: 1.3),
@@ -232,8 +232,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-2",
                    narationSoundExtention: "mp3",
-                   soundEffect: "",
-                   soundEffectExtention: "",
+                   soundEffect: "Countdown Sound",
+                   soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
                        Instruction(id: "2", text: "Ah, ternyata perpaduan wangi bunga aster, lavender, dan bawang putih",  startedAt: 0.5),
@@ -258,8 +258,8 @@ var storyList = [
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-3",
                    narationSoundExtention: "mp3",
-                   soundEffect: "",
-                   soundEffectExtention: "",
+                   soundEffect: "Countdown Sound",
+                   soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
                        Instruction(id: "2", text: "Kamu juga pasti bisa membuat ramuan obat jika membaca buku resep milik nenek ini",  startedAt: 0.7),
