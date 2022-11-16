@@ -94,22 +94,13 @@ struct StoryView: View {
         let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
         
         let objectTarget = view.scene!.rootNode.childNodes.filter({$0.name == data.objectList[focusedObjectIndex].tag}).first
-        
+                
         for node in self.view.scene!.rootNode.childNodes {
             if(node.name == objectTarget?.name) {
                 let material = node.geometry!.firstMaterial!
                 
                 SCNTransaction.begin()
-                SCNTransaction.animationDuration = 0.5
-                
-                SCNTransaction.completionBlock = {
-                    SCNTransaction.begin()
-                    SCNTransaction.animationDuration = 0.5
-                    
-                    material.emission.contents = UIColor.black
-                    
-                    SCNTransaction.commit()
-                }
+                SCNTransaction.animationDuration = 1
                 
                 material.emission.contents = UIColor.yellow
                 
@@ -121,10 +112,24 @@ struct StoryView: View {
                 
                 hintVisibility = true
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     hintVisibility = false
                 }
-
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            for node in self.view.scene!.rootNode.childNodes {
+                if(node.name == objectTarget?.name) {
+                    let material = node.geometry!.firstMaterial!
+                    
+                    SCNTransaction.begin()
+                    SCNTransaction.animationDuration = 1
+                
+                    material.emission.contents = UIColor.black
+                    
+                    SCNTransaction.commit()
+                }
             }
         }
     }
@@ -138,52 +143,34 @@ struct StoryView: View {
             let firstObject = hitResults![0]
             for result in self.view.scene!.rootNode.childNodes {
                 if(result.name == firstObject.node.name) {
-                    let material = result.geometry!.firstMaterial!
-             
-                    SCNTransaction.begin()
-                    SCNTransaction.animationDuration = 0.5
-                        
-                    SCNTransaction.completionBlock = {
-                    SCNTransaction.begin()
-                    SCNTransaction.animationDuration = 0.5
-                                
-                    material.emission.contents = UIColor.black
-                                
-                    SCNTransaction.commit()
-                }
-                            
-                material.emission.contents = UIColor.red
-                            
-                SCNTransaction.commit()
-                            
-                if(result.name == data.objectList[focusedObjectIndex].tag) {
-                    focusedObjectIndex = focusedObjectIndex + 1
-                    foundObject = foundObject + 1
-                    state = StoryState.Naration
-                    hintVisibility = false
-                    gestureVisibility = false
-                    elapsedTime = 0
+                    if(result.name == data.objectList[focusedObjectIndex].tag) {
+                        focusedObjectIndex = focusedObjectIndex + 1
+                        foundObject = foundObject + 1
+                        state = StoryState.Naration
+                        hintVisibility = false
+                        gestureVisibility = false
+                        elapsedTime = 0
 
-                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
-                                
+                        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
+                                    
+                            
+                        SCNTransaction.begin()
+                        SCNTransaction.animationDuration = 1
                         
-                    SCNTransaction.begin()
-                    SCNTransaction.animationDuration = 1
-                    
-                    result.opacity = 0
-                        
-                    SCNTransaction.commit()
-                        
-                    objectHistoryList.append(result)
-                                
-                    let emitter = SCNParticleSystem(named: "\(data.particleTouch).scnp", inDirectory: nil)!
-                    let particleNode = SCNNode()
-                    particleNode.worldPosition = result.worldPosition
-                    particleNode.worldOrientation = result.worldOrientation
-                    self.view.scene?.rootNode.addChildNode(particleNode)
-                    particleNode.addParticleSystem(emitter)
-                                
-                    result.removeFromParentNode()
+                        result.opacity = 0
+                            
+                        SCNTransaction.commit()
+                            
+                        objectHistoryList.append(result)
+                                    
+                        let emitter = SCNParticleSystem(named: "\(data.particleTouch).scnp", inDirectory: nil)!
+                        let particleNode = SCNNode()
+                        particleNode.worldPosition = result.worldPosition
+                        particleNode.worldOrientation = result.worldOrientation
+                        self.view.scene?.rootNode.addChildNode(particleNode)
+                        particleNode.addParticleSystem(emitter)
+                                    
+                        result.removeFromParentNode()
                 }
             }
         }
