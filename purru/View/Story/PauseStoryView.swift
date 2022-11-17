@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct PauseStoryView: View {
-    @State var buttonTextEnding: String = "Keluar"
     var onExitOptionClick: () -> () = {}
+    var onContinueStoryClick: () -> () = {}
+
     
     @State var sliderValue : CGFloat = 0
     @State private var showGreeting = true
@@ -24,8 +25,6 @@ struct PauseStoryView: View {
         alertExitVisibility = false
     }
     
-    
-    
     //onRestartClick
 
     var body: some View {
@@ -35,23 +34,47 @@ struct PauseStoryView: View {
             VStack(alignment: .center) {
                 AppRubik(text: "Suara", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 
-                Slider(value: $global.narationVolume,
-                       in: 0...100,
-                            step: 1) { didChange in
-                        print("Did change: \(didChange)")
-                        onDidChangeSound()
-                        print($global.narationVolume)
+                HStack {
+                    Image(systemName: "speaker.fill")
+                        .resizable()
+                        .frame(width: 10,height: 15)
+                        .foregroundColor(Color.text.primary)
+                
+                    Slider(value: $global.narationVolume,
+                           in: 0...100,
+                                step: 1) { didChange in
+                            print("Did change: \(didChange)")
+                            onDidChangeSound()
+                            print($global.narationVolume)
+                        }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
+                    
+                    Image(systemName: "speaker.wave.2.fill")
+                        .resizable()
+                        .frame(width: 18,height: 15)
+                        .foregroundColor(Color.text.primary)
+                }
+                
+                AppRubik(text: "Musik", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
+                
+                HStack {
+                    Image(systemName: "speaker.fill")
+                        .resizable()
+                        .frame(width: 10,height: 15)
+                        .foregroundColor(Color.text.primary)
+                    
+                    Slider(value: $global.backsoundVolume,
+                           in: 0...100,
+                                step: 1) { didChange in
+                            print("Did change: \(didChange)")
+                            onDidChangeSound()
+                            print($global.backsoundVolume)
                     }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
-                
-                AppRubik(text: "Music", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
-                
-                Slider(value: $global.backsoundVolume,
-                       in: 0...100,
-                            step: 1) { didChange in
-                        print("Did change: \(didChange)")
-                        onDidChangeSound()
-                        print($global.backsoundVolume)
-                }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
+                    
+                    Image(systemName: "speaker.wave.2.fill")
+                        .resizable()
+                        .frame(width: 18,height: 15)
+                        .foregroundColor(Color.text.primary)
+                }
                 
                 Toggle(isOn: $global.showSubtitle) {
                     AppRubik(text: "Subtitle", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
@@ -59,15 +82,29 @@ struct PauseStoryView: View {
                 
                 Button(action: {
                     //onExitOptionClick()
+                    //alertExitVisibility.toggle()
+                    onContinueStoryClick()
+                }, label: {
+                    AppRubik(text: "Lanjutkan Cerita", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
+                        .padding(10)
+                        .frame(width: 200, height: 38)
+                        .background(Color.sign.primary)
+                        .cornerRadius(100)
+                }).padding(.top, 30)
+                
+                Button(action: {
+                    //onExitOptionClick()
                     alertExitVisibility.toggle()
                 }, label: {
-                    AppRubik(text: buttonTextEnding, rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
-                        .padding()
+                    AppRubik(text: "Keluar dari Cerita", rubikSize: fontType.body, fontWeight: Font.Weight.medium, fontColor: Color.text.primary)
+                        .padding(10)
+                        .frame(width: 200, height: 38)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.foot.primary, lineWidth: 2)
+                                .stroke(Color.wrong.primary, lineWidth: 2)
                         )
-                }).padding(.top, 30)
+                }).padding(.top, 15)
+                
             }
             .padding(.horizontal, 40)
             

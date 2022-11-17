@@ -27,6 +27,7 @@ var storyList = [
            objectList: [
             ObjectScene(
                    title: "Object 1",
+                   objectName: "",
                    description: "Description 1",
                    hint: "",
                    tag: "Cube_001",
@@ -49,6 +50,7 @@ var storyList = [
                ),
                ObjectScene(
                    title: "Cari pohon biru",
+                   objectName: "",
                    description: "Cari pohon biru",
                    hint: "Cari pohon biru",
                    tag: "BLUE",
@@ -74,6 +76,7 @@ var storyList = [
                ),
                ObjectScene(
                    title: "Cari pohon kuning",
+                   objectName: "",
                    description: "Cari pohon kuning",
                    hint: "Cari pohon kuning",
                    tag: "YELLOW",
@@ -98,6 +101,7 @@ var storyList = [
                ),
                ObjectScene(
                    title: "Cari kiki si burung",
+                   objectName: "",
                    description: "Cari kiki si burung",
                    hint: "Cari kiki si burung",
                    tag: "BIRD",
@@ -123,6 +127,7 @@ var storyList = [
                ),
                ObjectScene(
                    title: "Cari labu putih",
+                   objectName: "",
                    description: "Cari labu putih",
                    hint: "Cari labu putih",
                    tag: "PUMPKIN",
@@ -147,6 +152,7 @@ var storyList = [
                ),
                ObjectScene(
                    title: "",
+                   objectName: "",
                    description: "",
                    hint: "",
                    tag: "",
@@ -190,8 +196,9 @@ var storyList = [
            objectList: [
                ObjectScene(
                    title: "Temukan tanaman herbal",
+                   objectName: "tanaman herbal",
                    description: "Narasi 1",
-                   hint: "Temukan tanaman herbal",
+                   hint: "Temukan",
                    tag: "1TANAMAN",
                    type: ObjectType.Task,
                    narationDuration: 134,
@@ -225,8 +232,9 @@ var storyList = [
                ),
                ObjectScene(
                    title: "Temukan buku resep nenek",
+                   objectName: "buku resep nenek",
                    description: "Narasi 2",
-                   hint:  "Temukan buku resep nenek",
+                   hint:  "Temukan",
                    tag: "2BUKU",
                    type: ObjectType.Task,
                    narationDuration: 78,
@@ -252,8 +260,9 @@ var storyList = [
                ),
                ObjectScene(
                    title: "Temukan Papan",
+                   objectName: "Papan",
                    description: "Narasi 3",
-                   hint:"Temukan Papan",
+                   hint:"Temukan",
                    tag: "3PAPAN",
                    type: ObjectType.Task,
                    narationDuration: 20,
@@ -272,8 +281,9 @@ var storyList = [
                ),
                ObjectScene(
                    title: "Temukan Kursi",
+                   objectName: "Kursi",
                    description: "Narasi 4",
-                   hint: "Temukan Kursi",
+                   hint: "Temukan",
                    tag: "4KURSI",
                    type: ObjectType.Task,
                    narationDuration: 38,
@@ -295,8 +305,9 @@ var storyList = [
                ),
                ObjectScene(
                    title: "Temukan Hugo",
+                   objectName: "Hugo",
                    description: "Narasi 5",
-                   hint: "Temukan Hugo",
+                   hint: "Temukan",
                    tag: "5HUGO",
                    type: ObjectType.Task,
                    narationDuration: 21,
@@ -317,8 +328,9 @@ var storyList = [
                ),
                ObjectScene(
                    title: "Temukan tiang burung",
+                   objectName: "tiang burung",
                    description: "Narasi 6",
-                   hint: "Temukan tiang burung",
+                   hint: "Temukan",
                    tag: "6TIANG",
                    type: ObjectType.Task,
                    narationDuration: 32,
@@ -341,6 +353,7 @@ var storyList = [
                ),
                ObjectScene(
                    title: "Ending",
+                   objectName: "",
                    description: "Narasi 7",
                    hint: "Hint 1",
                    tag: "",
