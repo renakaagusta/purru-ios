@@ -14,23 +14,29 @@ struct AppCard<Content: View>: View {
     @State var backgroundColorTop: Color = Color.clear
     @State var backgroundColorBottom: Color = Color.clear
     @State var borderColor: Color = Color.gray
-    @State var background: Image?
+    @State var backgroundImage: String
     var content: () -> Content?
     
-    init(width: CGFloat = 300, height: CGFloat = 300, cornerRadius: CGFloat = 20, backgroundColorTop: Color = Color.clear, backgroundColorBottom: Color = Color.clear, borderColor: Color = Color.white, @ViewBuilder component: @escaping () -> Content?) {
+    init(width: CGFloat = 300, height: CGFloat = 300, cornerRadius: CGFloat = 20, backgroundColorTop: Color = Color.clear, backgroundColorBottom: Color = Color.clear, borderColor: Color = Color.white, backgroundImage: String = "", @ViewBuilder component: @escaping () -> Content?) {
         self.width = width
         self.height = height
         self.cornerRadius = cornerRadius
         self.backgroundColorTop = backgroundColorTop
         self.backgroundColorBottom = backgroundColorBottom
         self.borderColor = borderColor
+        self.backgroundImage = backgroundImage
         self.content = component
     }
     
     var body: some View {
         VStack(){
             if (content != nil) {
-                content()
+                ZStack {
+                    content()
+                    Image(backgroundImage)
+                        .resizable()
+                        .frame(width: 280, height: 465)
+                }
             }
         }
         .frame(width: width, height: height).overlay(

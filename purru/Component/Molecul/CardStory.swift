@@ -21,8 +21,7 @@ struct AppCardStory: View {
     var body: some View {
         VStack {
             ZStack {
-                    AppCard(width: 280, height: 465, cornerRadius: 31, backgroundColorTop: Color.black, backgroundColorBottom: Color.bg.secondary, borderColor: Color.spot.primary) {
-                        
+                    AppCard(width: 280, height: 465, cornerRadius: 31, backgroundColorTop: Color.black, backgroundColorBottom: Color.bg.secondary, borderColor: Color.spot.primary, backgroundImage: "") {
                     }
                     .shadow(color: Color.spot.primary, radius: 5, x: 0, y: 0)
                     .padding(5)
@@ -30,14 +29,14 @@ struct AppCardStory: View {
                     Image(thumbnail)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 371.0, height: 371.0)
+                        .frame(width: 350.0, height: 350.0)
                         .offset(y:-60)
 
                     Rectangle()
                         .fill(LinearGradient(colors: [Color.clear, Color.bg.secondary],
                                              startPoint: .top,
                                              endPoint: .center))
-                        .frame(width: 275, height: 150)
+                        .frame(width: 275, height: 130)
                         .offset(y:100)
                     
                     
