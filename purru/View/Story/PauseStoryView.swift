@@ -18,15 +18,14 @@ struct PauseStoryView: View {
     
     @State var alertExitVisibility : Bool = false
     
+    @State var backsoundVolume: CGFloat = 0
+    @State var narationVolume: CGFloat = 0
+    
     var onDidChangeSound: () -> () = {}
     
     func onCancelClick(){
         alertExitVisibility = false
     }
-    
-    
-    
-    //onRestartClick
 
     var body: some View {
   
@@ -35,26 +34,28 @@ struct PauseStoryView: View {
             VStack(alignment: .center) {
                 AppRubik(text: "Suara", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 
-                Slider(value: $global.narationVolume,
+                Slider(value: $narationVolume,
                        in: 0...100,
                             step: 1) { didChange in
-                        print("Did change: \(didChange)")
                         onDidChangeSound()
+                        global.narationVolume = narationVolume
+                    print("==NARATION VOLUME====")
                         print($global.narationVolume)
                     }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
                 
-                AppRubik(text: "Music", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
+                AppRubik(text: "Musik", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 
-                Slider(value: $global.backsoundVolume,
+                Slider(value: $backsoundVolume,
                        in: 0...100,
                             step: 1) { didChange in
-                        print("Did change: \(didChange)")
                         onDidChangeSound()
+                        global.backsoundVolume = backsoundVolume
+                    print("==BACKSOUND VOLUME====")
                         print($global.backsoundVolume)
                 }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
                 
                 Toggle(isOn: $global.showSubtitle) {
-                    AppRubik(text: "Subtitle", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
+                    AppRubik(text: "Narasi", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 }.tint(Color.sign.primary)
                 
                 Button(action: {
