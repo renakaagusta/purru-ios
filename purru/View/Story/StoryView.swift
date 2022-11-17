@@ -42,8 +42,8 @@ struct StoryView: View {
     @State private var focusedObjectIndex = 0
     @State private var foundObject = 0
     
-    @State private var elapsedTime: CGFloat = 120
-    @State private var currentNarationDuration: CGFloat = 120
+    @State private var elapsedTime: CGFloat = 0
+    @State private var currentNarationDuration: CGFloat = 0
     @State private var totalNarationDuration: CGFloat = 0
     
     @State private var minFov: CGFloat = 20
@@ -57,9 +57,13 @@ struct StoryView: View {
     @State private var tappedYPosition: CGFloat = 0
     @State private var isRippleVisible: Bool = false
     @State var fadeIn = false
+    @State var fadeInNaration: CGFloat = 0
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let narationTimer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     let cameraTimer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
+    
+    @State var currentNaration: String? = nil
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -339,6 +343,11 @@ struct StoryView: View {
                 }
             }
             
+            if(currentNaration != showedInstruction) {
+                fadeInNaration = 0
+                currentNaration = showedInstruction
+            }
+            
             if(state != StoryState.Task && showedInstruction != nil) {
                 showDialog(position: DialogPosition.Top, child: AnyView(AppRubik(text: showedInstruction!, rubikSize: fontType.body, fontWeight: .regular, fontColor: Color.text.primary, fontStyle: .italic)))
             }
@@ -510,6 +519,14 @@ struct StoryView: View {
                             .padding(.top, 75)
                         if(dialogVisibility && !endingVisibility && global.showSubtitle) {
                             dialogView
+                                
+                                .onReceive(narationTimer) { _ in
+                                    if(fadeInNaration < 1) {
+                                        fadeInNaration = fadeInNaration + 0.3
+                                    }
+                                }
+                                .animation(.easeIn)
+                                .opacity(1)
                                 .padding(.horizontal, 50)
                                 .padding(.top)
                         }
