@@ -456,7 +456,7 @@ struct StoryView: View {
                     tappedXPosition = location.x
                     tappedYPosition = location.y
                 }
-                RippleView(isVisible: $isRippleVisible, x: $tappedXPosition, y: $tappedYPosition, gesture: gesture)
+                RippleView(isVisible: $isRippleVisible, x: $tappedXPosition, y: $tappedYPosition)
                 
                 if(endingVisibility) {
                     EndingView(titleEnding: "Sekian untuk malam ini", textEnding: "Selamat beristirahat!", buttonTextEnding: "Kembali ke Menu", onRestartClick: {
@@ -665,17 +665,16 @@ struct RippleView: View {
     @Binding var isVisible: Bool
     @Binding var x: CGFloat
     @Binding var y: CGFloat
-    @State var gesture: String
 
     var body: some View {
         VStack {
             if(isVisible) {
-                GIFView(type: .name(gesture))
-                    .frame(width: 200, height: 200)
+                GIFView(type: .name("ripple"))
+                    .frame(width: 300, height: 300)
                     .position(x: x, y: y)
                 .transition(.scale)
                 .onAppear(perform: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                         self.isVisible = false
                     })
                 })
