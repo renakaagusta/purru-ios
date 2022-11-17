@@ -39,6 +39,7 @@ struct StoryListView: View {
             Spacer().frame(height: 40)
             AppJosefineSans(text: "Pilih cerita malam ini...", josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
                 .frame(width: 300)
+                .padding(.bottom, 30)
             InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
 
             Spacer()
