@@ -24,6 +24,7 @@ struct StoryData: Identifiable {
     var skyBox: SkyBox
     var objectList: [ObjectScene]
     var isTutorial: Bool = false
+    var height: CGFloat
 }
 
 struct StoryTab: Identifiable, Hashable {
