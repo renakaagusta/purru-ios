@@ -105,13 +105,7 @@
 		41E36BE0291BA01600B8B369 /* ParticleEndingView.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 41E36BDD291BA01600B8B369 /* ParticleEndingView.scnp */; };
 		B80A8FE3291B6546008F4D3A /* backsound-story2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FD1291B6545008F4D3A /* backsound-story2.mp3 */; };
 		B80A8FE4291B6546008F4D3A /* backsound-story1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FD2291B6545008F4D3A /* backsound-story1.mp3 */; };
-		B80A8FE5291B6546008F4D3A /* Narasi-Story2-4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FD5291B6546008F4D3A /* Narasi-Story2-4.mp3 */; };
-		B80A8FE6291B6546008F4D3A /* Narasi-Story2-5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FD6291B6546008F4D3A /* Narasi-Story2-5.mp3 */; };
 		B80A8FE7291B6546008F4D3A /* Narasi-Story2-7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FD7291B6546008F4D3A /* Narasi-Story2-7.mp3 */; };
-		B80A8FE8291B6546008F4D3A /* Narasi-Story2-6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FD8291B6546008F4D3A /* Narasi-Story2-6.mp3 */; };
-		B80A8FE9291B6546008F4D3A /* Narasi-Story2-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FD9291B6546008F4D3A /* Narasi-Story2-2.mp3 */; };
-		B80A8FEA291B6546008F4D3A /* Narasi-Story2-3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FDA291B6546008F4D3A /* Narasi-Story2-3.mp3 */; };
-		B80A8FEB291B6546008F4D3A /* Narasi-Story2-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FDB291B6546008F4D3A /* Narasi-Story2-1.mp3 */; };
 		B80A8FEC291B6546008F4D3A /* Narasi-Story1-5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FDD291B6546008F4D3A /* Narasi-Story1-5.mp3 */; };
 		B80A8FED291B6546008F4D3A /* Narasi-Story1-4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FDE291B6546008F4D3A /* Narasi-Story1-4.mp3 */; };
 		B80A8FEE291B6546008F4D3A /* Narasi-Story1-6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FDF291B6546008F4D3A /* Narasi-Story1-6.mp3 */; };
@@ -126,6 +120,12 @@
 		B80A9011291CDC7E008F4D3A /* nx.2.png in Resources */ = {isa = PBXBuildFile; fileRef = B80A900B291CDC7D008F4D3A /* nx.2.png */; };
 		B80A9012291CDC7E008F4D3A /* nz.2.png in Resources */ = {isa = PBXBuildFile; fileRef = B80A900C291CDC7E008F4D3A /* nz.2.png */; };
 		B82AA4772924EAB700B37E9C /* RuanganAjaib.scn in Resources */ = {isa = PBXBuildFile; fileRef = B82AA4762924EAB700B37E9C /* RuanganAjaib.scn */; };
+		B82AA4802926282500B37E9C /* Narasi-Story2-4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B82AA47A2926282500B37E9C /* Narasi-Story2-4.mp3 */; };
+		B82AA4812926282500B37E9C /* Narasi-Story2-6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B82AA47B2926282500B37E9C /* Narasi-Story2-6.mp3 */; };
+		B82AA4822926282500B37E9C /* Narasi-Story2-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B82AA47C2926282500B37E9C /* Narasi-Story2-1.mp3 */; };
+		B82AA4832926282500B37E9C /* Narasi-Story2-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B82AA47D2926282500B37E9C /* Narasi-Story2-2.mp3 */; };
+		B82AA4842926282500B37E9C /* Narasi-Story2-3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B82AA47E2926282500B37E9C /* Narasi-Story2-3.mp3 */; };
+		B82AA4852926282500B37E9C /* Narasi-Story2-5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B82AA47F2926282500B37E9C /* Narasi-Story2-5.mp3 */; };
 		B8469D452917F7BB00249606 /* PauseStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8469D442917F7BB00249606 /* PauseStoryView.swift */; };
 		B85BA9FA29224F5A0034D067 /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B85BA9F929224F5A0034D067 /* Rubik-Italic.ttf */; };
 		B8624DB6291120D400586833 /* 3DAssetS1.scn in Resources */ = {isa = PBXBuildFile; fileRef = B8624DB5291120D400586833 /* 3DAssetS1.scn */; };
@@ -262,13 +262,7 @@
 		41E36BDD291BA01600B8B369 /* ParticleEndingView.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ParticleEndingView.scnp; sourceTree = "<group>"; };
 		B80A8FD1291B6545008F4D3A /* backsound-story2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "backsound-story2.mp3"; sourceTree = "<group>"; };
 		B80A8FD2291B6545008F4D3A /* backsound-story1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "backsound-story1.mp3"; sourceTree = "<group>"; };
-		B80A8FD5291B6546008F4D3A /* Narasi-Story2-4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-4.mp3"; sourceTree = "<group>"; };
-		B80A8FD6291B6546008F4D3A /* Narasi-Story2-5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-5.mp3"; sourceTree = "<group>"; };
 		B80A8FD7291B6546008F4D3A /* Narasi-Story2-7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-7.mp3"; sourceTree = "<group>"; };
-		B80A8FD8291B6546008F4D3A /* Narasi-Story2-6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-6.mp3"; sourceTree = "<group>"; };
-		B80A8FD9291B6546008F4D3A /* Narasi-Story2-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-2.mp3"; sourceTree = "<group>"; };
-		B80A8FDA291B6546008F4D3A /* Narasi-Story2-3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-3.mp3"; sourceTree = "<group>"; };
-		B80A8FDB291B6546008F4D3A /* Narasi-Story2-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-1.mp3"; sourceTree = "<group>"; };
 		B80A8FDD291B6546008F4D3A /* Narasi-Story1-5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story1-5.mp3"; sourceTree = "<group>"; };
 		B80A8FDE291B6546008F4D3A /* Narasi-Story1-4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story1-4.mp3"; sourceTree = "<group>"; };
 		B80A8FDF291B6546008F4D3A /* Narasi-Story1-6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story1-6.mp3"; sourceTree = "<group>"; };
@@ -283,6 +277,12 @@
 		B80A900B291CDC7D008F4D3A /* nx.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nx.2.png; sourceTree = "<group>"; };
 		B80A900C291CDC7E008F4D3A /* nz.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nz.2.png; sourceTree = "<group>"; };
 		B82AA4762924EAB700B37E9C /* RuanganAjaib.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = RuanganAjaib.scn; sourceTree = "<group>"; };
+		B82AA47A2926282500B37E9C /* Narasi-Story2-4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-4.mp3"; sourceTree = "<group>"; };
+		B82AA47B2926282500B37E9C /* Narasi-Story2-6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-6.mp3"; sourceTree = "<group>"; };
+		B82AA47C2926282500B37E9C /* Narasi-Story2-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-1.mp3"; sourceTree = "<group>"; };
+		B82AA47D2926282500B37E9C /* Narasi-Story2-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-2.mp3"; sourceTree = "<group>"; };
+		B82AA47E2926282500B37E9C /* Narasi-Story2-3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-3.mp3"; sourceTree = "<group>"; };
+		B82AA47F2926282500B37E9C /* Narasi-Story2-5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-5.mp3"; sourceTree = "<group>"; };
 		B8469D442917F7BB00249606 /* PauseStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseStoryView.swift; sourceTree = "<group>"; };
 		B85BA9F929224F5A0034D067 /* Rubik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Italic.ttf"; sourceTree = "<group>"; };
 		B8624DB5291120D400586833 /* 3DAssetS1.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = 3DAssetS1.scn; sourceTree = "<group>"; };
@@ -771,13 +771,13 @@
 		B80A8FD4291B6546008F4D3A /* Story 2 */ = {
 			isa = PBXGroup;
 			children = (
-				B80A8FD5291B6546008F4D3A /* Narasi-Story2-4.mp3 */,
-				B80A8FD6291B6546008F4D3A /* Narasi-Story2-5.mp3 */,
+				B82AA47C2926282500B37E9C /* Narasi-Story2-1.mp3 */,
+				B82AA47D2926282500B37E9C /* Narasi-Story2-2.mp3 */,
+				B82AA47E2926282500B37E9C /* Narasi-Story2-3.mp3 */,
+				B82AA47A2926282500B37E9C /* Narasi-Story2-4.mp3 */,
+				B82AA47F2926282500B37E9C /* Narasi-Story2-5.mp3 */,
+				B82AA47B2926282500B37E9C /* Narasi-Story2-6.mp3 */,
 				B80A8FD7291B6546008F4D3A /* Narasi-Story2-7.mp3 */,
-				B80A8FD8291B6546008F4D3A /* Narasi-Story2-6.mp3 */,
-				B80A8FD9291B6546008F4D3A /* Narasi-Story2-2.mp3 */,
-				B80A8FDA291B6546008F4D3A /* Narasi-Story2-3.mp3 */,
-				B80A8FDB291B6546008F4D3A /* Narasi-Story2-1.mp3 */,
 			);
 			path = "Story 2";
 			sourceTree = "<group>";
@@ -975,11 +975,13 @@
 				B8624DB6291120D400586833 /* 3DAssetS1.scn in Resources */,
 				41E36BE0291BA01600B8B369 /* ParticleEndingView.scnp in Resources */,
 				41ABFEBD291D0D2D00E7295D /* 1TANAMAN2.png in Resources */,
-				B80A8FEB291B6546008F4D3A /* Narasi-Story2-1.mp3 in Resources */,
 				B80A900D291CDC7E008F4D3A /* py.2.png in Resources */,
 				41ABFEB3291D0D2D00E7295D /* carpet-bc.png in Resources */,
 				41147799290FC95700FD5B56 /* hand.swipe.up.gif in Resources */,
+				B82AA4802926282500B37E9C /* Narasi-Story2-4.mp3 in Resources */,
+				B82AA4842926282500B37E9C /* Narasi-Story2-3.mp3 in Resources */,
 				B85BA9FA29224F5A0034D067 /* Rubik-Italic.ttf in Resources */,
+				B82AA4832926282500B37E9C /* Narasi-Story2-2.mp3 in Resources */,
 				B8A100092907E73C0082C66E /* Layer0.exr in Resources */,
 				B80A8FE7291B6546008F4D3A /* Narasi-Story2-7.mp3 in Resources */,
 				41ABFEC3291D0D2D00E7295D /* props_BC.png in Resources */,
@@ -1001,14 +1003,13 @@
 				B8B5FEA829102F5300687987 /* kiri.png in Resources */,
 				B80A8FEC291B6546008F4D3A /* Narasi-Story1-5.mp3 in Resources */,
 				4114779A290FC95700FD5B56 /* hand.swipe.left.gif in Resources */,
-				B80A8FE6291B6546008F4D3A /* Narasi-Story2-5.mp3 in Resources */,
 				41ABFEBF291D0D2D00E7295D /* wardrobe_BC.png in Resources */,
 				B8DE813B29092F65006B2BE3 /* py.png in Resources */,
-				B80A8FEA291B6546008F4D3A /* Narasi-Story2-3.mp3 in Resources */,
 				B8B5FEAC29102F5300687987 /* depan.png in Resources */,
 				41ABFEC0291D0D2D00E7295D /* candles_bc.png in Resources */,
 				41ABFEAF291D0D2D00E7295D /* tree_BC.png in Resources */,
 				2FA53E842907C2DC00BFB3E5 /* Preview Assets.xcassets in Resources */,
+				B82AA4822926282500B37E9C /* Narasi-Story2-1.mp3 in Resources */,
 				B82AA4772924EAB700B37E9C /* RuanganAjaib.scn in Resources */,
 				41ABFEC5291D0D2D00E7295D /* floor_bc.png in Resources */,
 				4109CC0B291D0219005E9CC7 /* 2ParticleEndingView.scnp in Resources */,
@@ -1033,23 +1034,22 @@
 				B8DE813629092F65006B2BE3 /* px.png in Resources */,
 				B8A1000B2907E76D0082C66E /* skybox.png in Resources */,
 				B8DE813829092F65006B2BE3 /* ny.png in Resources */,
+				B82AA4812926282500B37E9C /* Narasi-Story2-6.mp3 in Resources */,
 				2FA53F9B2907C31F00BFB3E5 /* smallTree.usdz in Resources */,
 				B80A8FEE291B6546008F4D3A /* Narasi-Story1-6.mp3 in Resources */,
 				41ABFEBE291D0D2D00E7295D /* wall_bc.png in Resources */,
-				B80A8FE5291B6546008F4D3A /* Narasi-Story2-4.mp3 in Resources */,
 				41147798290FC95700FD5B56 /* hand.tap.gif in Resources */,
 				B8B5FEA929102F5300687987 /* belakang.png in Resources */,
 				41ABFEB7291D0D2D00E7295D /* ivy_custrom.png in Resources */,
-				B80A8FE9291B6546008F4D3A /* Narasi-Story2-2.mp3 in Resources */,
 				41ABFEBA291D0D2D00E7295D /* herbs.png in Resources */,
 				B80A900F291CDC7E008F4D3A /* px.2.png in Resources */,
 				2FA53FA12907C31F00BFB3E5 /* stars.jpg in Resources */,
 				B80A8FED291B6546008F4D3A /* Narasi-Story1-4.mp3 in Resources */,
 				41ABFEC4291D0D2D00E7295D /* 4KURSI.png in Resources */,
+				B82AA4852926282500B37E9C /* Narasi-Story2-5.mp3 in Resources */,
 				41ABFEC2291D0D2D00E7295D /* 1TANAMAN.png in Resources */,
 				B80A8FE3291B6546008F4D3A /* backsound-story2.mp3 in Resources */,
 				B80A9012291CDC7E008F4D3A /* nz.2.png in Resources */,
-				B80A8FE8291B6546008F4D3A /* Narasi-Story2-6.mp3 in Resources */,
 				B80A8FE4291B6546008F4D3A /* backsound-story1.mp3 in Resources */,
 				41ABFEB9291D0D2D00E7295D /* 6TIANG.png in Resources */,
 				41ABFEAE291D0D2D00E7295D /* foliage_tents_BC.jpg in Resources */,
