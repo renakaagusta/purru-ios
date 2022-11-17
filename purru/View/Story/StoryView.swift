@@ -40,7 +40,7 @@ struct StoryView: View {
     
     @State var pauseVisibility: Bool = false
     
-    @State private var focusedObjectIndex = 1
+    @State private var focusedObjectIndex = 4
     @State private var foundObject = 0
     
     @State private var elapsedTime: CGFloat = 0
@@ -155,7 +155,7 @@ struct StoryView: View {
                         SCNTransaction.begin()
                         SCNTransaction.animationDuration = 2
                     
-                        result.position.y = result.position.y + 20
+                        result.position.y = result.position.y + Float(data.height)
                         result.opacity = 0
                         
                         SCNTransaction.commit()
@@ -422,8 +422,6 @@ struct StoryView: View {
     }
     
     func playSoundEffect(soundName: String, soundExtention: String, currentTime: CGFloat?) {
-        print("===SOUND NAME===")
-        print(soundName)
         if(soundEffectPlayer != nil) {
             soundEffectPlayer?.stop()
         }
@@ -708,7 +706,7 @@ struct RippleView: View {
                         }
                         .position(x: x, y: y)
                 }.onAppear(perform: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6, execute: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.2, execute: {
                         self.isVisible = false
                         self.index = 0
                     })
