@@ -42,8 +42,8 @@ struct StoryView: View {
     @State private var focusedObjectIndex = 0
     @State private var foundObject = 0
     
-    @State private var elapsedTime: CGFloat = 120
-    @State private var currentNarationDuration: CGFloat = 120
+    @State private var elapsedTime: CGFloat = 0
+    @State private var currentNarationDuration: CGFloat = 0
     @State private var totalNarationDuration: CGFloat = 0
     
     @State private var minFov: CGFloat = 20
