@@ -7,6 +7,7 @@
 import SwiftUI
 import SceneKit
 import AVFoundation
+import Combine
 
 enum DialogPosition {
     case Top, Bottom
@@ -41,7 +42,7 @@ struct StoryView: View {
     
     @State var pauseVisibility: Bool = false
     
-    @State private var focusedObjectIndex = 0
+    @State private var focusedObjectIndex = 1
     @State private var foundObject = 0
     
     @State private var elapsedTime: CGFloat = 0
@@ -156,18 +157,19 @@ struct StoryView: View {
                 if(result.name == firstObject.node.name) {
                     if(result.name == data.objectList[focusedObjectIndex].tag) {
                         SCNTransaction.begin()
-                        SCNTransaction.animationDuration = 1
+                        SCNTransaction.animationDuration = 2
                     
+                        result.position.y = result.position.y + 20
                         result.opacity = 0
                         
                         SCNTransaction.commit()
                         
-                        let emitter = SCNParticleSystem(named: "\(data.particleTouch).scnp", inDirectory: nil)!
-                        let particleNode = SCNNode()
-                        particleNode.worldPosition = result.worldPosition
-                        particleNode.worldOrientation = result.worldOrientation
-                        self.view.scene?.rootNode.addChildNode(particleNode)
-                        particleNode.addParticleSystem(emitter)
+//                        let emitter = SCNParticleSystem(named: "\(data.particleTouch).scnp", inDirectory: nil)!
+//                        let particleNode = SCNNode()
+//                        particleNode.worldPosition = result.worldPosition
+//                        particleNode.worldOrientation = result.worldOrientation
+//                        self.view.scene?.rootNode.addChildNode(particleNode)
+//                        particleNode.addParticleSystem(emitter)
                         
                         objectHistoryList.append(result)
                         newObjectHistoryResult.append(result)
@@ -176,6 +178,8 @@ struct StoryView: View {
         }
         
         if(newObjectHistoryResult.count > 0) {
+            playSoundEffect(soundName: data.objectList[focusedObjectIndex].soundEffect, soundExtention: data.objectList[focusedObjectIndex].soundEffectExtention, currentTime: 0)
+            playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
             focusedObjectIndex = focusedObjectIndex + 1
             foundObject = foundObject + 1
             state = StoryState.Naration
@@ -183,7 +187,6 @@ struct StoryView: View {
             gestureVisibility = false
             elapsedTime = 0
             fadeIn = true
-            playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
         }
     }
 }
@@ -423,6 +426,8 @@ struct StoryView: View {
     }
     
     func playSoundEffect(soundName: String, soundExtention: String, currentTime: CGFloat?) {
+        print("===SOUND NAME===")
+        print(soundName)
         if(soundEffectPlayer != nil) {
             soundEffectPlayer?.stop()
         }
@@ -580,7 +585,6 @@ struct StoryView: View {
                         }
                         
                         if(state != StoryState.Naration && state == StoryState.Tutorial) {
-                            
                             AppCircleButton(
                                 size: 20,
                                 icon: Image(systemName: "lightbulb.fill"),
@@ -645,6 +649,7 @@ struct StoryView: View {
                 global.isPlaying = false
                 global.storyIndex = 0
                 global.tutorialFinished = true
+                global.showSubtitle = true
                 GlobalStorage.isTurorialFinished = true
                 backsoundPlayer?.stop()
                 narationPlayer?.stop()
@@ -714,17 +719,30 @@ struct RippleView: View {
     @Binding var isVisible: Bool
     @Binding var x: CGFloat
     @Binding var y: CGFloat
+    
+    var rippleImageView: UIImageView!
+    var rippleImageList: [UIImage] = [UIImage(named: "tamanpurru")!, UIImage(named: "alcheworld")!]
+    
+    @State var index = 0
+    let images = (0...60).map { UIImage(named: "Ripple_\($0)")! }
+    let timer = Timer.publish(every: 0.02, on: .main, in: .common).autoconnect()
 
     var body: some View {
         VStack {
             if(isVisible) {
-                GIFView(type: .name("ripple"))
-                    .frame(width: 300, height: 300)
-                    .position(x: x, y: y)
-                .transition(.scale)
-                .onAppear(perform: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                VStack {
+                    Image(uiImage: images[index])
+                        .resizable()
+                        .frame(width: 200, height: 200, alignment: .center)
+                        .onReceive(timer) { _ in
+                            self.index = self.index + 1
+                            if self.index >= 60 { self.index = 0 }
+                        }
+                        .position(x: x, y: y)
+                }.onAppear(perform: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6, execute: {
                         self.isVisible = false
+                        self.index = 0
                     })
                 })
             }

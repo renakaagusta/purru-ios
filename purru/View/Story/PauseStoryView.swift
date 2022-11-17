@@ -19,13 +19,14 @@ struct PauseStoryView: View {
     
     @State var alertExitVisibility : Bool = false
     
+    @State var backsoundVolume: CGFloat = 0
+    @State var narationVolume: CGFloat = 0
+    
     var onDidChangeSound: () -> () = {}
     
     func onCancelClick(){
         alertExitVisibility = false
     }
-    
-    //onRestartClick
 
     var body: some View {
   
@@ -34,50 +35,28 @@ struct PauseStoryView: View {
             VStack(alignment: .center) {
                 AppRubik(text: "Suara", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 
-                HStack {
-                    Image(systemName: "speaker.fill")
-                        .resizable()
-                        .frame(width: 10,height: 15)
-                        .foregroundColor(Color.text.primary)
-                
-                    Slider(value: $global.narationVolume,
-                           in: 0...100,
-                                step: 1) { didChange in
-                            print("Did change: \(didChange)")
-                            onDidChangeSound()
-                            print($global.narationVolume)
-                        }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
-                    
-                    Image(systemName: "speaker.wave.2.fill")
-                        .resizable()
-                        .frame(width: 18,height: 15)
-                        .foregroundColor(Color.text.primary)
-                }
+                Slider(value: $narationVolume,
+                       in: 0...100,
+                            step: 1) { didChange in
+                        onDidChangeSound()
+                        global.narationVolume = narationVolume
+                    print("==NARATION VOLUME====")
+                        print($global.narationVolume)
+                    }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
                 
                 AppRubik(text: "Musik", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 
-                HStack {
-                    Image(systemName: "speaker.fill")
-                        .resizable()
-                        .frame(width: 10,height: 15)
-                        .foregroundColor(Color.text.primary)
-                    
-                    Slider(value: $global.backsoundVolume,
-                           in: 0...100,
-                                step: 1) { didChange in
-                            print("Did change: \(didChange)")
-                            onDidChangeSound()
-                            print($global.backsoundVolume)
-                    }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
-                    
-                    Image(systemName: "speaker.wave.2.fill")
-                        .resizable()
-                        .frame(width: 18,height: 15)
-                        .foregroundColor(Color.text.primary)
-                }
+                Slider(value: $backsoundVolume,
+                       in: 0...100,
+                            step: 1) { didChange in
+                        onDidChangeSound()
+                        global.backsoundVolume = backsoundVolume
+                    print("==BACKSOUND VOLUME====")
+                        print($global.backsoundVolume)
+                }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
                 
                 Toggle(isOn: $global.showSubtitle) {
-                    AppRubik(text: "Subtitle", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
+                    AppRubik(text: "Narasi", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 }.tint(Color.sign.primary)
                 
                 Button(action: {
