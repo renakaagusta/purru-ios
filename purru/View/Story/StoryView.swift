@@ -42,8 +42,8 @@ struct StoryView: View {
     @State private var focusedObjectIndex = 0
     @State private var foundObject = 0
     
-    @State private var elapsedTime: CGFloat = 0
-    @State private var currentNarationDuration: CGFloat = 0
+    @State private var elapsedTime: CGFloat = 120
+    @State private var currentNarationDuration: CGFloat = 120
     @State private var totalNarationDuration: CGFloat = 0
     
     @State private var minFov: CGFloat = 20
@@ -140,40 +140,42 @@ struct StoryView: View {
             return
         }
         
+        var newObjectHistoryResult: [SCNNode] = []
+        
         if hitResults!.count > 0 {
             let firstObject = hitResults![0]
             for result in self.view.scene!.rootNode.childNodes {
                 if(result.name == firstObject.node.name) {
                     if(result.name == data.objectList[focusedObjectIndex].tag) {
-                        focusedObjectIndex = focusedObjectIndex + 1
-                        foundObject = foundObject + 1
-                        state = StoryState.Naration
-                        hintVisibility = false
-                        gestureVisibility = false
-                        elapsedTime = 0
-                        fadeIn = true
-                        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
-                                    
-                            
                         SCNTransaction.begin()
                         SCNTransaction.animationDuration = 1
-                        
+                    
                         result.opacity = 0
-                            
+                        
                         SCNTransaction.commit()
-                            
-                        objectHistoryList.append(result)
-                                    
+                        
                         let emitter = SCNParticleSystem(named: "\(data.particleTouch).scnp", inDirectory: nil)!
                         let particleNode = SCNNode()
                         particleNode.worldPosition = result.worldPosition
                         particleNode.worldOrientation = result.worldOrientation
                         self.view.scene?.rootNode.addChildNode(particleNode)
                         particleNode.addParticleSystem(emitter)
-                                    
-                        result.removeFromParentNode()
+                        
+                        objectHistoryList.append(result)
+                        newObjectHistoryResult.append(result)
                 }
             }
+        }
+        
+        if(newObjectHistoryResult.count > 0) {
+            focusedObjectIndex = focusedObjectIndex + 1
+            foundObject = foundObject + 1
+            state = StoryState.Naration
+            hintVisibility = false
+            gestureVisibility = false
+            elapsedTime = 0
+            fadeIn = true
+            playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
         }
     }
 }
