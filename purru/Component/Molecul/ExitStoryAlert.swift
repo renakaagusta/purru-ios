@@ -14,7 +14,8 @@ struct AppExitStoryAlert: View {
 
     var body: some View {
         
-        AppCard(width: 260, height: 160, cornerRadius: 31, backgroundColorTop: Color.bg.secondary, backgroundColorBottom: Color.bg.primary, borderColor: Color.wrong.primary) {
+        //AppCard(width: 260, height: 160, cornerRadius: 31, backgroundColorTop: Color.bg.secondary, backgroundColorBottom: Color.bg.primary, borderColor: Color.wrong.primary) {
+        VStack {
             
             VStack(alignment: .center){
                 AppJosefineSans(text: "Yakin ingin keluar?", josepSize: fontType.title2, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
@@ -23,10 +24,9 @@ struct AppExitStoryAlert: View {
                     .padding(2)
                 
                 HStack{
-                    Button(action: {
-                        onCancelClick()
-                        print("cancel")
-                    }, label: {
+                    Button(action:
+                        onCancelClick
+                        , label: {
                         AppRubik(text: "Tidak", rubikSize: fontType.body, fontWeight: Font.Weight.medium, fontColor: Color.text.primary)
                             .padding(10)
                             .frame(width: 80, height: .infinity)
@@ -34,10 +34,9 @@ struct AppExitStoryAlert: View {
                             .cornerRadius(100)
                     })
                     
-                    Button(action: {
-                        onExitClick()
-                        print("keluar")
-                    }, label: {
+                    Button(action:
+                        onExitClick
+                    , label: {
                         AppRubik(text: "Ya", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
                             .padding(10)
                             .frame(width: 80, height: .infinity)
@@ -52,6 +51,15 @@ struct AppExitStoryAlert: View {
             .padding(25)
             
         }
+        .frame(width: 260, height: 160).overlay(
+            RoundedRectangle(cornerRadius: 31)
+                .stroke(lineWidth: 2)
+                .foregroundColor(Color.wrong.primary)
+        )
+        .background(LinearGradient(colors: [Color.bg.secondary, Color.bg.primary],
+                                    startPoint: .top,
+                                    endPoint: .center))
+        .cornerRadius(31)
         .shadow(color: Color.wrong.primary, radius: 5, x: 0, y: 0)
         
     }

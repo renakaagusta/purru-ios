@@ -110,8 +110,7 @@ struct PauseStoryView: View {
             
             
             if alertExitVisibility {
-                AppExitStoryAlert(onCancelClick: onCancelClick, onExitClick: onExitOptionClick
-                )
+                AppExitStoryAlert(onCancelClick: onCancelClick, onExitClick: onExitOptionClick)
             }
             
             
