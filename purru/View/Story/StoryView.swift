@@ -7,9 +7,17 @@
 import SwiftUI
 import SceneKit
 import AVFoundation
+import Combine
 
 enum DialogPosition {
     case Top, Bottom
+}
+
+struct Ripple: Identifiable, Hashable {
+    var id: String
+    var isVisible: Bool
+    var x: CGFloat
+    var y: CGFloat
 }
 
 struct StoryView: View {
@@ -39,11 +47,11 @@ struct StoryView: View {
     
     @State var pauseVisibility: Bool = false
     
-    @State private var focusedObjectIndex = 0
+    @State private var focusedObjectIndex = 4
     @State private var foundObject = 0
     
-    @State private var elapsedTime: CGFloat = 0
-    @State private var currentNarationDuration: CGFloat = 0
+    @State private var elapsedTime: CGFloat = 100
+    @State private var currentNarationDuration: CGFloat = 100
     @State private var totalNarationDuration: CGFloat = 0
     
     @State private var minFov: CGFloat = 20
@@ -58,6 +66,8 @@ struct StoryView: View {
     @State private var isRippleVisible: Bool = false
     @State var fadeIn = false
     @State var fadeInNaration: CGFloat = 0
+    
+    @State private var rippleList: [Ripple] = []
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let narationTimer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
@@ -152,18 +162,19 @@ struct StoryView: View {
                 if(result.name == firstObject.node.name) {
                     if(result.name == data.objectList[focusedObjectIndex].tag) {
                         SCNTransaction.begin()
-                        SCNTransaction.animationDuration = 1
+                        SCNTransaction.animationDuration = 2
                     
+                        result.position.y = result.position.y + Float(data.height)
                         result.opacity = 0
                         
                         SCNTransaction.commit()
                         
-                        let emitter = SCNParticleSystem(named: "\(data.particleTouch).scnp", inDirectory: nil)!
-                        let particleNode = SCNNode()
-                        particleNode.worldPosition = result.worldPosition
-                        particleNode.worldOrientation = result.worldOrientation
-                        self.view.scene?.rootNode.addChildNode(particleNode)
-                        particleNode.addParticleSystem(emitter)
+//                        let emitter = SCNParticleSystem(named: "\(data.particleTouch).scnp", inDirectory: nil)!
+//                        let particleNode = SCNNode()
+//                        particleNode.worldPosition = result.worldPosition
+//                        particleNode.worldOrientation = result.worldOrientation
+//                        self.view.scene?.rootNode.addChildNode(particleNode)
+//                        particleNode.addParticleSystem(emitter)
                         
                         objectHistoryList.append(result)
                         newObjectHistoryResult.append(result)
@@ -172,6 +183,8 @@ struct StoryView: View {
         }
         
         if(newObjectHistoryResult.count > 0) {
+            playSoundEffect(soundName: data.objectList[focusedObjectIndex].soundEffect, soundExtention: data.objectList[focusedObjectIndex].soundEffectExtention, currentTime: 0)
+            playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
             focusedObjectIndex = focusedObjectIndex + 1
             foundObject = foundObject + 1
             state = StoryState.Naration
@@ -179,7 +192,6 @@ struct StoryView: View {
             gestureVisibility = false
             elapsedTime = 0
             fadeIn = true
-            playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
         }
     }
 }
@@ -204,8 +216,12 @@ struct StoryView: View {
             endingVisibility = true
             
             let node  = self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)
+            print("===NODE===")
+            print(node)
             
             let emitter = SCNParticleSystem(named: "\(data.particleEnding).scnp", inDirectory: nil)!
+            print("===EMITTER===")
+            print(emitter)
             
             self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)!.addParticleSystem(emitter)
         } else {
@@ -461,12 +477,11 @@ struct StoryView: View {
         NavigationView {
             ZStack {
                 gameView.onTapGesture { location in
-                    isRippleVisible = true
-                    tappedXPosition = location.x
-                    tappedYPosition = location.y
+                    rippleList.append(Ripple(id: String(rippleList.count), isVisible: true, x:  location.x, y:  location.y))
                 }
-                RippleView(isVisible: $isRippleVisible, x: $tappedXPosition, y: $tappedYPosition)
-                
+                ForEach($rippleList, id: \.self) { ripple in
+                    RippleView(isVisible: ripple.isVisible, x: ripple.x, y: ripple.y)
+                }
                 if(endingVisibility) {
                     EndingView(titleEnding: "Sekian untuk malam ini", textEnding: "Selamat beristirahat!", buttonTextEnding: "Kembali ke Menu", onRestartClick: {
                         presentationMode.wrappedValue.dismiss()
@@ -574,7 +589,6 @@ struct StoryView: View {
                         }
                         
                         if(state != StoryState.Naration && state == StoryState.Tutorial) {
-                            
                             AppCircleButton(
                                 size: 20,
                                 icon: Image(systemName: "lightbulb.fill"),
@@ -600,7 +614,7 @@ struct StoryView: View {
                     PauseStoryView(buttonTextEnding: "Keluar", onExitOptionClick: {
                         presentationMode.wrappedValue.dismiss()
                         pauseVisibility = false
-                    }, onDidChangeSound: {
+                    }, backsoundVolume: global.backsoundVolume, narationVolume: global.narationVolume, onDidChangeSound: {
                         backsoundPlayer?.setVolume(Float(global.backsoundVolume / 100 * data.backsoundVolumeFactor), fadeDuration: 0.1)
                         narationPlayer?.setVolume(Float(global.narationVolume / 100 * data.narationVolumeFactor), fadeDuration: 0.1)
                     } )
@@ -612,6 +626,7 @@ struct StoryView: View {
                 global.isPlaying = false
                 global.storyIndex = 0
                 global.tutorialFinished = true
+                global.showSubtitle = true
                 GlobalStorage.isTurorialFinished = true
                 backsoundPlayer?.stop()
                 narationPlayer?.stop()
@@ -682,17 +697,30 @@ struct RippleView: View {
     @Binding var isVisible: Bool
     @Binding var x: CGFloat
     @Binding var y: CGFloat
+    
+    var rippleImageView: UIImageView!
+    var rippleImageList: [UIImage] = [UIImage(named: "tamanpurru")!, UIImage(named: "alcheworld")!]
+    
+    @State var index = 0
+    let images = (0...60).map { UIImage(named: "Ripple_\($0)")! }
+    let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()
 
     var body: some View {
         VStack {
             if(isVisible) {
-                GIFView(type: .name("ripple"))
-                    .frame(width: 300, height: 300)
-                    .position(x: x, y: y)
-                .transition(.scale)
-                .onAppear(perform: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                VStack {
+                    Image(uiImage: images[index])
+                        .resizable()
+                        .frame(width: 200, height: 200, alignment: .center)
+                        .onReceive(timer) { _ in
+                            self.index = self.index + 1
+                            if self.index >= 60 { self.index = 0 }
+                        }
+                        .position(x: x, y: y)
+                }.onAppear(perform: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.4, execute: {
                         self.isVisible = false
+                        self.index = 0
                     })
                 })
             }
