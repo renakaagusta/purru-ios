@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F36E1EE2926439300C6EE40 /* Narasi-Story2-5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F36E1E82926439300C6EE40 /* Narasi-Story2-5.mp3 */; };
-		2F36E1EF2926439300C6EE40 /* Narasi-Story2-3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F36E1E92926439300C6EE40 /* Narasi-Story2-3.mp3 */; };
-		2F36E1F02926439300C6EE40 /* Narasi-Story2-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F36E1EA2926439300C6EE40 /* Narasi-Story2-2.mp3 */; };
-		2F36E1F12926439300C6EE40 /* Narasi-Story2-4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F36E1EB2926439300C6EE40 /* Narasi-Story2-4.mp3 */; };
-		2F36E1F22926439300C6EE40 /* Narasi-Story2-6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F36E1EC2926439300C6EE40 /* Narasi-Story2-6.mp3 */; };
-		2F36E1F32926439300C6EE40 /* Narasi-Story2-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F36E1ED2926439300C6EE40 /* Narasi-Story2-1.mp3 */; };
 		2FA53E7D2907C2DB00BFB3E5 /* purruApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53E7C2907C2DB00BFB3E5 /* purruApp.swift */; };
 		2FA53E7F2907C2DB00BFB3E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53E7E2907C2DB00BFB3E5 /* ContentView.swift */; };
 		2FA53E812907C2DC00BFB3E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA53E802907C2DC00BFB3E5 /* Assets.xcassets */; };
@@ -111,7 +105,6 @@
 		41E36BE0291BA01600B8B369 /* ParticleEndingView.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 41E36BDD291BA01600B8B369 /* ParticleEndingView.scnp */; };
 		B80A8FE3291B6546008F4D3A /* backsound-story2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FD1291B6545008F4D3A /* backsound-story2.mp3 */; };
 		B80A8FE4291B6546008F4D3A /* backsound-story1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FD2291B6545008F4D3A /* backsound-story1.mp3 */; };
-		B80A8FE7291B6546008F4D3A /* Narasi-Story2-7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FD7291B6546008F4D3A /* Narasi-Story2-7.mp3 */; };
 		B80A8FEC291B6546008F4D3A /* Narasi-Story1-5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FDD291B6546008F4D3A /* Narasi-Story1-5.mp3 */; };
 		B80A8FED291B6546008F4D3A /* Narasi-Story1-4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FDE291B6546008F4D3A /* Narasi-Story1-4.mp3 */; };
 		B80A8FEE291B6546008F4D3A /* Narasi-Story1-6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80A8FDF291B6546008F4D3A /* Narasi-Story1-6.mp3 */; };
@@ -127,6 +120,7 @@
 		B80A9012291CDC7E008F4D3A /* nz.2.png in Resources */ = {isa = PBXBuildFile; fileRef = B80A900C291CDC7E008F4D3A /* nz.2.png */; };
 		B82AA4772924EAB700B37E9C /* RuanganAjaib.scn in Resources */ = {isa = PBXBuildFile; fileRef = B82AA4762924EAB700B37E9C /* RuanganAjaib.scn */; };
 		B82AA47929260A3B00B37E9C /* ripple.gif in Resources */ = {isa = PBXBuildFile; fileRef = B82AA47829260A3B00B37E9C /* ripple.gif */; };
+		B83BB80929279A07000E8403 /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83BB80829279A07000E8403 /* StartGameView.swift */; };
 		B8469D452917F7BB00249606 /* PauseStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8469D442917F7BB00249606 /* PauseStoryView.swift */; };
 		B85BA9FA29224F5A0034D067 /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B85BA9F929224F5A0034D067 /* Rubik-Italic.ttf */; };
 		B8624DB6291120D400586833 /* 3DAssetS1.scn in Resources */ = {isa = PBXBuildFile; fileRef = B8624DB5291120D400586833 /* 3DAssetS1.scn */; };
@@ -163,12 +157,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2F36E1E82926439300C6EE40 /* Narasi-Story2-5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Narasi-Story2-5.mp3"; path = "../../../../../../../Downloads/sound_1-6_dela_story_2/Narasi-Story2-5.mp3"; sourceTree = "<group>"; };
-		2F36E1E92926439300C6EE40 /* Narasi-Story2-3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Narasi-Story2-3.mp3"; path = "../../../../../../../Downloads/sound_1-6_dela_story_2/Narasi-Story2-3.mp3"; sourceTree = "<group>"; };
-		2F36E1EA2926439300C6EE40 /* Narasi-Story2-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Narasi-Story2-2.mp3"; path = "../../../../../../../Downloads/sound_1-6_dela_story_2/Narasi-Story2-2.mp3"; sourceTree = "<group>"; };
-		2F36E1EB2926439300C6EE40 /* Narasi-Story2-4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Narasi-Story2-4.mp3"; path = "../../../../../../../Downloads/sound_1-6_dela_story_2/Narasi-Story2-4.mp3"; sourceTree = "<group>"; };
-		2F36E1EC2926439300C6EE40 /* Narasi-Story2-6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Narasi-Story2-6.mp3"; path = "../../../../../../../Downloads/sound_1-6_dela_story_2/Narasi-Story2-6.mp3"; sourceTree = "<group>"; };
-		2F36E1ED2926439300C6EE40 /* Narasi-Story2-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Narasi-Story2-1.mp3"; path = "../../../../../../../Downloads/sound_1-6_dela_story_2/Narasi-Story2-1.mp3"; sourceTree = "<group>"; };
 		2FA53E792907C2DB00BFB3E5 /* purru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = purru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA53E7C2907C2DB00BFB3E5 /* purruApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = purruApp.swift; sourceTree = "<group>"; };
 		2FA53E7E2907C2DB00BFB3E5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -269,7 +257,6 @@
 		41E36BDD291BA01600B8B369 /* ParticleEndingView.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ParticleEndingView.scnp; sourceTree = "<group>"; };
 		B80A8FD1291B6545008F4D3A /* backsound-story2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "backsound-story2.mp3"; sourceTree = "<group>"; };
 		B80A8FD2291B6545008F4D3A /* backsound-story1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "backsound-story1.mp3"; sourceTree = "<group>"; };
-		B80A8FD7291B6546008F4D3A /* Narasi-Story2-7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story2-7.mp3"; sourceTree = "<group>"; };
 		B80A8FDD291B6546008F4D3A /* Narasi-Story1-5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story1-5.mp3"; sourceTree = "<group>"; };
 		B80A8FDE291B6546008F4D3A /* Narasi-Story1-4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story1-4.mp3"; sourceTree = "<group>"; };
 		B80A8FDF291B6546008F4D3A /* Narasi-Story1-6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Narasi-Story1-6.mp3"; sourceTree = "<group>"; };
@@ -285,6 +272,7 @@
 		B80A900C291CDC7E008F4D3A /* nz.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nz.2.png; sourceTree = "<group>"; };
 		B82AA4762924EAB700B37E9C /* RuanganAjaib.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = RuanganAjaib.scn; sourceTree = "<group>"; };
 		B82AA47829260A3B00B37E9C /* ripple.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ripple.gif; sourceTree = "<group>"; };
+		B83BB80829279A07000E8403 /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
 		B8469D442917F7BB00249606 /* PauseStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseStoryView.swift; sourceTree = "<group>"; };
 		B85BA9F929224F5A0034D067 /* Rubik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Italic.ttf"; sourceTree = "<group>"; };
 		B8624DB5291120D400586833 /* 3DAssetS1.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = 3DAssetS1.scn; sourceTree = "<group>"; };
@@ -775,13 +763,6 @@
 		B80A8FD4291B6546008F4D3A /* Story 2 */ = {
 			isa = PBXGroup;
 			children = (
-				2F36E1ED2926439300C6EE40 /* Narasi-Story2-1.mp3 */,
-				2F36E1EA2926439300C6EE40 /* Narasi-Story2-2.mp3 */,
-				2F36E1E92926439300C6EE40 /* Narasi-Story2-3.mp3 */,
-				2F36E1EB2926439300C6EE40 /* Narasi-Story2-4.mp3 */,
-				2F36E1E82926439300C6EE40 /* Narasi-Story2-5.mp3 */,
-				2F36E1EC2926439300C6EE40 /* Narasi-Story2-6.mp3 */,
-				B80A8FD7291B6546008F4D3A /* Narasi-Story2-7.mp3 */,
 			);
 			path = "Story 2";
 			sourceTree = "<group>";
@@ -802,7 +783,7 @@
 		B82AA49E2926969700B37E9C /* Start GameView */ = {
 			isa = PBXGroup;
 			children = (
-				B82AA49F292696CD00B37E9C /* StartGameView.swift */,
+				B83BB80829279A07000E8403 /* StartGameView.swift */,
 			);
 			path = "Start GameView";
 			sourceTree = "<group>";
@@ -989,12 +970,9 @@
 				41ABFEBD291D0D2D00E7295D /* 1TANAMAN2.png in Resources */,
 				B80A900D291CDC7E008F4D3A /* py.2.png in Resources */,
 				41ABFEB3291D0D2D00E7295D /* carpet-bc.png in Resources */,
-				2F36E1EF2926439300C6EE40 /* Narasi-Story2-3.mp3 in Resources */,
 				41147799290FC95700FD5B56 /* hand.swipe.up.gif in Resources */,
 				B85BA9FA29224F5A0034D067 /* Rubik-Italic.ttf in Resources */,
-				2F36E1F02926439300C6EE40 /* Narasi-Story2-2.mp3 in Resources */,
 				B8A100092907E73C0082C66E /* Layer0.exr in Resources */,
-				B80A8FE7291B6546008F4D3A /* Narasi-Story2-7.mp3 in Resources */,
 				41ABFEC3291D0D2D00E7295D /* props_BC.png in Resources */,
 				B8D38CC32907CC0C00DB150C /* JosefinSans.ttf in Resources */,
 				B8DE813929092F65006B2BE3 /* pz.png in Resources */,
@@ -1003,7 +981,6 @@
 				41ABFEB1291D0D2D00E7295D /* 3PAPAN.png in Resources */,
 				41ABFEB0291D0D2D00E7295D /* 5HUGO.png in Resources */,
 				41E36BDE291BA01600B8B369 /* spark.png in Resources */,
-				2F36E1F32926439300C6EE40 /* Narasi-Story2-1.mp3 in Resources */,
 				B8DBAAC12924D5DA0092C0E2 /* SFX_6TIANG.mp3 in Resources */,
 				B8DE813A29092F65006B2BE3 /* nx.png in Resources */,
 				2FE859442907F2700054A2E2 /* asset.png in Resources */,
@@ -1011,7 +988,6 @@
 				B8B5FEAB29102F5300687987 /* kanan.png in Resources */,
 				B80A8FF0291B6546008F4D3A /* Narasi-Story1-2.mp3 in Resources */,
 				B80A9011291CDC7E008F4D3A /* nx.2.png in Resources */,
-				2F36E1F22926439300C6EE40 /* Narasi-Story2-6.mp3 in Resources */,
 				41ABFEB8291D0D2D00E7295D /* desk_BC.png in Resources */,
 				B8B5FEA829102F5300687987 /* kiri.png in Resources */,
 				B80A8FEC291B6546008F4D3A /* Narasi-Story1-5.mp3 in Resources */,
@@ -1021,12 +997,10 @@
 				B8B5FEAC29102F5300687987 /* depan.png in Resources */,
 				41ABFEC0291D0D2D00E7295D /* candles_bc.png in Resources */,
 				41ABFEAF291D0D2D00E7295D /* tree_BC.png in Resources */,
-				2F36E1EE2926439300C6EE40 /* Narasi-Story2-5.mp3 in Resources */,
 				2FA53E842907C2DC00BFB3E5 /* Preview Assets.xcassets in Resources */,
 				B82AA4772924EAB700B37E9C /* RuanganAjaib.scn in Resources */,
 				41ABFEC5291D0D2D00E7295D /* floor_bc.png in Resources */,
 				4109CC0B291D0219005E9CC7 /* 2ParticleEndingView.scnp in Resources */,
-				2F36E1F12926439300C6EE40 /* Narasi-Story2-4.mp3 in Resources */,
 				B8DBAAC22924D5DA0092C0E2 /* SFX_1TANAMAN.mp3 in Resources */,
 				41ABFEAD291D0D2D00E7295D /* 1TANAMAN3.png in Resources */,
 				B8DE813729092F65006B2BE3 /* nz.png in Resources */,
@@ -1143,7 +1117,7 @@
 				2FA53FA32907C31F00BFB3E5 /* Instruction.swift in Sources */,
 				2FA53FB12907C31F00BFB3E5 /* AvatarImage.swift in Sources */,
 				2FA53FCC2907C31F00BFB3E5 /* StoryState.swift in Sources */,
-				B82AA4A0292696CD00B37E9C /* StartGameView.swift in Sources */,
+				B83BB80929279A07000E8403 /* StartGameView.swift in Sources */,
 				2FA53F992907C31F00BFB3E5 /* LiveData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

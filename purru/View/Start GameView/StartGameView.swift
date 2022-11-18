@@ -1,3 +1,4 @@
+
 //
 //  StartGameView.swift
 //  purru
@@ -12,23 +13,23 @@ import SwiftUI
 struct StartGameView: View {
     var onStartGame: () -> () = {}
     @State var fadeOut = false
-    
+
     var body: some View {
-        
+
         Button(action: {
             onStartGame()
         }, label: {
             VStack{
-                AppRubik(text: "Bayangkan seolah-olah kamu berada pada situasi dalam cerita", rubikSize: fontType.title3, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.regular)
+                AppRubik(text: "Bayangkan seolah-olah kamu berada pada situasi dalam cerita", rubikSize: fontType.title3, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: .center)
                     .frame(width: 330)
-                
-                AppRubik(text: "(Sentuh dimana saja untuk melanjutkan)", rubikSize: fontType.caption1, fontWeight: Font.Weight.regular, fontColor: Color.foot.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.regular)
+
+                AppRubik(text: "(Sentuh dimana saja untuk melanjutkan)", rubikSize: fontType.caption1, fontWeight: Font.Weight.regular, fontColor: Color.foot.primary, textAligment: TextAlignment.center)
                     .padding(1)
             }
             .frame(width: UIScreen.width, height: UIScreen.height)
             .background(Color.bg.primary.opacity(0.8))
         })
-        
+
     }
 }
 
@@ -37,3 +38,4 @@ struct StartGameView_Previews: PreviewProvider {
         StartGameView()
     }
 }
+

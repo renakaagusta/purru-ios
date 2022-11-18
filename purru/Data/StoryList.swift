@@ -176,7 +176,8 @@ var storyList = [
                    ]
                )
            ],
-           isTutorial: true
+           isTutorial: true,
+           height: 10
        ),
        StoryData(
            id: "2",
@@ -380,7 +381,8 @@ var storyList = [
                        Instruction(id: "12",text: "Semoga malammu tenang", startedAt: 60.5)
                    ]
                )
-           ]
+           ],
+           height: 1
        )
    ]
 
