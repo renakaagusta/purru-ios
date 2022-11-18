@@ -618,6 +618,7 @@ struct StoryView: View {
                 
                 if(pauseVisibility) {
                     PauseStoryView(onExitOptionClick: {
+                        print("=====keuar ayang=====")
                         presentationMode.wrappedValue.dismiss()
                         pauseVisibility = false
                     }, onContinueStoryClick: {
