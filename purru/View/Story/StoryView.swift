@@ -13,6 +13,13 @@ enum DialogPosition {
     case Top, Bottom
 }
 
+struct Ripple: Identifiable, Hashable {
+    var id: String
+    var isVisible: Bool
+    var x: CGFloat
+    var y: CGFloat
+}
+
 struct StoryView: View {
     
     @ObservedObject var global = GlobalVariables.global
@@ -45,8 +52,8 @@ struct StoryView: View {
     @State private var focusedObjectIndex = 4
     @State private var foundObject = 0
     
-    @State private var elapsedTime: CGFloat = 0
-    @State private var currentNarationDuration: CGFloat = 0
+    @State private var elapsedTime: CGFloat = 100
+    @State private var currentNarationDuration: CGFloat = 100
     @State private var totalNarationDuration: CGFloat = 0
     
     @State private var minFov: CGFloat = 20
@@ -63,6 +70,8 @@ struct StoryView: View {
     @State var fadeInNaration: CGFloat = 0
     @State var fadeInGameStartView = false
     @State var fadeOutGameStartView = false
+    
+    @State private var rippleList: [Ripple] = []
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let narationTimer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
@@ -211,8 +220,12 @@ struct StoryView: View {
             endingVisibility = true
             
             let node  = self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)
+            print("===NODE===")
+            print(node)
             
             let emitter = SCNParticleSystem(named: "\(data.particleEnding).scnp", inDirectory: nil)!
+            print("===EMITTER===")
+            print(emitter)
             
             self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)!.addParticleSystem(emitter)
         } else {
@@ -469,12 +482,11 @@ struct StoryView: View {
             
             ZStack {
                 gameView.onTapGesture { location in
-                    isRippleVisible = true
-                    tappedXPosition = location.x
-                    tappedYPosition = location.y
+                    rippleList.append(Ripple(id: String(rippleList.count), isVisible: true, x:  location.x, y:  location.y))
                 }
-                RippleView(isVisible: $isRippleVisible, x: $tappedXPosition, y: $tappedYPosition)
-            
+                ForEach($rippleList, id: \.self) { ripple in
+                    RippleView(isVisible: ripple.isVisible, x: ripple.x, y: ripple.y)
+                }
                 if(endingVisibility) {
                     EndingView(titleEnding: "Sekian untuk malam ini", textEnding: "Selamat beristirahat!", buttonTextEnding: "Kembali ke Menu", onRestartClick: {
                         presentationMode.wrappedValue.dismiss()
@@ -723,7 +735,7 @@ struct RippleView: View {
     
     @State var index = 0
     let images = (0...60).map { UIImage(named: "Ripple_\($0)")! }
-    let timer = Timer.publish(every: 0.02, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()
 
     var body: some View {
         VStack {
@@ -738,7 +750,7 @@ struct RippleView: View {
                         }
                         .position(x: x, y: y)
                 }.onAppear(perform: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.2, execute: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.4, execute: {
                         self.isVisible = false
                         self.index = 0
                     })
