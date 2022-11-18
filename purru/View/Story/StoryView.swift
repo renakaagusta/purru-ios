@@ -479,28 +479,12 @@ struct StoryView: View {
         NavigationView {
             
             ZStack {
-<<<<<<< HEAD
                 gameView.onTapGesture { location in
                     rippleList.append(Ripple(id: String(rippleList.count), isVisible: true, x:  location.x, y:  location.y))
                 }
                 ForEach($rippleList, id: \.self) { ripple in
                     RippleView(isVisible: ripple.isVisible, x: ripple.x, y: ripple.y)
                 }
-=======
-                if(isStartGame) {
-                    gameView.onTapGesture { location in
-                        isRippleVisible = true
-                        tappedXPosition = location.x
-                        tappedYPosition = location.y
-                    }
-                    RippleView(isVisible: $isRippleVisible, x: $tappedXPosition, y: $tappedYPosition)
-                } else {
-                    StartGameView(onStartGame: {
-                        isStartGame.toggle()
-                    })
-                }
-                
->>>>>>> 5f7e5c4 (Add StartGameView and adjust PauseStoryView)
                 if(endingVisibility) {
                     EndingView(titleEnding: "Sekian untuk malam ini", textEnding: "Selamat beristirahat!", buttonTextEnding: "Kembali ke Menu", onRestartClick: {
                         presentationMode.wrappedValue.dismiss()
@@ -634,9 +618,6 @@ struct StoryView: View {
                     PauseStoryView(onExitOptionClick: {
                         presentationMode.wrappedValue.dismiss()
                         pauseVisibility = false
-<<<<<<< HEAD
-                    }, backsoundVolume: global.backsoundVolume, narationVolume: global.narationVolume, onDidChangeSound: {
-=======
                     }, onContinueStoryClick: {
                         pauseVisibility.toggle()
                         if pauseVisibility {
@@ -645,7 +626,6 @@ struct StoryView: View {
                             narationPlayer?.play()
                         }
                     }, onDidChangeSound: {
->>>>>>> 5f7e5c4 (Add StartGameView and adjust PauseStoryView)
                         backsoundPlayer?.setVolume(Float(global.backsoundVolume / 100 * data.backsoundVolumeFactor), fadeDuration: 0.1)
                         narationPlayer?.setVolume(Float(global.narationVolume / 100 * data.narationVolumeFactor), fadeDuration: 0.1)
                     })

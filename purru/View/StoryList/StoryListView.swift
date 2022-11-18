@@ -86,6 +86,7 @@ struct SplashView: View {
     
     @State var index = 1
     let images = (1...100).map {
+        print( "SPLASH_\($0)")
         return UIImage(named: "SPLASH_\($0)")!
     }
     let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()
