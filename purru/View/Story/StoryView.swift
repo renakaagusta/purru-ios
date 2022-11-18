@@ -25,7 +25,7 @@ struct StoryView: View {
     private var objectListPosition: Array<SCNVector3>?
     private var data: StoryData
     
-    @State private var isStartGame: Bool = false
+    @State private var StartVisibility: Bool = false
     
     @State private var narationsProgress: CGFloat = 0
     @State private var state: StoryState = StoryState.Naration
@@ -60,6 +60,8 @@ struct StoryView: View {
     @State private var isRippleVisible: Bool = false
     @State var fadeIn = false
     @State var fadeInNaration: CGFloat = 0
+    @State var fadeInGameStartView = false
+    @State var fadeOutGameStartView = false
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let narationTimer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
@@ -463,19 +465,13 @@ struct StoryView: View {
         NavigationView {
             
             ZStack {
-                if(isStartGame) {
-                    gameView.onTapGesture { location in
-                        isRippleVisible = true
-                        tappedXPosition = location.x
-                        tappedYPosition = location.y
-                    }
-                    RippleView(isVisible: $isRippleVisible, x: $tappedXPosition, y: $tappedYPosition)
-                } else {
-                    StartGameView(onStartGame: {
-                        isStartGame.toggle()
-                    })
+                gameView.onTapGesture { location in
+                    isRippleVisible = true
+                    tappedXPosition = location.x
+                    tappedYPosition = location.y
                 }
-                
+                RippleView(isVisible: $isRippleVisible, x: $tappedXPosition, y: $tappedYPosition)
+            
                 if(endingVisibility) {
                     EndingView(titleEnding: "Sekian untuk malam ini", textEnding: "Selamat beristirahat!", buttonTextEnding: "Kembali ke Menu", onRestartClick: {
                         presentationMode.wrappedValue.dismiss()
@@ -608,6 +604,7 @@ struct StoryView: View {
                 
                 if(pauseVisibility) {
                     PauseStoryView(onExitOptionClick: {
+                        print("=====keuar ayang=====")
                         presentationMode.wrappedValue.dismiss()
                         pauseVisibility = false
                     }, onContinueStoryClick: {
@@ -621,6 +618,27 @@ struct StoryView: View {
                         backsoundPlayer?.setVolume(Float(global.backsoundVolume / 100 * data.backsoundVolumeFactor), fadeDuration: 0.1)
                         narationPlayer?.setVolume(Float(global.narationVolume / 100 * data.narationVolumeFactor), fadeDuration: 0.1)
                     })
+                }
+                
+                if(!StartVisibility){
+                    StartGameView(onStartGame: {
+                        StartVisibility.toggle()
+                    })
+                    .onAppear() {
+                        narationPlayer?.pause()
+                        withAnimation(Animation.easeIn(duration: 1.0)){
+                            fadeInGameStartView.toggle()
+                        }
+                    }.opacity(fadeInGameStartView ? 1 : 0)
+                }
+                else {
+                    StartGameView()
+                    .onAppear(){
+                        narationPlayer?.play()
+                        withAnimation(Animation.easeIn(duration: 1.0)){
+                            fadeOutGameStartView.toggle()
+                        }
+                    }.opacity(fadeOutGameStartView ? 0 : 1)
                 }
                 
             }
@@ -676,8 +694,8 @@ struct StoryView: View {
                     narationPlayer?.play()
                 }
             }, label: {
-                if(!endingVisibility && !isTutorial){
-                    Image(systemName: pauseVisibility ? "xmark" : "pause.fill")
+                if(!endingVisibility && !isTutorial && StartVisibility){
+                    Image(systemName: pauseVisibility ? "" : "pause.fill")
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Color.text.primary)
                         .bold()

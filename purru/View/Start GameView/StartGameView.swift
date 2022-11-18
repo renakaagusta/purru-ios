@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StartGameView: View {
     var onStartGame: () -> () = {}
+    @State var fadeOut = false
     
     var body: some View {
         

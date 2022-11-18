@@ -93,8 +93,8 @@ struct PauseStoryView: View {
                 }).padding(.top, 30)
                 
                 Button(action: {
-                    //onExitOptionClick()
                     alertExitVisibility.toggle()
+                    //onExitOptionClick()
                 }, label: {
                     AppRubik(text: "Keluar dari Cerita", rubikSize: fontType.body, fontWeight: Font.Weight.medium, fontColor: Color.text.primary)
                         .padding(10)

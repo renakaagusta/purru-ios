@@ -23,7 +23,10 @@ struct AppExitStoryAlert: View {
                     .padding(2)
                 
                 HStack{
-                    Button(action: { onCancelClick() }, label: {
+                    Button(action: {
+                        onCancelClick()
+                        print("cancel")
+                    }, label: {
                         AppRubik(text: "Tidak", rubikSize: fontType.body, fontWeight: Font.Weight.medium, fontColor: Color.text.primary)
                             .padding(10)
                             .frame(width: 80, height: .infinity)
@@ -31,7 +34,10 @@ struct AppExitStoryAlert: View {
                             .cornerRadius(100)
                     })
                     
-                    Button(action: { onExitClick() }, label: {
+                    Button(action: {
+                        onExitClick()
+                        print("keluar")
+                    }, label: {
                         AppRubik(text: "Ya", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
                             .padding(10)
                             .frame(width: 80, height: .infinity)
