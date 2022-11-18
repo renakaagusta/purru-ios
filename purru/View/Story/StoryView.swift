@@ -50,8 +50,8 @@ struct StoryView: View {
     @State private var focusedObjectIndex = 4
     @State private var foundObject = 0
     
-    @State private var elapsedTime: CGFloat = 100
-    @State private var currentNarationDuration: CGFloat = 100
+    @State private var elapsedTime: CGFloat = 0
+    @State private var currentNarationDuration: CGFloat = 0
     @State private var totalNarationDuration: CGFloat = 0
     
     @State private var minFov: CGFloat = 20
@@ -697,9 +697,6 @@ struct RippleView: View {
     @Binding var isVisible: Bool
     @Binding var x: CGFloat
     @Binding var y: CGFloat
-    
-    var rippleImageView: UIImageView!
-    var rippleImageList: [UIImage] = [UIImage(named: "tamanpurru")!, UIImage(named: "alcheworld")!]
     
     @State var index = 0
     let images = (0...60).map { UIImage(named: "Ripple_\($0)")! }

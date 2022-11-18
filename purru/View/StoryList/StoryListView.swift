@@ -21,8 +21,7 @@ struct StoryListView: View {
     @State var offset: CGFloat = 0
     
     @State var genericTabs: [StoryTab] = []
-    
-    //custom back button
+        
     var btnBack : some View { Button(action: {
         self.presentationMode.wrappedValue.dismiss()
         }) {
@@ -34,21 +33,21 @@ struct StoryListView: View {
     }
     
     var body: some View {
-        
-        VStack {
-            Spacer().frame(height: 40)
-            AppJosefineSans(text: "Pilih cerita malam ini...", josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
-                .frame(width: 300)
-                .padding(.bottom, 30)
-            InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
-
-            Spacer()
+        ZStack {
+            VStack {
+                Spacer().frame(height: 40)
+                AppJosefineSans(text: "Pilih cerita malam ini...", josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
+                    .frame(width: 300)
+                    .padding(.bottom, 30)
+                InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
+                Spacer()
+            }
+            SplashView(isVisible: $global.showSplashScreen).frame(width:200, height: 300)
         }
         .sheet(isPresented: $global.isReadSinopsis) {
             DescriptionModalView(data: storyList[global.storyIndex], onPlay: {
                 global.isReadSinopsis = false
                 global.isPlaying = true
-                
             })
             .presentationDetents([.height(550)])
             .onDisappear {
@@ -71,18 +70,44 @@ struct StoryListView: View {
 struct StoryListView_Previews: PreviewProvider {
     static var previews: some View {
         return VStack{}
-        //StoryListView(tabs: Binding<[Tab]>, currentIndex: Binding<Int>)
     }
 }
-
 
 func printFonts() {
     let fontFamilyName = UIFont.familyNames
     
     for familyName in fontFamilyName {
-        print("-----")
-        print("family name = [\(familyName)]")
         let names = UIFont.fontNames(forFamilyName: familyName)
-        print("font names = [\(names)]")
+    }
+}
+
+struct SplashView: View {
+    @Binding var isVisible: Bool
+    
+    @State var index = 1
+    let images = (1...100).map {
+        return UIImage(named: "SPLASH_\($0)")!
+    }
+    let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()
+
+    var body: some View {
+        VStack {
+            if(isVisible) {
+                VStack {
+                    Image(uiImage: images[index])
+                        .resizable()
+                        .frame(width: UIScreen.width, height: UIScreen.height, alignment: .center)
+                        .onReceive(timer) { _ in
+                            self.index = self.index + 1
+                            if self.index >= 100 { self.index = 1 }
+                        }
+                }.onAppear(perform: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                        self.isVisible = false
+                        self.index = 0
+                    })
+                })
+            }
+        }
     }
 }
