@@ -541,6 +541,7 @@
 		2F451095290A38FB00D9E85F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4142C5352927A83F0099A12A /* Splash */,
 				B8DACF61291323B9002EA3BA /* Story 2 */,
 				2FA53F3D2907C31F00BFB3E5 /* Story 1 */,
 				B8D38CBD2907CA2500DB150C /* Typography */,
@@ -568,7 +569,6 @@
 		2FA53E7B2907C2DB00BFB3E5 /* purru */ = {
 			isa = PBXGroup;
 			children = (
-				4142C5352927A83F0099A12A /* Splash */,
 				2FD9232F29125B0C00CF5162 /* Data */,
 				2F451095290A38FB00D9E85F /* Assets */,
 				2FA53F522907C31F00BFB3E5 /* Component */,
