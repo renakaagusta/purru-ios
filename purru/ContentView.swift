@@ -13,9 +13,7 @@ var narationPlayer: AVAudioPlayer? = nil
 var soundEffectPlayer: AVAudioPlayer? = nil
 
 class GlobalStorage {
-    
    @AppStorage("IS_TUTORIAL_FINISHED") static var isTurorialFinished: Bool = false
-
 }
 
 class GlobalVariables: ObservableObject{
@@ -39,6 +37,9 @@ class GlobalVariables: ObservableObject{
     @Published var showSubtitle = true
     @Published var narationVolume: CGFloat = 80
     @Published var backsoundVolume: CGFloat = 25
+    
+    // SPLASH
+    @Published var showSplashScreen = true
 }
 
 struct ContentView: View {
@@ -52,9 +53,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if(!moveToMainMenu) {
-                    SplashScreenView()
-                } else {
+//                if(!moveToMainMenu) {
+//                    SplashScreenView()
+//                } else {
                     if(global.tutorialFinished) {
                         StoryListView(tabs: $tabs, currentIndex: $currentIndex).onAppear{
                             narationPlayer?.stop()
@@ -63,7 +64,7 @@ struct ContentView: View {
                     } else {
                         StoryView(data: storyList.first!)
                     }
-                }
+//                }
             }.onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     withAnimation {
