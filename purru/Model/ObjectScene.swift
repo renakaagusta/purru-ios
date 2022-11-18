@@ -10,6 +10,7 @@ import SceneKit
 
 struct ObjectScene {
     var title: String
+    var objectName: String
     var description: String
     var hint: String
     var tag: String

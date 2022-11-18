@@ -33,6 +33,8 @@ struct StoryView: View {
     private var objectListPosition: Array<SCNVector3>?
     private var data: StoryData
     
+    @State private var isStartGame: Bool = false
+    
     @State private var narationsProgress: CGFloat = 0
     @State private var state: StoryState = StoryState.Naration
     
@@ -475,13 +477,30 @@ struct StoryView: View {
     
     var body: some View {
         NavigationView {
+            
             ZStack {
+<<<<<<< HEAD
                 gameView.onTapGesture { location in
                     rippleList.append(Ripple(id: String(rippleList.count), isVisible: true, x:  location.x, y:  location.y))
                 }
                 ForEach($rippleList, id: \.self) { ripple in
                     RippleView(isVisible: ripple.isVisible, x: ripple.x, y: ripple.y)
                 }
+=======
+                if(isStartGame) {
+                    gameView.onTapGesture { location in
+                        isRippleVisible = true
+                        tappedXPosition = location.x
+                        tappedYPosition = location.y
+                    }
+                    RippleView(isVisible: $isRippleVisible, x: $tappedXPosition, y: $tappedYPosition)
+                } else {
+                    StartGameView(onStartGame: {
+                        isStartGame.toggle()
+                    })
+                }
+                
+>>>>>>> 5f7e5c4 (Add StartGameView and adjust PauseStoryView)
                 if(endingVisibility) {
                     EndingView(titleEnding: "Sekian untuk malam ini", textEnding: "Selamat beristirahat!", buttonTextEnding: "Kembali ke Menu", onRestartClick: {
                         presentationMode.wrappedValue.dismiss()
@@ -498,6 +517,7 @@ struct StoryView: View {
                         HStack{
                             Spacer()
                             AppJosefineSans(text: data.objectList[focusedObjectIndex].hint, josepSize: fontType.title3, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: .center)
+                            AppJosefineSans(text: data.objectList[focusedObjectIndex].objectName, josepSize: fontType.title3, fontWeight: Font.Weight.bold, fontColor: Color.spot.primary, textAligment: .center)
                             Spacer()
                         }.frame(width: UIScreen.width)
                     }
@@ -611,13 +631,24 @@ struct StoryView: View {
                         }.opacity(fadeIn ? 0 : 1)
                 
                 if(pauseVisibility) {
-                    PauseStoryView(buttonTextEnding: "Keluar", onExitOptionClick: {
+                    PauseStoryView(onExitOptionClick: {
                         presentationMode.wrappedValue.dismiss()
                         pauseVisibility = false
+<<<<<<< HEAD
                     }, backsoundVolume: global.backsoundVolume, narationVolume: global.narationVolume, onDidChangeSound: {
+=======
+                    }, onContinueStoryClick: {
+                        pauseVisibility.toggle()
+                        if pauseVisibility {
+                            narationPlayer?.pause()
+                        } else {
+                            narationPlayer?.play()
+                        }
+                    }, onDidChangeSound: {
+>>>>>>> 5f7e5c4 (Add StartGameView and adjust PauseStoryView)
                         backsoundPlayer?.setVolume(Float(global.backsoundVolume / 100 * data.backsoundVolumeFactor), fadeDuration: 0.1)
                         narationPlayer?.setVolume(Float(global.narationVolume / 100 * data.narationVolumeFactor), fadeDuration: 0.1)
-                    } )
+                    })
                 }
                 
             }
