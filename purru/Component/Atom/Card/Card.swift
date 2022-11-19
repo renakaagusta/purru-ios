@@ -31,12 +31,7 @@ struct AppCard<Content: View>: View {
     var body: some View {
         VStack(){
             if (content != nil) {
-                ZStack {
-                    content()
-                    Image(backgroundImage)
-                        .resizable()
-                        .frame(width: 280, height: 465)
-                }
+                content()
             }
         }
         .frame(width: width, height: height).overlay(

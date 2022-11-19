@@ -29,15 +29,15 @@ struct AppCardStory: View {
                     Image(thumbnail)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 350.0, height: 350.0)
-                        .offset(y:-60)
+                        .frame(width: 340.0, height: 340.0)
+                        .offset(y:-75)
 
                     Rectangle()
                         .fill(LinearGradient(colors: [Color.clear, Color.bg.secondary],
                                              startPoint: .top,
                                              endPoint: .center))
                         .frame(width: 275, height: 130)
-                        .offset(y:100)
+                        .offset(y:120)
                     
                     
                     VStack(alignment: .center) {
@@ -76,7 +76,7 @@ struct AppCardStory: View {
                     }
                     .padding()
                     .frame(width: 280, height: UIScreen.main.bounds.height/2)
-                    .offset(y:125)
+                    .offset(y:140)
                     
                     
                     Ellipse()
