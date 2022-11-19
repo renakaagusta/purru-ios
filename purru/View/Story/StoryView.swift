@@ -34,6 +34,9 @@ struct StoryView: View {
     private var data: StoryData
     
     @State private var isStartGame: Bool = false
+    @State private var startVisibility: Bool = true
+    @State var fadeInGameStartView = false
+    @State var fadeOutGameStartView = false
     
     @State private var narationsProgress: CGFloat = 0
     @State private var state: StoryState = StoryState.Naration
@@ -186,7 +189,7 @@ struct StoryView: View {
         
         if(newObjectHistoryResult.count > 0) {
             playSoundEffect(soundName: data.objectList[focusedObjectIndex].soundEffect, soundExtention: data.objectList[focusedObjectIndex].soundEffectExtention, currentTime: 0)
-            playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
+            
             focusedObjectIndex = focusedObjectIndex + 1
             foundObject = foundObject + 1
             state = StoryState.Naration
@@ -319,7 +322,7 @@ struct StoryView: View {
     }
     
     func updateTime() {
-        if(pauseVisibility) {
+        if(pauseVisibility || startVisibility) {
             return
         }
         
@@ -631,6 +634,26 @@ struct StoryView: View {
                     })
                 }
                 
+                if(startVisibility){
+                    StartGameView(onStartGame: {
+                        startVisibility.toggle()
+                        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
+                    })
+                    .onAppear() {
+                        withAnimation(Animation.easeIn(duration: 0.7)){
+                            fadeInGameStartView.toggle()
+                        }
+                    }.opacity(fadeInGameStartView ? 1 : 0)
+                }
+                else {
+                    StartGameView()
+                    .onAppear(){
+                        withAnimation(Animation.easeIn(duration: 0.7)){
+                            fadeOutGameStartView.toggle()
+                        }
+                    }.opacity(fadeOutGameStartView ? 0 : 1)
+                }
+                
             }
             .frame(width: UIScreen.width, height: UIScreen.height + 100)
             .onDisappear{
@@ -648,7 +671,6 @@ struct StoryView: View {
                 GlobalStorage.isTurorialFinished = true
                 
                 playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
-                playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                 
                 gameView.loadData(scene: self.scene!, onTap: {
                     hitResults in
@@ -674,6 +696,8 @@ struct StoryView: View {
                 configCamera()
             }
             
+            
+            
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(trailing: Button(
@@ -685,8 +709,8 @@ struct StoryView: View {
                     narationPlayer?.play()
                 }
             }, label: {
-                if(!endingVisibility && !isTutorial){
-                    Image(systemName: pauseVisibility ? "xmark" : "pause.fill")
+                if(!endingVisibility && !isTutorial && !startVisibility){
+                    Image(systemName: pauseVisibility ? " " : "pause.fill")
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Color.text.primary)
                         .bold()

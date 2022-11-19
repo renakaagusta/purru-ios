@@ -19,8 +19,8 @@ struct PauseStoryView: View {
     
     @State var alertExitVisibility : Bool = false
     
-    @State var backsoundVolume: CGFloat = 0
-    @State var narationVolume: CGFloat = 0
+    @State var backsoundVolume: CGFloat = 25
+    @State var narationVolume: CGFloat = 80
     
     var onDidChangeSound: () -> () = {}
     
