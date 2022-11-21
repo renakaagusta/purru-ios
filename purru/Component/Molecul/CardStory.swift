@@ -47,7 +47,7 @@ struct AppCardStory: View {
                     onClick()
                 }, label: {
                     VStack(alignment: .leading) {
-                        AppJosefineSans(text: title, josepSize: fontType.title2, fontWeight: Font.Weight.bold, fontColor: Color.spot.primary, textAligment: TextAlignment.leading)
+                        AppJosefineSans(text: title, josepSize: fontType.title3, fontWeight: Font.Weight.bold, fontColor: Color.spot.primary, textAligment: TextAlignment.leading)
                             .padding(.bottom, 5)
                             .lineLimit(3)
                         

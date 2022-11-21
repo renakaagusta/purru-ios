@@ -74,7 +74,7 @@ struct PauseStoryView: View {
                 Spacer().frame(height: 35)
                 
                 Toggle(isOn: $global.showSubtitle) {
-                    AppRubik(text: "Narasi", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
+                    AppRubik(text: "Subtitle", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 }.tint(Color.sign.primary)
                 
                 Button(action: {

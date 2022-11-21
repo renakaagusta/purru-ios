@@ -493,7 +493,7 @@ struct StoryView: View {
                         presentationMode.wrappedValue.dismiss()
                     })
                 }
-                if(gestureVisibility) {
+                if(gestureVisibility && data.isTutorial) {
                     GIFView(type: .name(gesture))
                         .frame(width: 200, height: 200)
                         .padding()
@@ -644,7 +644,7 @@ struct StoryView: View {
                         playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                     })
                     .onAppear() {
-                        withAnimation(Animation.easeIn(duration: 1.0)){
+                        withAnimation(Animation.easeIn(duration: 1.5)){
                             fadeInGameStartView.toggle()
                         }
                     }.opacity(fadeInGameStartView ? 1 : 0)
@@ -652,7 +652,7 @@ struct StoryView: View {
                 else {
                     StartGameView()
                     .onAppear(){
-                        withAnimation(Animation.easeIn(duration: 1.0)){
+                        withAnimation(Animation.easeIn(duration: 1.5)){
                             fadeInGameStartView = true
                             fadeInGameStartView.toggle()
                         }
