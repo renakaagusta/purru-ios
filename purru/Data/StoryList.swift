@@ -81,7 +81,6 @@ var storyList = [
                    hint: "Cari pohon kuning",
                    tag: "YELLOW",
                    type: ObjectType.Task,
-                 
                    narationDuration: 40,
                    taskDuration: 30,
                    tutorialDuration: 15,

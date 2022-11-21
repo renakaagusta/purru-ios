@@ -55,8 +55,8 @@ struct ContentView: View {
             VStack {
                 if(global.tutorialFinished) {
                     StoryListView(tabs: $tabs, currentIndex:$currentIndex).onAppear{
-                            narationPlayer?.stop()
-                            backsoundPlayer?.stop()
+                        narationPlayer?.stop()
+                        backsoundPlayer?.stop()
                     }
                 } else {
                     StoryView(data: storyList.first!)

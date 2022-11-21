@@ -197,6 +197,13 @@ struct StoryView: View {
             gestureVisibility = false
             elapsedTime = 0
             fadeIn = true
+            
+            playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
+            
+            print("=====FOCUSED OBJECT INDEX===")
+            print(focusedObjectIndex)
+            print("=====STATE===")
+            print(state)
         }
     }
 }
@@ -258,7 +265,7 @@ struct StoryView: View {
         endingVisibility = false
         
         playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
-        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
+        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
     }
     
     
@@ -277,7 +284,9 @@ struct StoryView: View {
                     state = StoryState.Naration
                     focusedObjectIndex = focusedObjectIndex + 1
                     
-                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
+                    print("===SOUND:0===")
+                    
+                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
                 } else if(data.objectList[focusedObjectIndex].type == ObjectType.Ending && elapsedTime >= narationTime) {
                     showEnding()
                     global.tutorialFinished = true
@@ -289,6 +298,8 @@ struct StoryView: View {
                 state = StoryState.Tutorial
             } else if(state == StoryState.Tutorial && elapsedTime > tutorialTime) {
                 elapsedTime = taskTime + 1
+                print("===SOUND:2===")
+
                 playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: taskTime + 1)
             }
         } else {
@@ -432,6 +443,7 @@ struct StoryView: View {
                 narationPlayer?.currentTime = currentTime ?? 0
                 narationPlayer?.setVolume(Float(global.narationVolume / 100 * data.narationVolumeFactor), fadeDuration: 0.1)
                 try AVAudioSession.sharedInstance().setCategory(.playback)
+                print("=====PLAY NARATION====")
                 narationPlayer?.play()
             }
         } catch {
@@ -471,7 +483,7 @@ struct StoryView: View {
         gestureVisibility = false
         elapsedTime = 0
         
-        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
+        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
     }
     
     func skipTutorial() {
@@ -642,7 +654,11 @@ struct StoryView: View {
                 if(startVisibility){
                     StartGameView(onStartGame: {
                         startVisibility.toggle()
-                        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
+                        print("===PLAY NARATION====")
+                        print(elapsedTime)
+                        print("===OBJECT INDEX===")
+                        print(focusedObjectIndex)
+                        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
                     })
                     .onAppear() {
                         withAnimation(Animation.easeIn(duration: 0.7)){
@@ -669,6 +685,11 @@ struct StoryView: View {
                 GlobalStorage.isTurorialFinished = true
                 backsoundPlayer?.stop()
                 narationPlayer?.stop()
+                narationPlayer = nil
+                backsoundPlayer = nil
+                timer.upstream.connect().cancel()
+                cameraTimer.upstream.connect().cancel()
+                narationTimer.upstream.connect().cancel()
             }
             .onAppear(){
                 isTutorial = !global.tutorialFinished

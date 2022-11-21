@@ -66,6 +66,7 @@
 		2FA53FCE2907C31F00BFB3E5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F912907C31F00BFB3E5 /* URL.swift */; };
 		2FA53FCF2907C31F00BFB3E5 /* ObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA53F922907C31F00BFB3E5 /* ObjectType.swift */; };
 		2FA53FD22907C3AF00BFB3E5 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA53FD12907C3AF00BFB3E5 /* FLAnimatedImage */; };
+		2FADD0BE292B91180055D9B4 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 2FADD0BD292B91180055D9B4 /* Sentry */; };
 		2FCCEEB42929567600DA6EA8 /* Narasi-Story2-5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FCCEEAD2929567500DA6EA8 /* Narasi-Story2-5.mp3 */; };
 		2FCCEEB52929567600DA6EA8 /* Narasi-Story2-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FCCEEAE2929567600DA6EA8 /* Narasi-Story2-1.mp3 */; };
 		2FCCEEB62929567600DA6EA8 /* Narasi-Story2-7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FCCEEAF2929567600DA6EA8 /* Narasi-Story2-7.mp3 */; };
@@ -532,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA53FD22907C3AF00BFB3E5 /* FLAnimatedImage in Frameworks */,
+				2FADD0BE292B91180055D9B4 /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1260,6 +1262,7 @@
 			name = purru;
 			packageProductDependencies = (
 				2FA53FD12907C3AF00BFB3E5 /* FLAnimatedImage */,
+				2FADD0BD292B91180055D9B4 /* Sentry */,
 			);
 			productName = purru;
 			productReference = 2FA53E792907C2DB00BFB3E5 /* purru.app */;
@@ -1291,6 +1294,7 @@
 			mainGroup = 2FA53E702907C2DB00BFB3E5;
 			packageReferences = (
 				2FA53FD02907C3AF00BFB3E5 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
+				2FADD0BC292B91180055D9B4 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			productRefGroup = 2FA53E7A2907C2DB00BFB3E5 /* Products */;
 			projectDirPath = "";
@@ -1783,6 +1787,14 @@
 				kind = branch;
 			};
 		};
+		2FADD0BC292B91180055D9B4 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1790,6 +1802,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2FA53FD02907C3AF00BFB3E5 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */;
 			productName = FLAnimatedImage;
+		};
+		2FADD0BD292B91180055D9B4 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FADD0BC292B91180055D9B4 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
