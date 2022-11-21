@@ -14,8 +14,7 @@ struct AppExitStoryAlert: View {
     
     var body: some View {
         
-        ZStack{
-//            Color.bg.primary.opacity(0.7).edgesIgnoringSafeArea(.all)
+        VStack{
             AppCard(width: 260, height: 160, cornerRadius: 31, backgroundColorTop: Color.bg.secondary, backgroundColorBottom: Color.bg.primary, borderColor: Color.wrong.primary) {
                 
                 VStack(alignment: .center){
@@ -45,13 +44,13 @@ struct AppExitStoryAlert: View {
                     }.padding(10)
                     
                 }
-                .padding(25)
+                
                 
             }
             .shadow(color: Color.wrong.primary, radius: 5, x: 0, y: 0)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.bg.primary.opacity(0.7).edgesIgnoringSafeArea(.all))
+
     }
     
 }

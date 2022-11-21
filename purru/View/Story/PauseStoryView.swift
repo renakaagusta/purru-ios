@@ -30,6 +30,7 @@ struct PauseStoryView: View {
 
     var body: some View {
         ZStack(alignment: .center) {
+            
             VStack(alignment: .center) {
                 AppRubik(text: "Suara", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 
@@ -103,19 +104,21 @@ struct PauseStoryView: View {
                 }).padding(.top, 15)
                 
             }
+            .padding()
             .padding(.horizontal, 40)
             
-            
             if alertExitVisibility {
+                Color.bg.primary.opacity(0.7).edgesIgnoringSafeArea(.all)
                 AppExitStoryAlert(onCancelClick: onCancelClick, onExitClick: onExitOptionClick
                 )
             }
             
             
         }
-        .padding()
-        .frame(width: UIScreen.width, height: UIScreen.height)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.bg.primary.opacity(0.8))
+        .ignoresSafeArea()
+
     }
 }
 
