@@ -44,6 +44,15 @@ struct StoryListView: View {
             }
             SplashView(isVisible: $global.showSplashScreen).frame(width:200, height: 300)
         }
+        .onAppear{
+            if(narationPlayer != nil) {
+                narationPlayer?.stop()
+            }
+            
+            if(backsoundPlayer != nil) {
+                backsoundPlayer?.stop()
+            }
+        }
         .sheet(isPresented: $global.isReadSinopsis) {
             DescriptionModalView(data: storyList[global.storyIndex], onPlay: {
                 global.isReadSinopsis = false
@@ -86,7 +95,6 @@ struct SplashView: View {
     
     @State var index = 1
     let images = (1...100).map {
-        print( "SPLASH_\($0)")
         return UIImage(named: "SPLASH_\($0)")!
     }
     let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()

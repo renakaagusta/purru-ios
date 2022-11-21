@@ -53,18 +53,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-//                if(!moveToMainMenu) {
-//                    SplashScreenView()
-//                } else {
-                    if(global.tutorialFinished) {
-                        StoryListView(tabs: $tabs, currentIndex: $currentIndex).onAppear{
+                if(global.tutorialFinished) {
+                    StoryListView(tabs: $tabs, currentIndex:$currentIndex).onAppear{
                             narationPlayer?.stop()
                             backsoundPlayer?.stop()
-                        }
-                    } else {
-                        StoryView(data: storyList.first!)
                     }
-//                }
+                } else {
+                    StoryView(data: storyList.first!)
+                }
             }.onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     withAnimation {
