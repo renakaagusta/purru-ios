@@ -29,17 +29,15 @@ struct PauseStoryView: View {
     }
 
     var body: some View {
-  
         ZStack(alignment: .center) {
-            
             VStack(alignment: .center) {
                 AppRubik(text: "Suara", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 
                 Slider(value: $narationVolume,
                        in: 0...100,
                             step: 1) { didChange in
-                        onDidChangeSound()
                         global.narationVolume = narationVolume
+                    onDidChangeSound()
                     print("==NARATION VOLUME====")
                         print($global.narationVolume)
                     }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
@@ -49,10 +47,10 @@ struct PauseStoryView: View {
                 Slider(value: $backsoundVolume,
                        in: 0...100,
                             step: 1) { didChange in
-                        onDidChangeSound()
                         global.backsoundVolume = backsoundVolume
-                    print("==BACKSOUND VOLUME====")
-                        print($global.backsoundVolume)
+                        onDidChangeSound()
+                    print("==BACKSOUND VOLUME 1====")
+                    print($global.backsoundVolume.wrappedValue)
                 }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
                 
                 Toggle(isOn: $global.showSubtitle) {

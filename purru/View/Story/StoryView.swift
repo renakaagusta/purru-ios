@@ -479,13 +479,14 @@ struct StoryView: View {
     
     var body: some View {
         NavigationView {
-            
             ZStack {
                 gameView.onTapGesture { location in
                     rippleList.append(Ripple(id: String(rippleList.count), isVisible: true, x:  location.x, y:  location.y))
                 }
                 ForEach($rippleList, id: \.self) { ripple in
-                    RippleView(isVisible: ripple.isVisible, x: ripple.x, y: ripple.y)
+                    RippleView(isVisible: ripple.isVisible, x: ripple.x, y: ripple.y).onTapGesture { location in
+                        rippleList.append(Ripple(id: String(rippleList.count), isVisible: true, x:  location.x, y:  location.y))
+                    }
                 }
                 if(endingVisibility) {
                     EndingView(titleEnding: "Sekian untuk malam ini", textEnding: "Selamat beristirahat!", buttonTextEnding: "Kembali ke Menu", onRestartClick: {
@@ -628,6 +629,10 @@ struct StoryView: View {
                             narationPlayer?.play()
                         }
                     }, onDidChangeSound: {
+                        print("====ON DID CHANGE SOUND===")
+                        
+                        print("==BACKSOUND VOLUME 2====")
+                        print($global.backsoundVolume.wrappedValue)
                         backsoundPlayer?.setVolume(Float(global.backsoundVolume / 100 * data.backsoundVolumeFactor), fadeDuration: 0.1)
                         narationPlayer?.setVolume(Float(global.narationVolume / 100 * data.narationVolumeFactor), fadeDuration: 0.1)
                     })
