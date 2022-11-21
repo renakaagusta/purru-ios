@@ -73,7 +73,21 @@ struct DescriptionModalView: View {
                 VStack {
                     HStack {
                         Spacer()
+                        Button(action: { onPlay() }, label: {
+                            Image(systemName: "play.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(Color.text.primary)
+                            
+                            AppRubik(text: "Main", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
+                        })
+                        .padding(10)
+                        .frame(width: 100, height: 38)
+                        .background(Color.sign.primary)
+                        .cornerRadius(100)
                     }
+                    .padding(30)
                     .frame(height:40)
                     .background(LinearGradient(colors: [Color.clear, Color.bg.primary], startPoint: .top, endPoint: .bottom)
                         .ignoresSafeArea())
@@ -81,20 +95,6 @@ struct DescriptionModalView: View {
                 }
                 
                 HStack{
-                    Spacer()
-                    Button(action: { onPlay() }, label: {
-                        Image(systemName: "play.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(Color.text.primary)
-                        
-                        AppRubik(text: "Main", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
-                    })
-                    .padding(10)
-                    .frame(width: 100, height: 38)
-                    .background(Color.sign.primary)
-                    .cornerRadius(100)
                     Spacer()
                 }
                 .offset(y:230)
