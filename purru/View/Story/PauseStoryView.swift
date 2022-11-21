@@ -35,26 +35,39 @@ struct PauseStoryView: View {
             VStack(alignment: .center) {
                 AppRubik(text: "Suara", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 
-                Slider(value: $narationVolume,
-                       in: 0...100,
-                            step: 1) { didChange in
-                        onDidChangeSound()
-                        global.narationVolume = narationVolume
-                    print("==NARATION VOLUME====")
-                        print($global.narationVolume)
+                HStack {
+                    Image(systemName: "speaker.fill")
+                        .foregroundColor(Color.text.primary)
+                    Slider(value: $narationVolume,
+                           in: 0...100,
+                                step: 1) { didChange in
+                            onDidChangeSound()
+                            global.narationVolume = narationVolume
+                        print("==NARATION VOLUME====")
+                            print($global.narationVolume)
                     }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
+                    Image(systemName: "speaker.wave.2.fill")
+                        .foregroundColor(Color.text.primary)
+                }
+                Spacer().frame(height: 35)
                 
                 AppRubik(text: "Musik", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 
-                Slider(value: $backsoundVolume,
-                       in: 0...100,
-                            step: 1) { didChange in
-                        onDidChangeSound()
-                        global.backsoundVolume = backsoundVolume
-                    print("==BACKSOUND VOLUME====")
-                        print($global.backsoundVolume)
-                }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
-                
+                HStack {
+                    Image(systemName: "speaker.fill")
+                        .foregroundColor(Color.text.primary)
+                    Slider(value: $backsoundVolume,
+                           in: 0...100,
+                                step: 1) { didChange in
+                            onDidChangeSound()
+                            global.backsoundVolume = backsoundVolume
+                        print("==BACKSOUND VOLUME====")
+                            print($global.backsoundVolume)
+                    }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
+                    Image(systemName: "speaker.wave.2.fill")
+                        .foregroundColor(Color.text.primary)
+                }
+                Spacer().frame(height: 35)
                 Toggle(isOn: $global.showSubtitle) {
                     AppRubik(text: "Narasi", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 }.tint(Color.sign.primary)
