@@ -36,7 +36,6 @@ struct StoryView: View {
     @State private var isStartGame: Bool = false
     @State private var startVisibility: Bool = true
     @State var fadeInGameStartView = false
-    @State var fadeOutGameStartView = false
     
     @State private var narationsProgress: CGFloat = 0
     @State private var state: StoryState = StoryState.Naration
@@ -640,7 +639,7 @@ struct StoryView: View {
                         playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: 0)
                     })
                     .onAppear() {
-                        withAnimation(Animation.easeIn(duration: 0.7)){
+                        withAnimation(Animation.easeIn(duration: 1.0)){
                             fadeInGameStartView.toggle()
                         }
                     }.opacity(fadeInGameStartView ? 1 : 0)
@@ -648,10 +647,11 @@ struct StoryView: View {
                 else {
                     StartGameView()
                     .onAppear(){
-                        withAnimation(Animation.easeIn(duration: 0.7)){
-                            fadeOutGameStartView.toggle()
+                        withAnimation(Animation.easeIn(duration: 1.0)){
+                            fadeInGameStartView = true
+                            fadeInGameStartView.toggle()
                         }
-                    }.opacity(fadeOutGameStartView ? 0 : 1)
+                    }.opacity(fadeInGameStartView ? 1 : 0)
                 }
                 
             }
