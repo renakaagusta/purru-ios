@@ -26,11 +26,15 @@ struct AppCardStory: View {
                     .shadow(color: Color.spot.primary, radius: 5, x: 0, y: 0)
                     .padding(5)
                     
+                Button(action: {
+                    onClick()
+                }, label: {
                     Image(thumbnail)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 340.0, height: 340.0)
                         .offset(y:-75)
+                })
 
                     Rectangle()
                         .fill(LinearGradient(colors: [Color.clear, Color.bg.secondary],
@@ -54,18 +58,22 @@ struct AppCardStory: View {
                     .cornerRadius(100)
                     .offset(x: 70, y: 60)
                     
-                    VStack(alignment: .leading) {
-                        AppJosefineSans(text: title, josepSize: fontType.title2, fontWeight: Font.Weight.bold, fontColor: Color.spot.primary, textAligment: TextAlignment.leading)
-                            .padding(.bottom, 5)
-                            .lineLimit(3)
+                    Button(action: {
+                        onClick()
+                    }, label: {
+                        VStack(alignment: .leading) {
+                            AppJosefineSans(text: title, josepSize: fontType.title2, fontWeight: Font.Weight.bold, fontColor: Color.spot.primary, textAligment: TextAlignment.leading)
+                                .padding(.bottom, 5)
+                                .lineLimit(3)
+                            
+                            AppRubik(text: description, rubikSize: fontType.footnote, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading, fontStyle: rubikFont.regular)
+                                .lineLimit(3)
+                            
+                        }
+                        .frame(width: 230, height: UIScreen.main.bounds.height/2)
+                        .offset(y:140)
+                    })
                         
-                        AppRubik(text: description, rubikSize: fontType.footnote, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading, fontStyle: rubikFont.regular)
-                            .lineLimit(3)
-                        
-                    }
-                    .frame(width: 230, height: UIScreen.main.bounds.height/2)
-                    .offset(y:140)
-                    
                     
                     Ellipse()
                         .fill(.black.opacity(0.1))
