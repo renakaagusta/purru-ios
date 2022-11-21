@@ -69,6 +69,7 @@ struct StoryView: View {
     @State private var tappedYPosition: CGFloat = 0
     @State private var isRippleVisible: Bool = false
     @State var fadeIn = false
+    @State var fadeInPauseView = false
     @State var fadeInNaration: CGFloat = 0
     
     @State private var rippleList: [Ripple] = []
@@ -636,6 +637,11 @@ struct StoryView: View {
                         backsoundPlayer?.setVolume(Float(global.backsoundVolume / 100 * data.backsoundVolumeFactor), fadeDuration: 0.1)
                         narationPlayer?.setVolume(Float(global.narationVolume / 100 * data.narationVolumeFactor), fadeDuration: 0.1)
                     })
+                    .onAppear() {
+                        withAnimation(Animation.easeIn(duration: 0.6)){
+                            fadeInPauseView.toggle()
+                        }
+                    }.opacity(fadeInPauseView ? 1 : 0)
                 }
                 
                 if(startVisibility){
@@ -710,8 +716,10 @@ struct StoryView: View {
                 pauseVisibility.toggle()
                 if pauseVisibility {
                     narationPlayer?.pause()
+                    fadeInPauseView = false
                 } else {
                     narationPlayer?.play()
+                    fadeInPauseView = true
                 }
             }, label: {
                 if(!endingVisibility && !isTutorial && !startVisibility){
