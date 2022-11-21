@@ -45,7 +45,9 @@ struct StoryListView: View {
             SplashView(isVisible: $global.showSplashScreen).frame(width:200, height: 300)
         }
         .onAppear{
+            print("====ON APPEAR====")
             if(narationPlayer != nil) {
+                print("====NARATION PLAYER STOP====")
                 narationPlayer?.stop()
             }
             
