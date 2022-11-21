@@ -38,44 +38,32 @@ struct AppCardStory: View {
                                              endPoint: .center))
                         .frame(width: 275, height: 130)
                         .offset(y:120)
+                
+                    Button(action: { onPlay() }, label: {
+                        Image(systemName: "play.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(Color.text.primary)
+
+                        AppRubik(text: "Main", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
+                    })
+                    .padding(10)
+                    .frame(width: 100, height: 38)
+                    .background(Color.sign.primary)
+                    .cornerRadius(100)
+                    .offset(x: 70, y: 60)
                     
-                    
-                    VStack(alignment: .center) {
-                        AppJosefineSans(text: title, josepSize: fontType.largeTitle, fontWeight: Font.Weight.semibold, fontColor: Color.spot.primary, textAligment: TextAlignment.center)
+                    VStack(alignment: .leading) {
+                        AppJosefineSans(text: title, josepSize: fontType.title2, fontWeight: Font.Weight.bold, fontColor: Color.spot.primary, textAligment: TextAlignment.leading)
                             .padding(.bottom, 5)
                             .lineLimit(3)
                         
-                        HStack{
-                            
-                            Button(action: { onClick() } , label: {
-                                AppRubik(text: "Sinopsis", rubikSize: fontType.body, fontWeight: Font.Weight.medium, fontColor: Color.text.primary)
-                                    .padding(10)
-                                    .frame(width: 100, height: 38)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(Color.foot.primary, lineWidth: 2)
-                                    )
-                            })
-                            
-                            Button(action: { onPlay() }, label: {
-                                Image(systemName: "play.fill")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 20, height: 20)
-                                    .foregroundColor(Color.text.primary)
-                                
-                                AppRubik(text: "Main", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
-                            })
-                            .padding(10)
-                            .frame(width: 100, height: 38)
-                            .background(Color.sign.primary)
-                            .cornerRadius(100)
-                            
-                        }.padding(10)
+                        AppRubik(text: description, rubikSize: fontType.footnote, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: TextAlignment.leading, fontStyle: rubikFont.regular)
+                            .lineLimit(3)
                         
                     }
-                    .padding()
-                    .frame(width: 280, height: UIScreen.main.bounds.height/2)
+                    .frame(width: 230, height: UIScreen.main.bounds.height/2)
                     .offset(y:140)
                     
                     
