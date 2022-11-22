@@ -96,7 +96,7 @@ struct SplashView: View {
     @Binding var isVisible: Bool
     
     @State var index = 1
-    let images = (1...100).map {
+    let images = (1...95).map {
         return UIImage(named: "SPLASH_\($0)")!
     }
     let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()
@@ -110,10 +110,10 @@ struct SplashView: View {
                         .frame(width: UIScreen.width, height: UIScreen.height, alignment: .center)
                         .onReceive(timer) { _ in
                             self.index = self.index + 1
-                            if self.index >= 100 { self.index = 1 }
+                            if self.index >= 95 { self.index = 1 }
                         }
                 }.onAppear(perform: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.85, execute: {
                         self.isVisible = false
                         self.index = 0
                     })
