@@ -201,7 +201,7 @@ var storyList = [
                    hint: "Temukan",
                    tag: "1TANAMAN",
                    type: ObjectType.Task,
-                   narationDuration: 134,
+                   narationDuration: 180,
                    taskDuration: 20,
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-1",
@@ -210,24 +210,25 @@ var storyList = [
                    soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
-                       Instruction(id: "2", text: "Oh halo!",  startedAt: 0.2),
-                       Instruction(id: "3",text: "Beruntung sekali kamu dapat menemukan perpustakaan yang spesial ini", startedAt: 2.2),
-                       Instruction(id: "4",text: "Masuklah! Pasti kamu lelah Setelah beraktivitas seharian", startedAt: 10.3),
-                       Instruction(id: "5",text: "Saya akan bercerita tentang perpustakaan tua ini", startedAt: 18.1),
-                       Instruction(id: "6",text: "Perpustakaan ini adalah peninggalan nenek saya", startedAt: 24.9),
-                       Instruction(id: "7",text: "dulunya, nenek saya adalah seorang penyihir", startedAt: 30.6),
-                       Instruction(id: "8",text: "Sebagian besar waktunya dihabiskan di perpustakaan ini", startedAt: 36.6),
-                       Instruction(id: "9",text: "untuk belajar membuat berbagai macam ramuan obat", startedAt: 41.4),
-                       Instruction(id: "10",text: "Karena itu, beliau membuat suasana perpustakaan ini senyaman mungkin", startedAt: 47.5),
-                       Instruction(id: "11",text: "Karpet merah yang lembut, dan lilin-lilin dinyalakan, agar suasana disini semakin hangat dan nyaman.", startedAt: 55.5),
-                       Instruction(id: "12",text: "Selagi melihat-lihat, coba kamu rasakan lembutannya karpet ini saat kamu berjalan diatasnya", startedAt: 67.7),
-                       Instruction(id: "13",text: "Dan Rasakan hangat dari lilin yang dinyalakan", startedAt: 78.1),
-                       Instruction(id: "14",text: "Satu hal yang paling saya ingat dari perpustakaan ini adalah wanginya", startedAt: 86.6),
-                       Instruction(id: "15",text: "aroma khas istimewa, yang tidak saya temukan ditempat lain", startedAt: 94),
-                       Instruction(id: "16",text: "Saat masuk entah kenapa aroma perpustakaan ini sangat mencolok,", startedAt: 103.8),
-                       Instruction(id: "17",text: "Rasanya seperti menghirup udara segar di taman", startedAt: 111.8),
-                       Instruction(id: "18",text: "Mungkin, karena nenekku hanya menggunakan tanaman herbal untuk membuat ramuan obatnya.", startedAt: 118.5),
-                       Instruction(id: "19",text: "Bisakah kamu menemukan asal bau wangi ini?", startedAt: 130)
+                       Instruction(id: "2", text: "Oh halo!",  startedAt: 1.1),
+                       Instruction(id: "3",text: "Selamat datang di perpustakaan yang spesial ini", startedAt: 4.4),
+                       Instruction(id: "4",text: "Masuklah! Pasti kamu lelah Setelah beraktivitas seharian", startedAt: 11.9),
+                       Instruction(id: "5",text: "Aku akan bercerita tentang perpustakaan tua ini", startedAt: 22.5),
+                       Instruction(id: "6",text: "Perpustakaan ini adalah peninggalan nenekku", startedAt: 34.4),
+                       Instruction(id: "7",text: "dulunya, nenek saya adalah seorang penyihir", startedAt: 42.1),
+                       Instruction(id: "8",text: "Seumur hidupnya dia habiskan di perpustakaan ini", startedAt: 51.2),
+                       Instruction(id: "9",text: "untuk belajar meracik berbagai macam ramuan obat", startedAt: 59.9),
+                       Instruction(id: "10",text: "Karena itu, dia menjadikan suasana perpustakaan ini senyaman mungkin", startedAt: 68.8),
+                       Instruction(id: "11",text: "Karpet merah yang lembut bagaikan gulungan sutra", startedAt: 79.8),
+                       Instruction(id: "12",text: "Dan lilin-lilin dinyalakan satu per satu", startedAt: 85.3),
+                       Instruction(id: "13",text: "agar suasana disini semakin hangat dan nyaman.", startedAt: 93.8),
+                       Instruction(id: "14",text: "Lihatlah sekelilingmu, dan coba rasakan lembutnya karpet ini saat kamu berjalan diatasnya,", startedAt: 104.1),
+                       Instruction(id: "15",text: "Dan rasakan hangatnya lilin yang dinyalakan, semakin hangat dan semakin hangat.", startedAt: 120.3),
+                       Instruction(id: "16",text: "Satu hal yang paling aku ingat dari perpustakaan ini.", startedAt: 135.8),
+                       Instruction(id: "17",text: "adalah wangi istimewanya.", startedAt: 143),
+                       Instruction(id: "18",text: "Rasanya seperti menghirup udara segar di taman bunga pada pagi hari", startedAt: 149.2),
+                       Instruction(id: "19",text: "Mungkin, karena nenekku hanya menggunakan tanaman herbal untuk meracik ramuan obatnya.", startedAt: 160.8),
+                       Instruction(id: "20",text: "Bisakah kamu menemukan asal bau wangi ini?", startedAt: 173.5)
                    ]
                ),
                ObjectScene(
@@ -237,7 +238,7 @@ var storyList = [
                    hint:  "Temukan",
                    tag: "2BUKU",
                    type: ObjectType.Task,
-                   narationDuration: 78,
+                   narationDuration: 97.6,
                    taskDuration: 20,
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-2",
@@ -246,16 +247,13 @@ var storyList = [
                    soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
-                       Instruction(id: "2", text: "Ternyata perpaduan wangi bunga aster, lavender, dan bawang putih",  startedAt: 0.5),
-                       Instruction(id: "3",text: "yang menjadikan wangi perpustakaan ini sangat mencolok dan unik", startedAt: 6.8),
-                       Instruction(id: "4",text: "Coba kamu rasakan baunya yang sangat harum", startedAt: 16.6),
-                       Instruction(id: "5",text: "Tanaman yang kukira tidak berguna ini ternyata bisa menjadi obat herbal yang manjur di tangan nenek", startedAt: 23.9),
-                       Instruction(id: "6",text: "Perpustakaan ini menyimpan semua koleksi buku milik nenek", startedAt: 38.6),
-                       Instruction(id: "7",text: "Nenek sangat pandai membuat ramuan obat herbal karena beliau banyak membaca", startedAt: 46.2),
-                       Instruction(id: "8",text: "Dari semua buku bacaan milik nenek,", startedAt: 55.6),
-                       Instruction(id: "9",text: "Ia rangkum menjadi dua buku yang buku resep andalannya", startedAt: 59.7),
-                       Instruction(id: "10",text: "Kurasa kedua buku resep tersebut ditumpuk di atas meja kerja", startedAt: 67),
-                       Instruction(id: "11",text: "Coba temukan buku resepnya itu", startedAt: 75),
+                       Instruction(id: "2", text: "Ah, rupanya yang menjadikan wangi ruangan ini sangat istimewa adalah perpaduan wangi bunga aster, lavender, dan samar-samar aroma bawang putih",  startedAt: 0.2),
+                       Instruction(id: "3",text: "Setiap sore, nenekku memetik tanaman-tanaman ini dan meraciknya menjadi obat herbal yang ampuh.", startedAt: 24.3),
+                       Instruction(id: "4",text: "Nenekku pandai membuat ramuan obat herbal karena dia banyak membaca", startedAt: 40),
+                       Instruction(id: "5",text: "Semua buku bacaan milik nenek, dirangkumnya menjadi dua buku", startedAt: 51.4),
+                       Instruction(id: "6",text: "Buku resep itu sangat tebal dan sampulnya terbuat dari kulit yang terasa halus saat diraba", startedAt: 62.5),
+                       Instruction(id: "7",text: "Kurasa kedua buku resep itu ditumpuk di atas meja kerja", startedAt: 79.1),
+                       Instruction(id: "8",text: "Coba temukan dua buku itu", startedAt: 90.2)
                    ]
                ),
                ObjectScene(
@@ -265,7 +263,7 @@ var storyList = [
                    hint:"Temukan",
                    tag: "3PAPAN",
                    type: ObjectType.Task,
-                   narationDuration: 20,
+                   narationDuration: 51,
                    taskDuration: 20,
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-3",
@@ -274,9 +272,11 @@ var storyList = [
                    soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
-                       Instruction(id: "2", text: "Kamu juga pasti bisa membuat ramuan obat jika membaca buku resep milik nenek ini",  startedAt: 0.2),
-                       Instruction(id: "3",text: "Dulu nenekku juga menggunakan papan besar untuk menempelkan catatan eksperimen untuk resep obat pribadinya", startedAt: 6.9),
-                       Instruction(id: "4",text: "Bisakah kamu temukan papan itu?", startedAt: 17.4)
+                       Instruction(id: "2", text: "Buku ini memang tebal dan terlihat kuno, tetapi saat kamu baca,",  startedAt: 0.1),
+                       Instruction(id: "3",text: "kamu pasti bisa membuat ramuan obat karena isinya mudah dipahami.", startedAt: 11.4),
+                       Instruction(id: "4",text: "Dulu nenekku juga sering menuliskan catatan eksperimennya,", startedAt: 23),
+                       Instruction(id: "5",text: "Catatan-catatan itu dia tempel pada sebuah papan besar di ujung ruangan ini", startedAt: 31.1),
+                       Instruction(id: "6",text: "Bisakah kamu temukan papan itu?", startedAt: 43.3)
                    ]
                ),
                ObjectScene(
@@ -286,7 +286,7 @@ var storyList = [
                    hint: "Temukan",
                    tag: "4KURSI",
                    type: ObjectType.Task,
-                   narationDuration: 38,
+                   narationDuration: 57.3,
                    taskDuration: 20,
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-4",
@@ -295,12 +295,13 @@ var storyList = [
                    soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
-                       Instruction(id: "2", text: "Saat aku Kecil,",  startedAt: 0.5),
-                       Instruction(id: "3",text: "nenek melarangku mengotak-atiknya karena katanya banyak catatan penting", startedAt: 2.5),
-                       Instruction(id: "4",text: "Aku sungguh merindukan momen-momen bersamanya", startedAt: 13.2),
-                       Instruction(id: "5",text: "Aku senang sekali menemani nenek,", startedAt: 22.3),
-                       Instruction(id: "6",text: "dan aku tau beliau juga pasti senang saat aku menemaninya", startedAt: 24.9),
-                       Instruction(id: "7",text: "Sampai-sampai dia membuatkan kursi untuk kami duduk bersama", startedAt: 33.1)
+                       Instruction(id: "2", text: "Saat aku kecil, nenek melarangku mengotak-atik papan ini.",  startedAt: 0.6),
+                       Instruction(id: "3",text: "Karena katanya, banyak catatan penting", startedAt: 8.4),
+                       Instruction(id: "4",text: "Ah, Aku merindukan momen-momen bersama nenek", startedAt: 15.2),
+                       Instruction(id: "5",text: "Aku senang sekali menemaninya,", startedAt: 23.5),
+                       Instruction(id: "6",text: "dan aku tau nenek juga pasti senang", startedAt: 28),
+                       Instruction(id: "7",text: "Sampai-sampai dia membuatkan kursi untuk kami duduk bersama", startedAt: 34.5),
+                       Instruction(id: "8",text: "Karena kursi ini sudah tua, setiap kali kududuki kursi ini selalu berdecit", startedAt: 43.5)
                    ]
                ),
                ObjectScene(
@@ -310,7 +311,7 @@ var storyList = [
                    hint: "Temukan",
                    tag: "5HUGO",
                    type: ObjectType.Task,
-                   narationDuration: 21,
+                   narationDuration: 34,
                    taskDuration: 20,
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-5",
@@ -319,11 +320,11 @@ var storyList = [
                    soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
-                       Instruction(id: "2", text: "Di perpustakaan ini, banyak bulu burung hantu yang berceceran di mana-mana,",  startedAt: 0.3),
-                       Instruction(id: "3",text: "aku belum sempat membersihkannya.", startedAt: 6.7),
-                       Instruction(id: "4",text: "Nenek memelihara seekor burung hantu,", startedAt: 11.1),
-                       Instruction(id: "5",text: "namanya Hugo.", startedAt: 14.5),
-                       Instruction(id: "6",text: "Bulunya putih bersih dan sangat-sangat halus", startedAt: 17.7)
+                       Instruction(id: "2", text: "Di perpustakaan ini, Banyak bulu burung hantu yang berceceran di mana-mana,",  startedAt: 0.3),
+                       Instruction(id: "3",text: "aku belum sempat membersihkannya.", startedAt: 11.8),
+                       Instruction(id: "4",text: "Oh iya, nenek memelihara seekor burung hantu,", startedAt: 16),
+                       Instruction(id: "5",text: "Kami beri nama Hugo.", startedAt: 23),
+                       Instruction(id: "6",text: "Bulunya putih bersih dan sangat-sangat halus", startedAt: 27.3)
                    ]
                ),
                ObjectScene(
@@ -333,7 +334,7 @@ var storyList = [
                    hint: "Temukan",
                    tag: "6TIANG",
                    type: ObjectType.Task,
-                   narationDuration: 32,
+                   narationDuration: 60,
                    taskDuration: 20,
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-6",
@@ -342,13 +343,12 @@ var storyList = [
                    soundEffectExtention: "mp3",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
-                       Instruction(id: "2", text: "Hugo ini sangat setia",  startedAt: 0.3),
-                       Instruction(id: "3", text: "Dia sudah seperti penjaga/pelindung perpustakaan ini",  startedAt: 2.4),
-                       Instruction(id: "4",text: "Saat Hugo masih kecil, nenek menyelamatkannya dari pemburu", startedAt: 8),
-                       Instruction(id: "5",text: "Hugo juga sangat aktif dan pintar", startedAt: 13.5),
-                       Instruction(id: "6",text: "saat nenek bekerja, Hugo selalu ditempatkannya di tiang burung", startedAt: 17.6),
-                       Instruction(id: "7",text: "tapi dia suka berkeliaran di perpustakaan ini", startedAt: 24.4),
-                       Instruction(id: "8",text: "Coba temukan tiang burung itu", startedAt: 29.9)
+                       Instruction(id: "2", text: "Hugo adalah burung yang aktif dan pintar,",  startedAt: 0.4),
+                       Instruction(id: "3", text: "Saat Hugo masih kecil, nenek menyelamatkannya dari pemburu",  startedAt: 7.5),
+                       Instruction(id: "4",text: "Oleh karena itu dia menjadi peliharaan yang sangat setia, dia sudah seperti penjaga perpustakaan ini.", startedAt: 16.1),
+                       Instruction(id: "5",text: "Hugo selalu ditempatkannya di tiang burung untuk menemani nenek bekerja,", startedAt: 32.5),
+                       Instruction(id: "6",text: "walau sebenarnya dia lebih suka berkeliaran di perpustakaan ini.", startedAt: 43.9),
+                       Instruction(id: "7",text: "Coba temukan tiang burung itu", startedAt: 54.1)
                    ]
                ),
                ObjectScene(
@@ -358,7 +358,7 @@ var storyList = [
                    hint: "Hint 1",
                    tag: "",
                    type: ObjectType.Ending,
-                   narationDuration: 64,
+                   narationDuration: 76.4,
                    taskDuration: 20,
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story2-7",
@@ -367,17 +367,16 @@ var storyList = [
                    soundEffectExtention: "",
                    instructionList: [
                        Instruction(id: "1", text: "",  startedAt: 0),
-                       Instruction(id: "2", text: "Nenek membuat sendiri tiang burung ini",  startedAt: 1.1),
-                       Instruction(id: "3",text: "Sangat detail dan kokoh", startedAt: 5.6),
-                       Instruction(id: "4",text: "Sudah hampir 10 tahun sejak nenek berhenti bekerja", startedAt: 10.1),
-                       Instruction(id: "5",text: "namun barang-barang disini masih sama seperti 10 tahun lalu", startedAt: 15.5),
-                       Instruction(id: "6",text: "tidak ada yang berubah", startedAt: 22.9),
-                       Instruction(id: "7",text: "Kamu boleh menghabiskan lebih banyak waktu di sini melihat-lihat,", startedAt: 26.6),
-                       Instruction(id: "8",text: "semoga kamu menikmati kunjunganmu ke perpustakaan ini", startedAt: 33.8),
-                       Instruction(id: "9",text: "hingga saatnya kamu tidur,", startedAt: 41.1),
-                       Instruction(id: "10",text: "cobalah untuk mengenang momen-momen bersama orang yang kamu cintai", startedAt: 44.1),
-                       Instruction(id: "11",text: "Aku dengar, itu dapat membantu untuk bisa lebih rileks", startedAt: 52.4),
-                       Instruction(id: "12",text: "Semoga malammu tenang", startedAt: 60.5)
+                       Instruction(id: "2", text: "Nenek membuat sendiri tiang burung ini.",  startedAt: 0.5),
+                       Instruction(id: "3",text: "Ukirannya sangat detail dan batangnya sangat kokoh.", startedAt: 5.7),
+                       Instruction(id: "4",text: "Sudah hampir 10 tahun sejak nenek berhenti bekerja,", startedAt: 14.3),
+                       Instruction(id: "5",text: "namun barang-barang disini masih sama, tidak ada yang berubah.", startedAt: 21.4),
+                       Instruction(id: "6",text: "Kamu boleh menghabiskan lebih banyak waktu di sini melihat-lihat,", startedAt: 32.2),
+                       Instruction(id: "7",text: "semoga kamu menikmati kunjunganmu ke perpustakaan ini.", startedAt: 41.2),
+                       Instruction(id: "8",text: "hingga saatnya kamu tidur,", startedAt: 49.6),
+                       Instruction(id: "9",text: "cobalah untuk mengenang momen-momen bersama orang yang kamu cintai.", startedAt: 53),
+                       Instruction(id: "10",text: "Aku dengar, itu dapat membantu untuk bisa lebih rileks.", startedAt: 63.1),
+                       Instruction(id: "11",text: "Semoga malammu tenang.", startedAt: 62.5)
                    ]
                )
            ],
