@@ -42,6 +42,7 @@ struct PauseStoryView: View {
                            in: 0...100,
                                 step: 1) { didChange in
                             global.narationVolume = narationVolume
+                            narationVolume = global.narationVolume
                         onDidChangeSound()
                         print("==NARATION VOLUME====")
                             print($global.narationVolume)
@@ -63,6 +64,7 @@ struct PauseStoryView: View {
                            in: 0...100,
                                 step: 1) { didChange in
                             global.backsoundVolume = backsoundVolume
+                            backsoundVolume =  global.backsoundVolume
                             onDidChangeSound()
                         print("==BACKSOUND VOLUME 1====")
                         print($global.backsoundVolume.wrappedValue)

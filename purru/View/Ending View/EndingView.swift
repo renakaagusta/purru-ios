@@ -15,7 +15,7 @@ struct EndingView: View {
     @State var fadeIn = false
     
     var onRestartClick: () -> () = {}
-    
+        
     var body: some View {
         
         ZStack {
