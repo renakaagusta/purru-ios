@@ -493,7 +493,7 @@ struct StoryView: View {
                 }
                 if(endingVisibility) {
                     EndingView(titleEnding: "Sekian untuk malam ini", textEnding: "Selamat beristirahat!", buttonTextEnding: "Kembali ke Menu", onRestartClick: {
-                        presentationMode.wrappedValue.dismiss()
+                        global.isPlaying = false
                     })
                 }
                 if(gestureVisibility && data.isTutorial) {

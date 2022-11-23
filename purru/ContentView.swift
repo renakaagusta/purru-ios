@@ -36,7 +36,7 @@ class GlobalVariables: ObservableObject{
     // SETTING
     @Published var showSubtitle = true
     @Published var narationVolume: CGFloat = 80
-    @Published var backsoundVolume: CGFloat = 25
+    @Published var backsoundVolume: CGFloat = 30
     
     // SPLASH
     @Published var showSplashScreen = true

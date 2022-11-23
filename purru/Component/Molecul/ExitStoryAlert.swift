@@ -12,6 +12,8 @@ struct AppExitStoryAlert: View {
     var onCancelClick: () -> () = {}
     var onExitClick: () -> () = {}
     
+    @ObservedObject var global = GlobalVariables.global
+    
     var body: some View {
         
         VStack{
@@ -32,7 +34,10 @@ struct AppExitStoryAlert: View {
                                 .cornerRadius(100)
                         })
                         
-                        Button(action: { onExitClick() }, label: {
+                        Button(action: {
+                            //onExitClick()
+                            global.isPlaying = false
+                        }, label: {
                             AppRubik(text: "Ya", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary)
                                 .padding(10)
                                 .frame(width: 80, height: .infinity)
