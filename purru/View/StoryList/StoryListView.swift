@@ -107,7 +107,7 @@ struct SplashView: View {
                 VStack {
                     Image(uiImage: images[index])
                         .resizable()
-                        .frame(width: UIScreen.width, height: UIScreen.height, alignment: .center)
+                        .frame(width: UIScreen.width, height: UIScreen.height + 20, alignment: .center)
                         .onReceive(timer) { _ in
                             self.index = self.index + 1
                             if self.index >= 95 { self.index = 1 }

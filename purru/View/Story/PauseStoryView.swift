@@ -19,7 +19,7 @@ struct PauseStoryView: View {
     
     @State var alertExitVisibility : Bool = false
     
-    @State var backsoundVolume: CGFloat = 25
+    @State var backsoundVolume: CGFloat = 40
     @State var narationVolume: CGFloat = 80
     
     var onDidChangeSound: () -> () = {}
@@ -92,7 +92,9 @@ struct PauseStoryView: View {
                 
                 Button(action: {
                     //onExitOptionClick()
-                    alertExitVisibility.toggle()
+                    withAnimation(.easeIn(duration: 0.6)) {
+                        alertExitVisibility.toggle()
+                    }
                 }, label: {
                     AppRubik(text: "Keluar dari Cerita", rubikSize: fontType.body, fontWeight: Font.Weight.medium, fontColor: Color.text.primary)
                         .padding(10)
