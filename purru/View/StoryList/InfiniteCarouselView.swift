@@ -16,9 +16,6 @@ struct InfiniteCarouselView: View{
         
     var body: some View{
         VStack{
-            NavigationLink(destination: global.isPlaying ? AnyView(StoryView(data: storyList[global.storyIndex])) :  AnyView(EmptyView()), isActive: $global.isPlaying, label: {
-            EmptyView()
-        })
             TabView(selection: $fakeIndex){
                 ForEach(Array(storyListTab.enumerated()),  id: \.offset) { index, tab in
                         VStack {
@@ -28,7 +25,9 @@ struct InfiniteCarouselView: View{
                             }, onPlay: {
                                 isPresentDescriptionModal = false
                                 global.storyIndex = index
-                                global.isPlaying.toggle()
+                                withAnimation() {
+                                    global.isPlaying.toggle()
+                                }
                             })
                         }
                         .onPreferenceChange(OffsetKey.self, perform: { offset in
@@ -37,7 +36,7 @@ struct InfiniteCarouselView: View{
                         .tag(getIndex(tab: tab))
                     }
                 }
-    }
+        }   
         .tabViewStyle(.page(indexDisplayMode: .always))
         .frame(height: .infinity)
         .onChange(of: offset) { newValue in

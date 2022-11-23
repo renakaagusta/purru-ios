@@ -114,43 +114,46 @@ struct StoryView: View {
         let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
         
         let objectTarget = view.scene!.rootNode.childNodes.filter({$0.name == data.objectList[focusedObjectIndex].tag}).first
-                
-        for node in self.view.scene!.rootNode.childNodes {
-            if(node.name == objectTarget?.name) {
-                let material = node.geometry!.firstMaterial!
-                
-                SCNTransaction.begin()
-                SCNTransaction.animationDuration = 1
-                
-                material.emission.contents = UIColor.yellow
-                
-                self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
-                
-                self.view.defaultCameraController.pointOfView?.worldOrientation =  SCNQuaternion(x: cameraDestination?.worldOrientation.x ?? 0, y: cameraDestination?.worldOrientation.y ?? 0, z: cameraDestination?.worldOrientation.z ?? 0, w: cameraDestination?.worldOrientation.w ?? 0)
-                
-                SCNTransaction.commit()
-                
-                hintVisibility = true
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    hintVisibility = false
-                }
-            }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+
+        if(objectTarget != nil) {
             for node in self.view.scene!.rootNode.childNodes {
                 if(node.name == objectTarget?.name) {
                     let material = node.geometry!.firstMaterial!
                     
                     SCNTransaction.begin()
                     SCNTransaction.animationDuration = 1
-                
-                    material.emission.contents = UIColor.black
+                    
+                    material.emission.contents = UIColor.yellow
+                    
+                    self.view.defaultCameraController.pointOfView?.worldPosition = SCNVector3(x: cameraDestination?.worldPosition.x ?? 0, y: cameraDestination?.worldPosition.y ?? 0, z: cameraDestination?.worldPosition.z ?? 0)
+                    
+                    self.view.defaultCameraController.pointOfView?.worldOrientation =  SCNQuaternion(x: cameraDestination?.worldOrientation.x ?? 0, y: cameraDestination?.worldOrientation.y ?? 0, z: cameraDestination?.worldOrientation.z ?? 0, w: cameraDestination?.worldOrientation.w ?? 0)
                     
                     SCNTransaction.commit()
+                    
+                    hintVisibility = true
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        hintVisibility = false
+                    }
                 }
             }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                for node in self.view.scene!.rootNode.childNodes {
+                    if(node.name == objectTarget?.name) {
+                        let material = node.geometry!.firstMaterial!
+                        
+                        SCNTransaction.begin()
+                        SCNTransaction.animationDuration = 1
+                    
+                        material.emission.contents = UIColor.black
+                        
+                        SCNTransaction.commit()
+                    }
+                }
+            }
+
         }
     }
     
@@ -199,11 +202,6 @@ struct StoryView: View {
             fadeIn = true
             
             playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
-            
-            print("=====FOCUSED OBJECT INDEX===")
-            print(focusedObjectIndex)
-            print("=====STATE===")
-            print(state)
         }
     }
 }
@@ -228,12 +226,8 @@ struct StoryView: View {
             endingVisibility = true
             
             let node  = self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)
-            print("===NODE===")
-            print(node)
             
             let emitter = SCNParticleSystem(named: "\(data.particleEnding).scnp", inDirectory: nil)!
-            print("===EMITTER===")
-            print(emitter)
             
             self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)!.addParticleSystem(emitter)
         } else {
@@ -283,9 +277,7 @@ struct StoryView: View {
                     elapsedTime = 0
                     state = StoryState.Naration
                     focusedObjectIndex = focusedObjectIndex + 1
-                    
-                    print("===SOUND:0===")
-                    
+                                        
                     playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
                 } else if(data.objectList[focusedObjectIndex].type == ObjectType.Ending && elapsedTime >= narationTime) {
                     showEnding()
@@ -298,7 +290,6 @@ struct StoryView: View {
                 state = StoryState.Tutorial
             } else if(state == StoryState.Tutorial && elapsedTime > tutorialTime) {
                 elapsedTime = taskTime + 1
-                print("===SOUND:2===")
 
                 playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: taskTime + 1)
             }
@@ -443,7 +434,6 @@ struct StoryView: View {
                 narationPlayer?.currentTime = currentTime ?? 0
                 narationPlayer?.setVolume(Float(global.narationVolume / 100 * data.narationVolumeFactor), fadeDuration: 0.1)
                 try AVAudioSession.sharedInstance().setCategory(.playback)
-                print("=====PLAY NARATION====")
                 narationPlayer?.play()
             }
         } catch {
@@ -494,6 +484,7 @@ struct StoryView: View {
         NavigationView {
             ZStack {
                 gameView.onTapGesture { location in
+                    global.isPlaying = false
                     rippleList.append(Ripple(id: String(rippleList.count), isVisible: true, x:  location.x, y:  location.y))
                 }
                 ForEach($rippleList, id: \.self) { ripple in
@@ -642,10 +633,6 @@ struct StoryView: View {
                             narationPlayer?.play()
                         }
                     }, onDidChangeSound: {
-                        print("====ON DID CHANGE SOUND===")
-                        
-                        print("==BACKSOUND VOLUME 2====")
-                        print($global.backsoundVolume.wrappedValue)
                         backsoundPlayer?.setVolume(Float(global.backsoundVolume / 100 * data.backsoundVolumeFactor), fadeDuration: 0.1)
                         narationPlayer?.setVolume(Float(global.narationVolume / 100 * data.narationVolumeFactor), fadeDuration: 0.1)
                     })
@@ -659,10 +646,6 @@ struct StoryView: View {
                 if(startVisibility){
                     StartGameView(onStartGame: {
                         startVisibility.toggle()
-                        print("===PLAY NARATION====")
-                        print(elapsedTime)
-                        print("===OBJECT INDEX===")
-                        print(focusedObjectIndex)
                         playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
                     })
                     .onAppear() {
@@ -684,7 +667,6 @@ struct StoryView: View {
             }
             .frame(width: UIScreen.width, height: UIScreen.height + 100)
             .onDisappear{
-                global.isPlaying = false
                 global.storyIndex = 0
                 global.tutorialFinished = true
                 global.showSubtitle = true
@@ -696,9 +678,28 @@ struct StoryView: View {
                 timer.upstream.connect().cancel()
                 cameraTimer.upstream.connect().cancel()
                 narationTimer.upstream.connect().cancel()
+                if(self.view.scene != nil) {
+                    for node in self.view.scene!.rootNode.childNodes {
+                        node.geometry = nil
+                        node.removeFromParentNode()
+                    }
+                }
+                if(self.scene != nil) {
+                    for node in self.scene!.rootNode.childNodes {
+                        node.geometry = nil
+                        node.removeFromParentNode()
+                    }
+                }
+                withAnimation() {
+                    global.isPlaying = false
+                }
             }
             .onAppear(){
-                isTutorial = !global.tutorialFinished
+                if(global.tutorialFinished == nil) {
+                    return
+                }
+                
+                isTutorial = !global.tutorialFinished!
                 
                 GlobalStorage.isTurorialFinished = true
                 

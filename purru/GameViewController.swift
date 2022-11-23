@@ -19,6 +19,17 @@ class GameViewController: UIViewController {
     private var scene: SCNScene?
     private var onTap: (_ objectName: [SCNHitTestResult]?) -> () = {_ in }
     
+    deinit {
+        if(scene == nil) {
+            return
+        }
+        
+        for node in scene!.rootNode.childNodes {
+            node.geometry = nil
+            node.removeFromParentNode()
+        }
+    }
+    
     public func loadData(scene: SCNScene, onTap: @escaping (_ objectName: [SCNHitTestResult]?) -> (), view: SCNView) -> SCNCameraController {
         self.scene = scene
         self.onTap = onTap

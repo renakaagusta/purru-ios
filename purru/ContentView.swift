@@ -24,7 +24,7 @@ class GlobalVariables: ObservableObject{
     @Published var environemnt = AppEnvironment.Production
     
     // USER
-    @Published var tutorialFinished = false
+    @Published var tutorialFinished: Bool? = nil
     
     // STATE
     @Published var isPlaying = false
@@ -53,12 +53,12 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if(global.tutorialFinished) {
+                if(global.tutorialFinished == true) {
                     StoryListView(tabs: $tabs, currentIndex:$currentIndex).onAppear{
                         narationPlayer?.stop()
                         backsoundPlayer?.stop()
                     }
-                } else {
+                } else if(global.tutorialFinished == false) {
                     StoryView(data: storyList.first!)
                 }
             }.onAppear{
@@ -70,6 +70,8 @@ struct ContentView: View {
                 
                 if(GlobalStorage.isTurorialFinished == true) {
                     global.tutorialFinished = true
+                } else {
+                    global.tutorialFinished = false
                 }
             }
         }

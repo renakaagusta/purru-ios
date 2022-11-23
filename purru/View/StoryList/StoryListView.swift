@@ -34,20 +34,24 @@ struct StoryListView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                Spacer().frame(height: 40)
-                AppJosefineSans(text: "Pilih cerita malam ini...", josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
-                    .frame(width: 300)
-                    .padding(.bottom, 30)
-                InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
-                Spacer()
+            if(global.isPlaying) {
+                StoryView(data: storyList[global.storyIndex])
+            } else {
+                VStack {
+                    Spacer().frame(height: 40)
+                    AppJosefineSans(text: "Pilih cerita malam ini...", josepSize: fontType.largeTitle, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center)
+                        .frame(width: 300)
+                        .padding(.bottom, 30)
+                    InfiniteCarouselView(tabs: $tabs, currentIndex: $currentIndex)
+                    Spacer()
+                }
             }
-            SplashView(isVisible: $global.showSplashScreen).frame(width:200, height: 300)
+            if(global.showSplashScreen) {
+                SplashView(isVisible: $global.showSplashScreen).frame(width:200, height: 300)
+            }
         }
         .onAppear{
-            print("====ON APPEAR====")
             if(narationPlayer != nil) {
-                print("====NARATION PLAYER STOP====")
                 narationPlayer?.stop()
             }
             
@@ -114,8 +118,10 @@ struct SplashView: View {
                         }
                 }.onAppear(perform: {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.85, execute: {
-                        self.isVisible = false
-                        self.index = 0
+                        withAnimation() {
+                            self.isVisible = false
+                            self.index = 0
+                        }
                     })
                 })
             }
