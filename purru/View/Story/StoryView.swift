@@ -484,7 +484,6 @@ struct StoryView: View {
         NavigationView {
             ZStack {
                 gameView.onTapGesture { location in
-                    global.isPlaying = false
                     rippleList.append(Ripple(id: String(rippleList.count), isVisible: true, x:  location.x, y:  location.y))
                 }
                 ForEach($rippleList, id: \.self) { ripple in
