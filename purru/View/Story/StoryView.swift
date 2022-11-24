@@ -120,6 +120,10 @@ struct StoryView: View {
             return
         }
         
+        if(view.scene == nil) {
+            return
+        }
+        
         let camera = self.view.defaultCameraController
         
         let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
@@ -666,11 +670,11 @@ struct StoryView: View {
                     }
                     
                 }
-//                .onAppear() {
-//                    withAnimation(Animation.easeIn(duration: 0.6)){
-//                                fadeIn.toggle()
-//                            }
-//                        }.opacity(fadeIn ? 0 : 1)
+                .onAppear() {
+                    withAnimation(Animation.easeIn(duration: 0.6)){
+                                fadeIn.toggle()
+                            }
+                        }.opacity(fadeIn ? 0 : 1)
                 
                 if(pauseVisibility) {
                     PauseStoryView(onExitOptionClick: {
