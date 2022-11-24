@@ -666,11 +666,11 @@ struct StoryView: View {
                     }
                     
                 }
-//                .onAppear() {
-//                    withAnimation(Animation.easeIn(duration: 0.6)){
-//                                fadeIn.toggle()
-//                            }
-//                        }.opacity(fadeIn ? 0 : 1)
+                .onAppear() {
+                    withAnimation(Animation.easeIn(duration: 0.6)){
+                                fadeIn.toggle()
+                            }
+                        }.opacity(fadeIn ? 0 : 1)
                 
                 if(pauseVisibility) {
                     PauseStoryView(onExitOptionClick: {

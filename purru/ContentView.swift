@@ -21,7 +21,7 @@ class GlobalVariables: ObservableObject{
     static let global = GlobalVariables()
     
     // ENVIRONMENT
-    @Published var environemnt = AppEnvironment.Development
+    @Published var environemnt = AppEnvironment.Production
     
     // USER
     @Published var tutorialFinished: Bool? = nil
