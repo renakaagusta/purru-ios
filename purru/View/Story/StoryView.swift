@@ -557,6 +557,7 @@ struct StoryView: View {
                                 }, label: {
                                     if(!endingVisibility && !isTutorial && !startVisibility){
                                         Image(systemName: pauseVisibility ? " " : "pause.fill")
+                                            .frame(width: 28, height: 28)
                                             .aspectRatio(contentMode: .fit)
                                             .foregroundColor(Color.text.primary)
                                             .bold()
