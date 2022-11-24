@@ -44,6 +44,9 @@ struct StoryView: View {
     @State private var gesture = ""
     @State private var endingVisibility: Bool = false
     
+    private var tutorialVisibilityInitial: Bool
+    @State private var tutorialVisibility: Bool = false
+    
     @State private var hintVisibility = false
     
     @State private var dialogVisibility = false
@@ -70,9 +73,13 @@ struct StoryView: View {
     @State private var isRippleVisible: Bool = false
     @State var fadeIn = false
     @State var fadeInPauseView = false
+    @State var fadeInTutorialView = false
     @State var fadeInNaration: CGFloat = 0
     
     @State private var rippleList: [Ripple] = []
+    
+    @State var tabs: [Gesture] =  gestureList
+    @State var currentIndex: Int = 0
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     let narationTimer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
@@ -83,7 +90,7 @@ struct StoryView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.scenePhase) var schenePase
     
-    init(data: StoryData) {
+    init(data: StoryData, tutorialVisibility: Bool) {
         self.gameView = GameView()
         
         self.data = data
@@ -103,6 +110,9 @@ struct StoryView: View {
             UIImage(named: data.skyBox.pz), //belakang
             UIImage(named: data.skyBox.nz) //depan
         ]
+            
+        self.tutorialVisibilityInitial = tutorialVisibility
+
     }
     
     func showHint() {
@@ -233,7 +243,6 @@ struct StoryView: View {
             self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)!.addParticleSystem(emitter)
         } else {
             GlobalStorage.isTurorialFinished = true
-            global.tutorialFinished = true
         }
     }
     
@@ -282,7 +291,6 @@ struct StoryView: View {
                     playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
                 } else if(data.objectList[focusedObjectIndex].type == ObjectType.Ending && elapsedTime >= narationTime) {
                     showEnding()
-                    global.tutorialFinished = true
                 } else {
                     state = StoryState.Task
                     hideDialog()
@@ -492,16 +500,30 @@ struct StoryView: View {
                         rippleList.append(Ripple(id: String(rippleList.count), isVisible: true, x:  location.x, y:  location.y))
                     }
                 }
-                if(endingVisibility) {
-                    EndingView(titleEnding: "Sekian untuk malam ini", textEnding: "Selamat beristirahat!", buttonTextEnding: "Kembali ke Menu", onRestartClick: {
-                        global.isPlaying = false
-                    })
+                
+                VStack{
+                    if(tutorialVisibility && !startVisibility) {
+                        TutorialView(tabs: $tabs, currentIndex: $currentIndex, onClose: {
+                            tutorialVisibility = false
+                        })
+                        .onAppear() {
+                            withAnimation(.easeIn(duration: 0.6)) {
+                                fadeInTutorialView.toggle()
+                            }
+                        }.opacity(fadeInTutorialView ? 1 : 0)
+                    }
+                    if(endingVisibility) {
+                        EndingView(titleEnding: "Sekian untuk malam ini", textEnding: "Selamat beristirahat!", buttonTextEnding: "Kembali ke Menu", onRestartClick: {
+                            global.isPlaying = false
+                        })
+                    }
+//                    if(gestureVisibility && data.isTutorial) {
+//                        GIFView(type: .name(gesture))
+//                            .frame(width: 200, height: 200)
+//                            .padding()
+//                    }
                 }
-                if(gestureVisibility && data.isTutorial) {
-                    GIFView(type: .name(gesture))
-                        .frame(width: 200, height: 200)
-                        .padding()
-                }
+                
                 if(state != StoryState.Naration) {
                     VStack {
                         Spacer().frame(height: UIScreen.height - 360)
@@ -644,11 +666,11 @@ struct StoryView: View {
                     }
                     
                 }
-                .onAppear() {
-                    withAnimation(Animation.easeIn(duration: 0.6)){
-                                fadeIn.toggle()
-                            }
-                        }.opacity(fadeIn ? 0 : 1)
+//                .onAppear() {
+//                    withAnimation(Animation.easeIn(duration: 0.6)){
+//                                fadeIn.toggle()
+//                            }
+//                        }.opacity(fadeIn ? 0 : 1)
                 
                 if(pauseVisibility) {
                     PauseStoryView(onExitOptionClick: {
@@ -695,17 +717,6 @@ struct StoryView: View {
                 
             }
             .frame(width: UIScreen.width, height: UIScreen.height + 100)
-            .onChange(of: schenePase) {
-                newPhase in
-                if(newPhase == .active) {
-                    
-                    playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
-                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
-                } else if(newPhase == .inactive || newPhase == .background) {
-                    backsoundPlayer?.stop()
-                    narationPlayer?.stop()
-                }
-            }
             .onDisappear{
                 global.storyIndex = 0
                 global.tutorialFinished = true
@@ -739,6 +750,8 @@ struct StoryView: View {
                     return
                 }
                 
+                tutorialVisibility = tutorialVisibilityInitial
+
                 isTutorial = !global.tutorialFinished!
                 
                 GlobalStorage.isTurorialFinished = true
@@ -763,6 +776,7 @@ struct StoryView: View {
                 for object in data.objectList {
                     totalNarationDuration = totalNarationDuration + object.narationDuration
                 }
+                
             }.onReceive(timer) { _ in
                 updateTime()
             }.onReceive(cameraTimer) { _ in
@@ -778,7 +792,7 @@ struct StoryView: View {
 
 struct StoryView_Previews: PreviewProvider {
     static var previews: some View {
-        StoryView(data: storyList.first!)
+        StoryView(data: storyList.first!, tutorialVisibility: false)
     }
 }
 

@@ -10,14 +10,18 @@ import SwiftUI
 struct TutorialGestureView: View {
     
     @State var gesture : String = ""
-    @State var descriptionGesture : String = ""
+//    @State var descriptionGesture : String = ""
+//    @State var gestureName : String = ""
+    @State var descriptionView: AnyView = AnyView(VStack{})
     
     var body: some View {
         GIFView(type: .name(gesture))
             .frame(width: 200, height: 200)
-            .padding()
-        
-        AppRubik(text: descriptionGesture, rubikSize: fontType.body, fontWeight: Font.Weight.regular, fontColor: Color.text.primary, textAligment: .center, fontStyle: rubikFont.regular)
+            .padding(.horizontal)
+            .padding(.top, -75)
+            .frame(width: 280, alignment: .center)
+        descriptionView
+            .padding(.top, -30)
     }
 }
 

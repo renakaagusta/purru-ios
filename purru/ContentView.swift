@@ -21,7 +21,7 @@ class GlobalVariables: ObservableObject{
     static let global = GlobalVariables()
     
     // ENVIRONMENT
-    @Published var environemnt = AppEnvironment.Production
+    @Published var environemnt = AppEnvironment.Development
     
     // USER
     @Published var tutorialFinished: Bool? = nil
@@ -59,7 +59,7 @@ struct ContentView: View {
                         backsoundPlayer?.stop()
                     }
                 } else if(global.tutorialFinished == false) {
-                    StoryView(data: storyList.first!)
+                    StoryView(data: storyList.first!, tutorialVisibility: true)
                 }
             }.onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -67,6 +67,8 @@ struct ContentView: View {
                         self.moveToMainMenu = true
                     }
                 }
+                print("===is tutorial finished==")
+                print(GlobalStorage.isTurorialFinished)
                 
                 if(GlobalStorage.isTurorialFinished == true) {
                     global.tutorialFinished = true

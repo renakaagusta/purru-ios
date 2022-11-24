@@ -6,10 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Gesture: Identifiable, Hashable{
     var id: String
-    var name: String
     var image: String
-    var descriptionGesture: String
 }
+

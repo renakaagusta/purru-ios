@@ -25,7 +25,7 @@ struct StoryListView: View {
     var btnBack : some View { Button(action: {
         self.presentationMode.wrappedValue.dismiss()
         }) {
-            Image(systemName: "chevron.backward") // set image here
+            Image(systemName: "chevron.backward")
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(Color.text.primary)
                 .bold()
@@ -35,7 +35,7 @@ struct StoryListView: View {
     var body: some View {
         ZStack {
             if(global.isPlaying) {
-                StoryView(data: storyList[global.storyIndex])
+                StoryView(data: storyList[global.storyIndex], tutorialVisibility: false)
             } else {
                 VStack {
                     Spacer().frame(height: 40)
