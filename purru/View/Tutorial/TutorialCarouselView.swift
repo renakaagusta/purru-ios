@@ -26,7 +26,7 @@ struct TutorialCarouselView: View{
             TabView(selection: $fakeIndex){
                 ForEach(Array(gestureList.enumerated()),  id: \.offset) { index, tabGesture in
                         VStack {
-                            TutorialGestureView(gesture: tabGesture.image, descriptionGesture: tabGesture.descriptionGesture)
+                            TutorialGestureView(gesture: tabGesture.image, descriptionView: gestureDescriptionViewList[index])
                         }
                         .onPreferenceChange(OffsetKeyTutorial.self, perform: { offset in
                             self.offset = offset
