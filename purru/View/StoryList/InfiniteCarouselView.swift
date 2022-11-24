@@ -19,7 +19,7 @@ struct InfiniteCarouselView: View{
             TabView(selection: $fakeIndex){
                 ForEach(Array(storyListTab.enumerated()),  id: \.offset) { index, tab in
                         VStack {
-                            AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, DescriptionLineLimit: 3, index: index , onClick: {
+                            AppCardStory(title: tab.title, description: tab.description, thumbnail: tab.thumbnail, thumbnailSize: tab.thumbnailSize , DescriptionLineLimit: 3, index: index , onClick: {
                                 global.storyIndex = index
                                 global.isReadSinopsis = true
                             }, onPlay: {

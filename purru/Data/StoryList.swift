@@ -11,9 +11,10 @@ import SceneKit
 var storyList = [
        StoryData(
            id: "1",
-           title: "Ahli Besi",
-           description: "Bernostalgia di sebuah taman yang sangat indah dengan pohon-pohon berwarna warni yang memanjankan mata. Angin sepoi-sepoi, langit yang mendung, membuat suasana menjadi sangat nyaman.",
+           title: "Bengkel Pandai Besi",
+           description: "Suatu malam di dalam hutan terdengar suara misterius dari sebuah bengkel pandai besi. Mengapa ada bengkel pandai besi di dalam hutan? Siapakah pemilik bengkel tersebut?",
            thumbnail: "AhliBesi",
+           thumbnailSize: 400,
            modalCover:"CoverModalS1",
            sceneName: "AhliBesi",
            sceneExtension: "scn",
@@ -188,6 +189,7 @@ var storyList = [
            title: "Perpustakaan Penyihir",
            description: "Seorang pengelana yang menemukan sebuah ruangan kuno ajaib di sebuah kota kecil yang ia kunjungi. Siapa pemilik ruangan ini? Mengapa banyak barang-barang supranatural didalamnya?",
            thumbnail: "RuanganAjaib",
+           thumbnailSize: 340,
            modalCover:"alcheworld",
            sceneName: "RuanganAjaib",
            sceneExtension: "scn",
@@ -402,9 +404,10 @@ import SceneKit
 var storyListTab = [
        StoryTab(
            id: "1",
-           title: "Ahli Besi",
-           description: "Bernostalgia di sebuah taman yang sangat indah dengan pohon-pohon berwarna warni yang memanjankan mata. Angin sepoi-sepoi, langit yang mendung, membuat suasana menjadi sangat nyaman.",
+           title: "Bengkel Pandai Besi",
+           description: "Suatu malam di dalam hutan terdengar suara misterius dari sebuah bengkel pandai besi. Mengapa ada bengkel pandai besi di dalam hutan? Siapakah pemilik bengkel tersebut?",
            thumbnail: "AhliBesi",
+           thumbnailSize: 425,
            modalCover: "CoverModalS1",
            sceneName: "",
            sceneExtension: "",
@@ -417,6 +420,7 @@ var storyListTab = [
            title: "Perpustakaan Penyihir",
            description: "Seorang pengelana yang menemukan sebuah ruangang kuno ajaib di sebuah kota kecil yang ia kunjungi. Siapa pemilik ruangan ini? Mengapa banyak barang-barang supranatural didalamnya?",
            thumbnail: "RuanganAjaib",
+           thumbnailSize: 360,
            modalCover:"alcheworld",
            sceneName: "3DAssetS1",
            sceneExtension: "scn",

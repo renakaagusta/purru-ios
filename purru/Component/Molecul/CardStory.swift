@@ -12,6 +12,7 @@ struct AppCardStory: View {
     @State var title: String = "story2_thumnail"
     @State var description: String = ""
     @State var thumbnail: String = ""
+    @State var thumbnailSize: CGFloat = 0
     @State var DescriptionLineLimit: Int = 3
     @State var index: Int = 0
     
@@ -32,7 +33,7 @@ struct AppCardStory: View {
                     Image(thumbnail)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 340.0, height: 340.0)
+                        .frame(width: thumbnailSize, height: thumbnailSize)
                         .offset(y:-75)
                 })
                 

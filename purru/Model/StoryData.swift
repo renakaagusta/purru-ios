@@ -12,6 +12,7 @@ struct StoryData: Identifiable {
     var title: String
     var description: String
     var thumbnail: String
+    var thumbnailSize: CGFloat
     var modalCover: String
     var sceneName: String
     var sceneExtension: String
@@ -32,6 +33,7 @@ struct StoryTab: Identifiable, Hashable {
     var title: String
     var description: String
     var thumbnail: String
+    var thumbnailSize: CGFloat
     var modalCover: String
     var sceneName: String
     var sceneExtension: String
