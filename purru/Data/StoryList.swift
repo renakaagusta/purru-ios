@@ -109,7 +109,7 @@ var storyList = [
                    hint: "Temukan",
                    tag: "4BESI",
                    type: ObjectType.Task,
-                   narationDuration: 18,
+                   narationDuration: 20,
                    taskDuration: 20,
                    tutorialDuration: 0,
                    narationSound: "Narasi-Story1-4",

@@ -246,6 +246,10 @@
 		B869904A292E88C60078659D /* nx.png in Resources */ = {isa = PBXBuildFile; fileRef = B8699044292E88C50078659D /* nx.png */; };
 		B87C7A6C2923783C006D352E /* grass_foliage.png in Resources */ = {isa = PBXBuildFile; fileRef = B87C7A6B2923783B006D352E /* grass_foliage.png */; };
 		B89A00612914D34B00D620A4 /* DescriptionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89A00602914D34B00D620A4 /* DescriptionModalView.swift */; };
+		B8CC8C7B292F1D0000C28449 /* TutorialCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC8C7A292F1D0000C28449 /* TutorialCarouselView.swift */; };
+		B8CC8C7D292F1E3B00C28449 /* TutorialGestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC8C7C292F1E3B00C28449 /* TutorialGestureView.swift */; };
+		B8CC8C7F292F1E8B00C28449 /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC8C7E292F1E8B00C28449 /* Gesture.swift */; };
+		B8CC8C81292F1EC500C28449 /* GestureList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC8C80292F1EC500C28449 /* GestureList.swift */; };
 		B8D38CC32907CC0C00DB150C /* JosefinSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8D38CBF2907CA2500DB150C /* JosefinSans.ttf */; };
 		B8D38CC42907CC0C00DB150C /* Rubik.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8D38CC02907CA2500DB150C /* Rubik.ttf */; };
 		B8DACF5D29126971002EA3BA /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DACF5C29126971002EA3BA /* AboutView.swift */; };
@@ -502,6 +506,10 @@
 		B8699044292E88C50078659D /* nx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nx.png; sourceTree = "<group>"; };
 		B87C7A6B2923783B006D352E /* grass_foliage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_foliage.png; sourceTree = "<group>"; };
 		B89A00602914D34B00D620A4 /* DescriptionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionModalView.swift; sourceTree = "<group>"; };
+		B8CC8C7A292F1D0000C28449 /* TutorialCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCarouselView.swift; sourceTree = "<group>"; };
+		B8CC8C7C292F1E3B00C28449 /* TutorialGestureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialGestureView.swift; sourceTree = "<group>"; };
+		B8CC8C7E292F1E8B00C28449 /* Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
+		B8CC8C80292F1EC500C28449 /* GestureList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureList.swift; sourceTree = "<group>"; };
 		B8D38CBF2907CA2500DB150C /* JosefinSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JosefinSans.ttf; sourceTree = "<group>"; };
 		B8D38CC02907CA2500DB150C /* Rubik.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rubik.ttf; sourceTree = "<group>"; };
 		B8DACF5C29126971002EA3BA /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -642,6 +650,7 @@
 				2FA53F482907C31F00BFB3E5 /* Instruction.swift */,
 				2FA53F492907C31F00BFB3E5 /* ObjectScene.swift */,
 				2FA53F4A2907C31F00BFB3E5 /* StoryData.swift */,
+				B8CC8C7E292F1E8B00C28449 /* Gesture.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -860,6 +869,8 @@
 			isa = PBXGroup;
 			children = (
 				2FA53F832907C31F00BFB3E5 /* TutorialView.swift */,
+				B8CC8C7A292F1D0000C28449 /* TutorialCarouselView.swift */,
+				B8CC8C7C292F1E3B00C28449 /* TutorialGestureView.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -938,6 +949,7 @@
 			isa = PBXGroup;
 			children = (
 				B8DACF6A2913A75C002EA3BA /* StoryList.swift */,
+				B8CC8C80292F1EC500C28449 /* GestureList.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1524,6 +1536,7 @@
 				2FA53FAF2907C31F00BFB3E5 /* TextField.swift in Sources */,
 				2FA53FC12907C31F00BFB3E5 /* Rubik.swift in Sources */,
 				2FA53FC82907C31F00BFB3E5 /* EndingView.swift in Sources */,
+				B8CC8C7B292F1D0000C28449 /* TutorialCarouselView.swift in Sources */,
 				2FA53FBB2907C31F00BFB3E5 /* TextButton.swift in Sources */,
 				2FA53FB62907C31F00BFB3E5 /* OutlinedCircleButton.swift in Sources */,
 				2FA53FAB2907C31F00BFB3E5 /* Colors.swift in Sources */,
@@ -1550,11 +1563,13 @@
 				2FA53FB52907C31F00BFB3E5 /* ElevatedButton.swift in Sources */,
 				2FA53F962907C31F00BFB3E5 /* Random.swift in Sources */,
 				2FA53FC72907C31F00BFB3E5 /* StoryListView.swift in Sources */,
+				B8CC8C7F292F1E8B00C28449 /* Gesture.swift in Sources */,
 				B80A9006291BB077008F4D3A /* ExitStoryAlert.swift in Sources */,
 				2FA53FC92907C31F00BFB3E5 /* MainMenuView.swift in Sources */,
 				2FA53FCF2907C31F00BFB3E5 /* ObjectType.swift in Sources */,
 				2FA53FA72907C31F00BFB3E5 /* State.swift in Sources */,
 				B8DACF6029132049002EA3BA /* CardStory.swift in Sources */,
+				B8CC8C7D292F1E3B00C28449 /* TutorialGestureView.swift in Sources */,
 				2FA53FAD2907C31F00BFB3E5 /* Card.swift in Sources */,
 				2FA53FA52907C31F00BFB3E5 /* StoryData.swift in Sources */,
 				2FA53FA92907C31F00BFB3E5 /* Screen.swift in Sources */,
@@ -1565,6 +1580,7 @@
 				2FA53FAC2907C31F00BFB3E5 /* Radio.swift in Sources */,
 				2FA53F932907C31F00BFB3E5 /* GameViewController.swift in Sources */,
 				2FA53FA82907C31F00BFB3E5 /* Scheme.swift in Sources */,
+				B8CC8C81292F1EC500C28449 /* GestureList.swift in Sources */,
 				2FA53F952907C31F00BFB3E5 /* Color.swift in Sources */,
 				2FA53FB32907C31F00BFB3E5 /* Image.swift in Sources */,
 				2FA53FC02907C31F00BFB3E5 /* JosefineSans.swift in Sources */,
@@ -1709,7 +1725,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"purru/Preview Content\"";
-				DEVELOPMENT_TEAM = KZ9PN4535G;
+				DEVELOPMENT_TEAM = GHNZ6R7D9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = purru/Info.plist;
@@ -1739,7 +1755,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"purru/Preview Content\"";
-				DEVELOPMENT_TEAM = KZ9PN4535G;
+				DEVELOPMENT_TEAM = GHNZ6R7D9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = purru/Info.plist;
