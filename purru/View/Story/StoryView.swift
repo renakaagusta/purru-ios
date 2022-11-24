@@ -120,6 +120,10 @@ struct StoryView: View {
             return
         }
         
+        if(view.scene == nil) {
+            return
+        }
+        
         let camera = self.view.defaultCameraController
         
         let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
