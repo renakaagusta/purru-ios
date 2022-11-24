@@ -81,6 +81,7 @@ struct StoryView: View {
     @State var currentNaration: String? = nil
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.scenePhase) var schenePase
     
     init(data: StoryData) {
         self.gameView = GameView()
@@ -538,10 +539,38 @@ struct StoryView: View {
 //                        }.frame(height: 100)
                     }
                 }
+                
                 if(!endingVisibility) {
+                    VStack{
+                        HStack{
+                            Spacer()
+                            Button(
+                                action: {
+                                    pauseVisibility.toggle()
+                                    if pauseVisibility {
+                                        narationPlayer?.pause()
+                                        fadeInPauseView = false
+                                    } else {
+                                        narationPlayer?.play()
+                                        fadeInPauseView = true
+                                    }
+                                }, label: {
+                                    if(!endingVisibility && !isTutorial && !startVisibility){
+                                        Image(systemName: pauseVisibility ? " " : "pause.fill")
+                                            .aspectRatio(contentMode: .fit)
+                                            .foregroundColor(Color.text.primary)
+                                            .bold()
+                                    }
+                                }
+                            )
+                            .padding(.horizontal, 20)
+                        }
+                    }
+                    .offset(y: -370)
+
                     VStack {
                         AppProgressBar(width:300, height: 7, progress:Binding(get:{narationsProgress}, set: {_ in true}))
-                            .padding(.top, 75)
+                            .padding(.top, 90)
                         if(dialogVisibility && !endingVisibility && global.showSubtitle) {
                             dialogView
                                 
@@ -665,6 +694,17 @@ struct StoryView: View {
                 
             }
             .frame(width: UIScreen.width, height: UIScreen.height + 100)
+            .onChange(of: schenePase) {
+                newPhase in
+                if(newPhase == .active) {
+                    
+                    playBacksound(soundName: data.backsound, soundExtention: data.backsoundExtention)
+                    playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
+                } else if(newPhase == .inactive || newPhase == .background) {
+                    backsoundPlayer?.stop()
+                    narationPlayer?.stop()
+                }
+            }
             .onDisappear{
                 global.storyIndex = 0
                 global.tutorialFinished = true
@@ -731,27 +771,6 @@ struct StoryView: View {
             
             
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(trailing: Button(
-            action: {
-                pauseVisibility.toggle()
-                if pauseVisibility {
-                    narationPlayer?.pause()
-                    fadeInPauseView = false
-                } else {
-                    narationPlayer?.play()
-                    fadeInPauseView = true
-                }
-            }, label: {
-                if(!endingVisibility && !isTutorial && !startVisibility){
-                    Image(systemName: pauseVisibility ? " " : "pause.fill")
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundColor(Color.text.primary)
-                        .bold()
-                }
-            }
-        )
-        )
         
     }
 }
