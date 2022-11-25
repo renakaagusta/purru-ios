@@ -180,8 +180,8 @@ var storyList = [
                    ]
                )
            ],
-           isTutorial: true,
-           height: 10
+           //isTutorial: true,
+           height: 1
        ),
        //story 2
        StoryData(
@@ -383,7 +383,7 @@ var storyList = [
                        Instruction(id: "8",text: "hingga saatnya kamu tidur,", startedAt: 49.6),
                        Instruction(id: "9",text: "cobalah untuk mengenang momen-momen bersama orang yang kamu cintai.", startedAt: 53),
                        Instruction(id: "10",text: "Aku dengar, itu dapat membantu untuk bisa lebih rileks.", startedAt: 63.1),
-                       Instruction(id: "11",text: "Semoga malammu tenang.", startedAt: 62.5)
+                       Instruction(id: "11",text: "Semoga malammu tenang.", startedAt: 72.5)
                    ]
                )
            ],
