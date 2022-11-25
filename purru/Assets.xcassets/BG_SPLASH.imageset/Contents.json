@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "BGSplash.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

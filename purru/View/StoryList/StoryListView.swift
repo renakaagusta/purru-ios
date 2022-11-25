@@ -101,23 +101,26 @@ struct SplashView: View {
     
     @State var index = 1
     let images = (1...95).map {
-        return UIImage(named: "SPLASH_\($0)")!
+        return UIImage(named: "SplashScreen7_\($0)")!
     }
     let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()
 
-    var body: some View {
+    var body: some View {   
         VStack {
             if(isVisible) {
                 VStack {
-                    Image(uiImage: images[index])
-                        .resizable()
-                        .frame(width: UIScreen.width, height: UIScreen.height + 20, alignment: .center)
-                        .onReceive(timer) { _ in
-                            self.index = self.index + 1
-                            if self.index >= 95 { self.index = 1 }
-                        }
+                    ZStack {
+                        Image("BG_SPLASH").resizable().frame(width: 1000, height: 1000)
+                        Image(uiImage: images[index])
+                            .resizable()
+                            .frame(width: 250, height: 200, alignment: .center)
+                            .onReceive(timer) { _ in
+                                self.index = self.index + 1
+                                if self.index >= 95 { self.index = 1 }
+                            }
+                    }
                 }.onAppear(perform: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.85, execute: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.8, execute: {
                         withAnimation() {
                             self.isVisible = false
                             self.index = 0
