@@ -103,7 +103,7 @@ struct SplashView: View {
     let images = (1...95).map {
         return UIImage(named: "SplashScreen7_\($0)")!
     }
-    let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.0333, on: .main, in: .common).autoconnect()
 
     var body: some View {   
         VStack {
@@ -116,11 +116,13 @@ struct SplashView: View {
                             .frame(width: 250, height: 200, alignment: .center)
                             .onReceive(timer) { _ in
                                 self.index = self.index + 1
+                                print("====TIMER====")
+                                print(index)
                                 if self.index >= 95 { self.index = 1 }
                             }
                     }
                 }.onAppear(perform: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.8, execute: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
                         withAnimation() {
                             self.isVisible = false
                             self.index = 0

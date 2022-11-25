@@ -119,19 +119,19 @@ struct StoryView: View {
         if(data.objectList[focusedObjectIndex].type != ObjectType.Task) {
             return
         }
-        
-        if(view.scene == nil) {
+                
+        if(scene == nil && view.defaultCameraController != nil) {
             return
         }
         
         let camera = self.view.defaultCameraController
         
-        let cameraDestination = view.scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
+        let cameraDestination = scene?.rootNode.childNodes.filter({$0.name == "CAM " + data.objectList[focusedObjectIndex].tag}).first
         
-        let objectTarget = view.scene!.rootNode.childNodes.filter({$0.name == data.objectList[focusedObjectIndex].tag}).first
+        let objectTarget = scene!.rootNode.childNodes.filter({$0.name == data.objectList[focusedObjectIndex].tag}).first
 
         if(objectTarget != nil) {
-            for node in self.view.scene!.rootNode.childNodes {
+            for node in self.scene!.rootNode.childNodes {
                 if(node.name == objectTarget?.name) {
                     let material = node.geometry!.firstMaterial!
                     
@@ -155,7 +155,7 @@ struct StoryView: View {
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                for node in self.view.scene!.rootNode.childNodes {
+                for node in self.scene!.rootNode.childNodes {
                     if(node.name == objectTarget?.name) {
                         let material = node.geometry!.firstMaterial!
                         
@@ -337,7 +337,7 @@ struct StoryView: View {
     }
     
     func updateTime() {
-        if(pauseVisibility || startVisibility) {
+        if(pauseVisibility || startVisibility || tutorialVisibility) {
             return
         }
         
@@ -509,6 +509,8 @@ struct StoryView: View {
                     if(tutorialVisibility && !startVisibility) {
                         TutorialView(tabs: $tabs, currentIndex: $currentIndex, onClose: {
                             tutorialVisibility = false
+                            playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
+
                         })
                         .onAppear() {
                             withAnimation(.easeIn(duration: 0.6)) {
@@ -701,7 +703,11 @@ struct StoryView: View {
                 if(startVisibility){
                     StartGameView(onStartGame: {
                         startVisibility.toggle()
-                        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
+                        if(tutorialVisibility != true) {
+                            playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
+
+                        }
+                            
                     })
                     .onAppear() {
                         withAnimation(Animation.easeIn(duration: 1.5)){
