@@ -181,6 +181,8 @@ struct StoryView: View {
         
         if hitResults!.count > 0 {
             let firstObject = hitResults![0]
+            print("====FIRST OBJECT NAME===")
+            print(firstObject.node.name)
             for result in self.view.scene!.rootNode.childNodes {
                 if(result.name == firstObject.node.name) {
                     if(result.name == data.objectList[focusedObjectIndex].tag) {
@@ -247,6 +249,7 @@ struct StoryView: View {
             self.view.scene?.rootNode.childNode(withName: "Ground", recursively: true)!.addParticleSystem(emitter)
         } else {
             GlobalStorage.isTurorialFinished = true
+            global.tutorialFinished = true
         }
     }
     
@@ -337,6 +340,8 @@ struct StoryView: View {
     }
     
     func updateTime() {
+        configCamera()
+
         if(pauseVisibility || startVisibility || tutorialVisibility) {
             return
         }
@@ -346,9 +351,7 @@ struct StoryView: View {
         if(state == StoryState.Naration) {
             currentNarationDuration = currentNarationDuration + 1
         }
-        
-        configCamera()
-        
+
         updateState()
         
         if(focusedObjectIndex <= data.objectList.count - 1) {
@@ -481,6 +484,16 @@ struct StoryView: View {
     
     func skipObject() {
         focusedObjectIndex = focusedObjectIndex + 1
+        state = StoryState.Naration
+        hintVisibility = false
+        gestureVisibility = false
+        elapsedTime = 0
+        
+        playNaration(soundName: data.objectList[focusedObjectIndex].narationSound, soundExtention: data.objectList[focusedObjectIndex].narationSoundExtention, currentTime: elapsedTime)
+    }
+    
+    func previousObject() {
+        focusedObjectIndex = focusedObjectIndex - 1
         state = StoryState.Naration
         hintVisibility = false
         gestureVisibility = false
@@ -633,11 +646,11 @@ struct StoryView: View {
                                 
                                 AppCircleButton(
                                     size: 20,
-                                    icon: Image(systemName: "arrow.right.circle"),
+                                    icon: Image(systemName: "arrow.left"),
                                     color: Color.white,
                                     backgroundColor: Color.foot.primary,
                                     source: AppCircleButtonContentSource.Icon,
-                                    onClick: skipTutorial
+                                    onClick: previousObject
                                 )
                             }
                         }
@@ -672,11 +685,11 @@ struct StoryView: View {
                     }
                     
                 }
-                .onAppear() {
-                    withAnimation(Animation.easeIn(duration: 0.6)){
-                                fadeIn.toggle()
-                            }
-                        }.opacity(fadeIn ? 0 : 1)
+//                .onAppear() {
+//                    withAnimation(Animation.easeIn(duration: 0.6)){
+//                                fadeIn.toggle()
+//                            }
+//                        }.opacity(fadeIn ? 0 : 1)
                 
                 if(pauseVisibility) {
                     PauseStoryView(onExitOptionClick: {
@@ -792,9 +805,6 @@ struct StoryView: View {
             }.onReceive(cameraTimer) { _ in
                 configCamera()
             }
-            
-            
-            
         }
         
     }
