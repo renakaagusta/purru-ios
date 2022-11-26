@@ -169,7 +169,7 @@ var storyList = [
                    instructionList: [
                        Instruction(id: "0",text: "", startedAt: 0),
                        Instruction(id: "1",text: "Bisa dibilang bengkel ini sangatlah rapi dan teratur.", startedAt: 1.6),
-                       Instruction(id: "2",text: "Penerangan di malam hari seperti ini hanya berasal dari lilin-lilin kecil yang diletakkan di lantai serta perapian hangat", startedAt: 10),
+                       Instruction(id: "2",text: "Penerangan di malam hari hanya berasal dari lilin-lilin kecil yang diletakkan di lantai serta perapian hangat", startedAt: 10),
                        Instruction(id: "3",text: "Membuat suasana di sini sangat menenangkan, dengan suara-suara alam dari hutan", startedAt: 25.1),
                        Instruction(id: "4",text: "Tetapi walaupun menenangkan, suasana disini juga misterius", startedAt: 39),
                        Instruction(id: "5",text: "Karena tidak nampak sosok pemilik bengkel ini yang masih bekerja.", startedAt: 50),
