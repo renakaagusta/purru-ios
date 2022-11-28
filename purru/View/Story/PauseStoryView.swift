@@ -30,7 +30,6 @@ struct PauseStoryView: View {
 
     var body: some View {
         ZStack(alignment: .center) {
-            
             VStack(alignment: .center) {
                 AppRubik(text: "Suara", rubikSize: fontType.body, fontWeight: Font.Weight.bold, fontColor: Color.text.primary, textAligment: TextAlignment.center, fontStyle: rubikFont.bold)
                 
@@ -45,7 +44,7 @@ struct PauseStoryView: View {
                             narationVolume = global.narationVolume
                         onDidChangeSound()
                         print("==NARATION VOLUME====")
-                            print($global.narationVolume)
+                        print($global.narationVolume.wrappedValue)
                     }.foregroundColor(Color.bg.secondary).accentColor(Color.sign.primary)
                     
                     Image(systemName: "speaker.wave.2.fill")
@@ -118,6 +117,10 @@ struct PauseStoryView: View {
             }
             
             
+        }
+        .onAppear {
+            narationVolume = global.narationVolume
+            backsoundVolume = global.backsoundVolume
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.bg.primary.opacity(0.8))

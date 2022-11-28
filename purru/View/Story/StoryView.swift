@@ -587,6 +587,8 @@ struct StoryView: View {
                             Spacer()
                             Button(
                                 action: {
+                                    print("===BACKSOUND VOLUME===")
+                                    print(global.backsoundVolume)
                                     pauseVisibility.toggle()
                                     if pauseVisibility {
                                         narationPlayer?.pause()
